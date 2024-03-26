@@ -1,8 +1,10 @@
+#include"PreCompile.h"
 #include <Windows.h>
 #include <string_view>
 
 #include <EngineCore/EngineCore.h>
 #include <MyCore/MyCore.h>
+
 // EnginePlatform에 존재하는 enginewindow기능을 당연히 이용하고 싶을 것이다.
 
 #pragma comment (lib, "EngineBase.lib")

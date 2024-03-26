@@ -1,7 +1,9 @@
+#include"PreCompile.h"
 #include "EngineDirectory.h"
 #include "EngineFile.h"
 #include "EngineString.h"
 #include "EngineDebug.h"
+
 
 UEngineDirectory::UEngineDirectory() 
 {

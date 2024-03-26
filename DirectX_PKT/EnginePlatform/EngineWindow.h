@@ -1,7 +1,6 @@
 #pragma once
 #include <Windows.h>
 #include <string>
-#include <EngineBase\EngineMath.h>
 #include <memory>
 #include <functional>
 
