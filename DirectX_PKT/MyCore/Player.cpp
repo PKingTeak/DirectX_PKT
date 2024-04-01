@@ -4,7 +4,11 @@
 
 APlayer::APlayer() 
 {
-	Renderer = CreateDefaultSubobject<URenderer>("Renderer");
+	Renderer = CreateDefaultSubObject<URenderer>("Renderer");
+
+	Renderer->SetMesh("Rect");
+	Renderer->SetMaterial("2DImage");
+
 }
 
 APlayer::~APlayer() 
