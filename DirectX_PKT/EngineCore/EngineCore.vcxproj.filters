@@ -46,6 +46,9 @@
     <Filter Include="Resources\Shader">
       <UniqueIdentifier>{60d62581-6d76-4598-be4d-6a2ae598d17b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderResource">
+      <UniqueIdentifier>{12603777-562f-47e1-a237-760532535fe4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineCore.cpp">
@@ -129,6 +132,12 @@
     <ClCompile Include="EngineVertex.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
+    <ClCompile Include="EngineShaderResources.cpp">
+      <Filter>ShaderResource</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineConstantBuffer.cpp">
+      <Filter>ShaderResource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h">
@@ -208,6 +217,15 @@
     </ClInclude>
     <ClInclude Include="EngineInputLayOut.h">
       <Filter>Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineEnums.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineShaderResources.h">
+      <Filter>ShaderResource</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineConstantBuffer.h">
+      <Filter>ShaderResource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
