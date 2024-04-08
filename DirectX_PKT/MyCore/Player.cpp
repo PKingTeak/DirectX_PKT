@@ -27,7 +27,7 @@ void APlayer::BeginPlay()
 	SetActorScale3D(FVector(300.0f, 300.0f, 100.0f));
 
 	// 내부에서 샘플러도 같이 찾을
-	Renderer->Resources->SettingTexture("Image", "CharIdle0.png", "POINT");
+	Renderer->Resources->SettingTexture("Resources", "Chica.png", "POINT");
 }
 
 void APlayer::Tick(float _DeltaTime)

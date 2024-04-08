@@ -20,7 +20,7 @@ void UMyCore::Initialize()
 		// 파일의 헤더
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("Resources");
-		Dir.Move("Stage");
+		Dir.Move("JumpScare");
 		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".png" }, true);
 		for (UEngineFile& File : Files)
 		{
@@ -44,7 +44,7 @@ void UMyCore::Initialize()
 		// 이미 이 이름을 가진 스프라이트가 존재한다.
 		// 그러면 기존의 스프라이트 데이터는 날려버리고
 		// 자른 스프라이트 데이터 변경한다.
-		UEngineSprite::CreateCutting("OfficeTest.png", 4, 3);
+		UEngineSprite::CreateCutting("Chica.png", 1, 16);
 	}
 
 

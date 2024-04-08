@@ -20,9 +20,9 @@ void ATitleLogo::BeginPlay()
 
 	// Renderer->SetSprite("CharWalk1_0.png");
 
-	Renderer->CreateAnimation("Run", "Run", 0.1f);
+	Renderer->CreateAnimation("ChicaJumpScary", "Chica.png", 0.1f);
 
-	Renderer->ChangeAnimation("Run");
+	Renderer->ChangeAnimation("ChicaJumpScary");
 
 }
 
