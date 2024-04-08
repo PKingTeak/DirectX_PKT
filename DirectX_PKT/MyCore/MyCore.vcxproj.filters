@@ -30,6 +30,12 @@
     <ClCompile Include="PlayGameMode.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="TitleGameMode.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCore.h">
@@ -43,6 +49,12 @@
     </ClInclude>
     <ClInclude Include="PlayGameMode.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleGameMode.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

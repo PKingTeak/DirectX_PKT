@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <EngineCore/Renderer.h>
 
-APlayer::APlayer()
+APlayer::APlayer() 
 {
 	Renderer = CreateDefaultSubObject<URenderer>("Renderer");
 	Renderer->SetMesh("Rect");
@@ -16,7 +16,7 @@ APlayer::APlayer()
 	// Renderer->세팅버텍스쉐이더상수버퍼();
 }
 
-APlayer::~APlayer()
+APlayer::~APlayer() 
 {
 }
 
@@ -26,10 +26,8 @@ void APlayer::BeginPlay()
 
 	SetActorScale3D(FVector(300.0f, 300.0f, 100.0f));
 
-	// 안해주면 터져야한다.
-	Renderer->Resources->SettingConstantBuffer("OutPutColor", Color);
 	// 내부에서 샘플러도 같이 찾을
-	Renderer->Resources->SettingTexture("Image", "OfficeTest.png", "POINT");
+	Renderer->Resources->SettingTexture("Image", "CharIdle0.png", "POINT");
 }
 
 void APlayer::Tick(float _DeltaTime)
