@@ -16,6 +16,12 @@
     <Filter Include="PreCompile">
       <UniqueIdentifier>{7b6f16d7-f1a4-466f-9989-09e851df3ec1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{997ec5ff-d983-4e14-9d12-d71e65ce77bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level\Title">
+      <UniqueIdentifier>{735f6e25-2061-4980-b7c2-64178c435bfe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyCore.cpp">
@@ -36,6 +42,12 @@
     <ClCompile Include="TitleLogo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MainTitleLevel.cpp">
+      <Filter>Level\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBackGround.cpp">
+      <Filter>Level\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCore.h">
@@ -55,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="TitleLogo.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainTitleLevel.h">
+      <Filter>Level\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBackGround.h">
+      <Filter>Level\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

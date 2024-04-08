@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MainTitleLevel.h" />
     <ClInclude Include="MyCore.h">
       <SubType>
       </SubType>
@@ -26,10 +27,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="TitleLogo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MainTitleLevel.cpp" />
     <ClCompile Include="MyCore.cpp">
       <SubType>
       </SubType>
@@ -42,6 +45,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
   </ItemGroup>

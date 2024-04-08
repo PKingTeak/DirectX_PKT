@@ -3,7 +3,7 @@
 #include"PlayGameMode.h"
 #include "TitleGameMode.h"
 #include <EngineCore/EngineSprite.h>
-
+#include "MainTitleLevel.h"
 
 UMyCore::UMyCore()
 {
@@ -20,7 +20,7 @@ void UMyCore::Initialize()
 		// 파일의 헤더
 		UEngineDirectory Dir;
 		Dir.MoveToSearchChild("Resources");
-		Dir.Move("JumpScare");
+		//Dir.Move("JumpScare");
 		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".png" }, true);
 		for (UEngineFile& File : Files)
 		{
@@ -45,6 +45,9 @@ void UMyCore::Initialize()
 		// 그러면 기존의 스프라이트 데이터는 날려버리고
 		// 자른 스프라이트 데이터 변경한다.
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
+		UEngineSprite::CreateCutting("TITLE.png", 1, 4);
+
+		
 	}
 
 
@@ -67,7 +70,8 @@ void UMyCore::Initialize()
 
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
-	GEngine->ChangeLevel("TitleLevel");
+	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
+	GEngine->ChangeLevel("Maintitle");
 
 
 }
