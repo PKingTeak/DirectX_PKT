@@ -1,6 +1,9 @@
 #pragma once
 #include <Enginecore/Actor.h>
 #include <EngineCore/SpriteRenderer.h>
+#include<iostream>
+#include<string>
+#include<string_view>
 
 // Ό³Έν :
 class TitleBackGround : public AActor
@@ -26,7 +29,11 @@ protected:
 	void RendererOn();
 
 private:
+	void ChangeBackGround();
 	USpriteRenderer* Renderer = nullptr;
 	int RandomNum = 0;
+	int  AniTime = 10;
+	float PreTime = 0;
+
 };
 

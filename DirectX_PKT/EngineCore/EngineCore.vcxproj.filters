@@ -64,6 +64,9 @@
     <Filter Include="ThirdParty\DirectXTex\Release">
       <UniqueIdentifier>{fa693a66-c5cf-457f-a232-e5d825708a99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{6fc79cd7-53cc-48af-a0d7-6143dde8dcd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineCore.cpp">
@@ -164,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="EngineBlend.cpp">
       <Filter>Resources\RenderingSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Content</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="EngineBlend.h">
       <Filter>Resources\RenderingSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Content</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
