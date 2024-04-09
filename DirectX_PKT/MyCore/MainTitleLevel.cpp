@@ -18,7 +18,8 @@ MainTitleLevel::~MainTitleLevel()
 void MainTitleLevel::BeginPlay()
 {
 	Super::BeginPlay();
-
+	UEngineSprite::CreateCutting("TITLE.png", 1, 4);
+	//UEngineSprite::CreateCutting
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<TitleBackGround>("TitleBackGround");

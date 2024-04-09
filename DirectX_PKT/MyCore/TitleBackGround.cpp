@@ -21,32 +21,34 @@ void TitleBackGround::BeginPlay()
 
 
 	
-	//Renderer->CreateAnimation("TitleAnimation", "TITLE.png", 1, 4);
 	
-	//Renderer->ChangeAnimation("TitleAnimation");
 }
 
 void TitleBackGround::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	AniTime -= _DeltaTime;
-	ChangeBackGround();
+	if (AniTime >= 0)
+	{
+		Renderer->SetSprite("Title.png", 0);
+		RandomNum = UEngineRandom::MainRandom.RandomInt(1, 3);
+	}
+	if (AniTime < 0)
+	{
+	ChangeBackGround(_DeltaTime);
+	}
 	int a = 0;
 }
 
-void TitleBackGround::ChangeBackGround()
+void TitleBackGround::ChangeBackGround(float _DeltaTime)
 {
-	
-	if (AniTime > 0)
+	//DelayCallBack()
+	Time += _DeltaTime;
+	Renderer->SetSprite("Title.png", RandomNum);
+	if (Time > 1)
 	{
-	Renderer->SetSprite( "Title.png", 0);
+	AniTime = RandomNum * 2;
+	Time = 0;
 	}
-	else if (AniTime < 0)
-	{
-		int RandomNum = UEngineRandom::MainRandom.RandomInt(0, 3);
-		Renderer->SetSprite("Title.png", RandomNum);
-		AniTime = RandomNum * 5;
-	}
-	int a = 0;
 }
 

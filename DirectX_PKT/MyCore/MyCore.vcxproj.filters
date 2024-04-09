@@ -22,6 +22,9 @@
     <Filter Include="Level\Title">
       <UniqueIdentifier>{735f6e25-2061-4980-b7c2-64178c435bfe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Stage">
+      <UniqueIdentifier>{c2013238-b2e3-4c3a-83d6-b35327931fd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyCore.cpp">

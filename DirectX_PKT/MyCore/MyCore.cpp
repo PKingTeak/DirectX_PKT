@@ -45,8 +45,7 @@ void UMyCore::Initialize()
 		// 그러면 기존의 스프라이트 데이터는 날려버리고
 		// 자른 스프라이트 데이터 변경한다.
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
-		UEngineSprite::CreateCutting("TITLE.png", 1, 4);
-
+		
 		
 	}
 

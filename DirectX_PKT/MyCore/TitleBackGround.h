@@ -29,11 +29,11 @@ protected:
 	void RendererOn();
 
 private:
-	void ChangeBackGround();
+	void ChangeBackGround(float _DeltaTime);
 	USpriteRenderer* Renderer = nullptr;
 	int RandomNum = 0;
-	int  AniTime = 10;
-	float PreTime = 0;
+	float  AniTime = 2;
+	float Time = 0;
 
 };
 
