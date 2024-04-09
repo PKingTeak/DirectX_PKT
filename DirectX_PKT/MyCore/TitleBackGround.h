@@ -27,5 +27,6 @@ protected:
 
 private:
 	USpriteRenderer* Renderer = nullptr;
+	int RandomNum = 0;
 };
 
