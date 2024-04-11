@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Stage.h"
 #include<EngineCore/Camera.h>
-
+#include"StageBackGroundClass.h"
 Stage::Stage()
 {
 }
@@ -16,7 +16,8 @@ void Stage::BeginPlay()
 	Super::BeginPlay();
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -50.0f));
-	//GetWorld()->SpawnActor<> \¼±Ç³±â
+	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
+	
 
 }
 
