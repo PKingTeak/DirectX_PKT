@@ -13,6 +13,16 @@ UMyCore::~UMyCore()
 {
 }
 
+void UMyCore::CreateMateria()
+{
+	std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("Noise");
+	Mat->SetPixelShader("ImageShader.fx");
+	Mat->SetVertexShader("ImageShader.fx");
+	Mat->SetBlend("Overlay");
+
+
+}
+
 void UMyCore::Initialize()
 {
 

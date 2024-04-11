@@ -17,6 +17,8 @@ public:
 
 protected:
 	void Initialize() override;
+	void CreateMateria();
+
 
 private:
 
