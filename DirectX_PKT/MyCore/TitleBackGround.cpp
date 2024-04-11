@@ -18,8 +18,7 @@ void TitleBackGround::BeginPlay()
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
-
-
+	
 	
 	
 }
@@ -41,7 +40,7 @@ void TitleBackGround::Tick(float _DeltaTime)
 }
 
 void TitleBackGround::ChangeBackGround(float _DeltaTime)
-{
+{//랜덤으로 배경 화면 바꾸기 
 	//DelayCallBack()
 	Time += _DeltaTime;
 	Renderer->SetSprite("Title.png", RandomNum);

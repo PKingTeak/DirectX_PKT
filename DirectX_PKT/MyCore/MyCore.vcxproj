@@ -24,6 +24,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Noise.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h" />
@@ -37,6 +38,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Noise.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayGameMode.cpp" />
     <ClCompile Include="PreCompile.cpp">
