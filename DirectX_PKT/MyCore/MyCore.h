@@ -1,5 +1,7 @@
 #pragma once
 #include <EngineCore/EngineCore.h>
+#include<string>
+#include<string_view>
 
 // Ό³Έν :
 class UMyCore : public UserCore
@@ -15,7 +17,7 @@ public:
 	UMyCore& operator=(const UMyCore& _Other) = delete;
 	UMyCore& operator=(UMyCore&& _Other) noexcept = delete;
 
-	
+	void CuttingObject(std::string_view _ObjectName, int _SizeX, int _SizeY);
 protected:
 	void Initialize() override;
 

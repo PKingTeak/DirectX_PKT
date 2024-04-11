@@ -52,6 +52,9 @@
     <ClCompile Include="Noise.cpp">
       <Filter>Level\Title</Filter>
     </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Level\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="Noise.h">
       <Filter>Level\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Level\Stage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

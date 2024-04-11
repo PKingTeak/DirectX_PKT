@@ -120,9 +120,6 @@
     <ClCompile Include="EngineGraphicDevice_Resources.cpp">
       <Filter>Device</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultSceneComponent.cpp">
-      <Filter>EngineContent</Filter>
-    </ClCompile>
     <ClCompile Include="EngineIndexBuffer.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
@@ -210,6 +207,9 @@
     <ClCompile Include="EngineEditorWindow.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
+    <ClCompile Include="DefaultSceneComponent.cpp">
+      <Filter>EngineContent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineCore.h">
@@ -251,9 +251,6 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="TickObject.h" />
     <ClInclude Include="WorldObject.h" />
-    <ClInclude Include="DefaultSceneComponent.h">
-      <Filter>EngineContent</Filter>
-    </ClInclude>
     <ClInclude Include="EngineIndexBuffer.h">
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
@@ -349,6 +346,9 @@
     </ClInclude>
     <ClInclude Include="EngineEditorWindow.h">
       <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultSceneComponent.h">
+      <Filter>EngineContent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

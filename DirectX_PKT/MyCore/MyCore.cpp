@@ -4,6 +4,7 @@
 #include "TitleGameMode.h"
 #include <EngineCore/EngineSprite.h>
 #include "MainTitleLevel.h"
+#include "Stage.h"
 
 UMyCore::UMyCore()
 {
@@ -48,7 +49,7 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
 
-		
+		CuttingObject("Fan.png", 1, 3);
 
 		
 	}
@@ -76,7 +77,16 @@ void UMyCore::Initialize()
 	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
+	GEngine->CreateLevel<Stage>("StageLevel");
 	GEngine->ChangeLevel("Maintitle");
 
+
+	
+
+}
+
+void UMyCore::CuttingObject(std::string_view _ObjectName, int _Start, int _End)
+{
+	UEngineSprite::CreateCutting(_ObjectName, _Start, _End);
 
 }
