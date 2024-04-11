@@ -1,11 +1,11 @@
 #include "PreCompile.h"
 #include "Noise.h"
 #include <EngineBase/EngineRandom.h>
-
+#include"MyCore.h"
 Noise::Noise()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-
+	
 }
 
 Noise::~Noise()
@@ -15,14 +15,9 @@ Noise::~Noise()
 
 void Noise::BeginPlay()
 {
-//std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("Noise");
-//Mat->SetPixelShader("ImageShader.fx");
-//Mat->SetVertexShader("ImageShader.fx");
-//Mat->SetBlend("Overlay");
-
 	Super::BeginPlay();
+	Renderer->SetMaterial("Noise");
 	SetActorScale3D(FVector(1280.0f, 720.0f, 50.0f));
-	
 	Renderer->CreateAnimation("NoizeAnimation", "Noise.png", 0.1, true);
 	Renderer->ChangeAnimation("NoizeAnimation");
 //	Renderer->SetMaterial("Noise");

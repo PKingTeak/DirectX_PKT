@@ -7,25 +7,22 @@
 
 UMyCore::UMyCore()
 {
+	
 }
 
 UMyCore::~UMyCore()
 {
 }
 
-void UMyCore::CreateMateria()
+
+
+void UMyCore::Initialize()
 {
 	std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("Noise");
 	Mat->SetPixelShader("ImageShader.fx");
 	Mat->SetVertexShader("ImageShader.fx");
+	Mat->SetRasterizer("EngineBase");
 	Mat->SetBlend("Overlay");
-
-
-}
-
-void UMyCore::Initialize()
-{
-
 	{
 		// 파일의 헤더
 		UEngineDirectory Dir;
@@ -47,13 +44,7 @@ void UMyCore::Initialize()
 			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
 		}
 
-		// 특정 스프라이트나 
-		// 특정 텍스처를 찾아서
-		// 만약 스프라이트가 존재하지 않는다면
-		// 이걸 사용하는 순간 만들어내고 자른다.
-		// 이미 이 이름을 가진 스프라이트가 존재한다.
-		// 그러면 기존의 스프라이트 데이터는 날려버리고
-		// 자른 스프라이트 데이터 변경한다.
+		
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
 

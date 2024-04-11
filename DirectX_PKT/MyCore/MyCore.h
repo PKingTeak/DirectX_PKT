@@ -15,9 +15,9 @@ public:
 	UMyCore& operator=(const UMyCore& _Other) = delete;
 	UMyCore& operator=(UMyCore&& _Other) noexcept = delete;
 
+	
 protected:
 	void Initialize() override;
-	void CreateMateria();
 
 
 private:
