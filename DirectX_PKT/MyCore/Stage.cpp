@@ -18,10 +18,10 @@ void Stage::BeginPlay()
 	Super::BeginPlay();
 	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -50.0f));
+	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
-	GetWorld()->SpawnActor<Fan>("Fan", 10);
 	
-
+	
 }
 
 void Stage::Tick(float _DetaTIme)

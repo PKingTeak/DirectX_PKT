@@ -14,9 +14,11 @@ void StageBackGroundClass::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f)); //직교 투영에서는 의미가 없다. 
-	//StageBackRender->SetSprite("OneOffice.png");
+	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f)); //직교 투영에서는 의미가 없다. 
 	
+	StageBackRender->SetSprite("OneOffice.png");
+	StageBackRender->SetAutoSize(1.0f,true);
+	StageBackRender->SetOrder(5);
 
 }
 

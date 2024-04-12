@@ -1,9 +1,11 @@
 #include "PreCompile.h"
 #include "Fan.h"
+#include "Stage.h"
 Fan::Fan()
 {
 	ObjectRender = CreateDefaultSubObject<USpriteRenderer>("ObjectRender");
 	SetRoot(ObjectRender);
+
 }
 Fan::~Fan()
 {
@@ -14,12 +16,14 @@ void Fan::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetActorScale3D(FVector(138.0f, 200.0f, 50.0f)); //직교 투영에서는 의미가 없다. 
-	
-	ObjectRender->CreateAnimation("FanAnimation", "Fan.png", 1, 3, 0.00001f, true);
+	//SetActorScale3D(FVector(132.0f, 200.0f, 100.0f)); //직교 투영에서는 의미가 없다. 
+
+	ObjectRender->SetAutoSize(1.0f, true);
+	SetActorLocation(FVector(47.61f, -40.0f));
+	ObjectRender->CreateAnimation("FanAnimation", "Fan.png", 0, 2, 0.001f, true);
 	ObjectRender->ChangeAnimation("FanAnimation");
-	
-	//this->SetActorTransform(1280.0f / 2, 720.0f / 2);
+	ObjectRender->SetOrder(10);
+
 	
 }
 
