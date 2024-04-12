@@ -5,7 +5,7 @@
 Noise::Noise()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	
+	SetRoot(Renderer);
 }
 
 Noise::~Noise()

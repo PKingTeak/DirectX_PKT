@@ -5,7 +5,7 @@
 TitleBackGround::TitleBackGround()
 {
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-
+	SetRoot(Renderer);
 }
 
 TitleBackGround::~TitleBackGround()

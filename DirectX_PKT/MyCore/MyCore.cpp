@@ -5,6 +5,9 @@
 #include <EngineCore/EngineSprite.h>
 #include "MainTitleLevel.h"
 #include "Stage.h"
+#include <EngineCore/EngineEditorGUI.h>
+#include <iostream>
+#include<EngineCore/EngineDebugMsgWindow.h>
 
 UMyCore::UMyCore()
 {
@@ -24,6 +27,7 @@ void UMyCore::Initialize()
 	Mat->SetVertexShader("ImageShader.fx");
 	Mat->SetRasterizer("EngineBase");
 	Mat->SetBlend("Overlay");
+	
 	{
 		// 파일의 헤더
 		UEngineDirectory Dir;
@@ -48,8 +52,8 @@ void UMyCore::Initialize()
 		
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
-
-		CuttingObject("Fan.png", 1, 3);
+		UEngineSprite::CreateCutting("Fan.png", 3, 1);
+		//CuttingObject("Fan.png", 1, 3);
 
 		
 	}
@@ -89,4 +93,13 @@ void UMyCore::CuttingObject(std::string_view _ObjectName, int _Start, int _End)
 {
 	UEngineSprite::CreateCutting(_ObjectName, _Start, _End);
 
+}
+
+void UMyCore::DebugGUI()
+{
+	{
+		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
+		
 }

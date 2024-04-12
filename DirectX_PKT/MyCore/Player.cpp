@@ -11,7 +11,7 @@ APlayer::APlayer()
 	// 색깔  머티리얼그자체에 세팅해준다.
 	// 
 	Renderer->SetMaterial("2DImage");
-
+	SetRoot(Renderer);
 	// Renderer->세팅픽셀쉐이더상수버퍼();
 	// Renderer->세팅버텍스쉐이더상수버퍼();
 }
