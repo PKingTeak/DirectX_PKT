@@ -24,5 +24,8 @@ protected:
 	void LevelStart(ULevel* _PrevLevel);
 private:
 	USpriteRenderer* StageRender = nullptr;
+
+	static void DebugGUI();
+
 };
 

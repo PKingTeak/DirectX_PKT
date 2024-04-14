@@ -95,11 +95,3 @@ void UMyCore::CuttingObject(std::string_view _ObjectName, int _Start, int _End)
 
 }
 
-void UMyCore::DebugGUI()
-{
-	{
-		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
-		UEngineDebugMsgWindow::PushMsg(Msg);
-	}
-		
-}

@@ -1,9 +1,16 @@
 #include "PreCompile.h"
 #include "StageBackGroundClass.h"
+#include<EngineCore/DefaultSceneComponent.h>
 StageBackGroundClass::StageBackGroundClass()
 {
+	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Defualt");
+	Renderer = CreateDefaultSubObject<USpriteRenderer>("Render");
+	Renderer->SetupAttachment(Default);
+	StageUIRenderer = CreateDefaultSubObject<USpriteRenderer>("UIRender");
+	StageUIRenderer->SetupAttachment(Default);
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
-	SetRoot(StageBackRender);
+	StageBackRender->SetupAttachment(Default);
+	SetRoot(Default);
 }
 StageBackGroundClass::~StageBackGroundClass()
 {

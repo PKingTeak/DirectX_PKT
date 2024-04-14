@@ -4,6 +4,7 @@
 #include"StageBackGroundClass.h"
 #include"Fan.h"
 #include"MyCore.h"
+#include<EngineCore/EngineDebugMsgWindow.h>
 Stage::Stage()
 {
 }
@@ -27,7 +28,16 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DetaTIme)
 {
 	Super::Tick(_DetaTIme);
+	DebugGUI();
 	//DebugGUI();
+}
+void Stage::DebugGUI()
+{
+	{
+		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
+		UEngineDebugMsgWindow::PushMsg(Msg);
+	}
+
 }
 
 void Stage::LevelEnd(ULevel* _NextLevel)

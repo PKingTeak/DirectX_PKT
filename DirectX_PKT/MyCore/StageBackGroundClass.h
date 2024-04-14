@@ -24,6 +24,9 @@ protected:
 	void RendererOn();
 private:
 	
+	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
+	USpriteRenderer* StageUIRenderer = nullptr;
+
 };
 
