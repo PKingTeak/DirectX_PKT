@@ -23,7 +23,7 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
-	
+	std::vector<AActor> UIInfo;
 	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	USpriteRenderer* StageUIRenderer = nullptr;

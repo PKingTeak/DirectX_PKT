@@ -1,6 +1,9 @@
 #include "PreCompile.h"
 #include "StageBackGroundClass.h"
 #include<EngineCore/DefaultSceneComponent.h>
+
+
+
 StageBackGroundClass::StageBackGroundClass()
 {
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Defualt");
@@ -27,6 +30,12 @@ void StageBackGroundClass::BeginPlay()
 	StageBackRender->SetAutoSize(1.0f,true);
 	StageBackRender->SetOrder(5);
 
+
+	//UIInfo.push_back()
+	StageUIRenderer->SetSprite("Arrow.png"); // È­»ìÇ¥ UI 
+	StageUIRenderer->AddPosition({ 0,-320,0 });
+	StageUIRenderer->SetAutoSize(1.0f, true);
+	StageUIRenderer->SetOrder(10);
 }
 
 /*

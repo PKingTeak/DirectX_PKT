@@ -64,6 +64,9 @@
     <ClCompile Include="Fan.cpp">
       <Filter>Level\Stage</Filter>
     </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>Level\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -100,6 +103,9 @@
       <Filter>Level\Stage</Filter>
     </ClInclude>
     <ClInclude Include="Fan.h">
+      <Filter>Level\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
       <Filter>Level\Stage</Filter>
     </ClInclude>
   </ItemGroup>

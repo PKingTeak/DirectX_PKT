@@ -1,0 +1,30 @@
+#pragma once
+#include <EngineCore/Actor.h>
+#include<EngineCore/SpriteRenderer.h>
+// Ό³Έν :
+class Arrow : public AActor
+{
+	GENERATED_BODY(AActor)
+public:
+	// constrcuter destructer
+	Arrow();
+	~Arrow();
+
+	// delete Function
+	Arrow(const Arrow& _Other) = delete;
+	Arrow(Arrow&& _Other) noexcept = delete;
+	Arrow& operator=(const Arrow& _Other) = delete;
+	Arrow& operator=(Arrow&& _Other) noexcept = delete;
+
+protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
+	void RendererOff();
+	void RendererOn();
+private:
+
+	USpriteRenderer* Renderer = nullptr;
+	
+};
+
