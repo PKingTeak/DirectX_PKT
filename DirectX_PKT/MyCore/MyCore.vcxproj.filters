@@ -23,6 +23,9 @@
     <Filter Include="Test">
       <UniqueIdentifier>{54b64eb0-db24-46ec-a372-55a0bd017adf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{a093aa2f-dfab-47f9-adfd-aa503e8b44df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
