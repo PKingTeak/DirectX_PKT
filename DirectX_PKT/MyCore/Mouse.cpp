@@ -17,7 +17,6 @@ Mouse::Mouse()
 	MSprite = CreateDefaultSubObject<USpriteRenderer>("MouseRender");
 	MSprite->SetupAttachment(MouseCollision); 
 	MSprite->SetOrder(100);
-	MSprite->SetAutoSize(1.0f, true);
 	MSprite->SetSprite("Arrow.png");
 
 	SetRoot(MouseCollision);
