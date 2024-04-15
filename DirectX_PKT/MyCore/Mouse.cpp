@@ -2,12 +2,14 @@
 #include "Mouse.h"
 #include<EngineCore/Collision.h>
 #include<EngineCore/Camera.h>
+#include<EngineCore/DefaultSceneComponent.h>
 
 Mouse::Mouse()
 {
-	
+
+
 	MouseCollision = CreateDefaultSubObject<UCollision>("MouseCollision");
-	MouseCollision->SetupAttachment(MouseCollision);
+	//MouseCollision->SetupAttachment(MouseCollision);
 	MouseCollision->SetScale(FVector{ 50,50 });
 	MouseCollision->SetCollisionGroup(OrderType::Mouse);
 	MouseCollision->SetCollisionType(ECollisionType::CirCle);
@@ -19,6 +21,8 @@ Mouse::Mouse()
 	MSprite->SetSprite("Arrow.png");
 
 	SetRoot(MouseCollision);
+
+ // 이거 왜 안따라 가는지 모르겠습니다.
 }
 
 Mouse::~Mouse()
@@ -57,8 +61,8 @@ void Mouse::SetMousePos()
 	FVector TargetPos = FVector(CamPos.X, CamPos.Y, 0.0f) + FVector(MPos.X - WindowScale.hX(),- (MPos.Y - WindowScale.hY()), 0.0f);
 	//마우스 역할을 하는 충돌체를 만들어서 사용할것
 	SetActorLocation(TargetPos);
-	MouseCollision->SetPosition(TargetPos);
-	MSprite->SetPosition(TargetPos);
+	//MouseCollision->SetPosition(TargetPos);
+	//MSprite->SetPosition(TargetPos);
 	
 
 }
