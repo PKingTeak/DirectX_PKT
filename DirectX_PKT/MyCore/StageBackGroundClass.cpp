@@ -13,6 +13,7 @@ StageBackGroundClass::StageBackGroundClass()
 	StageUIRenderer->SetupAttachment(Default);
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
 	StageBackRender->SetupAttachment(Default);
+
 	SetRoot(Default);
 }
 StageBackGroundClass::~StageBackGroundClass()
@@ -23,7 +24,6 @@ StageBackGroundClass::~StageBackGroundClass()
 void StageBackGroundClass::BeginPlay()
 {
 	Super::BeginPlay();
-
 	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f)); //직교 투영에서는 의미가 없다. 
 	
 	StageBackRender->SetSprite("OneOffice.png");
@@ -32,10 +32,14 @@ void StageBackGroundClass::BeginPlay()
 
 
 	//UIInfo.push_back()
-	StageUIRenderer->SetSprite("Arrow.png"); // 화살표 UI 
-	StageUIRenderer->AddPosition({ 0,-320,0 });
-	StageUIRenderer->SetAutoSize(1.0f, true);
-	StageUIRenderer->SetOrder(10);
+	
+	//StageUIRenderer->SetSprite("Arrow.png"); // 화살표 UI 
+	//StageUIRenderer->AddPosition({ 0,-320,0 });
+	//StageUIRenderer->SetAutoSize(1.0f, true);
+	//StageUIRenderer->SetOrder(10);
+	
+
+	
 }
 
 /*

@@ -2,6 +2,7 @@
 #include <EngineCore/Actor.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
+
 // Ό³Έν :
 class Arrow : public AActor
 {
@@ -25,7 +26,7 @@ protected:
 	void RendererOn();
 private:
 
-	USpriteRenderer* Renderer = nullptr;
+	USpriteRenderer* ArrowRender = nullptr;
 	UCollision* ArrowCollision = nullptr;
 	
 };

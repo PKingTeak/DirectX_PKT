@@ -22,7 +22,8 @@ void Stage::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -50.0f));
 	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
-	GetWorld()->SpawnActor<Mouse>("Mouse", 100);
+	GetWorld()->SpawnActor<Mouse>("Mouse");
+	GetWorld()->SpawnActor<Arrow>("Arrow");
 	
 }
 

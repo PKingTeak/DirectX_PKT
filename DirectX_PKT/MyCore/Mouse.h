@@ -24,9 +24,12 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
+	void MouseClick(OrderType _OrderType);
+	void MouseActive();
 	void SetMousePos();
 	FVector MousePos = {};
 	UCollision* MouseCollision = nullptr;
+	USpriteRenderer* MSprite = nullptr;
 
 };
 

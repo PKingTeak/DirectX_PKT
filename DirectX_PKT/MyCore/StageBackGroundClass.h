@@ -3,6 +3,7 @@
 #include<EngineCore/Actor.h>
 #include<EngineCore/Renderer.h>
 #include<EngineCore/SpriteRenderer.h>
+#include"Arrow.h"
 class StageBackGroundClass : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -27,6 +28,8 @@ private:
 	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	USpriteRenderer* StageUIRenderer = nullptr;
+	Arrow* UIArrow = nullptr;
+
 
 };
 

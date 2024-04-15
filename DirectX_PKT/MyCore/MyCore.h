@@ -6,7 +6,8 @@ enum class OrderType
 {
 	Object,
 	BackGround,
-	UI
+	UI,
+	Mouse
 
 };
 // Ό³Έν :
