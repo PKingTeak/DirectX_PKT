@@ -2,31 +2,31 @@
 #include <EngineCore/Actor.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
+#include"MyCore.h"
 // Ό³Έν :
-class Arrow : public AActor
+class Mouse : public AActor
 {
 	GENERATED_BODY(AActor)
 public:
 	// constrcuter destructer
-	Arrow();
-	~Arrow();
+	Mouse();
+	~Mouse();
 
 	// delete Function
-	Arrow(const Arrow& _Other) = delete;
-	Arrow(Arrow&& _Other) noexcept = delete;
-	Arrow& operator=(const Arrow& _Other) = delete;
-	Arrow& operator=(Arrow&& _Other) noexcept = delete;
+	Mouse(const Mouse& _Other) = delete;
+	Mouse(Mouse&& _Other) noexcept = delete;
+	Mouse& operator=(const Mouse& _Other) = delete;
+	Mouse& operator=(Mouse&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void RendererOff();
 	void RendererOn();
 private:
+	void SetMousePos();
+	FVector MousePos = {};
+	UCollision* MouseCollision = nullptr;
 
-	USpriteRenderer* Renderer = nullptr;
-	UCollision* ArrowCollision = nullptr;
-	
 };
 

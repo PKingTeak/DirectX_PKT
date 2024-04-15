@@ -4,6 +4,7 @@
 #include <EngineCore/Camera.h>
 #include <EnginePlatform/EngineInput.h>
 #include "Stage.h"
+#include"Mouse.h"
 
 #include"Noise.h"
 
@@ -27,6 +28,7 @@ void MainTitleLevel::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<TitleBackGround>("TitleBackGround",5);
 	GetWorld()->SpawnActor<Noise>("Noise", 10);
+	GetWorld()->SpawnActor<Mouse>("Mouse", 100);
 	
 }
 

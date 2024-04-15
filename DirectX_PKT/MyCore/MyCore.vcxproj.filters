@@ -26,6 +26,9 @@
     <Filter Include="UI">
       <UniqueIdentifier>{a093aa2f-dfab-47f9-adfd-aa503e8b44df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{7dc4efd3-5d5d-4445-8340-ca3791d96aad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -65,7 +68,10 @@
       <Filter>Level\Stage</Filter>
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
-      <Filter>Level\Stage</Filter>
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +112,10 @@
       <Filter>Level\Stage</Filter>
     </ClInclude>
     <ClInclude Include="Arrow.h">
-      <Filter>Level\Stage</Filter>
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

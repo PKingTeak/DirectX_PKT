@@ -1,10 +1,11 @@
 #include "PreCompile.h"
 #include "Stage.h"
 #include<EngineCore/Camera.h>
+#include<EngineCore/EngineDebugMsgWindow.h>
 #include"StageBackGroundClass.h"
 #include"Fan.h"
 #include"MyCore.h"
-#include<EngineCore/EngineDebugMsgWindow.h>
+#include"Mouse.h"
 Stage::Stage()
 {
 }
@@ -21,7 +22,7 @@ void Stage::BeginPlay()
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -50.0f));
 	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
-	
+	GetWorld()->SpawnActor<Mouse>("Mouse", 100);
 	
 }
 

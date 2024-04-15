@@ -25,6 +25,7 @@
     </ClInclude>
     <ClInclude Include="Fan.h" />
     <ClInclude Include="MainTitleLevel.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="MyCore.h">
       <SubType>
       </SubType>
@@ -46,6 +47,7 @@
     </ClCompile>
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="MainTitleLevel.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MyCore.cpp">
       <SubType>
       </SubType>

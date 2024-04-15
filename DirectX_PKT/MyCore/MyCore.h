@@ -2,7 +2,13 @@
 #include <EngineCore/EngineCore.h>
 #include<string>
 #include<string_view>
+enum class OrderType
+{
+	Object,
+	BackGround,
+	UI
 
+};
 // Ό³Έν :
 class UMyCore : public UserCore
 {
