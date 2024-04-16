@@ -3,6 +3,7 @@
 #include<EngineCore/Collision.h>
 #include<EngineCore/Camera.h>
 #include<EngineCore/DefaultSceneComponent.h>
+#include<string.h>
 
 Mouse::Mouse()
 {
@@ -40,7 +41,14 @@ void Mouse::Tick(float _DeltaTime)
 
 	MouseCollision->CollisionEnter(OrderType::UI, [=](std::shared_ptr<UCollision>_Collision)
 		{
-			int a = 0;
+			std::string objectType = _Collision->GetActor()->GetName();
+
+			if ("ARROW" == _Collision->GetActor()->GetName())
+			{
+				int b  = _Collision->GetActor()->GetOrder();
+				std::shared_ptr<Arrow> Actor = GetWorld()->SpawnActor<Arrow>("Arrow");
+				Actor->ChangeCam();
+			}
 		}
 	);
 		

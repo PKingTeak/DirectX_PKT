@@ -2,8 +2,9 @@
 #include <EngineCore/Actor.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
-
+#include"StageCamera.h"
 // Ό³Έν :
+
 class Arrow : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -18,6 +19,7 @@ public:
 	Arrow& operator=(const Arrow& _Other) = delete;
 	Arrow& operator=(Arrow&& _Other) noexcept = delete;
 
+	void ChangeCam();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -29,6 +31,5 @@ private:
 	USpriteRenderer* ArrowRender = nullptr;
 	UCollision* ArrowCollision = nullptr;
 	USpriteRenderer* TestRender = nullptr;
-	
 };
 

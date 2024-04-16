@@ -6,6 +6,7 @@
 #include"Fan.h"
 #include"MyCore.h"
 #include"Mouse.h"
+#include"StageCamera.h"
 Stage::Stage()
 {
 }
@@ -24,13 +25,14 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<Arrow>("Arrow");
-	
+	GetWorld()->SpawnActor<StageCamera>("StageCam");
 }
 
 void Stage::Tick(float _DetaTIme)
 {
 	Super::Tick(_DetaTIme);
 	DebugGUI();
+
 	//DebugGUI();
 }
 void Stage::DebugGUI()

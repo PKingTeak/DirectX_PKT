@@ -36,6 +36,7 @@
     <ClInclude Include="PreCompile.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageBackGroundClass.h" />
+    <ClInclude Include="StageCamera.h" />
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="TitleLogo.h" />
@@ -63,6 +64,7 @@
     </ClCompile>
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageBackGroundClass.cpp" />
+    <ClCompile Include="StageCamera.cpp" />
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="TitleLogo.cpp" />

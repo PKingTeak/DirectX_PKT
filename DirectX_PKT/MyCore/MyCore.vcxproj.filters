@@ -29,6 +29,9 @@
     <Filter Include="System">
       <UniqueIdentifier>{7dc4efd3-5d5d-4445-8340-ca3791d96aad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Stage\Cam">
+      <UniqueIdentifier>{33c63e60-7dc1-4af3-93f7-b8e3ad390a1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -73,6 +76,9 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="StageCamera.cpp">
+      <Filter>Level\Stage\Cam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -116,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="StageCamera.h">
+      <Filter>Level\Stage\Cam</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

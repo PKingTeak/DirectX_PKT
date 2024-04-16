@@ -53,6 +53,7 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Chica.png", 1, 16);
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
 		UEngineSprite::CreateCutting("Fan.png", 3, 1);
+		UEngineSprite::CreateCutting("StageCam.png", 4, 3);
 	
 
 		
