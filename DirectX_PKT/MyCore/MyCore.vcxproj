@@ -23,6 +23,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="CamLevel.h" />
+    <ClInclude Include="CCTVBackGround.h" />
     <ClInclude Include="Fan.h" />
     <ClInclude Include="MainTitleLevel.h" />
     <ClInclude Include="Mouse.h" />
@@ -40,12 +42,15 @@
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="TitleLogo.h" />
+    <ClInclude Include="UILevel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CamLevel.cpp" />
+    <ClCompile Include="CCTVBackGround.cpp" />
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="MainTitleLevel.cpp" />
     <ClCompile Include="Mouse.cpp" />
@@ -68,6 +73,7 @@
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
+    <ClCompile Include="UILevel.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

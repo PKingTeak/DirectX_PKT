@@ -79,6 +79,15 @@
     <ClCompile Include="StageCamera.cpp">
       <Filter>Level\Stage\Cam</Filter>
     </ClCompile>
+    <ClCompile Include="UILevel.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CamLevel.cpp">
+      <Filter>Level\Stage\Cam</Filter>
+    </ClCompile>
+    <ClCompile Include="CCTVBackGround.cpp">
+      <Filter>Level\Stage\Cam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -124,6 +133,15 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="StageCamera.h">
+      <Filter>Level\Stage\Cam</Filter>
+    </ClInclude>
+    <ClInclude Include="UILevel.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CamLevel.h">
+      <Filter>Level\Stage\Cam</Filter>
+    </ClInclude>
+    <ClInclude Include="CCTVBackGround.h">
       <Filter>Level\Stage\Cam</Filter>
     </ClInclude>
   </ItemGroup>

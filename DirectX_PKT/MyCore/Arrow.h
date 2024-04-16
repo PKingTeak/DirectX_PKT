@@ -20,6 +20,9 @@ public:
 	Arrow& operator=(Arrow&& _Other) noexcept = delete;
 
 	void ChangeCam();
+
+	std::shared_ptr<StageCamera> StageCam;
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

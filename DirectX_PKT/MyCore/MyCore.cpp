@@ -8,6 +8,7 @@
 #include <EngineCore/EngineEditorGUI.h>
 #include <iostream>
 #include<EngineCore/EngineDebugMsgWindow.h>
+#include"CamLevel.h"
 
 UMyCore::UMyCore()
 {
@@ -83,6 +84,7 @@ void UMyCore::Initialize()
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
 	GEngine->CreateLevel<Stage>("StageLevel");
+	GEngine->CreateLevel<CamLevel>("CamLevel");
 	GEngine->ChangeLevel("Maintitle");
 
 
