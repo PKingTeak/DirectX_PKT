@@ -54,7 +54,15 @@ void Arrow::Tick(float _DeltaTime)
 }
 void Arrow::ChangeCam()
 {
+	if (true == isCamOpen)
+	{
+		int  a = 0;
+	}
 	std::shared_ptr<StageCamera> Actor = GetWorld()->SpawnActor<StageCamera>("StageCamera");
 	Actor->ChangeAnimation();
 	Actor->SetOrder(20);
+	isCamOpen = true;
+	//ChangeLevel == 여기서 카메라 감시 하는 부분으로 변경해주는것이 좋을거 같다. 
+
+
 }

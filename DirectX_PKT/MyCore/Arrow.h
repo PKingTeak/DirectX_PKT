@@ -31,5 +31,6 @@ private:
 	USpriteRenderer* ArrowRender = nullptr;
 	UCollision* ArrowCollision = nullptr;
 	USpriteRenderer* TestRender = nullptr;
+	bool isCamOpen = false;
 };
 

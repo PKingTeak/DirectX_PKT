@@ -8,7 +8,7 @@ StageCamera::StageCamera()
 {
 	StageCameraRender = CreateDefaultSubObject<USpriteRenderer>("StageCameraRender");
 	StageCameraRender->SetAutoSize(1.0f, true);
-	StageCameraRender->CreateAnimation("CameraAnimtaion", "StageCam.png", 0.1f, false);
+	StageCameraRender->CreateAnimation("CameraAnimtaion", "StageCam.png", 0.05f, false);
 	
 	StageCameraRender->SetOrder(200);
 	
