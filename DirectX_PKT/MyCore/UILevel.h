@@ -1,13 +1,14 @@
 #pragma once
 #include<EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
+#include<EngineCore/Widget.h>
 // Ό³Έν :
-class UILevel : public AGameMode
+class UILevel : public AActor
 {
-	GENERATED_BODY(AGameMode)
+	GENERATED_BODY(AActor)
 
 public:
-	// constrcuter destructer
+	
 	UILevel();
 	~UILevel();
 
@@ -18,12 +19,9 @@ public:
 	UILevel& operator=(UILevel&& _Other) noexcept = delete;
 
 protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
-	void LevelEnd(ULevel* _NextLevel);
-	void LevelStart(ULevel* _PrevLevel);
+	
 private:
-	std::shared_ptr<AActor> UIActor;
+	//std::shared_ptr<UWidget>
 	
 
 };
