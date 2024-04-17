@@ -22,7 +22,7 @@ Stage::~Stage()
 void Stage::BeginPlay()
 {
 	Super::BeginPlay();
-	std::shared_ptr<UCamera> Camera = GetWorld()->GetMainCamera();
+	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
@@ -34,22 +34,25 @@ void Stage::BeginPlay()
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 }
 
-void Stage::Tick(float _DetaTIme)
+void Stage::Tick(float _DeltaTime)
 {
-	Super::Tick(_DetaTIme);
-	DebugGUI();
+	Super::Tick(_DeltaTime);
+	
 	
 	if (true == CCTVPtr->GetCamMode())
 	{
-		int a = 0;
+		CameraMove(_DeltaTime);
 	}
+	DebugGUI();
 	//DebugGUI();
 }
 void Stage::DebugGUI()
 {
+	//GEngine->
 	{
 		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
+		//std::string Msg = std::format("CamPos:{}\n", Camera->GetActorLocation().ToString());
 	}
 
 }
@@ -63,4 +66,16 @@ void Stage::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
+}
+
+void Stage::CameraMove(float _DeltaTime)
+{
+	float CamMovepos = 0;
+	CamMovepos += _DeltaTime;
+	Camera->AddActorLocation(float4::Left * _DeltaTime * 5);
+	FVector CurPos = Camera->GetActorLocation();
+	if (Camera->GetActorLocation().X <= -320)
+	{
+		Camera->AddActorLocation(float4::Right * _DeltaTime * 5);
+	}
 }

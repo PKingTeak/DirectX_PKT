@@ -16,16 +16,18 @@ public:
 	Stage(Stage&& _Other) noexcept = delete;
 	Stage& operator=(const Stage& _Other) = delete;
 	Stage& operator=(Stage&& _Other) noexcept = delete;
-
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	void LevelEnd(ULevel* _NextLevel);
 	void LevelStart(ULevel* _PrevLevel);
 private:
+	void CameraMove(float _DeltaTime);
 	USpriteRenderer* StageRender = nullptr;
 	
+	std::shared_ptr<UCamera> Camera;
 	static void DebugGUI();
 	CCTVBackGround* CCTVPtr = nullptr;
+	
 };
 
