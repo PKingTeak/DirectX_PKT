@@ -16,6 +16,7 @@ public:
 	Stage(Stage&& _Other) noexcept = delete;
 	Stage& operator=(const Stage& _Other) = delete;
 	Stage& operator=(Stage&& _Other) noexcept = delete;
+	FVector GetCurCameraPos();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -24,10 +25,9 @@ protected:
 private:
 	void CameraMove(float _DeltaTime);
 	USpriteRenderer* StageRender = nullptr;
-	
-	std::shared_ptr<UCamera> Camera;
-	static void DebugGUI();
+	void DebugGUI();
 	CCTVBackGround* CCTVPtr = nullptr;
-	
+	std::shared_ptr<UCamera> Camera;
+
 };
 

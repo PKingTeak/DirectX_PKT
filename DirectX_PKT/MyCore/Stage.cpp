@@ -48,11 +48,15 @@ void Stage::Tick(float _DeltaTime)
 }
 void Stage::DebugGUI()
 {
-	//GEngine->
 	{
 		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
-		//std::string Msg = std::format("CamPos:{}\n", Camera->GetActorLocation().ToString());
+		
+	}
+
+	{
+		std::string Msg = std::format("CamPos: {}\n", Camera->GetActorLocation().ToString());
+		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
 
 }
@@ -74,7 +78,7 @@ void Stage::CameraMove(float _DeltaTime)
 	CamMovepos += _DeltaTime;
 	Camera->AddActorLocation(float4::Left * _DeltaTime * 5);
 	FVector CurPos = Camera->GetActorLocation();
-	if (Camera->GetActorLocation().X <= -320)
+	if (Camera->GetActorLocation().X <= -160)
 	{
 		Camera->AddActorLocation(float4::Right * _DeltaTime * 5);
 	}
