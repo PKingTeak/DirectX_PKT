@@ -7,6 +7,13 @@
 class CCTVBackGround : public AActor
 {
 	GENERATED_BODY(AActor)
+private:
+	static CCTVBackGround* MainCCTV;
+
+
+
+	
+
 public:
 	// constrcuter destructer
 	CCTVBackGround();
@@ -18,9 +25,12 @@ public:
 	CCTVBackGround& operator=(const CCTVBackGround& _Other) = delete;
 	CCTVBackGround& operator=(CCTVBackGround&& _Other) noexcept = delete;
 
-
+	static CCTVBackGround* GetCCTVBackGround();
 	void ChangeAnimation();
+	void CCTVON();
+	void CCTVOFF();
 	
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

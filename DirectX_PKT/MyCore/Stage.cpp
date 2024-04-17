@@ -7,6 +7,7 @@
 #include"MyCore.h"
 #include"Mouse.h"
 #include"StageCamera.h"
+#include"CCTVBackGround.h"
 Stage::Stage()
 {
 }
@@ -26,6 +27,7 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<StageCamera>("StageCam");
+	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 }
 
 void Stage::Tick(float _DetaTIme)

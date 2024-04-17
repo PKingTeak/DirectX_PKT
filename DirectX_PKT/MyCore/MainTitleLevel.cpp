@@ -5,7 +5,6 @@
 #include <EnginePlatform/EngineInput.h>
 #include "Stage.h"
 #include"Mouse.h"
-
 #include"Noise.h"
 
 MainTitleLevel::MainTitleLevel()

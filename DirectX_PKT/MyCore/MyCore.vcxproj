@@ -23,7 +23,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="CamLevel.h" />
     <ClInclude Include="CCTVBackGround.h" />
     <ClInclude Include="Fan.h" />
     <ClInclude Include="MainTitleLevel.h" />
@@ -49,7 +48,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="CamLevel.cpp" />
     <ClCompile Include="CCTVBackGround.cpp" />
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="MainTitleLevel.cpp" />

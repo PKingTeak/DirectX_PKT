@@ -15,7 +15,7 @@ Arrow::Arrow()
 	ArrowRender->SetSprite("Arrow.png");
 	ArrowRender->AddPosition({ 0,0,0 });
 	ArrowRender->SetAutoSize(1.0f, true);
-	ArrowRender->SetOrder(1000);
+	ArrowRender->SetOrder(200);
 
 
 	ArrowCollision = CreateDefaultSubObject<UCollision>("ArrowCollision");
@@ -63,6 +63,7 @@ void Arrow::ChangeCam()
 	}
 	
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCamera");
+	//이건 새로 ACtor를 스폰하는거 아닌가?
 	StageCam->ChangeAnimation();
 	isCamOpen = true;
 	

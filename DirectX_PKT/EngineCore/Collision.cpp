@@ -1,5 +1,7 @@
 #include "PreCompile.h"
 #include "Collision.h"
+#include "EngineDebug3D.h"
+#include "EngineCore.h"
 
 UCollision::UCollision() 
 {
@@ -112,5 +114,54 @@ void UCollision::SetOrder(int _Order)
 	if (nullptr != GetWorld())
 	{
 		GetWorld()->ChangeOrderCollision(shared_from_this(), PrevOrder, _Order);
+	}
+}
+
+
+void UCollision::Tick(float _Delta)
+{
+	Super::Tick(_Delta);
+	if (false == GEngine->IsDebug)
+	{
+		return;
+	}
+
+	switch (CollisionType)
+	{
+	case ECollisionType::Rect:
+	case ECollisionType::Box:
+	{
+		FTransform Trans = Transform;
+
+		float4 Scale;
+		float4 Rot;
+		float4 Pos;
+
+		Trans.ParentMat.Decompose(Scale, Rot, Pos);
+
+		float4x4 PScale;
+		float4x4 PPos;
+
+		PScale.Scale(Scale);
+		PPos.Scale(Pos);
+
+		Trans.World = Trans.ScaleMat * Trans.PositionMat * PScale * PPos;
+		Trans.WVP = Trans.World * Trans.View * Trans.Projection;
+
+		UEngineDebug::DrawDebugRender(EDebugRenderType::Rect, Trans, float4::Black);
+		break;
+	}
+	case ECollisionType::CirCle:
+	case ECollisionType::Point:
+	case ECollisionType::Sphere:
+		break;
+	case ECollisionType::RotRect:
+	case ECollisionType::RotBox:
+		UEngineDebug::DrawDebugRender(EDebugRenderType::Rect, Transform, float4::Black);
+		break;
+	case ECollisionType::Max:
+		break;
+	default:
+		break;
 	}
 }

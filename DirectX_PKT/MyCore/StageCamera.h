@@ -3,6 +3,7 @@
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
 #include<string_view>
+#include"CCTVBackGround.h"
 // Ό³Έν :
 class StageCamera : public AActor
 {
@@ -20,7 +21,7 @@ public:
 
 
 	void ChangeAnimation();
-	void StageChangeLevel(std::string_view _LevelName);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -30,6 +31,7 @@ protected:
 private:
 	USpriteRenderer* StageCameraRender = nullptr;
 	USpriteRenderer* CCTVCam = nullptr;
+	
 	
 
 	

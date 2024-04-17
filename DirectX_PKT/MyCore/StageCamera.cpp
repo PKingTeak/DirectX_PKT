@@ -3,7 +3,7 @@
 #include<EngineCore/Collision.h>
 #include"MyCore.h"
 #include<EngineCore/DefaultSceneComponent.h>
-
+#include"CCTVBackGround.h"
 
 StageCamera::StageCamera()
 {
@@ -19,7 +19,7 @@ StageCamera::StageCamera()
 	CCTVCam->SetOrder(210);
 	CCTVCam->SetActive(false);
 
-
+	
 	SetRoot(StageCameraRender);
 
 }
@@ -29,8 +29,9 @@ StageCamera::~StageCamera()
 }
 void StageCamera::BeginPlay()
 {
+	
 	Super::BeginPlay();
-
+	
 }
 void StageCamera::Tick(float _DeltaTime)
 {
@@ -40,11 +41,12 @@ void StageCamera::Tick(float _DeltaTime)
 void StageCamera::ChangeAnimation()
 {
 	StageCameraRender->ChangeAnimation("CameraAnimtaion");
+	
 	bool Check = StageCameraRender->IsCurAnimationEnd();
 	StageCameraRender->SetFrameCallback("CameraAnimtaion", 8, [=]
 		{
-			
-			GEngine->ChangeLevel("CamLevel");
+		CCTVBackGround::GetCCTVBackGround()->CCTVON();
+		// 여기에 CCTV 배경을 넣을것이다. 
 		}
 	);
 	
