@@ -28,6 +28,9 @@ private:
 	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	USpriteRenderer* StageUIRenderer = nullptr;
+	
+	UCollision* LeftBox = nullptr;
+	UCollision* RightBox = nullptr;
 	Arrow* UIArrow = nullptr;
 
 

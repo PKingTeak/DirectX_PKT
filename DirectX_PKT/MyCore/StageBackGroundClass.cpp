@@ -1,11 +1,13 @@
 #include "PreCompile.h"
 #include "StageBackGroundClass.h"
 #include<EngineCore/DefaultSceneComponent.h>
+#include"MyCore.h"
 
 
 
 StageBackGroundClass::StageBackGroundClass()
 {
+	
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Defualt");
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Render");
 	Renderer->SetupAttachment(Default);
@@ -13,6 +15,27 @@ StageBackGroundClass::StageBackGroundClass()
 	StageUIRenderer->SetupAttachment(Default);
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
 	StageBackRender->SetupAttachment(Default);
+
+	LeftBox = CreateDefaultSubObject<UCollision>("LeftBoxCol");
+	LeftBox->SetCollisionGroup(OrderType::UI);
+	LeftBox->SetScale(FVector{ 500,720, });
+	LeftBox->SetOrder(100);
+	LeftBox->SetCollisionType(ECollisionType::Rect);
+	LeftBox->AddPosition({ -200,0 });
+	LeftBox->SetupAttachment(Default);
+	
+
+
+	RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
+	RightBox->SetCollisionGroup(OrderType::UI);
+	RightBox->SetScale(FVector{ 500,720,});
+	RightBox->AddPosition({ 200,0 });
+	RightBox->SetOrder(100);
+	RightBox->SetCollisionType(ECollisionType::Rect);
+	RightBox->SetupAttachment(Default);
+
+
+
 
 	SetRoot(Default);
 }
@@ -28,7 +51,6 @@ void StageBackGroundClass::BeginPlay()
 	
 	StageBackRender->SetSprite("OneOffice.png");
 	StageBackRender->SetOrder(5);
-
 
 	
 }

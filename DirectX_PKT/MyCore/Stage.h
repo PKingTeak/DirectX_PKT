@@ -1,11 +1,11 @@
 #pragma once
 #include<EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
+#include"CCTVBackGround.h"
 // Ό³Έν :
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
-
 public:
 	// constrcuter destructer
 	Stage();
@@ -24,8 +24,8 @@ protected:
 	void LevelStart(ULevel* _PrevLevel);
 private:
 	USpriteRenderer* StageRender = nullptr;
-
+	
 	static void DebugGUI();
-
+	CCTVBackGround* CCTVPtr = nullptr;
 };
 

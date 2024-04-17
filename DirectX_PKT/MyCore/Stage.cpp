@@ -8,6 +8,8 @@
 #include"Mouse.h"
 #include"StageCamera.h"
 #include"CCTVBackGround.h"
+
+
 Stage::Stage()
 {
 }
@@ -28,13 +30,19 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<StageCamera>("StageCam");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
+
+	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 }
 
 void Stage::Tick(float _DetaTIme)
 {
 	Super::Tick(_DetaTIme);
 	DebugGUI();
-
+	
+	if (true == CCTVPtr->GetCamMode())
+	{
+		int a = 0;
+	}
 	//DebugGUI();
 }
 void Stage::DebugGUI()

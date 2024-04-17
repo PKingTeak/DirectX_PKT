@@ -9,6 +9,7 @@ class CCTVBackGround : public AActor
 	GENERATED_BODY(AActor)
 private:
 	static CCTVBackGround* MainCCTV;
+	
 
 
 
@@ -29,8 +30,10 @@ public:
 	void ChangeAnimation();
 	void CCTVON();
 	void CCTVOFF();
-	
-
+	inline bool GetCamMode()
+	{
+		return CamMode;
+	}
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -39,7 +42,8 @@ protected:
 	void RendererOn();
 private:
 	USpriteRenderer* CCTVBackGroundRender = nullptr;
-	
+	bool CamMode;
+
 
 
 

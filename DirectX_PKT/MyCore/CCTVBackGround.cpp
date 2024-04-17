@@ -5,14 +5,13 @@
 #include<EngineCore/DefaultSceneComponent.h>
 
 CCTVBackGround* CCTVBackGround::MainCCTV = nullptr;
-
 CCTVBackGround::CCTVBackGround()
 {
 	
 	CCTVBackGroundRender = CreateDefaultSubObject<USpriteRenderer>("CCTVCam");
 	CCTVBackGroundRender->SetSprite("TestCamBackGround.png");
 	CCTVBackGroundRender->SetAutoSize(1.0f, true);
-	CCTVBackGroundRender->SetOrder(10);
+	CCTVBackGroundRender->SetOrder(1000);
 	CCTVBackGroundRender->SetActive(false);
 
 	
@@ -39,6 +38,7 @@ void CCTVBackGround::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+
 }
 
 
@@ -46,8 +46,10 @@ void CCTVBackGround::Tick(float _DeltaTime)
 void CCTVBackGround::CCTVON()
 {
 	CCTVBackGroundRender->SetActive(true);
+	CamMode = true;
 }
 void CCTVBackGround::CCTVOFF()
 {
 	CCTVBackGroundRender->SetActive(false);
+	CamMode = false;
 }
