@@ -76,10 +76,22 @@ void Stage::CameraMove(float _DeltaTime)
 {
 	float CamMovepos = 0;
 	CamMovepos += _DeltaTime;
-	Camera->AddActorLocation(float4::Left * _DeltaTime * 5);
-	FVector CurPos = Camera->GetActorLocation();
-	if (Camera->GetActorLocation().X <= -160)
+	if (true == MoveEnd && Camera->GetActorLocation().X <= 160)
 	{
-		Camera->AddActorLocation(float4::Right * _DeltaTime * 5);
+		Camera->AddActorLocation(float4::Right * _DeltaTime * 100);
+		if (Camera->GetActorLocation().X >= 160)
+		{
+			MoveEnd = false;
+		}
+		//MoveEnd == false;
 	}
+	if (Camera->GetActorLocation().X >= -160 && MoveEnd == false)
+	{
+	Camera->AddActorLocation(float4::Left * _DeltaTime * 100);
+		if(Camera->GetActorLocation().X <= -160)
+		{
+			MoveEnd = true;
+		}
+	}
+	
 }

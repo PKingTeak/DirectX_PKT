@@ -28,6 +28,7 @@ private:
 	void DebugGUI();
 	CCTVBackGround* CCTVPtr = nullptr;
 	std::shared_ptr<UCamera> Camera;
+	bool MoveEnd = false;
 
 };
 
