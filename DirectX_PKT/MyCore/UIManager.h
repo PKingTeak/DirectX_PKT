@@ -2,10 +2,13 @@
 #include<EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Widget.h>
+#include<EngineCore/GameMode.h>
+#include<EngineCore/Image.h>
+#include"StageCamera.h"
 // Ό³Έν :
-class UIManager : public UWidget
+class UIManager : public AGameMode
 {
-	GENERATED_BODY(UWidget)
+	GENERATED_BODY(AGameMode)
 
 public:
 	
@@ -19,10 +22,11 @@ public:
 	UIManager& operator=(UIManager&& _Other) noexcept = delete;
 
 protected:
-	void MaterialSettingEnd() override;
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+
 private:
-	std::shared_ptr<UWidget> UI;
-	void SetUI();
+	UImage* ArrowUi = nullptr;
 	
 
 };

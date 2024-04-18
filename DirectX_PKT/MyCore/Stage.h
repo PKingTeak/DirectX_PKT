@@ -2,6 +2,9 @@
 #include<EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
 #include"CCTVBackGround.h"
+#include<EngineCore/Widget.h>
+#include<EngineCore/Image.h>
+#include"StageCamera.h"
 // Ό³Έν :
 class Stage : public AGameMode
 {
@@ -16,7 +19,7 @@ public:
 	Stage(Stage&& _Other) noexcept = delete;
 	Stage& operator=(const Stage& _Other) = delete;
 	Stage& operator=(Stage&& _Other) noexcept = delete;
-	FVector GetCurCameraPos();
+	
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -29,6 +32,12 @@ private:
 	CCTVBackGround* CCTVPtr = nullptr;
 	std::shared_ptr<UCamera> Camera;
 	bool MoveEnd = false;
+	//
+	// Object
+	std::shared_ptr<StageCamera> StageCam;
+
+	//UI
+	UImage* ArrowUi = nullptr;
 
 };
 

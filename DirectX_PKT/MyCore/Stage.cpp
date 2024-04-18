@@ -28,10 +28,33 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<Arrow>("Arrow");
-	GetWorld()->SpawnActor<StageCamera>("StageCam");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
+	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
 
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
+
+	{
+
+		ArrowUi = CreateWidget<UImage>(GetWorld(), "Arrow");
+
+		ArrowUi->AddToViewPort();
+		ArrowUi->SetSprite("Arrow.png");
+		ArrowUi->SetAutoSize(1.0f, true);
+		ArrowUi->SetPosition({ 0,-320 });
+
+
+		ArrowUi->SetHover([=]()
+			{
+				StageCam->ChangeAnimation();
+			});
+
+		ArrowUi->SetDown([=]()
+			{
+				UEngineDebugMsgWindow::PushMsg("Down!!!");
+			});
+
+
+	}
 }
 
 void Stage::Tick(float _DeltaTime)

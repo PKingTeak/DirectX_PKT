@@ -3,6 +3,7 @@
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
 #include"StageCamera.h"
+#include<EngineCore/Image.h>
 // Ό³Έν :
 
 class Arrow : public AActor
@@ -30,7 +31,7 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
-
+	UImage* ArrowUIImage = nullptr;
 	USpriteRenderer* ArrowRender = nullptr;
 	UCollision* ArrowCollision = nullptr;
 	USpriteRenderer* TestRender = nullptr;

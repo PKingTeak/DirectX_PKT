@@ -27,7 +27,7 @@ public:
 	CCTVBackGround& operator=(CCTVBackGround&& _Other) noexcept = delete;
 
 	static CCTVBackGround* GetCCTVBackGround();
-	void ChangeAnimation();
+	
 	void CCTVON();
 	void CCTVOFF();
 	inline bool GetCamMode()
