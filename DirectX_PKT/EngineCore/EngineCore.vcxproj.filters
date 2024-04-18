@@ -31,65 +31,65 @@
     <Filter Include="Object\Rendering">
       <UniqueIdentifier>{b1220329-bbb5-475a-af88-6656044db475}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Rendering\Component">
-      <UniqueIdentifier>{d6cf3cbc-9156-4119-87dc-ba04912b170b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineContent">
-      <UniqueIdentifier>{e5876a73-0b6e-4e13-900a-74405a15a70f}</UniqueIdentifier>
+    <Filter Include="Object\EngineContent">
+      <UniqueIdentifier>{8297fd64-4ec6-41e4-9bae-de26c1c3d425}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\Mesh">
-      <UniqueIdentifier>{7cb54fd5-0714-44a9-9536-b8924a4ff81e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\RenderingSetting">
-      <UniqueIdentifier>{2daea69a-113f-4778-b71a-c60371d729f2}</UniqueIdentifier>
+      <UniqueIdentifier>{9cec7b7c-3972-425d-ac46-19fdeced76a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resources\Shader">
-      <UniqueIdentifier>{60d62581-6d76-4598-be4d-6a2ae598d17b}</UniqueIdentifier>
+      <UniqueIdentifier>{0763ef68-1889-4532-8bdb-a402237e3420}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ShaderResource">
-      <UniqueIdentifier>{12603777-562f-47e1-a237-760532535fe4}</UniqueIdentifier>
+    <Filter Include="Resources\RenderingSetting">
+      <UniqueIdentifier>{cbf5cd2a-6e8e-46f7-a81b-72d6910b9701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\ShaderResources">
+      <UniqueIdentifier>{4a85152c-41bc-499f-bfda-4b4a5deab927}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThirdParty">
-      <UniqueIdentifier>{e4fd6985-ea50-4cca-b4ea-778c44cef463}</UniqueIdentifier>
+      <UniqueIdentifier>{a647caeb-fc2c-4a18-88a9-af7f521d3981}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThirdParty\DirectXTex">
-      <UniqueIdentifier>{bfee0424-9c50-42f7-b060-edebc1f05dca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ThirdParty\DirectXTex\Debug">
-      <UniqueIdentifier>{4ee16aa7-d1e2-47e1-86ec-46d740bf0520}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ThirdParty\DirectXTex\Inc">
-      <UniqueIdentifier>{d0e67a47-db5c-4892-8c5c-d0d95162bcad}</UniqueIdentifier>
+      <UniqueIdentifier>{a89a5b29-3276-4572-bdbc-07a8d92a4248}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThirdParty\DirectXTex\Release">
-      <UniqueIdentifier>{fa693a66-c5cf-457f-a232-e5d825708a99}</UniqueIdentifier>
+      <UniqueIdentifier>{f8e017c5-941c-4f2c-9128-d165c901a8ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content">
-      <UniqueIdentifier>{6fc79cd7-53cc-48af-a0d7-6143dde8dcd2}</UniqueIdentifier>
+    <Filter Include="ThirdParty\DirectXTex\Inc">
+      <UniqueIdentifier>{7d9169fc-6168-4146-a718-c4a343e793e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\DirectXTex\Debug">
+      <UniqueIdentifier>{ae0fb14c-7950-481e-9213-3004db923783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{79f3532f-1e2a-401b-9409-9d5f6520e1d1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Editor">
-      <UniqueIdentifier>{197343a4-2180-422b-9f21-aa3c01f23a6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Editor\Contents">
-      <UniqueIdentifier>{bdd848be-3186-494b-9ccd-03f028dba43e}</UniqueIdentifier>
+      <UniqueIdentifier>{233623d1-a517-4881-8018-a6f15b94d09f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Editor\Imgui">
-      <UniqueIdentifier>{9e75dd2f-5e78-4d0c-ac5c-ac2de9487af5}</UniqueIdentifier>
+      <UniqueIdentifier>{3c6c6f20-c74f-4e0a-91cd-9b7c1e3db232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Contents">
+      <UniqueIdentifier>{6f96171b-a338-4dd1-824c-f6057bef5c52}</UniqueIdentifier>
     </Filter>
     <Filter Include="Object\Component\Collision">
-      <UniqueIdentifier>{6ac3c09d-f3d6-459a-bd19-b1cee6812d47}</UniqueIdentifier>
+      <UniqueIdentifier>{47092953-4437-4651-853a-50671698e893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Component\Rendering">
+      <UniqueIdentifier>{d6cf3cbc-9156-4119-87dc-ba04912b170b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Debug">
-      <UniqueIdentifier>{116ac6e2-2f33-40d1-9937-73e00c342ca0}</UniqueIdentifier>
+      <UniqueIdentifier>{9b0ed79c-f0c6-474e-bfbd-abd9de47fd79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI">
-      <UniqueIdentifier>{f5563a5b-7d62-4fb2-a82f-da867b41c707}</UniqueIdentifier>
+    <Filter Include="Object\Component\Rendering\Contents">
+      <UniqueIdentifier>{f4e06e9e-bc13-44fa-8e23-d0b3130c7c5e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UI\Contents">
-      <UniqueIdentifier>{cc655879-7d16-4a58-bbf6-9760673b47cd}</UniqueIdentifier>
+    <Filter Include="Object\UI">
+      <UniqueIdentifier>{4e22d4e5-cecd-412a-a937-0d622dd5d416}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\Rendering\Contents">
-      <UniqueIdentifier>{c8883b9c-a2a2-4ee4-8721-8e4057f3b82d}</UniqueIdentifier>
+    <Filter Include="Object\UI\Contents">
+      <UniqueIdentifier>{6a17afd8-9664-4dbe-a520-7c63fe26b9ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -105,11 +105,17 @@
     <ClCompile Include="EngineGraphicDevice.cpp">
       <Filter>Device</Filter>
     </ClCompile>
+    <ClCompile Include="EngineTexture.cpp">
+      <Filter>Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRenderTarget.cpp">
+      <Filter>Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
     <ClCompile Include="Actor.cpp">
       <Filter>Object\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMode.cpp">
-      <Filter>Object\Actor\GameMode</Filter>
     </ClCompile>
     <ClCompile Include="ActorComponent.cpp">
       <Filter>Object\Component</Filter>
@@ -118,30 +124,36 @@
       <Filter>Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Object\Rendering\Component</Filter>
+      <Filter>Object\Component\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="EngineRenderTarget.cpp">
-      <Filter>Resources\Texture</Filter>
+    <ClCompile Include="TickObject.cpp">
+      <Filter>Object</Filter>
     </ClCompile>
-    <ClCompile Include="EngineTexture.cpp">
-      <Filter>Resources\Texture</Filter>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Object\Actor\GameMode</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="TickObject.cpp" />
-    <ClCompile Include="WorldObject.cpp" />
+    <ClCompile Include="WorldObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Object\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultSceneComponent.cpp">
+      <Filter>Object\EngineContent</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVertexBuffer.cpp">
+      <Filter>Resources\Mesh</Filter>
+    </ClCompile>
     <ClCompile Include="EngineGraphicDevice_Resources.cpp">
       <Filter>Device</Filter>
     </ClCompile>
     <ClCompile Include="EngineIndexBuffer.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="EngineMesh.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="EngineBuffer.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="EngineVertexBuffer.cpp">
+    <ClCompile Include="EngineMesh.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineShader.cpp">
@@ -150,29 +162,29 @@
     <ClCompile Include="EngineVertexShader.cpp">
       <Filter>Resources\Shader</Filter>
     </ClCompile>
+    <ClCompile Include="EngineRasterizer.cpp">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClCompile>
     <ClCompile Include="EnginePixelShader.cpp">
       <Filter>Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineMaterial.cpp">
       <Filter>Resources\RenderingSetting</Filter>
     </ClCompile>
-    <ClCompile Include="EngineRasterizer.cpp">
-      <Filter>Resources\RenderingSetting</Filter>
+    <ClCompile Include="EngineInputLayOut.cpp">
+      <Filter>Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="DirectXHelper.cpp">
       <Filter>Device</Filter>
     </ClCompile>
-    <ClCompile Include="EngineInputLayOut.cpp">
-      <Filter>Resources\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="EngineVertex.cpp">
       <Filter>Resources\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="EngineShaderResources.cpp">
-      <Filter>ShaderResource</Filter>
-    </ClCompile>
     <ClCompile Include="EngineConstantBuffer.cpp">
-      <Filter>ShaderResource</Filter>
+      <Filter>Resources\ShaderResources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineShaderResources.cpp">
+      <Filter>Resources\ShaderResources</Filter>
     </ClCompile>
     <ClCompile Include="EngineSampler.cpp">
       <Filter>Resources\Texture</Filter>
@@ -184,7 +196,13 @@
       <Filter>Resources\RenderingSetting</Filter>
     </ClCompile>
     <ClCompile Include="StateManager.cpp">
-      <Filter>Content</Filter>
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineEditorGUI.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>Editor\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui.cpp">
       <Filter>Editor\Imgui</Filter>
@@ -195,29 +213,20 @@
     <ClCompile Include="imgui_draw.cpp">
       <Filter>Editor\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_impl_dx11.cpp">
+    <ClCompile Include="imgui_tables.cpp">
       <Filter>Editor\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui_impl_win32.cpp">
       <Filter>Editor\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="imgui_tables.cpp">
+    <ClCompile Include="imgui_impl_dx11.cpp">
       <Filter>Editor\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui_widgets.cpp">
-      <Filter>Editor\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineDebugMsgWindow.cpp">
-      <Filter>Editor\Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineEditorGUI.cpp">
-      <Filter>Editor</Filter>
     </ClCompile>
     <ClCompile Include="EngineEditorWindow.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultSceneComponent.cpp">
-      <Filter>EngineContent</Filter>
+    <ClCompile Include="EngineDebugMsgWindow.cpp">
+      <Filter>Editor\Contents</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Object\Component\Collision</Filter>
@@ -225,26 +234,23 @@
     <ClCompile Include="EngineDebug3D.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Object\Component\Rendering\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="TileRenderer.cpp">
+      <Filter>Object\Component\Rendering\Contents</Filter>
+    </ClCompile>
     <ClCompile Include="EngineStruct.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="RenderUnit.cpp">
+      <Filter>Object\Component\Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="Widget.cpp">
-      <Filter>UI</Filter>
+      <Filter>Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>UI\Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Object\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="TileRenderer.cpp">
-      <Filter>Object\Rendering\Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteRenderer.cpp">
-      <Filter>Object\Rendering\Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderUnit.cpp">
-      <Filter>Object\Rendering</Filter>
+      <Filter>Object\UI\Contents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -260,11 +266,17 @@
     <ClInclude Include="EngineGraphicDevice.h">
       <Filter>Device</Filter>
     </ClInclude>
+    <ClInclude Include="EngineTexture.h">
+      <Filter>Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRenderTarget.h">
+      <Filter>Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Object</Filter>
+    </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Object\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMode.h">
-      <Filter>Object\Actor\GameMode</Filter>
     </ClInclude>
     <ClInclude Include="ActorComponent.h">
       <Filter>Object\Component</Filter>
@@ -273,30 +285,36 @@
       <Filter>Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Object\Rendering\Component</Filter>
+      <Filter>Object\Component\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="EngineRenderTarget.h">
-      <Filter>Resources\Texture</Filter>
+    <ClInclude Include="TickObject.h">
+      <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="EngineTexture.h">
-      <Filter>Resources\Texture</Filter>
+    <ClInclude Include="GameMode.h">
+      <Filter>Object\Actor\GameMode</Filter>
     </ClInclude>
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="TickObject.h" />
-    <ClInclude Include="WorldObject.h" />
-    <ClInclude Include="EngineIndexBuffer.h">
-      <Filter>Resources\Mesh</Filter>
+    <ClInclude Include="WorldObject.h">
+      <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="EngineMesh.h">
+    <ClInclude Include="Camera.h">
+      <Filter>Object\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultSceneComponent.h">
+      <Filter>Object\EngineContent</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVertexBuffer.h">
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertex.h">
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="EngineIndexBuffer.h">
+      <Filter>Resources\Mesh</Filter>
+    </ClInclude>
     <ClInclude Include="EngineBuffer.h">
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="EngineVertexBuffer.h">
+    <ClInclude Include="EngineMesh.h">
       <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineShader.h">
@@ -305,29 +323,29 @@
     <ClInclude Include="EngineVertexShader.h">
       <Filter>Resources\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="EngineRasterizer.h">
+      <Filter>Resources\RenderingSetting</Filter>
+    </ClInclude>
     <ClInclude Include="EnginePixelShader.h">
       <Filter>Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineMaterial.h">
       <Filter>Resources\RenderingSetting</Filter>
     </ClInclude>
-    <ClInclude Include="EngineRasterizer.h">
-      <Filter>Resources\RenderingSetting</Filter>
+    <ClInclude Include="EngineInputLayOut.h">
+      <Filter>Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="DirectXHelper.h">
       <Filter>Device</Filter>
     </ClInclude>
-    <ClInclude Include="EngineInputLayOut.h">
-      <Filter>Resources\Mesh</Filter>
+    <ClInclude Include="EngineConstantBuffer.h">
+      <Filter>Resources\ShaderResources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineShaderResources.h">
+      <Filter>Resources\ShaderResources</Filter>
     </ClInclude>
     <ClInclude Include="EngineEnums.h">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineShaderResources.h">
-      <Filter>ShaderResource</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineConstantBuffer.h">
-      <Filter>ShaderResource</Filter>
     </ClInclude>
     <ClInclude Include="EngineSampler.h">
       <Filter>Resources\Texture</Filter>
@@ -342,22 +360,10 @@
       <Filter>Resources\RenderingSetting</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
-      <Filter>Content</Filter>
+      <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="imconfig.h">
-      <Filter>Editor\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui.h">
-      <Filter>Editor\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_impl_dx11.h">
-      <Filter>Editor\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_impl_win32.h">
-      <Filter>Editor\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui_internal.h">
-      <Filter>Editor\Imgui</Filter>
+    <ClInclude Include="EngineEditorGUI.h">
+      <Filter>Editor</Filter>
     </ClInclude>
     <ClInclude Include="imstb_rectpack.h">
       <Filter>Editor\Imgui</Filter>
@@ -368,17 +374,29 @@
     <ClInclude Include="imstb_truetype.h">
       <Filter>Editor\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="EngineDebugMsgWindow.h">
-      <Filter>Editor\Contents</Filter>
+    <ClInclude Include="imconfig.h">
+      <Filter>Editor\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="EngineEditorGUI.h">
-      <Filter>Editor</Filter>
+    <ClInclude Include="imgui.h">
+      <Filter>Editor\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>Editor\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_dx11.h">
+      <Filter>Editor\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>Editor\Imgui</Filter>
     </ClInclude>
     <ClInclude Include="EngineEditorWindow.h">
       <Filter>Editor</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultSceneComponent.h">
-      <Filter>EngineContent</Filter>
+    <ClInclude Include="EngineDebugMsgWindow.h">
+      <Filter>Editor\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDefines.h">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Object\Component\Collision</Filter>
@@ -386,35 +404,24 @@
     <ClInclude Include="EngineDebug3D.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="EngineDefines.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Object\Component\Rendering\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="TileRenderer.h">
+      <Filter>Object\Component\Rendering\Contents</Filter>
     </ClInclude>
     <ClInclude Include="EngineStruct.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="RenderUnit.h">
+      <Filter>Object\Component\Rendering</Filter>
+    </ClInclude>
     <ClInclude Include="Widget.h">
-      <Filter>UI</Filter>
+      <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
-      <Filter>UI\Contents</Filter>
+      <Filter>Object\UI\Contents</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Object\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="TileRenderer.h">
-      <Filter>Object\Rendering\Contents</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteRenderer.h">
-      <Filter>Object\Rendering\Contents</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderUnit.h">
-      <Filter>Object\Rendering</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ThirdParty\DirectxTex\inc\DirectXTex.inl">
-      <Filter>ThirdParty\DirectXTex\Inc</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex.lib">

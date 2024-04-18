@@ -41,7 +41,7 @@
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="TitleLogo.h" />
-    <ClInclude Include="UILevel.h" />
+    <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arrow.cpp">
@@ -71,7 +71,7 @@
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
-    <ClCompile Include="UILevel.cpp" />
+    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

@@ -79,11 +79,11 @@
     <ClCompile Include="StageCamera.cpp">
       <Filter>Level\Stage\Cam</Filter>
     </ClCompile>
-    <ClCompile Include="UILevel.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="CCTVBackGround.cpp">
       <Filter>Level\Stage\Cam</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,11 +132,11 @@
     <ClInclude Include="StageCamera.h">
       <Filter>Level\Stage\Cam</Filter>
     </ClInclude>
-    <ClInclude Include="UILevel.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="CCTVBackGround.h">
       <Filter>Level\Stage\Cam</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
