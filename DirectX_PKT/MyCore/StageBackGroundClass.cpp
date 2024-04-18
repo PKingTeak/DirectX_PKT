@@ -18,21 +18,21 @@ StageBackGroundClass::StageBackGroundClass()
 
 	LeftBox = CreateDefaultSubObject<UCollision>("LeftBoxCol");
 	LeftBox->SetCollisionGroup(OrderType::UI);
-	LeftBox->SetScale(FVector{ 500,720, });
-	LeftBox->SetOrder(100);
-	LeftBox->SetCollisionType(ECollisionType::Rect);
-	LeftBox->AddPosition({ -200,0 });
+	LeftBox->SetScale(FVector{ 100,100 });
+	LeftBox->SetCollisionType(ECollisionType::RotRect);
+	LeftBox->SetCollisionGroup(OrderType::UI);
+	LeftBox->AddPosition({ -200,0,50 });
 	LeftBox->SetupAttachment(Default);
 	
 
 
-	RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
-	RightBox->SetCollisionGroup(OrderType::UI);
-	RightBox->SetScale(FVector{ 500,720,});
-	RightBox->AddPosition({ 200,0 });
-	RightBox->SetOrder(100);
-	RightBox->SetCollisionType(ECollisionType::Rect);
-	RightBox->SetupAttachment(Default);
+//RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
+//RightBox->SetCollisionGroup(OrderType::UI);
+//RightBox->SetScale(FVector{ 100,100});
+//RightBox->AddPosition({ 200,0 ,50 });
+//RightBox->SetOrder(10);
+//RightBox->SetCollisionType(ECollisionType::RotRect);
+//RightBox->SetupAttachment(Default);
 
 
 
