@@ -26,13 +26,13 @@ StageBackGroundClass::StageBackGroundClass()
 	
 
 
-//RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
-//RightBox->SetCollisionGroup(OrderType::UI);
-//RightBox->SetScale(FVector{ 100,100});
-//RightBox->AddPosition({ 200,0 ,50 });
-//RightBox->SetOrder(10);
-//RightBox->SetCollisionType(ECollisionType::RotRect);
-//RightBox->SetupAttachment(Default);
+	//RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
+	//RightBox->SetCollisionGroup(OrderType::UI);
+	//RightBox->SetScale(FVector{ 100,100});
+	//RightBox->AddPosition({ 200,0 ,50 });
+	//RightBox->SetOrder(10);
+	//RightBox->SetCollisionType(ECollisionType::RotRect);
+	//RightBox->SetupAttachment(Default);
 
 
 

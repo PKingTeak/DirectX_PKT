@@ -46,6 +46,7 @@ void StageCamera::ChangeAnimation()
 	StageCameraRender->SetFrameCallback("CameraAnimtaion", 8, [=]
 		{
 		CCTVBackGround::GetCCTVBackGround()->CCTVON();
+
 		// 여기에 CCTV 배경을 넣을것이다. 
 		}
 	);

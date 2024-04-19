@@ -31,6 +31,7 @@ protected:
 private:
 	USpriteRenderer* StageCameraRender = nullptr;
 	USpriteRenderer* CCTVCam = nullptr;
+
 	
 	
 

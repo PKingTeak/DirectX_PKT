@@ -25,7 +25,7 @@ void Stage::BeginPlay()
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<Fan>("Fan");
-	//GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
+	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
@@ -40,16 +40,8 @@ void Stage::BeginPlay()
 		ArrowUi->SetSprite("Arrow.png");
 		ArrowUi->SetAutoSize(1.0f, true);
 		ArrowUi->AddToViewPort();
-		ArrowUi->SetPosition({ 100,100 });
-	//	ArrowUi->CreateAnimation("Test", "Chica.png", 0.1f, true,0,10);
-	//	ArrowUi->ChangeAnimation("Test");
-
-			/*
-			
-
-		
-		
-			*/
+		ArrowUi->SetPosition({ -100,-320 });
+	
 
 			
 
