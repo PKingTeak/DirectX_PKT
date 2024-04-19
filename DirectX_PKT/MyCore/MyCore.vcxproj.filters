@@ -32,6 +32,9 @@
     <Filter Include="Level\Stage\Cam">
       <UniqueIdentifier>{33c63e60-7dc1-4af3-93f7-b8e3ad390a1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Stage\Effect">
+      <UniqueIdentifier>{24ea9bd3-0c25-429e-acec-fc813930c6be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -85,6 +88,9 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="FishEyes.cpp">
+      <Filter>Level\Stage\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -137,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="UIManager.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="FishEyes.h">
+      <Filter>Level\Stage\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

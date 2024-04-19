@@ -10,6 +10,9 @@
     <Filter Include="Debug">
       <UniqueIdentifier>{db718095-940d-47c8-bad4-d8032f39618c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{4fe305c6-1113-45fc-9f0c-6a132fc3f5b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="ImageShader.fx">
@@ -20,6 +23,9 @@
     </FxCompile>
     <FxCompile Include="DebugShader.fx">
       <Filter>Debug</Filter>
+    </FxCompile>
+    <FxCompile Include="BlurEffectShader.fx">
+      <Filter>Effect</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

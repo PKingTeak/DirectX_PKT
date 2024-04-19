@@ -8,6 +8,10 @@
 #include"Mouse.h"
 #include"StageCamera.h"
 #include"CCTVBackGround.h"
+#include <EngineCore/Image.h>
+#include <EngineCore/Camera.h>
+#include <EngineBase/EngineSerializer.h>
+#include "FishEyes.h"
 
 
 Stage::Stage()
@@ -21,6 +25,8 @@ Stage::~Stage()
 
 void Stage::BeginPlay()
 {
+
+	GetWorld()->GetMainCamera()->GetCameraTarget()->AddEffect<FishEyes>();
 	Super::BeginPlay();
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
@@ -34,14 +40,15 @@ void Stage::BeginPlay()
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 	
 	
-	//{
+	{
+		
 		ArrowUi = CreateWidget<UImage>(GetWorld(), "ArrowUI");
 		
 		ArrowUi->SetSprite("Arrow.png");
 		ArrowUi->SetAutoSize(1.0f, true);
-		ArrowUi->AddToViewPort();
+		ArrowUi->AddToViewPort(2);
 		ArrowUi->SetPosition({ -100,-320 });
-	
+		
 
 			
 
@@ -57,7 +64,10 @@ void Stage::BeginPlay()
 			});
 
 
-	//}
+	}
+
+	
+
 }
 
 void Stage::Tick(float _DeltaTime)

@@ -9,6 +9,8 @@
 #include <iostream>
 #include<EngineCore/EngineDebugMsgWindow.h>
 #include"CCTVBackGround.h"
+#include<EngineCore/EnginePixelShader.h>
+
 
 UMyCore::UMyCore()
 {
@@ -23,11 +25,29 @@ UMyCore::~UMyCore()
 
 void UMyCore::Initialize()
 {
+	UEngineDirectory Dir;
+	Dir.MoveToSearchChild("ContentsShader");
+	UEngineShader::AutoCompile(Dir);
+	{
+
 	std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("Noise");
-	Mat->SetPixelShader("ImageShader.fx");
 	Mat->SetVertexShader("ImageShader.fx");
+	Mat->SetPixelShader("ImageShader.fx");
 	Mat->SetRasterizer("EngineBase");
 	Mat->SetBlend("Overlay");
+	
+	}
+	
+	{
+
+	std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("FishEyes");
+	Mat->SetVertexShader("Fisheye.fx");
+	Mat->SetPixelShader("Fisheye.fx");
+
+	}
+
+
+
 	
 	{
 		// 파일의 헤더
@@ -84,7 +104,7 @@ void UMyCore::Initialize()
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
 	GEngine->CreateLevel<Stage>("StageLevel");
-	GEngine->ChangeLevel("StageLevel");
+	GEngine->ChangeLevel("Maintitle");
 
 
 	

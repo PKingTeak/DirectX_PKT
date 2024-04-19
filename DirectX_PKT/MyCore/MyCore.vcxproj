@@ -25,6 +25,7 @@
     </ClInclude>
     <ClInclude Include="CCTVBackGround.h" />
     <ClInclude Include="Fan.h" />
+    <ClInclude Include="FishEyes.h" />
     <ClInclude Include="MainTitleLevel.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MyCore.h">
@@ -50,6 +51,7 @@
     </ClCompile>
     <ClCompile Include="CCTVBackGround.cpp" />
     <ClCompile Include="Fan.cpp" />
+    <ClCompile Include="FishEyes.cpp" />
     <ClCompile Include="MainTitleLevel.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MyCore.cpp">

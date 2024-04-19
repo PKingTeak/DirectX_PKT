@@ -13,8 +13,9 @@ UWidget::~UWidget()
 {
 }
 
-void UWidget::AddToViewPort()
+void UWidget::AddToViewPort(int _Order)
 {
+	SetOrder(_Order);
 	GetWorld()->PushWidget(shared_from_this());
 }
 
@@ -26,8 +27,6 @@ void UWidget::MaterialSettingEnd()
 		Resources->SettingConstantBuffer("FTransform", Transform);
 	}
 }
-
-
 
 void UWidget::RenderingTransformUpdate(std::shared_ptr<UCamera> _Camera)
 {
@@ -50,10 +49,8 @@ void UWidget::Tick(float _DeltaTime)
 	if (true == Transform.Collision(ECollisionType::Rect, ECollisionType::Point, Trans))
 	{
 		IsHover = true;
-		
 		if (nullptr != Hover)
 		{
-			
 			Hover();
 		}
 

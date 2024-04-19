@@ -37,7 +37,13 @@ public:
 	UWidget& operator=(const UWidget& _Other) = delete;
 	UWidget& operator=(UWidget&& _Other) noexcept = delete;
 
-	void AddToViewPort();
+	template<typename EnumType>
+	void AddToViewPort(EnumType _Order)
+	{
+		AddToViewPort(static_cast<int>(_Order));
+	}
+
+	void AddToViewPort(int _Order);
 
 	void SetHover(std::function<void()> _Hover)
 	{
@@ -73,6 +79,5 @@ private:
 	std::function<void()> UnHover;
 	std::function<void()> Hover;
 	std::function<void()> Down;
-	//UCollision* CollisionCheck = nullptr;
 };
 
