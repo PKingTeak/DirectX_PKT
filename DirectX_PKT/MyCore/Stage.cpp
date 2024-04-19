@@ -25,26 +25,37 @@ void Stage::BeginPlay()
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
 	GetWorld()->SpawnActor<Fan>("Fan");
-	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
+	//GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
-
+	
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
-
-	{
-
-		ArrowUi = CreateWidget<UImage>(GetWorld(), "Arrow");
-
-		ArrowUi->AddToViewPort();
+	
+	
+	//{
+		ArrowUi = CreateWidget<UImage>(GetWorld(), "ArrowUI");
+		
 		ArrowUi->SetSprite("Arrow.png");
 		ArrowUi->SetAutoSize(1.0f, true);
-		ArrowUi->SetPosition({ 0,-320 });
+		ArrowUi->AddToViewPort();
+		ArrowUi->SetPosition({ 100,100 });
+	//	ArrowUi->CreateAnimation("Test", "Chica.png", 0.1f, true,0,10);
+	//	ArrowUi->ChangeAnimation("Test");
 
+			/*
+			
+
+		
+		
+			*/
+
+			
 
 		ArrowUi->SetHover([=]()
 			{
+				
 				StageCam->ChangeAnimation();
 			});
 
@@ -54,7 +65,7 @@ void Stage::BeginPlay()
 			});
 
 
-	}
+	//}
 }
 
 void Stage::Tick(float _DeltaTime)

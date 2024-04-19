@@ -84,7 +84,7 @@ void UMyCore::Initialize()
 	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
 	GEngine->CreateLevel<Stage>("StageLevel");
-	GEngine->ChangeLevel("Maintitle");
+	GEngine->ChangeLevel("StageLevel");
 
 
 	

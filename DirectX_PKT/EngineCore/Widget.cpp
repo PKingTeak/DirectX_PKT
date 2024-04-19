@@ -27,6 +27,8 @@ void UWidget::MaterialSettingEnd()
 	}
 }
 
+
+
 void UWidget::RenderingTransformUpdate(std::shared_ptr<UCamera> _Camera)
 {
 	Transform.CalculateViewAndProjection(_Camera->GetView(), _Camera->GetProjection());
@@ -48,8 +50,10 @@ void UWidget::Tick(float _DeltaTime)
 	if (true == Transform.Collision(ECollisionType::Rect, ECollisionType::Point, Trans))
 	{
 		IsHover = true;
+		
 		if (nullptr != Hover)
 		{
+			
 			Hover();
 		}
 

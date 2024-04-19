@@ -73,5 +73,6 @@ private:
 	std::function<void()> UnHover;
 	std::function<void()> Hover;
 	std::function<void()> Down;
+	//UCollision* CollisionCheck = nullptr;
 };
 
