@@ -11,7 +11,7 @@ CCTVBackGround::CCTVBackGround()
 	CCTVBackGroundRender = CreateDefaultSubObject<USpriteRenderer>("CCTVCam");
 	CCTVBackGroundRender->SetSprite("TestCamBackGround.png");
 	CCTVBackGroundRender->SetAutoSize(1.0f, true);
-	CCTVBackGroundRender->SetOrder(1000);
+	CCTVBackGroundRender->SetOrder(100);
 	CCTVBackGroundRender->SetActive(false);
 
 	

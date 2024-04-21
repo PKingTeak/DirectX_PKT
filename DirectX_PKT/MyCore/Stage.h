@@ -26,7 +26,12 @@ protected:
 	void LevelEnd(ULevel* _NextLevel);
 	void LevelStart(ULevel* _PrevLevel);
 private:
+
+	//Camera
+	void ResetCamPos();
 	void CameraMove(float _DeltaTime);
+	bool CamMove = true;
+	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
 	CCTVBackGround* CCTVPtr = nullptr;

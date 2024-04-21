@@ -21,6 +21,12 @@ public:
 
 
 	void ChangeAnimation();
+	inline bool GetIsCameraOn()
+	{
+		return isCamOn;
+	}
+
+
 
 protected:
 	void BeginPlay() override;
@@ -31,6 +37,7 @@ protected:
 private:
 	USpriteRenderer* StageCameraRender = nullptr;
 	USpriteRenderer* CCTVCam = nullptr;
+	bool isCamOn = false;
 
 	
 	

@@ -36,26 +36,28 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
-	
+
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
-	
-	
+
+
 	{
-		
+
 		ArrowUi = CreateWidget<UImage>(GetWorld(), "ArrowUI");
-		
+
 		ArrowUi->SetSprite("Arrow.png");
 		ArrowUi->SetAutoSize(1.0f, true);
 		ArrowUi->AddToViewPort(2);
 		ArrowUi->SetPosition({ -100,-320 });
-		
 
-			
+
+
 
 		ArrowUi->SetHover([=]()
 			{
-				
+
 				StageCam->ChangeAnimation();
+				FVector curCamPos = Camera->GetActorLocation();
+				
 			});
 
 		ArrowUi->SetDown([=]()
@@ -66,18 +68,25 @@ void Stage::BeginPlay()
 
 	}
 
-	
+
 
 }
 
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	
-	
+
+
 	if (true == CCTVPtr->GetCamMode())
 	{
+		CamMove = true;
 		CameraMove(_DeltaTime);
+	}
+
+	if (false == StageCam->GetIsCameraOn())
+	{
+		ResetCamPos();
+
 	}
 	DebugGUI();
 	//DebugGUI();
@@ -87,7 +96,7 @@ void Stage::DebugGUI()
 	{
 		std::string Msg = std::format("MousePos : {}\n", GEngine->EngineWindow.GetScreenMousePos().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
-		
+
 	}
 
 	{
@@ -110,24 +119,34 @@ void Stage::LevelStart(ULevel* _PrevLevel)
 
 void Stage::CameraMove(float _DeltaTime)
 {
+	//카메라 좌우로 움직이기 
 	float CamMovepos = 0;
 	CamMovepos += _DeltaTime;
-	if (true == MoveEnd && Camera->GetActorLocation().X <= 160)
+	if (true == CamMove)
 	{
-		Camera->AddActorLocation(float4::Right * _DeltaTime * 100);
-		if (Camera->GetActorLocation().X >= 160)
+
+		if (true == MoveEnd && Camera->GetActorLocation().X <= 160)
 		{
-			MoveEnd = false;
+			Camera->AddActorLocation(float4::Right * _DeltaTime * 100);
+			if (Camera->GetActorLocation().X >= 160)
+			{
+				MoveEnd = false;
+			}
+			//MoveEnd == false;
 		}
-		//MoveEnd == false;
-	}
-	if (Camera->GetActorLocation().X >= -160 && MoveEnd == false)
-	{
-	Camera->AddActorLocation(float4::Left * _DeltaTime * 100);
-		if(Camera->GetActorLocation().X <= -160)
+		if (Camera->GetActorLocation().X >= -160 && MoveEnd == false)
 		{
-			MoveEnd = true;
+			Camera->AddActorLocation(float4::Left * _DeltaTime * 100);
+			if (Camera->GetActorLocation().X <= -160)
+			{
+				MoveEnd = true;
+			}
 		}
+
 	}
-	
+}
+void Stage::ResetCamPos()
+{
+	Camera->SetActorLocation({ 0,0,-100 });
+	CamMove = false;
 }

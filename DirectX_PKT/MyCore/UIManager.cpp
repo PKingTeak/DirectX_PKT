@@ -14,7 +14,7 @@ UIManager::~UIManager()
 void UIManager::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetMainCamera();
+	GetWorld()->GetUICamera();
 
 	
 }

@@ -43,12 +43,14 @@ void Mouse::Tick(float _DeltaTime)
 		{
 			std::string objectType = _Collision->GetActor()->GetName();
 
-			if ("Arrow" == _Collision->GetActor()->GetName())
-			{
-				int b  = _Collision->GetActor()->GetOrder();
-				std::shared_ptr<Arrow> Actor = GetWorld()->SpawnActor<Arrow>("Arrow");
-				Actor->ChangeCam();
-			}
+			// 이거 이제 stage화면에서 화면 이동할때 박스들이랑 충돌구현 할때 사용할것. 
+			// 
+			//if ("Arrow" == _Collision->GetActor()->GetName())
+			//{
+			//	int b  = _Collision->GetActor()->GetOrder();
+			//	std::shared_ptr<Arrow> Actor = GetWorld()->SpawnActor<Arrow>("Arrow");
+			//	Actor->ChangeCam();
+			//}
 		}
 	);
 		
