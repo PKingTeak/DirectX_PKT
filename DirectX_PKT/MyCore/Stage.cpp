@@ -34,7 +34,6 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
-	//GetWorld()->SpawnActor<Arrow>("Arrow");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
 
@@ -55,12 +54,12 @@ void Stage::BeginPlay()
 		ArrowUi->SetPosition({ -100,-320 });
 
 
-		LeftBox->SetSprite("Arrow.png");
+		LeftBox->SetSprite("Void.png");
 		LeftBox->SetScale(FVector{ 500,1000 });
 		LeftBox->AddToViewPort(2);
 		LeftBox->SetPosition({ -400,0 });
 
-		RightBox->SetSprite("Arrow.png");
+		RightBox->SetSprite("Void.png");
 		RightBox->SetScale(FVector{ 500,1000 });
 		RightBox->AddToViewPort(2);
 		RightBox->SetPosition({ 440,0 });
@@ -73,6 +72,7 @@ void Stage::BeginPlay()
 
 					CamMove = true;
 					StageCam->ChangeAnimation();
+
 
 
 				});
@@ -109,12 +109,7 @@ void Stage::BeginPlay()
 			}
 		);
 
-		//	ArrowUi->SetDown([=]()
-		//		{
-		//			//이건 버튼 누를때 사용 
-		//			UEngineDebugMsgWindow::PushMsg("Down!!!");
-		//		});
-
+		
 
 	}
 
@@ -131,12 +126,15 @@ void Stage::Tick(float _DeltaTime)
 	{
 		CamMove = true;
 		CameraMove(_DeltaTime);
+		LeftBox->SetActive(false);
+		RightBox->SetActive(false);
 	}
 
 	if (false == StageCam->GetIsCameraOn())
 	{
 		//ResetCamPos();
-
+		LeftBox->SetActive(true);
+		RightBox->SetActive(true);
 	}
 	DebugGUI();
 	MainStageMove(_DeltaTime);
