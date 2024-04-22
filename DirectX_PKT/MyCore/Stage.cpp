@@ -14,6 +14,7 @@
 #include "FishEyes.h"
 
 
+
 Stage::Stage()
 {
 }
@@ -62,6 +63,7 @@ void Stage::BeginPlay()
 
 		ArrowUi->SetDown([=]()
 			{
+				//이건 버튼 누를때 사용 
 				UEngineDebugMsgWindow::PushMsg("Down!!!");
 			});
 
@@ -82,14 +84,19 @@ void Stage::Tick(float _DeltaTime)
 		CamMove = true;
 		CameraMove(_DeltaTime);
 	}
-
+	
 	if (false == StageCam->GetIsCameraOn())
 	{
-		ResetCamPos();
+		//ResetCamPos();
 
 	}
 	DebugGUI();
-	//DebugGUI();
+	//
+	//사각형 콜라이더에 따라서 카메라 움직이는거 구현 할듯
+	// 
+	// 
+	//
+	
 }
 void Stage::DebugGUI()
 {

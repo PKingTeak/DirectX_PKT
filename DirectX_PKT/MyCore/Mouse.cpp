@@ -4,6 +4,7 @@
 #include<EngineCore/Camera.h>
 #include<EngineCore/DefaultSceneComponent.h>
 #include<string.h>
+#include"StageBackGroundClass.h"
 
 Mouse::Mouse()
 {
@@ -13,7 +14,8 @@ Mouse::Mouse()
 	//MouseCollision->SetupAttachment(MouseCollision);
 	MouseCollision->SetScale(FVector{ 50,50 });
 	MouseCollision->SetCollisionGroup(OrderType::Mouse);
-	MouseCollision->SetCollisionType(ECollisionType::CirCle);
+	MouseCollision->SetCollisionType(ECollisionType::Rect);
+	MouseCollision->SetOrder(OrderType::Mouse);
 
 	MSprite = CreateDefaultSubObject<USpriteRenderer>("MouseRender");
 	MSprite->SetupAttachment(MouseCollision); 
@@ -30,6 +32,7 @@ Mouse::~Mouse()
 }
 void Mouse::BeginPlay()
 {
+
 	Super::BeginPlay();
 	
 }
@@ -42,7 +45,11 @@ void Mouse::Tick(float _DeltaTime)
 	MouseCollision->CollisionEnter(OrderType::UI, [=](std::shared_ptr<UCollision>_Collision)
 		{
 			std::string objectType = _Collision->GetActor()->GetName();
+			if ("LeftBoxCol" == objectType)
+			{
+								
 
+			}
 			// 이거 이제 stage화면에서 화면 이동할때 박스들이랑 충돌구현 할때 사용할것. 
 			// 
 			//if ("Arrow" == _Collision->GetActor()->GetName())

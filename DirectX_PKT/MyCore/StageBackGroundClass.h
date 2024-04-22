@@ -6,6 +6,8 @@
 #include"Arrow.h"
 class StageBackGroundClass : public AActor
 {
+private:
+	static StageBackGroundClass* MainStageBackGround;
 	GENERATED_BODY(AActor)
 public:
 	StageBackGroundClass();
@@ -17,6 +19,12 @@ public:
 	StageBackGroundClass& operator=(const StageBackGroundClass& _Other) = delete;
 	StageBackGroundClass& operator=(StageBackGroundClass&& _Other) noexcept = delete;
 
+	StageBackGroundClass* GetMainStageBackGround();
+	void CheckColBox(UCollision* _ColBox);
+	inline bool GetColDir()
+	{
+		return ColDir;
+	}
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -32,6 +40,7 @@ private:
 	UCollision* LeftBox = nullptr;
 	UCollision* RightBox = nullptr;
 	Arrow* UIArrow = nullptr;
+	bool ColDir = false;
 
 
 };
