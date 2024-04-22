@@ -29,7 +29,7 @@ void Arrow::Tick(float _DeltaTime)
 }
 void Arrow::ChangeCam()
 {
-	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCamera");
+
 	StageCam->ChangeAnimation();
 	
 	if (true == isCamOpen)

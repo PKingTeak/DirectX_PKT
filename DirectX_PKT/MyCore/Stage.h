@@ -30,7 +30,10 @@ private:
 	//Camera
 	void ResetCamPos();
 	void CameraMove(float _DeltaTime);
-	bool CamMove = true;
+	bool CamMove = false;
+	bool CamLeftMove = false;
+	bool CameRightMove = false;
+	void MainStageMove(float _DeltaTime);
 	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
@@ -43,6 +46,9 @@ private:
 
 	//UI
 	UImage* ArrowUi = nullptr;
+	UImage* LeftBox = nullptr;
+	UImage* RightBox = nullptr;
+	
 
 };
 

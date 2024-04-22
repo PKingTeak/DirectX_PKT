@@ -55,7 +55,7 @@ void StageCamera::ChangeAnimation()
 			{
 				isCamOn = false;
 				CCTVBackGround::GetCCTVBackGround()->CCTVOFF();
-			
+				//CCTVCam->SetActive(false);
 			}
 			StageCameraRender->SetActive(true);
 			// 여기에 CCTV 배경을 넣을것이다. 

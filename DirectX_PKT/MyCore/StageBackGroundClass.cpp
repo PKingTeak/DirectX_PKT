@@ -18,12 +18,13 @@ StageBackGroundClass::StageBackGroundClass()
 	StageUIRenderer = CreateDefaultSubObject<USpriteRenderer>("UIRender");
 	StageUIRenderer->SetupAttachment(Default);
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
-	StageBackRender->SetAutoSize(1.0f, true);
+	StageBackRender->SetScale({ 1600,720 });
+		//SetAutoSize(1.2f, true);
 	StageBackRender->SetupAttachment(Default);
 
 	LeftBox = CreateDefaultSubObject<UCollision>("LeftBoxCol");
 	LeftBox->SetCollisionGroup(OrderType::UI);
-	LeftBox->SetScale(FVector{ 320,720 });
+	LeftBox->SetScale(FVector{ 420,720 });
 	LeftBox->SetCollisionType(ECollisionType::Rect);
 	LeftBox->AddPosition({ -200,0 });
 	LeftBox->SetupAttachment(Default);
@@ -33,7 +34,7 @@ StageBackGroundClass::StageBackGroundClass()
 	RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
 	RightBox->SetCollisionGroup(OrderType::UI);
 	RightBox->SetScale(FVector{ 320,720 });
-	RightBox->AddPosition({ 200,0 ,50 });
+	RightBox->AddPosition({ 400,0 });
 	RightBox->SetCollisionType(ECollisionType::Rect);
 	RightBox->SetupAttachment(Default);
 
@@ -70,18 +71,3 @@ StageBackGroundClass* StageBackGroundClass::GetMainStageBackGround()
 	return this;
 }
 
-void StageBackGroundClass::CheckColBox(UCollision* _ColBox) //마우스 클래스에서 사용할듯
-{
-	std::string BoxName =  _ColBox->GetName();
-	if (BoxName == "LeftBoxCol")
-	{
-		ColDir = true;
-		int a = 0;
-
-	}
-	else if (BoxName == "RightBoxCol")
-	{
-
-
-	}
-}

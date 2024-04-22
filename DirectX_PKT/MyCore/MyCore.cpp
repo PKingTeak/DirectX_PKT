@@ -75,6 +75,7 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
 		UEngineSprite::CreateCutting("Fan.png", 3, 1);
 		UEngineSprite::CreateCutting("StageCam.png", 4, 3);
+		UEngineSprite::CreateCutting("Button.png",4, 2);
 	
 
 		
@@ -100,8 +101,7 @@ void UMyCore::Initialize()
 	//	// UEngineSound::SoundPlay("anipang_ingame_wav.wav");
 	}
 
-	GEngine->CreateLevel<APlayGameMode>("PlayLevel");
-	GEngine->CreateLevel<ATitleGameMode>("TitleLevel");
+	
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
 	GEngine->CreateLevel<Stage>("StageLevel");
 	GEngine->ChangeLevel("Maintitle");

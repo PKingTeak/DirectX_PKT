@@ -20,11 +20,7 @@ public:
 	StageBackGroundClass& operator=(StageBackGroundClass&& _Other) noexcept = delete;
 
 	StageBackGroundClass* GetMainStageBackGround();
-	void CheckColBox(UCollision* _ColBox);
-	inline bool GetColDir()
-	{
-		return ColDir;
-	}
+	
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
