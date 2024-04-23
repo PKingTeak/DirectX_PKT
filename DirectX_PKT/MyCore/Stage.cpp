@@ -12,6 +12,7 @@
 #include <EngineCore/Camera.h>
 #include <EngineBase/EngineSerializer.h>
 #include "FishEyes.h"
+#include"Button.h"
 
 
 
@@ -35,7 +36,9 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
+	GetWorld()->SpawnActor<Button>("LeftButton");
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
+
 
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 

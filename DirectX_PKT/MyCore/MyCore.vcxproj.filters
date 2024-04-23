@@ -35,6 +35,9 @@
     <Filter Include="Level\Stage\Effect">
       <UniqueIdentifier>{24ea9bd3-0c25-429e-acec-fc813930c6be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Stage\Cam\Object">
+      <UniqueIdentifier>{4e08e10b-faec-444f-8d74-f1ef09464166}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -70,9 +73,6 @@
     <ClCompile Include="StageBackGroundClass.cpp">
       <Filter>Level\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Fan.cpp">
-      <Filter>Level\Stage</Filter>
-    </ClCompile>
     <ClCompile Include="Arrow.cpp">
       <Filter>UI</Filter>
     </ClCompile>
@@ -90,6 +90,12 @@
     </ClCompile>
     <ClCompile Include="FishEyes.cpp">
       <Filter>Level\Stage\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Fan.cpp">
+      <Filter>Level\Stage\Cam\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Level\Stage\Cam\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,9 +132,6 @@
     <ClInclude Include="StageBackGroundClass.h">
       <Filter>Level\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Fan.h">
-      <Filter>Level\Stage</Filter>
-    </ClInclude>
     <ClInclude Include="Arrow.h">
       <Filter>UI</Filter>
     </ClInclude>
@@ -146,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="FishEyes.h">
       <Filter>Level\Stage\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Fan.h">
+      <Filter>Level\Stage\Cam\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Level\Stage\Cam\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

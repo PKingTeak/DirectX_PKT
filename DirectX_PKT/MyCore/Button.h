@@ -16,6 +16,8 @@ public:
 	Button& operator=(const Button& _Other) = delete;
 	Button& operator=(Button&& _Other) noexcept = delete;
 
+	void MoveButton(FVector _SetPos);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -25,6 +27,8 @@ protected:
 private:
 
 	USpriteRenderer* ObjectRender = nullptr;
+	UCollision* DoorButton = nullptr;
+	UCollision* LightButton = nullptr;
 
 	void ButtonLight();
 	void ButtonDoor();

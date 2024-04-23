@@ -23,6 +23,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="CCTVBackGround.h" />
     <ClInclude Include="Fan.h" />
     <ClInclude Include="FishEyes.h" />
@@ -49,6 +50,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="CCTVBackGround.cpp" />
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FishEyes.cpp" />
