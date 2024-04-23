@@ -45,28 +45,37 @@ void Stage::BeginPlay()
 
 	{
 
-		LeftBox = CreateWidget<UImage>(GetWorld(), "LeftBox");
+		
+		
+		
+
+		//stage UI
 		ArrowUi = CreateWidget<UImage>(GetWorld(), "ArrowUI");
-		RightBox = CreateWidget<UImage>(GetWorld(), "RightBox");
-
-
-
 		ArrowUi->SetSprite("Arrow.png");
 		ArrowUi->SetAutoSize(1.0f, true);
 		ArrowUi->AddToViewPort(2);
 		ArrowUi->SetPosition({ -100,-320 });
 
-
+		LeftBox = CreateWidget<UImage>(GetWorld(), "LeftBox");
 		LeftBox->SetSprite("Void.png");
 		LeftBox->SetScale(FVector{ 500,1000 });
 		LeftBox->AddToViewPort(2);
 		LeftBox->SetPosition({ -400,0 });
 
+		RightBox = CreateWidget<UImage>(GetWorld(), "RightBox");
 		RightBox->SetSprite("Void.png");
 		RightBox->SetScale(FVector{ 500,1000 });
 		RightBox->AddToViewPort(2);
 		RightBox->SetPosition({ 440,0 });
 
+
+		// CCTV관련 UI
+		CCTVMap = CreateWidget<UImage>(GetWorld(), "CCTVMap");
+		CCTVMap->SetSprite("CCTVMap.png");
+		CCTVMap->AddToViewPort(2);
+		CCTVMap->SetAutoSize(1.0f, true);
+		CCTVMap->SetPosition(FVector{ 400,-150 });
+		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
 
 		{
 
@@ -131,6 +140,7 @@ void Stage::Tick(float _DeltaTime)
 		CameraMove(_DeltaTime);
 		LeftBox->SetActive(false);
 		RightBox->SetActive(false);
+		CCTVMap->SetActive(true);
 	}
 
 	if (false == StageCam->GetIsCameraOn())
@@ -138,6 +148,7 @@ void Stage::Tick(float _DeltaTime)
 		//ResetCamPos();
 		LeftBox->SetActive(true);
 		RightBox->SetActive(true);
+		CCTVMap->SetActive(false);
 	}
 	DebugGUI();
 	MainStageMove(_DeltaTime);
@@ -146,6 +157,8 @@ void Stage::Tick(float _DeltaTime)
 
 
 }
+
+
 void Stage::DebugGUI()
 {
 	{
@@ -174,6 +187,7 @@ void Stage::LevelStart(ULevel* _PrevLevel)
 
 void Stage::CameraMove(float _DeltaTime)
 {
+	//CCTV올라오고 난후 움직이는 함수
 	//카메라 좌우로 움직이기 
 	if (true == CamMove)
 	{

@@ -5,6 +5,7 @@
 #include<EngineCore/Widget.h>
 #include<EngineCore/Image.h>
 #include"StageCamera.h"
+#include<map>
 // Ό³Έν :
 class Stage : public AGameMode
 {
@@ -48,7 +49,11 @@ private:
 	UImage* ArrowUi = nullptr;
 	UImage* LeftBox = nullptr;
 	UImage* RightBox = nullptr;
+	UImage* CCTVMap = nullptr;
+	UImage* CCTVCams[11] = { nullptr, };
+	std::map<std::string,UImage*> CCTVCamUI;
 	
+	//void FindCCTVCam();
 
 };
 

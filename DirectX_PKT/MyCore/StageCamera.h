@@ -23,6 +23,7 @@ public:
 	void ChangeAnimation();
 	inline bool GetIsCameraOn()
 	{
+		//CCTV카메라 켜져있는지 채크하는 함수
 		return isCamOn;
 	}
 
