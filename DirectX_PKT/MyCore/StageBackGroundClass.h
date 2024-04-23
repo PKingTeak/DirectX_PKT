@@ -3,9 +3,12 @@
 #include<EngineCore/Actor.h>
 #include<EngineCore/Renderer.h>
 #include<EngineCore/SpriteRenderer.h>
+#include<iostream>
 #include"Arrow.h"
+
 class StageBackGroundClass : public AActor
 {
+	
 private:
 	static StageBackGroundClass* MainStageBackGround;
 	GENERATED_BODY(AActor)
@@ -21,6 +24,8 @@ public:
 
 	StageBackGroundClass* GetMainStageBackGround();
 	
+	void ChangeBackGround();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -28,14 +33,11 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
+	int DelayTime = 0;
 	std::vector<AActor> UIInfo;
 	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
-	USpriteRenderer* StageUIRenderer = nullptr;
 	
-	UCollision* LeftBox = nullptr;
-	UCollision* RightBox = nullptr;
-	Arrow* UIArrow = nullptr;
 	bool ColDir = false;
 
 

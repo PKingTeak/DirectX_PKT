@@ -4,8 +4,8 @@
 #include<string_view>
 enum class OrderType
 {
-	Object,
 	BackGround,
+	Object,
 	UI,
 	Mouse
 

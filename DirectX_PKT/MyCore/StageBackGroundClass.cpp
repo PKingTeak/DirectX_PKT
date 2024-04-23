@@ -7,36 +7,29 @@
 StageBackGroundClass* StageBackGroundClass::MainStageBackGround = nullptr;
 
 
+
 StageBackGroundClass::StageBackGroundClass()
 {
+
 	MainStageBackGround = this;
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Defualt");
 	Default->SetPosition(FVector{ 0,0 });
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Render");
 	Renderer->SetupAttachment(Default);
-	StageUIRenderer = CreateDefaultSubObject<USpriteRenderer>("UIRender");
-	StageUIRenderer->SetupAttachment(Default);
+
+
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
 	StageBackRender->SetScale({ 1600,720 });
-		//SetAutoSize(1.2f, true);
+	StageBackRender->SetSprite("OneOffice.png");
+	//StageBackRender->SetPosition({ 0,0 });
+	StageBackRender->SetOrder(OrderType::BackGround);
+	StageBackRender->CreateAnimation("LeftLightAnimation", "Office.png", 0.1f, false, 0, 2);
+		//SetAutoSize(1.0f, true);
+		//
+	
 	StageBackRender->SetupAttachment(Default);
 
-	LeftBox = CreateDefaultSubObject<UCollision>("LeftBoxCol");
-	LeftBox->SetCollisionGroup(OrderType::UI);
-	LeftBox->SetScale(FVector{ 420,720 });
-	LeftBox->SetCollisionType(ECollisionType::Rect);
-	LeftBox->AddPosition({ -200,0 });
-	LeftBox->SetupAttachment(Default);
-	
-
-
-	RightBox = CreateDefaultSubObject<UCollision>("RightBoxBoxCol");
-	RightBox->SetCollisionGroup(OrderType::UI);
-	RightBox->SetScale(FVector{ 320,720 });
-	RightBox->AddPosition({ 400,0 });
-	RightBox->SetCollisionType(ECollisionType::Rect);
-	RightBox->SetupAttachment(Default);
 
 
 
@@ -50,13 +43,10 @@ StageBackGroundClass::~StageBackGroundClass()
 }
 void StageBackGroundClass::BeginPlay()
 {
+	MainStageBackGround = this;
 	Super::BeginPlay();
 	
 
-	StageBackRender->SetSprite("OneOffice.png");
-	StageBackRender->SetOrder(5);
-
-	
 	
 }
 
@@ -64,10 +54,36 @@ void StageBackGroundClass::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	
+	
 }
 
 StageBackGroundClass* StageBackGroundClass::GetMainStageBackGround()
 {
-	return this;
+	return MainStageBackGround;
+}
+
+void StageBackGroundClass::ChangeBackGround()
+{
+	StageBackRender->ChangeAnimation("LeftLightAnimation");
+	StageBackRender->SetFrameCallback("LeftLightAnimation", 2, [=]
+		{
+			
+			while (DelayTime < 5)
+			{
+				DelayTime += 1;
+				StageBackRender->SetSprite("Office.png", 2);
+				if (DelayTime >= 3)
+				{
+					StageBackRender->SetSprite("Office.png", 1);
+					break;
+				}
+			}
+			
+			
+			
+			
+		});
+
+
 }
 

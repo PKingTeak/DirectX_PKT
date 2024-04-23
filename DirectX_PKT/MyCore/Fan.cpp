@@ -19,7 +19,7 @@ void Fan::BeginPlay()
 	//SetActorScale3D(FVector(132.0f, 200.0f, 100.0f)); //직교 투영에서는 의미가 없다. 
 
 	ObjectRender->SetAutoSize(1.0f, true);
-	SetActorLocation(FVector(47.61f, -40.0f));
+	SetActorLocation(FVector(47.61f, -41.0f));
 	ObjectRender->CreateAnimation("FanAnimation", "Fan.png", 0, 2, 0.001f, true);
 	ObjectRender->ChangeAnimation("FanAnimation");
 	ObjectRender->SetOrder(10);

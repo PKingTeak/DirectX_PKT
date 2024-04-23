@@ -76,7 +76,8 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Fan.png", 3, 1);
 		UEngineSprite::CreateCutting("StageCam.png", 4, 3);
 		UEngineSprite::CreateCutting("Button.png",4, 2);
-	
+		UEngineSprite::CreateCutting("Office.png", 1, 11);
+		//UEngineSprite::CreateCutting("LightMap.png", 1, 4);
 
 		
 	}

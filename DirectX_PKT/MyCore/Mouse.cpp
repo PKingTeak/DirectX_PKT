@@ -5,6 +5,7 @@
 #include<EngineCore/DefaultSceneComponent.h>
 #include<string.h>
 #include"StageBackGroundClass.h"
+#include<EnginePlatform/EngineInput.h>
 
 Mouse::Mouse()
 {
@@ -34,6 +35,7 @@ void Mouse::BeginPlay()
 {
 
 	Super::BeginPlay();
+	//StageBackGround->GetMainStageBackGround();
 	
 }
 	
@@ -41,23 +43,29 @@ void Mouse::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	SetMousePos();
-
-	MouseCollision->CollisionEnter(OrderType::UI, [=](std::shared_ptr<UCollision>_Collision)
+	MouseCollision->CollisionStay(OrderType::Object, [=](std::shared_ptr<UCollision>_Collision)
 		{
-			std::string objectType = _Collision->GetActor()->GetName();
-			if ("LeftBoxCol" == objectType)
+			
+			std::string objectType = _Collision->GetName(); // 이걸로 해야 collsion을 읽어올수 있다. 
+			if ("LeftDoorButton" == objectType)
 			{
-								
+				
+
+				int a = 0;
 
 			}
-			// 이거 이제 stage화면에서 화면 이동할때 박스들이랑 충돌구현 할때 사용할것. 
-			// 
-			//if ("Arrow" == _Collision->GetActor()->GetName())
-			//{
-			//	int b  = _Collision->GetActor()->GetOrder();
-			//	std::shared_ptr<Arrow> Actor = GetWorld()->SpawnActor<Arrow>("Arrow");
-			//	Actor->ChangeCam();
-			//}
+			if (objectType._Equal("LeftLightButton"))
+			{
+				if (UEngineInput::IsDown(VK_LBUTTON))
+				{
+				StageBackGround->GetMainStageBackGround()->ChangeBackGround();
+				}
+				int a = 0;
+			
+				
+			}
+
+			
 		}
 	);
 		
