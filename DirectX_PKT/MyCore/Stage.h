@@ -56,6 +56,7 @@ private:
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
+	
 
 };
 

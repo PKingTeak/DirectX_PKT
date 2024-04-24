@@ -34,6 +34,7 @@ public:
 	{
 		return CamMode;
 	}
+	void ChangeCam(std::string _UICamName);
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

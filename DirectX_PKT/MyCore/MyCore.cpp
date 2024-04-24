@@ -81,6 +81,7 @@ void UMyCore::Initialize()
 		//CCTVCams
 		UEngineSprite::CreateCutting("Cam1A.png", 2,1);
 		UEngineSprite::CreateCutting("Cam1B.png", 2,1);
+		UEngineSprite::CreateCutting("Cam1C.png", 2,1);
 		UEngineSprite::CreateCutting("Cam2A.png", 2,1);
 		UEngineSprite::CreateCutting("Cam2B.png", 2,1);
 		UEngineSprite::CreateCutting("Cam3.png", 2,1);

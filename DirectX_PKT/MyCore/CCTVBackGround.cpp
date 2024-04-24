@@ -54,3 +54,11 @@ void CCTVBackGround::CCTVOFF()
 	CCTVBackGroundRender->SetActive(false);
 	CamMode = false;
 }
+
+
+void CCTVBackGround::ChangeCam(std::string _UICamName)
+{	
+	std::string SpriteName = _UICamName.append(".png");
+	
+	CCTVBackGroundRender->SetSprite(SpriteName);
+}

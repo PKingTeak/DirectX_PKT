@@ -85,12 +85,33 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "Cam1A");
 		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png",0);
 		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni","Cam1A.png",0.5f,true,0,1);
-		
+		CCTVCamUI["Cam1A"]->SetPosition(FVector{ 370,0});
 		CCTVCamUI["Cam1A"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam1A"]->AddToViewPort(2);
 
 
-		//CCTVCamUI["Cam1A"]->SetPosition(FVector{ 400,-150 });
+		CCTVCamUI["Cam1B"] = CreateWidget<UImage>(GetWorld(), "Cam1B");
+		CCTVCamUI["Cam1B"]->SetSprite("Cam1B.png", 0);
+		CCTVCamUI["Cam1B"]->CreateAnimation("Cam1BAni", "Cam1B.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam1B"]->SetPosition(FVector{ 370,-50 });
+		CCTVCamUI["Cam1B"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam1B"]->AddToViewPort(2);
+
+		CCTVCamUI["Cam1C"] = CreateWidget<UImage>(GetWorld(), "Cam1C");
+		CCTVCamUI["Cam1C"]->SetSprite("Cam1C.png", 0);
+		CCTVCamUI["Cam1C"]->CreateAnimation("Cam1CAni", "Cam1C.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam1C"]->SetPosition(FVector{ 280,-100 });
+		CCTVCamUI["Cam1C"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam1C"]->AddToViewPort(2);
+
+		CCTVCamUI["Cam5"] = CreateWidget<UImage>(GetWorld(), "Cam5");
+		CCTVCamUI["Cam5"]->SetSprite("Cam5.png", 0);
+		CCTVCamUI["Cam5"]->CreateAnimation("Cam5Ani", "Cam5.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam5"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam5"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam5"]->AddToViewPort(2);
+
+	
 
 		{
 
@@ -110,7 +131,7 @@ void Stage::BeginPlay()
 			{
 				//CamMove = true;
 				CamLeftMove = true;
-				//MouseCamInfo = leftbox
+			
 				
 			}
 
@@ -126,9 +147,17 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam1A"]->SetDown([=]()
 			{
 				ClickCamUI("Cam1A");
-				MouseCamInfo = GetName();
 				//CCTVCamUI["Cam1A"]->ChangeAnimation("Cam1AAni");
 			}
+		);
+
+		CCTVCamUI["Cam1B"]->SetDown([=]()
+			{
+				ClickCamUI("Cam1B");
+				
+			
+			}
+
 		);
 
 
@@ -288,4 +317,5 @@ void Stage::ClickCamUI(std::string _CamName)
 	
 	
 	CCTVCamUI.find(_CamName)->second->ChangeAnimation(UIName);
+	//해당 UI는 애니메이션을 바꿀꺼
 }
