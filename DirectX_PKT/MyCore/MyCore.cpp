@@ -77,7 +77,19 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("StageCam.png", 4, 3);
 		UEngineSprite::CreateCutting("Button.png",4, 2);
 		UEngineSprite::CreateCutting("Office.png", 1, 11);
-		
+
+		//CCTVCams
+		UEngineSprite::CreateCutting("Cam1A.png", 2,1);
+		UEngineSprite::CreateCutting("Cam1B.png", 2,1);
+		UEngineSprite::CreateCutting("Cam2A.png", 2,1);
+		UEngineSprite::CreateCutting("Cam2B.png", 2,1);
+		UEngineSprite::CreateCutting("Cam3.png", 2,1);
+		UEngineSprite::CreateCutting("Cam4A.png", 2,1);
+		UEngineSprite::CreateCutting("Cam4B.png", 2,1);
+		UEngineSprite::CreateCutting("Cam5.png", 2,1);
+		UEngineSprite::CreateCutting("Cam6.png", 2,1);
+		UEngineSprite::CreateCutting("Cam7.png", 2,1);
+
 		//UEngineSprite::CreateCutting("LightMap.png", 1, 4);
 
 		

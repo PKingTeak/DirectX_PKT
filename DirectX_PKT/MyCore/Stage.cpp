@@ -75,9 +75,22 @@ void Stage::BeginPlay()
 		CCTVMap->AddToViewPort(2);
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
-
+		
+		
 
 		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
+		CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
+		CCTVCamUI.insert({ "Cam3A",CCTVCams[2] });
+
+		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "Cam1A");
+		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png",0);
+		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni","Cam1A.png",0.5f,true,0,1);
+		
+		CCTVCamUI["Cam1A"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam1A"]->AddToViewPort(2);
+
+
+		//CCTVCamUI["Cam1A"]->SetPosition(FVector{ 400,-150 });
 
 		{
 
@@ -97,6 +110,8 @@ void Stage::BeginPlay()
 			{
 				//CamMove = true;
 				CamLeftMove = true;
+				//MouseCamInfo = leftbox
+				
 			}
 
 		);
@@ -107,6 +122,15 @@ void Stage::BeginPlay()
 			}
 
 		);
+
+		CCTVCamUI["Cam1A"]->SetDown([=]()
+			{
+				ClickCamUI("Cam1A");
+				MouseCamInfo = GetName();
+				//CCTVCamUI["Cam1A"]->ChangeAnimation("Cam1AAni");
+			}
+		);
+
 
 
 		RightBox->SetHover([=]()
@@ -123,6 +147,11 @@ void Stage::BeginPlay()
 			}
 		);
 
+		//ClickCamUI();
+
+		
+
+
 		
 
 	}
@@ -134,6 +163,7 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	float4 Mouse = GEngine->EngineWindow.GetScreenMousePos();
 
 
 	if (true == CCTVPtr->GetCamMode())
@@ -173,6 +203,7 @@ void Stage::DebugGUI()
 		std::string Msg = std::format("CamPos: {}\n", Camera->GetActorLocation().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
+
 
 }
 
@@ -247,4 +278,14 @@ void Stage::ResetCamPos()
 	Camera->SetActorLocation({ 0,0,-100 });
 	CamMove = false;
 	CamLeftMove = false;
+}
+
+void Stage::ClickCamUI(std::string _CamName)
+{
+
+	MouseCamInfo = _CamName;
+	std::string UIName = MouseCamInfo.append("Ani");
+	
+	
+	CCTVCamUI.find(_CamName)->second->ChangeAnimation(UIName);
 }

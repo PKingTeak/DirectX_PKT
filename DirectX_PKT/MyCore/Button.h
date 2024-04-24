@@ -54,6 +54,7 @@ private:
 	bool RightLight = false;
 	bool RightDoor = false;
 
+	
 
 
 };
