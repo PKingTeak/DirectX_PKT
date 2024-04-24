@@ -6,6 +6,7 @@
 #include<string.h>
 #include"StageBackGroundClass.h"
 #include<EnginePlatform/EngineInput.h>
+#include"Button.h"
 
 Mouse::Mouse()
 {
@@ -47,7 +48,7 @@ void Mouse::Tick(float _DeltaTime)
 		{
 			
 			std::string objectType = _Collision->GetName(); // 이걸로 해야 collsion을 읽어올수 있다. 
-			if ("LeftDoorButton" == objectType)
+			if (objectType._Equal("LeftDoorButton"))
 			{
 				
 
@@ -58,7 +59,9 @@ void Mouse::Tick(float _DeltaTime)
 			{
 				if (UEngineInput::IsDown(VK_LBUTTON))
 				{
+
 				StageBackGround->GetMainStageBackGround()->ChangeBackGround();
+				ButtonClass->GetMainButton()->ButtonLight(objectType);
 				}
 				int a = 0;
 			

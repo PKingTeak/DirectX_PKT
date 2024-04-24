@@ -3,6 +3,8 @@
 #include "Stage.h"
 #include<EngineCore/DefaultSceneComponent.h>
 #include"MyCore.h"
+
+Button* Button::MainButton = nullptr;
 Button::Button()
 {
 
@@ -78,6 +80,8 @@ Button::~Button()
 }
 void Button::BeginPlay()
 {
+	MainButton = this;
+
 	Super::BeginPlay();
 	
 	SetActorLocation(FVector{ 0,0, });
@@ -93,15 +97,25 @@ void Button::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+
 }
 
-void Button::ButtonLight()
+void Button::ButtonLight(std::string _ButtonName)
 {
-	
+	if (_ButtonName._Equal("LeftLightButton"))
+	{
+		LeftButtonRender->SetSprite("Button.png",1);
+		LeftLight = true;
+
+	}
+	else if(_ButtonName._Equal("RightLightButton"))
+	{
+		RightLight = true;
+	}
 	//BackStageGround::ChageBackGround();
 }
 
-void Button::ButtonDoor()
+void Button::ButtonDoor(std::string _ButtonName)
 {
 	
 }

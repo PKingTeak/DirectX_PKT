@@ -6,7 +6,10 @@
 class BackStageGround;
 class Button : public AActor
 {
+private:
+	static Button* MainButton;
 	
+
 	GENERATED_BODY(AActor)
 public:
 	Button();
@@ -20,10 +23,20 @@ public:
 
 	void MoveButton(FVector _SetPos);
 	void ButtonClick();
+	void ButtonLight(std::string _ButtonName);
+	void ButtonDoor(std::string _ButtonName);
+
+	inline Button* GetMainButton()
+	{
+		return MainButton;
+	}
+
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	
+
+
 	void RendererOff();
 	void RendererOn();
 private:
@@ -36,7 +49,12 @@ private:
 	UCollision* RightDoorButton = nullptr;
 	UCollision* RightLightButton = nullptr;
 
-	void ButtonLight();
-	void ButtonDoor();
+	bool LeftLight = false;
+	bool LeftDoor = false;
+	bool RightLight = false;
+	bool RightDoor = false;
+
+
+
 };
 

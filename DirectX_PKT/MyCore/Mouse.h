@@ -6,6 +6,7 @@
 #include"Arrow.h"
 // Ό³Έν :
 class StageBackGroundClass;
+class Button;
 class Mouse : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -28,6 +29,7 @@ protected:
 private:
 
 	std::shared_ptr<StageBackGroundClass> StageBackGround;
+	std::shared_ptr<Button> ButtonClass;
 	void MouseClick(OrderType _OrderType);
 	void MouseActive();
 	void SetMousePos();

@@ -75,6 +75,8 @@ void Stage::BeginPlay()
 		CCTVMap->AddToViewPort(2);
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
+
+
 		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
 
 		{
