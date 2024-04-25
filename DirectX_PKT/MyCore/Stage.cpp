@@ -15,6 +15,8 @@
 #include"Button.h"
 
 
+bool Stage::IsCamOn = false;
+
 
 Stage::Stage()
 {
@@ -29,6 +31,7 @@ void Stage::BeginPlay()
 {
 
 	GetWorld()->GetMainCamera()->GetCameraTarget()->AddEffect<FishEyes>();
+	//효과
 	Super::BeginPlay();
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
@@ -45,9 +48,6 @@ void Stage::BeginPlay()
 
 	{
 
-		
-		
-		
 
 		//stage UI
 		ArrowUi = CreateWidget<UImage>(GetWorld(), "ArrowUI");
@@ -75,43 +75,64 @@ void Stage::BeginPlay()
 		CCTVMap->AddToViewPort(2);
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
-		
-		
+
+
 
 		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
 		CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
 		CCTVCamUI.insert({ "Cam3A",CCTVCams[2] });
 
-		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "Cam1A");
-		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png",0);
-		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni","Cam1A.png",0.5f,true,0,1);
-		CCTVCamUI["Cam1A"]->SetPosition(FVector{ 370,0});
+		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "ShowRoom");
+		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png", 0);
+		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni", "Cam1A.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam1A"]->SetPosition(FVector{ 370,0 });
 		CCTVCamUI["Cam1A"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam1A"]->AddToViewPort(2);
 
 
-		CCTVCamUI["Cam1B"] = CreateWidget<UImage>(GetWorld(), "Cam1B");
+		CCTVCamUI["Cam1B"] = CreateWidget<UImage>(GetWorld(), "HallDining");
 		CCTVCamUI["Cam1B"]->SetSprite("Cam1B.png", 0);
 		CCTVCamUI["Cam1B"]->CreateAnimation("Cam1BAni", "Cam1B.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam1B"]->SetPosition(FVector{ 370,-50 });
 		CCTVCamUI["Cam1B"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam1B"]->AddToViewPort(2);
 
-		CCTVCamUI["Cam1C"] = CreateWidget<UImage>(GetWorld(), "Cam1C");
+		CCTVCamUI["Cam1C"] = CreateWidget<UImage>(GetWorld(), "PirateRoom");
 		CCTVCamUI["Cam1C"]->SetSprite("Cam1C.png", 0);
 		CCTVCamUI["Cam1C"]->CreateAnimation("Cam1CAni", "Cam1C.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam1C"]->SetPosition(FVector{ 280,-100 });
 		CCTVCamUI["Cam1C"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam1C"]->AddToViewPort(2);
 
-		CCTVCamUI["Cam5"] = CreateWidget<UImage>(GetWorld(), "Cam5");
+		CCTVCamUI["Cam5"] = CreateWidget<UImage>(GetWorld(), "BackStage");
 		CCTVCamUI["Cam5"]->SetSprite("Cam5.png", 0);
 		CCTVCamUI["Cam5"]->CreateAnimation("Cam5Ani", "Cam5.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam5"]->SetPosition(FVector{ 250,-50 });
 		CCTVCamUI["Cam5"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam5"]->AddToViewPort(2);
 
-	
+		CCTVCamUI["Cam7"] = CreateWidget<UImage>(GetWorld(), "RestRoom");
+		CCTVCamUI["Cam7"]->SetSprite("Cam7.png", 0);
+		CCTVCamUI["Cam7"]->CreateAnimation("Cam7Ani", "Cam7.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam7"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam7"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam7"]->AddToViewPort(2);
+
+		CCTVCamUI["Cam3"] = CreateWidget<UImage>(GetWorld(), "SupplyCloset");
+		CCTVCamUI["Cam3"]->SetSprite("Cam3.png", 0);
+		CCTVCamUI["Cam3"]->CreateAnimation("Cam3Ani", "Cam3.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam3"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam3"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam3"]->AddToViewPort(2);
+
+		//Cam6 은 거의 검은 화면만 보이게 구현할 예정 
+		CCTVCamUI["Cam6"] = CreateWidget<UImage>(GetWorld(), "KittenRoom");
+		CCTVCamUI["Cam6"]->SetSprite("Cam6.png", 0);
+		CCTVCamUI["Cam6"]->CreateAnimation("Cam6Ani", "Cam6.png", 0.5f, true, 0, 1);
+		CCTVCamUI["Cam6"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam6"]->SetAutoSize(1.0f, true);
+		CCTVCamUI["Cam6"]->AddToViewPort(2);
+
 
 		{
 
@@ -126,13 +147,12 @@ void Stage::BeginPlay()
 				});
 
 		}
-
 		LeftBox->SetHover([=]()
 			{
 				//CamMove = true;
 				CamLeftMove = true;
-			
-				
+
+
 			}
 
 		);
@@ -144,24 +164,33 @@ void Stage::BeginPlay()
 
 		);
 
+
 		CCTVCamUI["Cam1A"]->SetDown([=]()
 			{
-				ClickCamUI("Cam1A");
-				//CCTVCamUI["Cam1A"]->ChangeAnimation("Cam1AAni");
+				if (IsCamOn == false)
+				{
+					ClickCamUI("Cam1A");
+					IsCamOn = true;
+				}
 			}
 		);
 
+		//CamInteract(CamName);
 		CCTVCamUI["Cam1B"]->SetDown([=]()
 			{
-				ClickCamUI("Cam1B");
-				
-			
+				if (IsCamOn == false)
+				{
+					PrevCam = CCTVCamUI["Cam1B"]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
+					ClickCamUI("Cam1B"); //이미지 바뀌는것도 넣어줘야 함 
+					ChageCam();
+					IsCamOn = true;
+				}
 			}
 
 		);
 
 
-
+		//로비에서 카메라가 좌우로 움직일수 있게 하기 위함
 		RightBox->SetHover([=]()
 			{
 				//CamMove = true;
@@ -171,17 +200,19 @@ void Stage::BeginPlay()
 
 		RightBox->SetUnHover([=]()
 			{
+
 				CamMove = false;
 				CameRightMove = false;
+
 			}
 		);
 
 		//ClickCamUI();
 
-		
 
 
-		
+
+
 
 	}
 
@@ -192,7 +223,6 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	float4 Mouse = GEngine->EngineWindow.GetScreenMousePos();
 
 
 	if (true == CCTVPtr->GetCamMode())
@@ -314,8 +344,22 @@ void Stage::ClickCamUI(std::string _CamName)
 
 	MouseCamInfo = _CamName;
 	std::string UIName = MouseCamInfo.append("Ani");
-	
-	
 	CCTVCamUI.find(_CamName)->second->ChangeAnimation(UIName);
 	//해당 UI는 애니메이션을 바꿀꺼
 }
+
+void Stage::ChageCam()
+{
+	if (PrevCam == nullptr)
+	{
+		return;
+	}
+	std::string CamName = PrevCam->GetName();
+	CCTVPtr->ChangeCam(CamName);
+	//CCTVCamUI.find(CamName)->second->SetSprite(CamImage);
+	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
+
+}
+
+
+

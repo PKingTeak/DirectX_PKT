@@ -10,6 +10,8 @@
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
+	static bool IsCamOn;
+	
 public:
 	// constrcuter destructer
 	Stage();
@@ -27,6 +29,8 @@ protected:
 	void LevelEnd(ULevel* _NextLevel);
 	void LevelStart(ULevel* _PrevLevel);
 private:
+
+	void ChageCam();
 
 	//Camera
 	void ResetCamPos();
@@ -51,11 +55,15 @@ private:
 	UImage* RightBox = nullptr;
 	UImage* CCTVMap = nullptr;
 	UImage* CCTVCams[11] = { nullptr, };
+	UImage* PrevCam = nullptr;
 	std::map<std::string,UImage*> CCTVCamUI;
 	std::string MouseCamInfo = " ";
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
+
+
+
 	
 
 };
