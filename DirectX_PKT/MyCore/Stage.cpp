@@ -76,12 +76,6 @@ void Stage::BeginPlay()
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
 
-
-
-		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
-		CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
-		CCTVCamUI.insert({ "Cam3A",CCTVCams[2] });
-
 		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "ShowRoom");
 		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png", 0);
 		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni", "Cam1A.png", 0.5f, true, 0, 1);
@@ -134,6 +128,10 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam6"]->AddToViewPort(2);
 
 
+		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
+		CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
+		CCTVCamUI.insert({ "Cam3A",CCTVCams[2] });
+
 		{
 
 			ArrowUi->SetHover([=]()
@@ -169,7 +167,9 @@ void Stage::BeginPlay()
 			{
 				if (IsCamOn == false)
 				{
+					PrevCam = CCTVCamUI["Cam1A"]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
 					ClickCamUI("Cam1A");
+					ChageCam();
 					IsCamOn = true;
 				}
 			}
@@ -362,4 +362,22 @@ void Stage::ChageCam()
 }
 
 
+
+void Stage::ClickTest(std::map<std::string, UImage*> _CCTVMap)
+{
+	//
+	// +CCTVCamUI.find()
+	CCTVCamUI["Cam1A"]->SetDown([=]()
+		{
+			if (IsCamOn == false)
+			{
+				PrevCam = CCTVCamUI["Cam1A"]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
+				ClickCamUI("Cam1A");
+				ChageCam();
+				IsCamOn = true;
+			}
+		}
+	);
+
+}
 

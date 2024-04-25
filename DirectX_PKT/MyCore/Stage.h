@@ -61,6 +61,7 @@ private:
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
+	void ClickTest(std::map<std::string, UImage*> _CCTVMap);
 
 
 
