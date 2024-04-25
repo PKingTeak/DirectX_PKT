@@ -50,6 +50,8 @@ Button::Button()
 	//그 움직여서 옮기 자리가 결국 0,0 이 되는것이다. 
 	RightButtonRender->SetOrder(OrderType::Object);
 	RightButtonRender->SetupAttachment(Defualt);
+	RightButtonRender->SetPosition(FVector{ 740,-70 });
+
 
 
 	RightDoorButton = CreateDefaultSubObject<UCollision>("RightDoorButton");

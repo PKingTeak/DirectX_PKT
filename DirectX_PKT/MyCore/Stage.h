@@ -56,12 +56,15 @@ private:
 	UImage* CCTVMap = nullptr;
 	UImage* CCTVCams[11] = { nullptr, };
 	UImage* PrevCam = nullptr;
+	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
 	std::map<std::string,UImage*> CCTVCamUI;
 	std::string MouseCamInfo = " ";
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
-	void ClickTest(std::map<std::string, UImage*> _CCTVMap);
+	void CamInteract();
+	void CCTVUpdate();
+
 
 
 
