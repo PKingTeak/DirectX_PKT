@@ -164,7 +164,7 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam4B"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam4B"]->AddToViewPort(2);
 
-
+		//Map에 insert 해서 값 보관
 		CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
 		CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
 		CCTVCamUI.insert({ "Cam3",CCTVCams[2] }); // supply
@@ -383,7 +383,7 @@ void Stage::ChageCam()
 	}
 	std::string CamName = PrevCam->GetName();
 	CCTVPtr->ChangeCam(CamName);
-	//CCTVCamUI.find(CamName)->second->SetSprite(CamImage);
+	CCTVCamUI.find(CamName)->second->SetSprite();
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
 }
@@ -412,7 +412,7 @@ for (std::string NameFirst : Name)
 				}
 				ChageCam();
 
-				int a = 0;
+				
 				
 			}
 			
