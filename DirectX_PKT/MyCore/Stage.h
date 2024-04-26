@@ -64,7 +64,7 @@ private:
 	void ClickCamUI(std::string _CamName);
 	void CamInteract();
 	void CCTVUpdate();
-
+	void CCTVUIGreenCheck();
 
 
 

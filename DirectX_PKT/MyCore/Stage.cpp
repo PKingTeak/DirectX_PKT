@@ -383,7 +383,7 @@ void Stage::ChageCam()
 	}
 	std::string CamName = PrevCam->GetName();
 	CCTVPtr->ChangeCam(CamName);
-	CCTVCamUI.find(CamName)->second->SetSprite();
+	//CCTVCamUI.find(CamName)->second->SetSprite(CamImage);
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
 }
@@ -421,6 +421,23 @@ for (std::string NameFirst : Name)
 	);
 }
 
+
+
 	
 }
+void Stage::CCTVUIGreenCheck()
+{
+	if (PrevCam == nullptr)
+	{
+		return;
+	}
 
+	if (MouseCamInfo != PrevCam->GetName())
+	{
+		PrevCam;
+
+	}
+	
+
+
+}

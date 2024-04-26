@@ -43,6 +43,9 @@
     <ClCompile Include="EngineTime.cpp">
       <Filter>Time</Filter>
     </ClCompile>
+    <ClCompile Include="EngineThread.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineDebug.h">
@@ -87,6 +90,9 @@
     <ClInclude Include="EngineTime.h">
       <Filter>Time</Filter>
     </ClInclude>
+    <ClInclude Include="EngineThread.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Debug">
@@ -109,6 +115,9 @@
     </Filter>
     <Filter Include="Time">
       <UniqueIdentifier>{2af65220-6c0b-4967-9c1d-8cb92d492398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{25b1752a-01ee-4d27-8102-f66b23598dac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

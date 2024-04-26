@@ -38,8 +38,10 @@ public:
 
 // Ό³Έν :
 class UEngineTexture;
+class USpriteInstancingRender;
 class USpriteRenderer : public URenderer
 {
+	friend USpriteInstancingRender;
 	GENERATED_BODY(URenderer);
 
 public:
@@ -60,18 +62,24 @@ public:
 
 	void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<float> _Inter, std::vector<int> _Frame, bool _Loop = true);
 	
-	void ChangeAnimation(std::string_view _AnimationName);
+	void ChangeAnimation(std::string_view _AnimationName, int StartFrame = 0);
 
 	void SetAutoSize(float _ScaleRatio, bool _AutoSize);
 	void SetSpriteInfo(const FSpriteInfo& _Info);
 
 	void SetFrameCallback(std::string_view _AnimationName, int _Index, std::function<void()> _Function);
+	void SetLastFrameCallback(std::string_view _AnimationName, std::function<void()> _Function);
 
 	void SetDir(EEngineDir _Dir);
 
 	inline EEngineDir GetDir() const
 	{
 		return Dir;
+	}
+
+	inline void AnimationReset()
+	{
+		CurAnimation = nullptr;
 	}
 
 	bool IsCurAnimationEnd();
@@ -107,6 +115,11 @@ public:
 		SetSpriteInfo(CurInfo);
 		CurAnimation = nullptr;
 	}
+
+	void SetVertexUVPlus(float4 _UVPlus)
+	{
+		VertexUVValue.PlusUV = _UVPlus;
+	}
 	
 protected:
 	void Tick(float _DeltaTime) override;
@@ -123,6 +136,7 @@ private:
 	std::shared_ptr<USpriteAnimation> CurAnimation = nullptr;
 	ETextureSampling SamplingValue = ETextureSampling::POINT;
 
+	FVertexUV VertexUVValue;
 	FResultColorValue ColorData;
 	FCuttingData CuttingDataValue;
 };
