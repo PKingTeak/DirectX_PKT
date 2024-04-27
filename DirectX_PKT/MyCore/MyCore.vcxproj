@@ -37,6 +37,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="ScanLine.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageBackGroundClass.h" />
     <ClInclude Include="StageCamera.h" />
@@ -69,6 +70,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ScanLine.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageBackGroundClass.cpp" />
     <ClCompile Include="StageCamera.cpp" />

@@ -97,6 +97,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>Level\Stage\Cam\Object</Filter>
     </ClCompile>
+    <ClCompile Include="ScanLine.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -155,6 +158,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Level\Stage\Cam\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ScanLine.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

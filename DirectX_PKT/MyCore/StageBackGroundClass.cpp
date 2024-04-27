@@ -25,6 +25,9 @@ StageBackGroundClass::StageBackGroundClass()
 	//StageBackRender->SetPosition({ 0,0 });
 	StageBackRender->SetOrder(OrderType::BackGround);
 	StageBackRender->CreateAnimation("LeftLightAnimation", "Office.png", 0.1f, false, 0, 2);
+
+
+
 		//SetAutoSize(1.0f, true);
 		//
 	

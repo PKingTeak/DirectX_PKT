@@ -3,6 +3,7 @@
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
 
+
 // Ό³Έν :
 class CCTVBackGround : public AActor
 {
@@ -30,6 +31,7 @@ public:
 	
 	void CCTVON();
 	void CCTVOFF();
+	void StartScanLine();
 	inline bool GetCamMode()
 	{
 		return CamMode;
@@ -45,7 +47,7 @@ private:
 	USpriteRenderer* CCTVBackGroundRender = nullptr;
 	bool CamMode;
 
-
+	
 
 
 

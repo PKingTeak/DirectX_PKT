@@ -6,6 +6,7 @@
 #include<iostream>
 #include"Arrow.h"
 
+class ScanLine;
 class StageBackGroundClass : public AActor
 {
 	
@@ -40,6 +41,8 @@ private:
 	
 	bool ColDir = false;
 
+	
+	
 
 };
 

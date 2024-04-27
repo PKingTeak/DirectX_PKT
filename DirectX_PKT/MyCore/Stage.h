@@ -6,7 +6,9 @@
 #include<EngineCore/Image.h>
 #include"StageCamera.h"
 #include<map>
+
 // 설명 :
+class ScanLine;
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -42,8 +44,8 @@ private:
 	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
-	CCTVBackGround* CCTVPtr = nullptr;
-	std::shared_ptr<UCamera> Camera;
+	CCTVBackGround* CCTVPtr = nullptr; //화면 전환해주는 포인터 CCTV화면
+	std::shared_ptr<UCamera> Camera; // 레벨 메인 카메라
 	bool MoveEnd = false;
 	//
 	// Object
@@ -56,17 +58,23 @@ private:
 	UImage* CCTVMap = nullptr;
 	UImage* CCTVCams[11] = { nullptr, };
 	UImage* PrevCam = nullptr;
+
+	
 	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
 	std::map<std::string,UImage*> CCTVCamUI;
 	std::string MouseCamInfo = " ";
+	std::string PrevMouseCamInfo = "Cam1A";
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
 	void CamInteract();
 	void CCTVUpdate();
-	void CCTVUIGreenCheck();
+	void CCTVUIGreenCheck(std::string _CamName);
 
+	//ScanLine
 
+	std::shared_ptr<ScanLine> ScanLineUI = nullptr;
+	void StartScanLine();
 
 	
 

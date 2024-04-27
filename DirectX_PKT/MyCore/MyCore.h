@@ -7,7 +7,8 @@ enum class OrderType
 	BackGround,
 	Object,
 	UI,
-	Mouse
+	Mouse,
+	Overlay
 
 };
 // Ό³Έν :

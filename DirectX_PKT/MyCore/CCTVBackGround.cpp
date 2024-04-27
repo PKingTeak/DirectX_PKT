@@ -8,14 +8,18 @@ CCTVBackGround* CCTVBackGround::MainCCTV = nullptr;
 CCTVBackGround::CCTVBackGround()
 {
 	
+	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
+
+
 	CCTVBackGroundRender = CreateDefaultSubObject<USpriteRenderer>("CCTVCam");
+	CCTVBackGroundRender->SetupAttachment(Default);
 	CCTVBackGroundRender->SetSprite("TestCamBackGround.png");
 	CCTVBackGroundRender->SetAutoSize(1.0f, true);
 	CCTVBackGroundRender->SetOrder(100);
 	CCTVBackGroundRender->SetActive(false);
 
-	
-	SetRoot(CCTVBackGroundRender);
+
+	SetRoot(Default);
 
 }
 
@@ -62,3 +66,5 @@ void CCTVBackGround::ChangeCam(std::string _UICamName)
 	
 	CCTVBackGroundRender->SetSprite(SpriteName);
 }
+
+

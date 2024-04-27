@@ -14,6 +14,7 @@
 #include "FishEyes.h"
 #include"Button.h"
 #include<vector>
+#include"ScanLine.h"
 
 
 bool Stage::IsCamOn = false;
@@ -29,6 +30,7 @@ Stage::~Stage()
 
 
 void Stage::BeginPlay()
+
 {
 
 	GetWorld()->GetMainCamera()->GetCameraTarget()->AddEffect<FishEyes>();
@@ -42,8 +44,10 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	GetWorld()->SpawnActor<Button>("LeftButton");
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
+	ScanLineUI = GetWorld()->SpawnActor<ScanLine>("ScanLineUI");
 
 
+	
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 
 
@@ -270,6 +274,7 @@ void Stage::Tick(float _DeltaTime)
 	{
 		CamInteract();
 	}
+
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
 
@@ -342,6 +347,7 @@ void Stage::CameraMove(float _DeltaTime)
 
 void Stage::MainStageMove(float _DeltaTime)
 {
+	//로비 화면 움직임
 	if (true == CamLeftMove || true == CameRightMove)
 	{
 
@@ -361,6 +367,7 @@ void Stage::MainStageMove(float _DeltaTime)
 
 void Stage::ResetCamPos()
 {
+	//카메라 위치 초기화
 	Camera->SetActorLocation({ 0,0,-100 });
 	CamMove = false;
 	CamLeftMove = false;
@@ -368,10 +375,14 @@ void Stage::ResetCamPos()
 
 void Stage::ClickCamUI(std::string _CamName)
 {
-
+	//마우스로 눌렀을때 UI 카메라 이름  확인
 	MouseCamInfo = _CamName;
+	
+	
 	std::string UIName = MouseCamInfo.append("Ani");
 	CCTVCamUI.find(_CamName)->second->ChangeAnimation(UIName);
+	CCTVUIGreenCheck(_CamName);
+	PrevMouseCamInfo = _CamName;
 	//해당 UI는 애니메이션을 바꿀꺼
 }
 
@@ -410,9 +421,10 @@ for (std::string NameFirst : Name)
 					ClickCamUI(NameFirst);
 					IsCamOn = true;
 				}
+				StartScanLine();
 				ChageCam();
 
-				
+				//캠화면 전환
 				
 			}
 			
@@ -425,19 +437,24 @@ for (std::string NameFirst : Name)
 
 	
 }
-void Stage::CCTVUIGreenCheck()
+
+void Stage::CCTVUIGreenCheck(std::string _CamName)
 {
-	if (PrevCam == nullptr)
-	{
-		return;
-	}
 
-	if (MouseCamInfo != PrevCam->GetName())
-	{
-		PrevCam;
+	std::string RestCamName = _CamName;
+	RestCamName.append(".png");
 
-	}
+	if (_CamName != PrevMouseCamInfo)
+	{
 	
+		CCTVCamUI.find(_CamName)->second->SetSprite(RestCamName,0);
+		CCTVCamUI.find(_CamName)->second->SetOrder(5);
+	}
 
 
+}
+
+void Stage::StartScanLine()
+{
+	ScanLineUI->ScanLineLoad();
 }
