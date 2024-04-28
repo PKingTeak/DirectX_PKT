@@ -9,7 +9,8 @@ ScanLine::ScanLine()
 {
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
 	Default->SetPosition(FVector{ 0,0 });
-
+	
+	
 
 	//ScanLineRender = CreateDefaultSubObject<USpriteRenderer>("SccanLineRender");
 	//ScanLineRender->SetupAttachment(Default);
@@ -31,11 +32,11 @@ ScanLine::~ScanLine()
 void ScanLine::BeginPlay()
 {
 	Super::BeginPlay();
-
 	ScanLineUIImage = CreateWidget<UImage>(GetWorld(), "ScanLine");
+	//ScanLineUIImage->SetMaterial("Noise");
 	ScanLineUIImage->AddToViewPort(2);
 	ScanLineUIImage->SetAutoSize(1.0f, true);
-	ScanLineUIImage->SetPosition({ 0,0,50 });
+	ScanLineUIImage->SetPosition({ 0,0,100 });
 	//ScanLineUIImage->SetMaterial("Noise");
 	ScanLineUIImage->CreateAnimation("ScanLineAni", "CCTVEffect", 0.1f, false, 0, 8);
 
