@@ -10,7 +10,6 @@ class CCTVBackGround : public AActor
 {
 	GENERATED_BODY(AActor)
 private:
-	static CCTVBackGround* MainCCTV;
 	
 
 
@@ -28,7 +27,7 @@ public:
 	CCTVBackGround& operator=(const CCTVBackGround& _Other) = delete;
 	CCTVBackGround& operator=(CCTVBackGround&& _Other) noexcept = delete;
 
-	static CCTVBackGround* GetCCTVBackGround();
+	CCTVBackGround* GetCCTVBackGround();
 	
 	void CCTVON();
 	void CCTVOFF();
@@ -38,6 +37,7 @@ public:
 		return CamMode;
 	}
 	void ChangeCam(std::string _UICamName);
+	void ScanLineON();
 	Noise* NoiseEffect = nullptr;
 protected:
 	void BeginPlay() override;
@@ -48,6 +48,7 @@ protected:
 private:
 	USpriteRenderer* CCTVBackGroundRender = nullptr;
 	USpriteRenderer* CCTVEffect = nullptr;
+	USpriteRenderer* ChangeEffect = nullptr;
 	bool CamMode;
 	
 	

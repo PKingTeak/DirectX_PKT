@@ -46,7 +46,7 @@ private:
 	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
-	CCTVBackGround* CCTVPtr = nullptr; //화면 전환해주는 포인터 CCTV화면
+	std::shared_ptr<CCTVBackGround> CCTVPtr = nullptr; //화면 전환해주는 포인터 CCTV화면
 	std::shared_ptr<UCamera> Camera; // 레벨 메인 카메라
 	bool MoveEnd = false;
 	//

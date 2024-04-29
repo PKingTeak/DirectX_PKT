@@ -42,7 +42,7 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Fan>("Fan");
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
-	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
+	CCTVPtr = GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	GetWorld()->SpawnActor<Button>("LeftButton");
 
 
@@ -56,8 +56,8 @@ void Stage::BeginPlay()
 	ScanLineUI = GetWorld()->SpawnActor<ScanLine>("ScanLineUI");
 
 
-
-	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
+	CCTVPtr->ScanLineON();
+	//CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 
 
 	{

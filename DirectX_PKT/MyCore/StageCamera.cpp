@@ -48,13 +48,13 @@ void StageCamera::ChangeAnimation()
 			if (isCamOn == false)
 			{
 				isCamOn = true;
-				CCTVBackGround::GetCCTVBackGround()->CCTVON();
+				//CCTVBackGround::GetCCTVBackGround()->CCTVON();
 			
 			}
 			else
 			{
 				isCamOn = false;
-				CCTVBackGround::GetCCTVBackGround()->CCTVOFF();
+				//CCTVBackGround::GetCCTVBackGround()->CCTVOFF();
 				//CCTVCam->SetActive(false);
 			}
 			StageCameraRender->SetActive(true);

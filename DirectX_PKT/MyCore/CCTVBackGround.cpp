@@ -4,7 +4,6 @@
 #include"MyCore.h"
 #include<EngineCore/DefaultSceneComponent.h>
 #include"Noise.h"
-CCTVBackGround* CCTVBackGround::MainCCTV = nullptr;
 
 CCTVBackGround::CCTVBackGround()
 {
@@ -31,7 +30,14 @@ CCTVBackGround::CCTVBackGround()
 	CCTVEffect->ChangeAnimation("NoizeAnimation");
 	CCTVEffect->SetActive(false);
 
-	
+	ChangeEffect = CreateDefaultSubObject<USpriteRenderer>("ChangeEffect");
+	ChangeEffect->SetupAttachment(Default);
+	ChangeEffect->SetMaterial("Noise");
+	ChangeEffect->SetOrder(101);
+	ChangeEffect->SetScale({ 1600,720 });
+	ChangeEffect->CreateAnimation("ScanLineAni", "CCTVEffect", 0.1f, true);
+	ChangeEffect->ChangeAnimation("ScanLineAni");
+	ChangeEffect->SetActive(false);
 
 	SetRoot(Default);
 
@@ -45,13 +51,13 @@ CCTVBackGround::~CCTVBackGround()
 void CCTVBackGround::BeginPlay()
 {
 	Super::BeginPlay();
-	CCTVBackGround::MainCCTV = this;
+	
 	NoiseEffect->Noise::GetNoise();
 
 }
 CCTVBackGround* CCTVBackGround::GetCCTVBackGround()
 {
-	return MainCCTV;
+	return this;
 }
 void CCTVBackGround::Tick(float _DeltaTime)
 {
@@ -85,6 +91,13 @@ void CCTVBackGround::ChangeCam(std::string _UICamName)
 	std::string SpriteName = _UICamName.append(".png");
 	
 	CCTVBackGroundRender->SetSprite(SpriteName);
+}
+
+void CCTVBackGround::ScanLineON()
+{
+
+	ChangeEffect->SetActive(true);
+
 }
 
 
