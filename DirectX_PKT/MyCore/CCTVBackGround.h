@@ -2,6 +2,7 @@
 #include <EngineCore/Actor.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Collision.h>
+#include"Noise.h"
 
 
 // Ό³Έν :
@@ -37,6 +38,7 @@ public:
 		return CamMode;
 	}
 	void ChangeCam(std::string _UICamName);
+	Noise* NoiseEffect = nullptr;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -45,8 +47,9 @@ protected:
 	void RendererOn();
 private:
 	USpriteRenderer* CCTVBackGroundRender = nullptr;
+	USpriteRenderer* CCTVEffect = nullptr;
 	bool CamMode;
-
+	
 	
 
 

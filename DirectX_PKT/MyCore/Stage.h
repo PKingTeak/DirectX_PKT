@@ -9,6 +9,7 @@
 
 // Ό³Έν :
 class ScanLine;
+class Noise;
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -41,6 +42,7 @@ private:
 	bool CamLeftMove = false;
 	bool CameRightMove = false;
 	void MainStageMove(float _DeltaTime);
+	bool CCTVChecker = false;
 	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
@@ -72,10 +74,11 @@ private:
 	void CCTVUIGreenCheck(std::string _CamName);
 
 	//ScanLine
-
+	
+	std::shared_ptr<Noise> NoiseEffect = nullptr;
 	std::shared_ptr<ScanLine> ScanLineUI = nullptr;
 	void StartScanLine();
-
+	void NoiseCheck();
 	
 
 };

@@ -10,6 +10,8 @@ class Noise : public AActor
 {
 	GENERATED_BODY(AActor)
 
+private:
+	static Noise* MainNoise;
 public:
 	// constrcuter destructer
 	Noise();
@@ -21,6 +23,11 @@ public:
 	Noise& operator=(const Noise& _Other) = delete;
 	Noise& operator=(Noise&& _Other) noexcept = delete;
 
+	
+
+	static Noise* GetNoise();
+	
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -30,6 +37,7 @@ protected:
 
 private:
 	USpriteRenderer* Renderer = nullptr;
+	
 
 };
 

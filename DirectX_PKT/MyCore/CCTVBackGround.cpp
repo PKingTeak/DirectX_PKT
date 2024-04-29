@@ -3,8 +3,9 @@
 #include<EngineCore/Collision.h>
 #include"MyCore.h"
 #include<EngineCore/DefaultSceneComponent.h>
-
+#include"Noise.h"
 CCTVBackGround* CCTVBackGround::MainCCTV = nullptr;
+
 CCTVBackGround::CCTVBackGround()
 {
 	
@@ -19,6 +20,19 @@ CCTVBackGround::CCTVBackGround()
 	CCTVBackGroundRender->SetActive(false);
 
 
+	CCTVEffect = CreateDefaultSubObject<USpriteRenderer>("CCTVEffect");
+	
+	
+	CCTVEffect->SetupAttachment(Default);
+	CCTVEffect->SetMaterial("Noise");
+	CCTVEffect->SetOrder(101);
+	CCTVEffect->SetScale({1600,720});
+	CCTVEffect->CreateAnimation("NoizeAnimation", "Noise.png", 0.1f, true);
+	CCTVEffect->ChangeAnimation("NoizeAnimation");
+	CCTVEffect->SetActive(false);
+
+	
+
 	SetRoot(Default);
 
 }
@@ -30,8 +44,9 @@ CCTVBackGround::~CCTVBackGround()
 }
 void CCTVBackGround::BeginPlay()
 {
-	CCTVBackGround::MainCCTV = this;
 	Super::BeginPlay();
+	CCTVBackGround::MainCCTV = this;
+	NoiseEffect->Noise::GetNoise();
 
 }
 CCTVBackGround* CCTVBackGround::GetCCTVBackGround()
@@ -51,11 +66,16 @@ void CCTVBackGround::Tick(float _DeltaTime)
 void CCTVBackGround::CCTVON()
 {
 	CCTVBackGroundRender->SetActive(true);
+	//NoiseEffect->SetActive(true);
+	CCTVEffect->SetActive(true);
+
 	CamMode = true;
 }
 void CCTVBackGround::CCTVOFF()
 {
 	CCTVBackGroundRender->SetActive(false);
+	NoiseEffect->SetActive(false);
+	CCTVEffect->SetActive(false);
 	CamMode = false;
 }
 

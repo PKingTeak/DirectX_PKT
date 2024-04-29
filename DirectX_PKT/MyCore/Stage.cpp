@@ -15,6 +15,7 @@
 #include"Button.h"
 #include<vector>
 #include"ScanLine.h"
+#include"Noise.h"
 
 
 bool Stage::IsCamOn = false;
@@ -43,11 +44,19 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	GetWorld()->SpawnActor<Button>("LeftButton");
+
+
+
+
+	NoiseEffect = GetWorld()->SpawnActor<Noise>("NoiseEffect");
+	NoiseEffect->SetActive(false);
+	NoiseEffect->SetOrder(100);
+	
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
 	ScanLineUI = GetWorld()->SpawnActor<ScanLine>("ScanLineUI");
 
 
-	
+
 	CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 
 
@@ -86,9 +95,9 @@ void Stage::BeginPlay()
 		CCTVMap->AddToViewPort(2);
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
-		
-		
-		
+
+
+
 		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "ShowRoom");
 		CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png", 0);
 		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni", "Cam1A.png", 0.5f, true, 0, 1);
@@ -189,8 +198,7 @@ void Stage::BeginPlay()
 
 					CamMove = true;
 					StageCam->ChangeAnimation();
-
-
+					NoiseCheck();
 
 				});
 
@@ -239,6 +247,7 @@ void Stage::BeginPlay()
 
 
 
+
 	}
 
 
@@ -248,6 +257,7 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
 
 
 	if (true == CCTVPtr->GetCamMode())
@@ -274,6 +284,7 @@ void Stage::Tick(float _DeltaTime)
 	{
 		CamInteract();
 	}
+	
 
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
@@ -377,8 +388,8 @@ void Stage::ClickCamUI(std::string _CamName)
 {
 	//마우스로 눌렀을때 UI 카메라 이름  확인
 	MouseCamInfo = _CamName;
-	
-	
+
+
 	std::string UIName = MouseCamInfo.append("Ani");
 	CCTVCamUI.find(_CamName)->second->ChangeAnimation(UIName);
 	CCTVUIGreenCheck(_CamName);
@@ -401,41 +412,41 @@ void Stage::ChageCam()
 
 void Stage::CamInteract()
 {
-	
-for (std::string NameFirst : Name)
-{
-	UImage* NewImage = CCTVCamUI[NameFirst];
-	std::string CurCamName = NewImage->GetName();
-	std::string PreCamName = PrevCam->GetName();
+
+	for (std::string NameFirst : Name)
+	{
+		UImage* NewImage = CCTVCamUI[NameFirst];
+		std::string CurCamName = NewImage->GetName();
+		std::string PreCamName = PrevCam->GetName();
 
 
-	NewImage->SetDown([=]()
-		{
-			if (IsCamOn == false)
+		NewImage->SetDown([=]()
 			{
-
-				if (PreCamName != CurCamName)
+				if (IsCamOn == false)
 				{
 
-					PrevCam = CCTVCamUI[NameFirst]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
-					ClickCamUI(NameFirst);
-					IsCamOn = true;
+					if (PreCamName != CurCamName)
+					{
+
+						PrevCam = CCTVCamUI[NameFirst]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
+						ClickCamUI(NameFirst);
+						IsCamOn = true;
+					}
+					StartScanLine();
+					ChageCam();
+
+					//캠화면 전환
+
 				}
-				StartScanLine();
-				ChageCam();
 
-				//캠화면 전환
-				
 			}
-			
-		}
 
-	);
-}
+		);
+	}
 
 
 
-	
+
 }
 
 void Stage::CCTVUIGreenCheck(std::string _CamName)
@@ -446,8 +457,8 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 
 	if (_CamName != PrevMouseCamInfo)
 	{
-	
-		CCTVCamUI.find(_CamName)->second->SetSprite(RestCamName,0);
+
+		CCTVCamUI.find(_CamName)->second->SetSprite(RestCamName, 0);
 		CCTVCamUI.find(_CamName)->second->SetOrder(5);
 	}
 
@@ -457,4 +468,19 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 void Stage::StartScanLine()
 {
 	ScanLineUI->ScanLineLoad();
+}
+
+void Stage::NoiseCheck()
+{
+	CCTVChecker = StageCam->GetIsCameraOn();
+	if (CCTVChecker == true)
+	{
+		NoiseEffect->SetActive(true);
+	}
+
+	if (CCTVChecker == false)
+	{
+		NoiseEffect->SetActive(false);
+	}
+
 }
