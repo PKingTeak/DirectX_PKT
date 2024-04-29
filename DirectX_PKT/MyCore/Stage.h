@@ -10,6 +10,10 @@
 // Ό³Έν :
 class ScanLine;
 class Noise;
+class CCTVUI;
+class Button;
+class Door;
+
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -27,6 +31,7 @@ public:
 	Stage& operator=(Stage&& _Other) noexcept = delete;
 	
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
+	std::shared_ptr<Noise> GetNoise();
 
 protected:
 	void BeginPlay() override;
@@ -45,6 +50,8 @@ private:
 	bool CameRightMove = false;
 	void MainStageMove(float _DeltaTime);
 	bool CCTVChecker = false;
+	std::shared_ptr<CCTVUI> CCTVRectUI = nullptr;
+
 	//
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
@@ -53,7 +60,8 @@ private:
 	bool MoveEnd = false;
 	//
 	// Object
-	std::shared_ptr<StageCamera> StageCam;
+	std::shared_ptr<StageCamera> StageCam = nullptr;
+	std::shared_ptr<Door> StageDoor = nullptr;
 
 	//UI
 	UImage* ArrowUi = nullptr;
@@ -63,7 +71,11 @@ private:
 	UImage* CCTVCams[11] = { nullptr, };
 	UImage* PrevCam = nullptr;
 
+	//Button
+	std::shared_ptr<Button> DoorControlButton = nullptr;
 	
+	
+	//Cam
 	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
 	std::map<std::string,UImage*> CCTVCamUI;
 	std::string MouseCamInfo = " ";
@@ -75,11 +87,8 @@ private:
 	void CCTVUpdate();
 	void CCTVUIGreenCheck(std::string _CamName);
 
-	//ScanLine
-	
+	// Noise
 	std::shared_ptr<Noise> NoiseEffect = nullptr;
-	std::shared_ptr<ScanLine> ScanLineUI = nullptr;
-	void StartScanLine();
 	void NoiseCheck();
 	
 

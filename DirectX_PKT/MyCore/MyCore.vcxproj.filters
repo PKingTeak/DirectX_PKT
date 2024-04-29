@@ -35,7 +35,7 @@
     <Filter Include="Level\Stage\Effect">
       <UniqueIdentifier>{24ea9bd3-0c25-429e-acec-fc813930c6be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Level\Stage\Cam\Object">
+    <Filter Include="Level\Stage\Object">
       <UniqueIdentifier>{4e08e10b-faec-444f-8d74-f1ef09464166}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -92,13 +92,16 @@
       <Filter>Level\Stage\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Fan.cpp">
-      <Filter>Level\Stage\Cam\Object</Filter>
+      <Filter>Level\Stage\Object</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Level\Stage\Cam\Object</Filter>
+      <Filter>Level\Stage\Object</Filter>
     </ClCompile>
-    <ClCompile Include="ScanLine.cpp">
+    <ClCompile Include="CCTVUI.cpp">
       <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Level\Stage\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,13 +157,16 @@
       <Filter>Level\Stage\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Fan.h">
-      <Filter>Level\Stage\Cam\Object</Filter>
+      <Filter>Level\Stage\Object</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Level\Stage\Cam\Object</Filter>
+      <Filter>Level\Stage\Object</Filter>
     </ClInclude>
-    <ClInclude Include="ScanLine.h">
+    <ClInclude Include="CCTVUI.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Level\Stage\Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

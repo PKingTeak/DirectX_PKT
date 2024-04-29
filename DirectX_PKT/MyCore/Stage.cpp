@@ -14,8 +14,10 @@
 #include "FishEyes.h"
 #include"Button.h"
 #include<vector>
-#include"ScanLine.h"
+#include"CCTVUI.h"
 #include"Noise.h"
+#include"Door.h"
+
 
 
 bool Stage::IsCamOn = false;
@@ -43,17 +45,19 @@ void Stage::BeginPlay()
 	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	CCTVPtr = GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
-	GetWorld()->SpawnActor<Button>("LeftButton");
-
-
+	DoorControlButton = GetWorld()->SpawnActor<Button>("DoorControlButton");
+	
+	
 
 
 	NoiseEffect = GetWorld()->SpawnActor<Noise>("NoiseEffect");
 	NoiseEffect->SetActive(false);
-	NoiseEffect->SetOrder(100);
+	//NoiseEffect->SetOrder(100);
 	
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
-	ScanLineUI = GetWorld()->SpawnActor<ScanLine>("ScanLineUI");
+	StageDoor = GetWorld()->SpawnActor<Door>("StageDoor");
+	CCTVRectUI = GetWorld()->SpawnActor<CCTVUI>("CCTVRectUI");
+	CCTVRectUI->SetActive(false);
 
 
 	
@@ -152,14 +156,14 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam2A"] = CreateWidget<UImage>(GetWorld(), "WestHall");
 		CCTVCamUI["Cam2A"]->SetSprite("Cam2A.png", 0);
 		CCTVCamUI["Cam2A"]->CreateAnimation("Cam2AAni", "Cam2A.png", 0.5f, true, 0, 1);
-		CCTVCamUI["Cam2A"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam2A"]->SetPosition(FVector{ 320,-240 });
 		CCTVCamUI["Cam2A"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam2A"]->AddToViewPort(2);
 
 		CCTVCamUI["Cam2B"] = CreateWidget<UImage>(GetWorld(), "W.HallConer");
 		CCTVCamUI["Cam2B"]->SetSprite("Cam2B.png", 0);
 		CCTVCamUI["Cam2B"]->CreateAnimation("Cam2BAni", "Cam2B.png", 0.5f, true, 0, 1);
-		CCTVCamUI["Cam2B"]->SetPosition(FVector{ 250,-50 });
+		CCTVCamUI["Cam2B"]->SetPosition(FVector{ 320,-280 });
 		CCTVCamUI["Cam2B"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam2B"]->AddToViewPort(2);
 
@@ -189,15 +193,28 @@ void Stage::BeginPlay()
 		CCTVCamUI.insert({ "Cam2B",CCTVCams[8] });
 		CCTVCamUI.insert({ "Cam4A",CCTVCams[9] });
 		CCTVCamUI.insert({ "Cam4B",CCTVCams[10] });
-		//CCTVCamUI.insert({ "Cam2B",CCTVCams[11] });
-
+		
 		{
 
 			ArrowUi->SetHover([=]()
 				{
-
+					bool CCTVonoff = StageCam->GetIsCameraOn();
 					CamMove = true;
-					StageCam->ChangeAnimation();
+					
+					
+					if (CCTVonoff == false)
+					{
+						StageCam->CamCCTVOn(); //여기서 조건문을 걸어서 on과off를 구별해야될듯 하다 .
+					
+					}
+					
+					if (CCTVonoff == true)
+					{
+					StageCam->CamCCTVOff();
+					return;
+					}
+					
+					//카메라가 on 일때 CamMode가 true일 때는 내려가야한다. 
 					NoiseCheck();
 
 				});
@@ -430,6 +447,7 @@ void Stage::CamInteract()
 
 						PrevCam = CCTVCamUI[NameFirst]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
 						ClickCamUI(NameFirst);
+						CCTVRectUI->SetActive(true);
 						IsCamOn = true;
 					}
 					CCTVPtr->ScanLineON();
@@ -466,10 +484,7 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 
 }
 
-void Stage::StartScanLine()
-{
-	ScanLineUI->ScanLineLoad();
-}
+
 
 void Stage::NoiseCheck()
 {
@@ -491,3 +506,7 @@ std::shared_ptr<CCTVBackGround> Stage::GetCCTVBack()
 	return CCTVPtr;
 }
 
+std::shared_ptr<Noise> Stage::GetNoise()
+{
+	return NoiseEffect;
+}

@@ -11,6 +11,7 @@ StageCamera::StageCamera()
 	StageCameraRender = CreateDefaultSubObject<USpriteRenderer>("StageCameraRender");
 	StageCameraRender->SetAutoSize(1.0f, true);
 	StageCameraRender->CreateAnimation("CameraAnimtaion", "StageCam.png", 0.05f, false);
+	StageCameraRender->CreateAnimation("CloseCameraAnimation", "CCTVClose", 0.05f, false, 1, 10);
 	StageCameraRender->SetOrder(22);
 
 	CCTVCam = CreateDefaultSubObject<USpriteRenderer>("CCTVCam");
@@ -41,33 +42,46 @@ void StageCamera::BeginPlay()
 void StageCamera::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
-}
-void StageCamera::ChangeAnimation()
-{
-	StageCameraRender->ChangeAnimation("CameraAnimtaion");
-
-	bool Check = StageCameraRender->IsCurAnimationEnd();
-	StageCameraRender->SetFrameCallback("CameraAnimtaion", 8, [=]
+	StageCameraRender->SetFrameCallback("CameraAnimtaion", 8, [&]
 		{
 			if (isCamOn == false)
 			{
 				isCamOn = true;
 				CCTVBackGrounds->CCTVON();
-		
-				//CCTVBackGround::GetCCTVBackGround()->CCTVON();
-			
+
+
 			}
-			else
-			{
-				isCamOn = false;
-				CCTVBackGrounds->CCTVOFF();
-				//CCTVBackGround::GetCCTVBackGround()->CCTVOFF();
-				//CCTVCam->SetActive(false);
-			}
-			StageCameraRender->SetActive(true);
+
 			// 여기에 CCTV 배경을 넣을것이다. 
 		}
 	);
 
+}
+void StageCamera::CamCCTVOn()
+{
+	StageCameraRender->AnimationReset();
+	StageCameraRender->ChangeAnimation("CameraAnimtaion");
+
+	//bool Check = StageCameraRender->IsCurAnimationEnd();
+	
+
+}
+
+
+void StageCamera::CamCCTVOff()
+{
+
+	StageCameraRender->SetActive(true);
+	StageCameraRender->ChangeAnimation("CloseCameraAnimation");
+	CCTVBackGrounds->CCTVOFF();
+	StageCameraRender->SetLastFrameCallback("CloseCameraAnimation", [=]
+		{
+			if (isCamOn == true)
+			{
+			isCamOn = false;
+			StageCameraRender->SetActive(false);
+			}
+
+		});
+	
 }

@@ -25,6 +25,10 @@
     </ClInclude>
     <ClInclude Include="Button.h" />
     <ClInclude Include="CCTVBackGround.h" />
+    <ClInclude Include="Door.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fan.h" />
     <ClInclude Include="FishEyes.h" />
     <ClInclude Include="MainTitleLevel.h" />
@@ -37,7 +41,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h" />
-    <ClInclude Include="ScanLine.h" />
+    <ClInclude Include="CCTVUI.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageBackGroundClass.h" />
     <ClInclude Include="StageCamera.h" />
@@ -53,6 +57,10 @@
     </ClCompile>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CCTVBackGround.cpp" />
+    <ClCompile Include="Door.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FishEyes.cpp" />
     <ClCompile Include="MainTitleLevel.cpp" />
@@ -70,7 +78,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ScanLine.cpp" />
+    <ClCompile Include="CCTVUI.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageBackGroundClass.cpp" />
     <ClCompile Include="StageCamera.cpp" />

@@ -32,6 +32,8 @@ public:
 	}
 
 
+	
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -53,9 +55,6 @@ private:
 	bool LeftDoor = false;
 	bool RightLight = false;
 	bool RightDoor = false;
-
-	
-
 
 };
 

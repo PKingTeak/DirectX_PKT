@@ -4,6 +4,7 @@
 #include"MyCore.h"
 #include<EngineCore/DefaultSceneComponent.h>
 #include"Noise.h"
+#include"Stage.h"
 
 CCTVBackGround::CCTVBackGround()
 {
@@ -52,8 +53,13 @@ void CCTVBackGround::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	NoiseEffect->Noise::GetNoise();
+	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 
+
+	NoiseEffect = StageLevel->GetNoise();
+
+
+	
 	
 
 }
@@ -74,18 +80,17 @@ void CCTVBackGround::Tick(float _DeltaTime)
 void CCTVBackGround::CCTVON()
 {
 	CCTVBackGroundRender->SetActive(true);
-	//NoiseEffect->SetActive(true);
 	CCTVEffect->SetActive(true);
+	//NoiseEffect->SetActive(true);
 	ChangeEffect->ChangeAnimation("ScanLineAni");
-
 	CamMode = true;
 }
 void CCTVBackGround::CCTVOFF()
 {
 	CCTVBackGroundRender->SetActive(false);
-	NoiseEffect->SetActive(false);
 	CCTVEffect->SetActive(false);
-	ChangeEffect->SetActive(false);
+	//CCTVEffect->SetActive(false);
+	//ChangeEffect->SetActive(false);
 	CamMode = false;
 }
 
@@ -104,6 +109,8 @@ void CCTVBackGround::ScanLineON()
 	ChangeEffect->SetActive(true);
 	ChangeEffect->ChangeAnimation("ScanLineAni");
 	ScanLineEffect();
+
+	ChangeEffect->GetCurInfo();
 	}
 	
 
@@ -116,6 +123,8 @@ void CCTVBackGround::ScanLineEffect()
 ChangeEffect->SetLastFrameCallback("ScanLineAni",[=]
 	{
 		ChangeEffect->SetActive(false);
+		
+		ChangeEffect->GetCurInfo();
 		ChangeEffect->AnimationReset();
 		ChangeEffect->ChangeAnimation("ScanLineAni");
 		

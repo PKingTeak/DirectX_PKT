@@ -50,7 +50,11 @@ void Mouse::Tick(float _DeltaTime)
 			std::string objectType = _Collision->GetName(); // 이걸로 해야 collsion을 읽어올수 있다. 
 			if (objectType._Equal("LeftDoorButton"))
 			{
-				
+				if (UEngineInput::IsDown(VK_LBUTTON))
+				{
+					//Door 하나 엑터로 만들어서 사용해야될듯 하다. 
+					ButtonClass->GetMainButton()->ButtonDoor(objectType);
+				}
 
 				int a = 0;
 
@@ -63,10 +67,11 @@ void Mouse::Tick(float _DeltaTime)
 				StageBackGround->GetMainStageBackGround()->ChangeBackGround();
 				ButtonClass->GetMainButton()->ButtonLight(objectType);
 				}
-				int a = 0;
 			
 				
 			}
+
+
 
 			
 		}

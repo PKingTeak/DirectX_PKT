@@ -103,6 +103,8 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Cam6.png", 2,1);
 		UEngineSprite::CreateCutting("Cam7.png", 2,1);
 
+		UEngineSprite::CreateCutting("LdoorAnimation.png", 14, 1);
+
 		//UEngineSprite::CreateCutting("LightMap.png", 1, 4);
 
 		

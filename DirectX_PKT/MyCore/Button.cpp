@@ -1,3 +1,4 @@
+
 #include "PreCompile.h"
 #include "Button.h"
 #include "Stage.h"
@@ -119,13 +120,20 @@ void Button::ButtonLight(std::string _ButtonName)
 
 void Button::ButtonDoor(std::string _ButtonName)
 {
+	if (_ButtonName._Equal("LeftDoorButton"))
+	{
+
+		LeftButtonRender->SetSprite("Button.png", 2);
+
+	}
+
 	
 }
 void Button::MoveButton(FVector _SetPos)
 {
 	SetActorLocation(_SetPos);
 
+
+
 }
-
-
 

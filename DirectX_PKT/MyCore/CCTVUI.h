@@ -6,23 +6,23 @@
 #include<EngineCore/Image.h>
 // Ό³Έν :
 
-class ScanLine : public AActor
+class CCTVUI : public AActor
 {
 	GENERATED_BODY(AActor)
 public:
 	// constrcuter destructer
-	ScanLine();
-	~ScanLine();
+	CCTVUI();
+	~CCTVUI();
 
 	// delete Function
-	ScanLine(const ScanLine& _Other) = delete;
-	ScanLine(ScanLine&& _Other) noexcept = delete;
-	ScanLine& operator=(const ScanLine& _Other) = delete;
-	ScanLine& operator=(ScanLine&& _Other) noexcept = delete;
+	CCTVUI(const CCTVUI& _Other) = delete;
+	CCTVUI(CCTVUI&& _Other) noexcept = delete;
+	CCTVUI& operator=(const CCTVUI& _Other) = delete;
+	CCTVUI& operator=(CCTVUI&& _Other) noexcept = delete;
 
-	void ScanLineLoad();
+	void CCTVUILoad();
 	
-	inline ScanLine* GetScanLine()
+	inline CCTVUI* GetCCTVUI()
 	{
 		return this;
 	}
@@ -37,7 +37,7 @@ protected:
 
 
 private:
-	UImage* ScanLineUIImage = nullptr;
-	USpriteRenderer* ScanLineRender = nullptr;
+	UImage* CCTVUIImage = nullptr;
+	
 };
 

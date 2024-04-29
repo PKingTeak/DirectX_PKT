@@ -30,7 +30,7 @@ void Arrow::Tick(float _DeltaTime)
 void Arrow::ChangeCam()
 {
 
-	StageCam->ChangeAnimation();
+	StageCam->CamCCTVOn();
 	
 	if (true == isCamOpen)
 	{

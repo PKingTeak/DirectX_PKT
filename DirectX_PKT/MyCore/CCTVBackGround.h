@@ -4,7 +4,7 @@
 #include<EngineCore/Collision.h>
 #include"Noise.h"
 
-
+class Stage;
 // Ό³Έν :
 class CCTVBackGround : public AActor
 {
@@ -38,7 +38,10 @@ public:
 	}
 	void ChangeCam(std::string _UICamName);
 	void ScanLineON();
-	Noise* NoiseEffect = nullptr;
+	
+
+
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -53,6 +56,8 @@ private:
 	bool CamMode;
 	bool ScanAniEnd = false;
 
+	Stage* StageLevel = nullptr;
+	std::shared_ptr<Noise> NoiseEffect = nullptr;
 
 	void ScanLineEffect();
 	
