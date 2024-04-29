@@ -46,11 +46,15 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
+	
 	USpriteRenderer* CCTVBackGroundRender = nullptr;
 	USpriteRenderer* CCTVEffect = nullptr;
 	USpriteRenderer* ChangeEffect = nullptr;
 	bool CamMode;
-	
+	bool ScanAniEnd = false;
+
+
+	void ScanLineEffect();
 	
 
 

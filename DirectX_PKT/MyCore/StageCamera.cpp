@@ -4,6 +4,7 @@
 #include"MyCore.h"
 #include<EngineCore/DefaultSceneComponent.h>
 #include"CCTVBackGround.h"
+#include "Stage.h"
 
 StageCamera::StageCamera()
 {
@@ -28,8 +29,12 @@ StageCamera::~StageCamera()
 {
 }
 void StageCamera::BeginPlay()
-{
+{	
+	//stageLevel에서 내가 선언한 엑터를 가져와서 사용하는 방법 
+	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
+	CCTVBackGrounds = StageLevel->GetCCTVBack();
 
+	
 	Super::BeginPlay();
 
 }
@@ -48,12 +53,15 @@ void StageCamera::ChangeAnimation()
 			if (isCamOn == false)
 			{
 				isCamOn = true;
+				CCTVBackGrounds->CCTVON();
+		
 				//CCTVBackGround::GetCCTVBackGround()->CCTVON();
 			
 			}
 			else
 			{
 				isCamOn = false;
+				CCTVBackGrounds->CCTVOFF();
 				//CCTVBackGround::GetCCTVBackGround()->CCTVOFF();
 				//CCTVCam->SetActive(false);
 			}

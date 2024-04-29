@@ -35,7 +35,7 @@ CCTVBackGround::CCTVBackGround()
 	ChangeEffect->SetMaterial("Noise");
 	ChangeEffect->SetOrder(101);
 	ChangeEffect->SetScale({ 1600,720 });
-	ChangeEffect->CreateAnimation("ScanLineAni", "CCTVEffect", 0.1f, true);
+	ChangeEffect->CreateAnimation("ScanLineAni", "CCTVEffect", 0.1f, false);
 	ChangeEffect->ChangeAnimation("ScanLineAni");
 	ChangeEffect->SetActive(false);
 
@@ -53,6 +53,8 @@ void CCTVBackGround::BeginPlay()
 	Super::BeginPlay();
 	
 	NoiseEffect->Noise::GetNoise();
+
+	
 
 }
 CCTVBackGround* CCTVBackGround::GetCCTVBackGround()
@@ -74,6 +76,7 @@ void CCTVBackGround::CCTVON()
 	CCTVBackGroundRender->SetActive(true);
 	//NoiseEffect->SetActive(true);
 	CCTVEffect->SetActive(true);
+	ChangeEffect->ChangeAnimation("ScanLineAni");
 
 	CamMode = true;
 }
@@ -82,6 +85,7 @@ void CCTVBackGround::CCTVOFF()
 	CCTVBackGroundRender->SetActive(false);
 	NoiseEffect->SetActive(false);
 	CCTVEffect->SetActive(false);
+	ChangeEffect->SetActive(false);
 	CamMode = false;
 }
 
@@ -95,9 +99,26 @@ void CCTVBackGround::ChangeCam(std::string _UICamName)
 
 void CCTVBackGround::ScanLineON()
 {
-
+	if (CamMode == true  )
+	{
 	ChangeEffect->SetActive(true);
+	ChangeEffect->ChangeAnimation("ScanLineAni");
+	ScanLineEffect();
+	}
+	
 
 }
 
 
+void CCTVBackGround::ScanLineEffect()
+{
+
+ChangeEffect->SetLastFrameCallback("ScanLineAni",[=]
+	{
+		ChangeEffect->SetActive(false);
+		ChangeEffect->AnimationReset();
+		ChangeEffect->ChangeAnimation("ScanLineAni");
+		
+	}
+);
+}

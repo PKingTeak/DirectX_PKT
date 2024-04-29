@@ -5,6 +5,8 @@
 #include<string_view>
 #include"CCTVBackGround.h"
 // Ό³Έν :
+class CCTVBackGround;
+class Stage;
 class StageCamera : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -36,6 +38,8 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
+	Stage* StageLevel = nullptr;
+	std::shared_ptr<CCTVBackGround> CCTVBackGrounds = nullptr;
 	USpriteRenderer* StageCameraRender = nullptr;
 	USpriteRenderer* CCTVCam = nullptr;
 	bool isCamOn = false;

@@ -56,7 +56,7 @@ void Stage::BeginPlay()
 	ScanLineUI = GetWorld()->SpawnActor<ScanLine>("ScanLineUI");
 
 
-	CCTVPtr->ScanLineON();
+	
 	//CCTVPtr = CCTVBackGround::GetCCTVBackGround();
 
 
@@ -432,7 +432,8 @@ void Stage::CamInteract()
 						ClickCamUI(NameFirst);
 						IsCamOn = true;
 					}
-					StartScanLine();
+					CCTVPtr->ScanLineON();
+					//StartScanLine();
 					ChageCam();
 
 					//캠화면 전환
@@ -484,3 +485,9 @@ void Stage::NoiseCheck()
 	}
 
 }
+
+std::shared_ptr<CCTVBackGround> Stage::GetCCTVBack()
+{
+	return CCTVPtr;
+}
+

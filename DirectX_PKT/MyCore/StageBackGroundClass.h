@@ -40,7 +40,7 @@ private:
 	USpriteRenderer* StageBackRender = nullptr;
 	
 	bool ColDir = false;
-
+	
 	
 	
 

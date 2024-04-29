@@ -26,6 +26,8 @@ public:
 	Stage& operator=(const Stage& _Other) = delete;
 	Stage& operator=(Stage&& _Other) noexcept = delete;
 	
+	std::shared_ptr<CCTVBackGround> GetCCTVBack();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
