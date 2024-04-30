@@ -208,7 +208,7 @@ void Stage::BeginPlay()
 					
 					}
 					
-					if (CCTVonoff == true)
+					else if(CCTVonoff == true)
 					{
 					StageCam->CamCCTVOff();
 					return;
@@ -459,7 +459,6 @@ void Stage::CamInteract()
 				}
 
 			}
-
 		);
 	}
 

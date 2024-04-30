@@ -81,7 +81,6 @@ void CCTVBackGround::CCTVON()
 {
 	CCTVBackGroundRender->SetActive(true);
 	CCTVEffect->SetActive(true);
-	//NoiseEffect->SetActive(true);
 	ChangeEffect->ChangeAnimation("ScanLineAni");
 	CamMode = true;
 }
