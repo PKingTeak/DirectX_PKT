@@ -157,14 +157,29 @@ void Button::ButtonDoor(std::string _ButtonName )
 
 		if (LeftLight == true)
 		{
+			if (LeftDoor == true)
+			{
+				LeftButtonRender->SetSprite("Button.png", 1);
+				return;
+			}
 			LeftButtonRender->SetSprite("Button.png", 3);
 			//라이트가 켜져있을때 문을 누르면 
+			LeftDoor = true;
 
 		}
 
-		LeftButtonRender->SetSprite("Button.png", 2);
-		LeftDoor = true;
-		//문 닫히기 
+		if (LeftLight == false)
+		{
+			if (LeftDoor == true)
+			{
+				LeftButtonRender->SetSprite("Button.png", 0);
+				return;
+			}
+			LeftButtonRender->SetSprite("Button.png", 2);
+			LeftDoor = true;
+			//라이트까 꺼진 상태로 눌렸을때 
+		}
+
 
 		
 

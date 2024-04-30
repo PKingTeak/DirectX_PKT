@@ -14,8 +14,8 @@ Door::Door()
 	LDoorRender->SetOrder(OrderType::Object);
 	LDoorRender->SetSprite("LdoorStatic.png");
 	LDoorRender->SetPosition(FVector{ -610,-20,-10 });
-	LDoorRender->CreateAnimation("LeftDoorAni", "LdoorAnimation.png", 0.1f, false, 0, 14);
-	LDoorRender->CreateAnimation("CLeftDoorAni", "LdoorAnimation.png", 0.1f, false, 14, 0);
+	LDoorRender->CreateAnimation("LeftDoorAni", "LdoorAnimation.png", 0.1f, false, 14, 0);
+	LDoorRender->CreateAnimation("CLeftDoorAni", "LdoorAnimation.png", 0.1f, false, 0, 14);
 	//LDoorRender->CreateAnimation("LeftDoorAni", "LdoorAnimation.png",0.1f,false,0,11);
 	
 	RDoorRender = CreateDefaultSubObject<USpriteRenderer>("RDoorRender");
@@ -59,7 +59,7 @@ void Door::DoorOpen(std::string_view _ButtonName)
 	//RDoorRender->AnimationReset();
 	if (_ButtonName == "LeftDoorButton")
 	{
-		LDoorRender->ChangeAnimation("CLeftDoorAni");
+		LDoorRender->ChangeAnimation("LeftDoorAni");
 		return;
 	}
 
