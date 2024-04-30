@@ -2,6 +2,7 @@
 #include "PreCompile.h"
 #include "Button.h"
 #include "Stage.h"
+#include"Door.h"
 #include<EngineCore/DefaultSceneComponent.h>
 #include"MyCore.h"
 
@@ -73,6 +74,8 @@ Button::Button()
 	RightLightButton->SetScale(FVector{ 50,50 });
 	RightLightButton->SetPosition(FVector{ 0,-50 });
 	
+	
+
 	SetRoot(Defualt);
 
 }
@@ -83,12 +86,11 @@ Button::~Button()
 }
 void Button::BeginPlay()
 {
-	MainButton = this;
 
 	Super::BeginPlay();
+	MainButton = this;
 	
 	SetActorLocation(FVector{ 0,0, });
-
 
 	
 
@@ -107,23 +109,65 @@ void Button::ButtonLight(std::string _ButtonName)
 {
 	if (_ButtonName._Equal("LeftLightButton"))
 	{
+		if (LeftLight == true && LeftDoor == false)
+		{
+			LeftButtonRender->SetSprite("Button.png", 0);
+			LeftLight = false;
+			//라이트가 켜져있고 문이 열려 있을때
+		}
+		else if (LeftLight == true && LeftDoor == true)
+		{
+			LeftButtonRender->SetSprite("Button.png", 2);
+			LeftLight = false;
+			//라이트가 켜져있고 문도 닫혀있을때 
+
+		}
+
+
+
+		if (LeftDoor == true)
+		{
+			LeftButtonRender->SetSprite("Button.png", 3);
+			LeftLight = true; 
+			return;
+			//문만 닫혀있을때
+		}
+		
 		LeftButtonRender->SetSprite("Button.png",1);
 		LeftLight = true;
+		//아무것도 아닌상태일때
 
 	}
 	else if(_ButtonName._Equal("RightLightButton"))
 	{
+
+		RightButtonRender->SetSprite("Button.png", 7);
 		RightLight = true;
+		
 	}
-	//BackStageGround::ChageBackGround();
+	
 }
 
-void Button::ButtonDoor(std::string _ButtonName)
+void Button::ButtonDoor(std::string _ButtonName )
 {
+	
+	
 	if (_ButtonName._Equal("LeftDoorButton"))
 	{
 
+		if (LeftLight == true)
+		{
+			LeftButtonRender->SetSprite("Button.png", 3);
+			//라이트가 켜져있을때 문을 누르면 
+
+		}
+
 		LeftButtonRender->SetSprite("Button.png", 2);
+		LeftDoor = true;
+		//문 닫히기 
+
+		
+
 
 	}
 

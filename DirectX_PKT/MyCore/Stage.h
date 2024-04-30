@@ -35,6 +35,7 @@ public:
 	
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
 	std::shared_ptr<Noise> GetNoise();
+	std::shared_ptr<Door> GetStageDoor();
 
 protected:
 	void BeginPlay() override;
@@ -68,6 +69,8 @@ private:
 	// Object
 	std::shared_ptr<StageCamera> StageCam = nullptr;
 	std::shared_ptr<Door> StageDoor = nullptr;
+
+
 
 	//UI
 	UImage* ArrowUi = nullptr;

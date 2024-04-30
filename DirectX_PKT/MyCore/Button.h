@@ -6,6 +6,7 @@
 class BackStageGround;
 class StageBackGroundClass;
 class Stage;
+class Door;
 class Button : public AActor
 {
 private:
@@ -24,9 +25,17 @@ public:
 	Button& operator=(Button&& _Other) noexcept = delete;
 
 	void MoveButton(FVector _SetPos);
-	void ButtonClick();
 	void ButtonLight(std::string _ButtonName);
 	void ButtonDoor(std::string _ButtonName);
+
+	inline bool LDoorButtonCheck()
+	{
+		return LeftDoor;
+	}
+	inline bool RDoorBUttonCheck()
+	{
+		return RightDoor;
+	}
 
 	inline Button* GetMainButton()
 	{
@@ -44,6 +53,7 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
+	
 
 	USpriteRenderer* LeftButtonRender = nullptr;
 	UCollision* LeftDoorButton = nullptr;

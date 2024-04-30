@@ -57,7 +57,6 @@ void Stage::BeginPlay()
 	//NoiseEffect->SetOrder(100);
 	
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
-	StageDoor = GetWorld()->SpawnActor<Door>("StageDoor");
 	CCTVRectUI = GetWorld()->SpawnActor<CCTVUI>("CCTVRectUI");
 	CCTVRectUI->SetActive(false);
 
@@ -65,6 +64,7 @@ void Stage::BeginPlay()
 	
 	//LobbyUI
 	LobbyUI = GetWorld()->SpawnActor<Lobby>("LobbyUI");
+	StageDoor = GetWorld()->SpawnActor<Door>("StageDoor");
 
 
 
@@ -514,4 +514,9 @@ std::shared_ptr<CCTVBackGround> Stage::GetCCTVBack()
 std::shared_ptr<Noise> Stage::GetNoise()
 {
 	return NoiseEffect;
+}
+
+std::shared_ptr<Door> Stage::GetStageDoor()
+{
+	return StageDoor;
 }

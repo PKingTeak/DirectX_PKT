@@ -7,6 +7,7 @@
 // Ό³Έν :
 class StageBackGroundClass;
 class Button;
+class Door;
 class Mouse : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -27,7 +28,8 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
-
+	Stage* MainStage = nullptr;
+	std::shared_ptr<Door> DoorActor = nullptr;
 	std::shared_ptr<StageBackGroundClass> StageBackGround;
 	std::shared_ptr<Button> ButtonClass;
 	void MouseClick(OrderType _OrderType);
@@ -37,6 +39,6 @@ private:
 	UCollision* MouseCollision = nullptr;
 	USpriteRenderer* MSprite = nullptr;
 	
-
+	
 };
 

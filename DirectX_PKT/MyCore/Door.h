@@ -20,6 +20,7 @@ public:
 	Door& operator=(Door&& _Other) = delete;
 
 	void DoorOpen(std::string_view _ButtonName);
+	void DoorClose(std::string_view _ButtonName);
 
 protected:
 	void BeginPlay() override;
