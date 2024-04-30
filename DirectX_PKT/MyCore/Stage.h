@@ -13,6 +13,9 @@ class Noise;
 class CCTVUI;
 class Button;
 class Door;
+class Lobby;
+class StageBackGroundClass;
+class Fan;
 
 class Stage : public AGameMode
 {
@@ -41,6 +44,9 @@ protected:
 private:
 
 	void ChageCam();
+	//Lobby
+	std::shared_ptr<StageBackGroundClass> LobbyBackGround = nullptr;
+	std::shared_ptr<Fan> LobbyFan = nullptr;
 
 	//Camera
 	void ResetCamPos();
@@ -90,6 +96,9 @@ private:
 	// Noise
 	std::shared_ptr<Noise> NoiseEffect = nullptr;
 	void NoiseCheck();
+
+	//Lobby UI
+	std::shared_ptr<Lobby> LobbyUI = nullptr;
 	
 
 };

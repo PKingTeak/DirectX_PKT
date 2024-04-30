@@ -4,6 +4,8 @@
 #include<EngineCore/Renderer.h>
 #include<EngineCore/SpriteRenderer.h>
 class BackStageGround;
+class StageBackGroundClass;
+class Stage;
 class Button : public AActor
 {
 private:

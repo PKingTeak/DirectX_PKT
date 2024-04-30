@@ -25,6 +25,7 @@ StageBackGroundClass::StageBackGroundClass()
 	//StageBackRender->SetPosition({ 0,0 });
 	StageBackRender->SetOrder(OrderType::BackGround);
 	StageBackRender->CreateAnimation("LeftLightAnimation", "Office.png", 0.1f, false, 0, 2);
+	StageBackRender->CreateAnimation("NoElecAnimation", "NoElec", 0.1f, true, 0, 1);
 
 
 
@@ -65,28 +66,10 @@ StageBackGroundClass* StageBackGroundClass::GetMainStageBackGround()
 	return MainStageBackGround;
 }
 
-void StageBackGroundClass::ChangeBackGround()
+void StageBackGroundClass::ChangeBackGround(std::string _RoomState)
 {
-	StageBackRender->ChangeAnimation("LeftLightAnimation");
-	StageBackRender->SetFrameCallback("LeftLightAnimation", 2, [=]
-		{
-			
-			while (DelayTime < 5)
-			{
-				DelayTime += 1;
-				StageBackRender->SetSprite("Office.png", 2);
-				if (DelayTime >= 3)
-				{
-					StageBackRender->SetSprite("Office.png", 1);
-					break;
-				}
-			}
-			
-			
-			
-			
-		});
 
+	
 
 }
 

@@ -64,7 +64,7 @@ void Mouse::Tick(float _DeltaTime)
 				if (UEngineInput::IsDown(VK_LBUTTON))
 				{
 
-				StageBackGround->GetMainStageBackGround()->ChangeBackGround();
+				StageBackGround->GetMainStageBackGround()->ChangeBackGround("LeftLightButton");
 				ButtonClass->GetMainButton()->ButtonLight(objectType);
 				}
 			

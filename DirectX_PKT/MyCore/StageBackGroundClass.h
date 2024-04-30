@@ -25,7 +25,7 @@ public:
 
 	StageBackGroundClass* GetMainStageBackGround();
 	
-	void ChangeBackGround();
+	void ChangeBackGround(std::string _RoomState);
 
 protected:
 	void BeginPlay() override;

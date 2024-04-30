@@ -17,6 +17,8 @@
 #include"CCTVUI.h"
 #include"Noise.h"
 #include"Door.h"
+#include"Lobby.h"
+
 
 
 
@@ -41,8 +43,8 @@ void Stage::BeginPlay()
 	Super::BeginPlay();
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
-	GetWorld()->SpawnActor<Fan>("Fan");
-	GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
+	LobbyFan =  GetWorld()->SpawnActor<Fan>("Fan");
+	LobbyBackGround = GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	CCTVPtr = GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	DoorControlButton = GetWorld()->SpawnActor<Button>("DoorControlButton");
@@ -61,8 +63,12 @@ void Stage::BeginPlay()
 
 
 	
-	//CCTVPtr = CCTVBackGround::GetCCTVBackGround();
+	//LobbyUI
+	LobbyUI = GetWorld()->SpawnActor<Lobby>("LobbyUI");
 
+
+
+	
 
 	{
 
@@ -208,7 +214,7 @@ void Stage::BeginPlay()
 					
 					}
 					
-					else if(CCTVonoff == true)
+					else if (CCTVonoff == true)
 					{
 					StageCam->CamCCTVOff();
 					return;

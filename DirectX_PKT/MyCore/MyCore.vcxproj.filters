@@ -85,7 +85,7 @@
     <ClCompile Include="CCTVBackGround.cpp">
       <Filter>Level\Stage\Cam</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
+    <ClCompile Include="Lobby.cpp">
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="FishEyes.cpp">
@@ -150,7 +150,7 @@
     <ClInclude Include="CCTVBackGround.h">
       <Filter>Level\Stage\Cam</Filter>
     </ClInclude>
-    <ClInclude Include="UIManager.h">
+    <ClInclude Include="Lobby.h">
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="FishEyes.h">
