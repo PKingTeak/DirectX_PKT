@@ -42,7 +42,7 @@ private:
 	float Time = 0;
 	int BatteryPower = 99;
 
-	int BatteryUser = 2;
+	int BatteryUser = 1;
 	std::string BatteryText;
 	UImage* BatteryUI = nullptr;
 	UImage* PowerLeftText = nullptr;

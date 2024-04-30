@@ -131,7 +131,7 @@ void Lobby::BatteryGageUI(float _DeltaTime)
 	{
 	case 1:
 		
-		BatteryUI->SetSprite(BatteryUIName.append("1.png"));
+		BatteryUI->SetSprite(BatteryUIName.append(".png"));
 		BatteryPowerCheck(_DeltaTime,6);
 		//베터리 소모량 계산
 		break;
