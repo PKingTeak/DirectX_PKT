@@ -160,6 +160,7 @@ void Button::ButtonDoor(std::string _ButtonName )
 			if (LeftDoor == true)
 			{
 				LeftButtonRender->SetSprite("Button.png", 1);
+				LeftDoor = false;
 				return;
 			}
 			LeftButtonRender->SetSprite("Button.png", 3);
@@ -173,6 +174,7 @@ void Button::ButtonDoor(std::string _ButtonName )
 			if (LeftDoor == true)
 			{
 				LeftButtonRender->SetSprite("Button.png", 0);
+				LeftDoor = false;
 				return;
 			}
 			LeftButtonRender->SetSprite("Button.png", 2);
