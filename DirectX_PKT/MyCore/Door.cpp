@@ -21,9 +21,10 @@ Door::Door()
 	RDoorRender = CreateDefaultSubObject<USpriteRenderer>("RDoorRender");
 	RDoorRender->SetupAttachment(Default);
 	RDoorRender->SetAutoSize(1.0f, true);
-	//RDoorRender->CreateAnimation("RightDoorAni", "RdoorAnimation", 0.1f, false, 0, 14);
 	RDoorRender->SetOrder(OrderType::Object);
 	RDoorRender->SetSprite("RdoorStatic.png");
+	RDoorRender->CreateAnimation("RightDoorAni", "RdoorAnimation.png", 0.1f, false, 0, 14);
+	RDoorRender->CreateAnimation("CRightDoorAni", "RdoorAnimation.png", 0.1f, false, 14, 0);
 	RDoorRender->SetPosition(FVector{ 600,-20,-10 });
 
 	SetRoot(Default);
@@ -65,7 +66,7 @@ void Door::DoorOpen(std::string_view _ButtonName)
 
 	else if (_ButtonName == "RightDoorButton")
 	{
-		//RDoorRender->ChangeAnimation("RightDoorAni");
+		RDoorRender->ChangeAnimation("RightDoorAni");
 	}
 
 

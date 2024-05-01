@@ -38,6 +38,7 @@ private:
 	FVector MousePos = {};
 	UCollision* MouseCollision = nullptr;
 	USpriteRenderer* MSprite = nullptr;
+
 	
 	
 };

@@ -33,9 +33,11 @@ public:
 	Stage& operator=(const Stage& _Other) = delete;
 	Stage& operator=(Stage&& _Other) noexcept = delete;
 	
+	std::shared_ptr<StageBackGroundClass> GetLobbyBackGround();
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
 	std::shared_ptr<Noise> GetNoise();
 	std::shared_ptr<Door> GetStageDoor();
+	
 
 protected:
 	void BeginPlay() override;

@@ -520,3 +520,8 @@ std::shared_ptr<Door> Stage::GetStageDoor()
 {
 	return StageDoor;
 }
+
+std::shared_ptr<StageBackGroundClass> Stage::GetLobbyBackGround()
+{
+	return LobbyBackGround;
+}

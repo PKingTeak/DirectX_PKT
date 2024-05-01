@@ -24,9 +24,12 @@ public:
 	StageBackGroundClass& operator=(StageBackGroundClass&& _Other) noexcept = delete;
 
 	StageBackGroundClass* GetMainStageBackGround();
-	
-	void ChangeBackGround(std::string _RoomState);
 
+	
+	void LightOn(std::string _Dir);
+	void ChangeBackGround(std::string _RoomState);
+	
+	
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -34,14 +37,14 @@ protected:
 	void RendererOff();
 	void RendererOn();
 private:
-	int DelayTime = 0;
 	std::vector<AActor> UIInfo;
 	USpriteRenderer* Renderer = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	
 	bool ColDir = false;
-	
-	
+	float Time = 0.0;
+	bool LeftLight = false;
+	bool RightLight = false;
 	
 
 };
