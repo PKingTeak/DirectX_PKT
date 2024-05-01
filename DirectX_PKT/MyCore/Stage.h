@@ -39,6 +39,8 @@ public:
 	std::shared_ptr<Door> GetStageDoor();
 	std::map<std::string, UImage*>* GetCCTVMap();
 
+	
+	std::string FindAnimatronicsLocation();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -112,6 +114,6 @@ private:
 
 
 	float TestTimer = 0;
-
+	bool BonniChecker = false;
 };
 

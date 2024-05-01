@@ -23,7 +23,15 @@ public:
 	Bonni(Bonni&& _Other) noexcept = delete;
 	Bonni& operator=(const Bonni& _Other) = delete;
 	Bonni& operator=(Bonni&& _Other) = delete;
-	BonniLocation SetCurLocation();
+	void SetCurLocation();
+	inline int GetCurLocation()
+	{
+	
+		//0 1 2 3 4 5 이렇게 셋팅을 하나씩 해주는 함수 만들고
+		//Background에 하나 넣어줘야 할듯 하다. 
+		return static_cast<int>(CurState);
+	}
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -43,6 +51,6 @@ private:
 	bool Ismove = false;
 	float TestTime = 0.0f;
 	
-	
+	BonniLocation CurState  = BonniLocation::Cam1A;
 };
 

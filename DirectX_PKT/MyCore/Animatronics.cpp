@@ -44,3 +44,9 @@ int Animatronics::MoveChance(int _Num)
 	}
 	return 1;
 }
+
+void Animatronics::StringChangeTest()
+{
+	//BonniLocation::Cam1A;
+	
+}

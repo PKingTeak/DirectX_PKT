@@ -271,7 +271,7 @@ void Stage::BeginPlay()
 
 
 
-
+		
 
 
 	}
@@ -332,7 +332,9 @@ void Stage::DebugGUI()
 		std::string Msg = std::format("CamPos: {}\n", Camera->GetActorLocation().ToString());
 		UEngineDebugMsgWindow::PushMsg(Msg);
 	}
-
+	{
+		//std::string Msg = std::format("BonniLocation : {}\n", LocationName);
+	}
 
 }
 
@@ -429,10 +431,18 @@ void Stage::ChageCam()
 	if (PrevCam == nullptr)
 	{
 		return;
+		//이전 카메라가 없을때 함수 종료 
 	}
+
 	std::string CamName = PrevCam->GetName();
+	if (BonniChecker == true)
+	{
+		CamName = FindAnimatronicsLocation();
+		CCTVPtr->ChangeCam(CamName);
+		return;
+	}
 	CCTVPtr->ChangeCam(CamName);
-	//CCTVCamUI.find(CamName)->second->SetSprite(CamImage);
+	
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
 }
@@ -463,6 +473,7 @@ void Stage::CamInteract()
 					CCTVPtr->ScanLineON();
 					//StartScanLine();
 					ChageCam();
+					//CheckMOnster() -> 
 
 					//캠화면 전환
 
@@ -479,7 +490,7 @@ void Stage::CamInteract()
 
 void Stage::CCTVUIGreenCheck(std::string _CamName)
 {
-
+	//깜빡임
 	std::string RestCamName = _CamName;
 	RestCamName.append(".png");
 
@@ -532,4 +543,31 @@ std::shared_ptr<StageBackGroundClass> Stage::GetLobbyBackGround()
 std::map<std::string, UImage*>* Stage::GetCCTVMap()
 {
 	return &CCTVCamUI;
+}
+
+
+std::string Stage::FindAnimatronicsLocation()
+{
+	int CurLocation = BonniActor->GetCurLocation();
+	std::string LocationName = "";
+	switch (CurLocation)
+	{
+
+	case 0:
+		LocationName = CCTVCamUI["Cam1A"]->GetName();
+		//CCTVPtr->ChangeCam("Cam1ABonni");
+		BonniChecker = true;
+		return LocationName;
+	case 1:
+		LocationName = CCTVCamUI["Cam1B"]->GetName();
+		BonniChecker = true;
+		return LocationName;
+
+	case 2:
+		LocationName = CCTVCamUI["Cam5"]->GetName();
+		BonniChecker = true;
+		return LocationName;
+	default:
+		break;
+	}
 }

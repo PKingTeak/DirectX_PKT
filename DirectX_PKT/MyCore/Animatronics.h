@@ -1,5 +1,7 @@
 #pragma once
 #include<EngineBase/EngineRandom.h>
+#include<string>
+
 enum class BonniLocation
 {
 	Cam1A,
@@ -12,12 +14,10 @@ enum class BonniLocation
 
 
 };
-
-
 class Animatronics
 {
 public:
-
+	
 
 	// constructor destructor
 	Animatronics();
@@ -37,6 +37,7 @@ protected :
 	virtual void SetLevel(int _Level);
 	int Level = 0;
 
+	void StringChangeTest();
 	
 	
 };

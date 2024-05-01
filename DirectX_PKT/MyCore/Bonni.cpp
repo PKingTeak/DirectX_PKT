@@ -22,7 +22,7 @@ void Bonni::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	TestTime += _DeltaTime;
-	if (TestTime > 3)
+	if (TestTime > 5)
 	{
 		Ismove = ACTOpportunity(Level);
 		if (Ismove == true)
@@ -35,9 +35,8 @@ void Bonni::Tick(float _DeltaTime)
 
 
 
-BonniLocation Bonni::SetCurLocation()
+void Bonni::SetCurLocation()
 {
-	BonniLocation CurState = BonniLocation::Cam1A;
 
 	int MoveNum = Animatronics::MoveChance(30);
 
@@ -49,7 +48,9 @@ BonniLocation Bonni::SetCurLocation()
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Cam5;
-			MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie0");
+
+
+			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie0");
 		}
 			// 이걸 바로 하면 안됨
 		else
@@ -60,8 +61,31 @@ BonniLocation Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::Cam1B:
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Cam1A;
+			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Cam1B;
+
+		}
+
 		break;
 	case BonniLocation::Cam5:
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Cam5;
+			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Cam2A;
+
+		}
 		break;
 	case BonniLocation::Cam2A:
 		break;
@@ -82,7 +106,6 @@ BonniLocation Bonni::SetCurLocation()
 
 
 
-		return CurState;
 		//Map->find()
 	}
 
