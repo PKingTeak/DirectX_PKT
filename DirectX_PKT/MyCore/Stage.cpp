@@ -18,6 +18,7 @@
 #include"Noise.h"
 #include"Door.h"
 #include"Lobby.h"
+#include"Bonni.h"
 
 
 
@@ -66,7 +67,9 @@ void Stage::BeginPlay()
 	LobbyUI = GetWorld()->SpawnActor<Lobby>("LobbyUI");
 	StageDoor = GetWorld()->SpawnActor<Door>("StageDoor");
 
-
+	//Monster
+	BonniActor = GetWorld()->SpawnActor<Bonni>("Bonni");
+	
 
 	
 
@@ -308,7 +311,8 @@ void Stage::Tick(float _DeltaTime)
 		CamInteract();
 	}
 	
-
+	TestTimer += _DeltaTime;
+	
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
 
@@ -524,4 +528,8 @@ std::shared_ptr<Door> Stage::GetStageDoor()
 std::shared_ptr<StageBackGroundClass> Stage::GetLobbyBackGround()
 {
 	return LobbyBackGround;
+}
+std::map<std::string, UImage*>* Stage::GetCCTVMap()
+{
+	return &CCTVCamUI;
 }

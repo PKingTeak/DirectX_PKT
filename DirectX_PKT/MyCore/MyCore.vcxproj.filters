@@ -38,6 +38,9 @@
     <Filter Include="Level\Stage\Object">
       <UniqueIdentifier>{4e08e10b-faec-444f-8d74-f1ef09464166}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animatronics">
+      <UniqueIdentifier>{76957f98-8026-4ae4-bb13-137ebf4b04f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -103,6 +106,12 @@
     <ClCompile Include="Door.cpp">
       <Filter>Level\Stage\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Bonni.cpp">
+      <Filter>Animatronics</Filter>
+    </ClCompile>
+    <ClCompile Include="Animatronics.cpp">
+      <Filter>Animatronics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -167,6 +176,12 @@
     </ClInclude>
     <ClInclude Include="Door.h">
       <Filter>Level\Stage\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonni.h">
+      <Filter>Animatronics</Filter>
+    </ClInclude>
+    <ClInclude Include="Animatronics.h">
+      <Filter>Animatronics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

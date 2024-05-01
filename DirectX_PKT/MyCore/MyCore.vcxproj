@@ -19,7 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animatronics.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Arrow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Bonni.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -51,7 +59,15 @@
     <ClInclude Include="Lobby.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animatronics.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Arrow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Bonni.cpp">
       <SubType>
       </SubType>
     </ClCompile>
