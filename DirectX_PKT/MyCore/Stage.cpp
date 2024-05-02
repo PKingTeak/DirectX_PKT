@@ -19,6 +19,9 @@
 #include"Door.h"
 #include"Lobby.h"
 #include"Bonni.h"
+#include"RoomManager.h"
+#include"ShowRoom.h"
+#include"HallDining.h"
 
 
 
@@ -44,34 +47,42 @@ void Stage::BeginPlay()
 	Super::BeginPlay();
 	Camera = GetWorld()->GetMainCamera();
 	Camera->SetActorLocation(FVector(0.0f, 0.0f, -100.0f));
-	LobbyFan =  GetWorld()->SpawnActor<Fan>("Fan");
+	LobbyFan = GetWorld()->SpawnActor<Fan>("Fan");
 	LobbyBackGround = GetWorld()->SpawnActor<StageBackGroundClass>("StageBackGroundClass");
 	GetWorld()->SpawnActor<Mouse>("Mouse");
 	CCTVPtr = GetWorld()->SpawnActor<CCTVBackGround>("CCTVBackGround");
 	DoorControlButton = GetWorld()->SpawnActor<Button>("DoorControlButton");
-	
-	
+
+
 
 
 	NoiseEffect = GetWorld()->SpawnActor<Noise>("NoiseEffect");
 	NoiseEffect->SetActive(false);
 	//NoiseEffect->SetOrder(100);
-	
+
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
 	CCTVRectUI = GetWorld()->SpawnActor<CCTVUI>("CCTVRectUI");
 	CCTVRectUI->SetActive(false);
 
 
-	
+
 	//LobbyUI
 	LobbyUI = GetWorld()->SpawnActor<Lobby>("LobbyUI");
 	StageDoor = GetWorld()->SpawnActor<Door>("StageDoor");
 
 	//Monster
 	BonniActor = GetWorld()->SpawnActor<Bonni>("Bonni");
-	
 
-	
+	{//BackGround
+
+
+		BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
+		BHallDining = GetWorld()->SpawnActor<HallDining>("CBHallDining");
+
+	}//벡터[i]  =GetWorld()->SpawnActor<>();
+
+
+
 
 	{
 
@@ -112,7 +123,7 @@ void Stage::BeginPlay()
 
 
 		CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "ShowRoom");
-	//	CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png", 0);
+		//	CCTVCamUI["Cam1A"]->SetSprite("Cam1A.png", 0);
 		CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni", "Cam1A.png", 0.5f, true, 0, 0);
 		CCTVCamUI["Cam1A"]->CreateAnimation("CCam1AAni", "Cam1A.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam1A"]->ChangeAnimation("CCam1AAni");
@@ -181,7 +192,7 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam2B"] = CreateWidget<UImage>(GetWorld(), "W.HallConer");
 		CCTVCamUI["Cam2B"]->SetSprite("Cam2B.png", 0);
 		CCTVCamUI["Cam2B"]->CreateAnimation("Cam2BAni", "Cam2B.png", 0.5f, true, 0, 0);
-		CCTVCamUI["Cam2B"]->CreateAnimation("CCam2BAni", "Cam2B.png", 0.5f, true,0, 1);
+		CCTVCamUI["Cam2B"]->CreateAnimation("CCam2BAni", "Cam2B.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam2B"]->SetPosition(FVector{ 320,-280 });
 		CCTVCamUI["Cam2B"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam2B"]->AddToViewPort(2);
@@ -189,7 +200,7 @@ void Stage::BeginPlay()
 		CCTVCamUI["Cam4A"] = CreateWidget<UImage>(GetWorld(), "EestHall");
 		CCTVCamUI["Cam4A"]->SetSprite("Cam4A.png", 0);
 		CCTVCamUI["Cam4A"]->CreateAnimation("Cam4AAni", "Cam4A.png", 0.5f, true, 0, 0);
-		CCTVCamUI["Cam4A"]->CreateAnimation("CCam4AAni", "Cam4A.png", 0.5f, true,0, 1);
+		CCTVCamUI["Cam4A"]->CreateAnimation("CCam4AAni", "Cam4A.png", 0.5f, true, 0, 1);
 		CCTVCamUI["Cam4A"]->SetPosition(FVector{ 400,-100 });
 		CCTVCamUI["Cam4A"]->SetAutoSize(1.0f, true);
 		CCTVCamUI["Cam4A"]->AddToViewPort(2);
@@ -214,27 +225,27 @@ void Stage::BeginPlay()
 		CCTVCamUI.insert({ "Cam2B",CCTVCams[8] });
 		CCTVCamUI.insert({ "Cam4A",CCTVCams[9] });
 		CCTVCamUI.insert({ "Cam4B",CCTVCams[10] });
-		
+
 		{
 
 			ArrowUi->SetHover([=]()
 				{
 					bool CCTVonoff = StageCam->GetIsCameraOn();
 					CamMove = true;
-					
-					
+
+
 					if (CCTVonoff == false)
 					{
 						StageCam->CamCCTVOn(); //여기서 조건문을 걸어서 on과off를 구별해야될듯 하다 .
-					
+
 					}
-					
+
 					else if (CCTVonoff == true)
 					{
-					StageCam->CamCCTVOff();
-					return;
+						StageCam->CamCCTVOff();
+						return;
 					}
-					
+
 					//카메라가 on 일때 CamMode가 true일 때는 내려가야한다. 
 					NoiseCheck();
 
@@ -264,7 +275,7 @@ void Stage::BeginPlay()
 		//로비에서 카메라가 좌우로 움직일수 있게 하기 위함
 		RightBox->SetHover([=]()
 			{
-				//CamMove = true;
+				CamMove = true;
 				CameRightMove = true;
 			}
 		);
@@ -283,7 +294,7 @@ void Stage::BeginPlay()
 
 
 
-		
+
 
 
 	}
@@ -322,9 +333,11 @@ void Stage::Tick(float _DeltaTime)
 	{
 		CamInteract();
 	}
-	
+
 	TestTimer += _DeltaTime;
-	
+
+	BonniActor->AutoMove(_DeltaTime);
+	FindAnimatronicsLocation();
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
 
@@ -447,14 +460,8 @@ void Stage::ChageCam()
 	}
 
 	std::string CamName = PrevCam->GetName();
-	if (BonniChecker == true)
-	{
-		CamName = FindAnimatronicsLocation();
-		CCTVPtr->ChangeCam(CamName);
-		return;
-	}
 	CCTVPtr->ChangeCam(CamName);
-	
+
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
 }
@@ -467,13 +474,13 @@ void Stage::CamInteract()
 		UImage* NewImage = CCTVCamUI[NameFirst];
 		std::string CurCamName = NewImage->GetName();
 		std::string PreCamName = PrevCam->GetName();
-
+		std::string MonsterLocal = LocationName;
 
 		NewImage->SetDown([=]()
 			{
 				if (IsCamOn == false)
 				{
-
+					this;
 					if (PreCamName != CurCamName)
 					{
 
@@ -483,9 +490,19 @@ void Stage::CamInteract()
 						IsCamOn = true;
 					}
 					CCTVPtr->ScanLineON();
-					//StartScanLine();
-					ChageCam();
-					//CheckMOnster() -> 
+					if (MonsterLocal == CurCamName)
+					{
+
+						MonsterName = LocationName.append("Booni.png");
+						CCTVPtr->ChangeCam(MonsterName);
+
+
+					}
+					else if (MonsterLocal != CurCamName)
+					{
+						ChageCam(); //카메라 변경
+					}
+
 
 					//캠화면 전환
 
@@ -503,20 +520,20 @@ void Stage::CamInteract()
 void Stage::CCTVUIGreenCheck(std::string _CamName)
 {
 	//깜빡임
-	
+
 	if (CurCCTVCamUI == nullptr)
 	{
 		CurCCTVCamUI = CCTVCamUI[_CamName];
 		PreCCTVCamUI = CCTVCamUI["Cam1A"];
-		
+
 	}
 
 	if (_CamName != PreCamName)
 	{
-	//	CurCCTVCamUI = CCTVCamUI[_CamName];
+		//	CurCCTVCamUI = CCTVCamUI[_CamName];
 		CurCCTVCamUI = CCTVCamUI[_CamName];
 		PreCCTVCamUI->ChangeAnimation(PreCamName + "Ani");
-		CurCCTVCamUI->ChangeAnimation("C" + _CamName +"Ani");
+		CurCCTVCamUI->ChangeAnimation("C" + _CamName + "Ani");
 		PreCCTVCamUI = CurCCTVCamUI;
 		PreCamName = _CamName;
 		//CCTVCamUI.find(_CamName)->second->SetSprite(RestCamName, 0);
@@ -546,28 +563,39 @@ void Stage::NoiseCheck()
 
 std::string Stage::FindAnimatronicsLocation()
 {
-	int CurLocation = BonniActor->GetCurLocation();
-	std::string LocationName = "";
+	int CurLocation = static_cast<int>(BonniActor->GetCurLocation());
+	//이걸 인자로 받아서 사용할거다
 	switch (CurLocation)
 	{
 
 	case 0:
-		LocationName = CCTVCamUI["Cam1A"]->GetName();
-		//CCTVPtr->ChangeCam("Cam1ABonni");
-		BonniChecker = true;
+		// ShowRoom
+		if (BShowRoom->CheckRoom() == true)
+		{
+			//LocationName = "ShowRoom.png";
+			//CCTVPtr->ChangeCam(LocationName);
+			//break;
+		}
 		return LocationName;
 	case 1:
-		LocationName = CCTVCamUI["Cam1B"]->GetName();
-		BonniChecker = true;
+		//LocationName = CCTVCamUI["Cam1B"]->GetName();
+		LocationName = "DiningArea_Bonnie0";
+		if (BHallDining->CheckRoom() == true)
+		{	
+			//BHallDining->SetMonster(BonniActor);
+			CCTVPtr->ChangeCam(LocationName);
+				
+		}
 		return LocationName;
-
+		
 	case 2:
-		LocationName = CCTVCamUI["Cam5"]->GetName();
-		BonniChecker = true;
+		//LocationName = CCTVCamUI["Cam5"]->GetName();
+	//	BonniChecker = true;
 		return LocationName;
 	default:
 		break;
 	}
+	return "0";
 }
 
 std::shared_ptr<CCTVBackGround> Stage::GetCCTVBack()
@@ -599,3 +627,7 @@ std::shared_ptr<Bonni> Stage::GetStageBonni()
 	return BonniActor;
 }
 
+std::vector<std::string> Stage::GetCamName()
+{
+	return Name;
+}

@@ -37,6 +37,7 @@ public:
 		return CamMode;
 	}
 	void ChangeCam(std::string _UICamName);
+	void ChangeSprite(std::string _ChangeCam);
 	void ScanLineON();
 	
 
@@ -66,10 +67,13 @@ private:
 	std::shared_ptr<Bonni> BonniCam = nullptr;
 	//다른 것들도 추가 
 	
-	std::string MonsterChecker();
 	
-	std::map<int, std::string> CCTVBonniLocal;
-	std::vector<std::string> BonniLocalName = { "Cam1A","Cam1B","Cam5",	"Cam2A","Cam3",	"Cam2B","Lobby" };
-
+	
+	std::map<int,AActor*> CCTVBackGroundMaps;
+	
+	USpriteRenderer* ChangeSpriteRender = nullptr;
+	
+	
+	
 };
 

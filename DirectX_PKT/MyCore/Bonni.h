@@ -25,25 +25,16 @@ public:
 	Bonni& operator=(Bonni&& _Other) = delete;
 	void SetCurLocation();
 
-	inline int AllBonniLocal()
-	{
-		
-	}
-	inline int GetCurLocation()
-	{
-	
-		//0 1 2 3 4 5 이렇게 셋팅을 하나씩 해주는 함수 만들고
-		//Background에 하나 넣어줘야 할듯 하다. 
-		return static_cast<int>(CurState);
-	}
 
+	BonniLocation GetCurLocation();
+	void AutoMove(float _DeltaTime);
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 	//bool ACTOpportunity(int _CurLevel) override;
 	int MoveChance(int _Num);
-	
-	
+
+
 	void RendererOff();
 	void RendererOn();
 private:
@@ -53,10 +44,12 @@ private:
 	//std::map<std::string, UImage*>* Map;
 	std::string CurLocation = "";
 
+
+
 	bool Ismove = false;
 	float TestTime = 0.0f;
-	
-	BonniLocation CurState  = BonniLocation::Cam1A;
+	BonniLocation CurState = BonniLocation::Cam1A;
 
 };
+
 

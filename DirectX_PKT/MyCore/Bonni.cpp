@@ -22,15 +22,7 @@ void Bonni::BeginPlay()
 void Bonni::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	TestTime += _DeltaTime;
-	if (TestTime > 5)
-	{
-		Ismove = ACTOpportunity(Level);
-		if (Ismove == true)
-		{
-			SetCurLocation();
-		}
-	}
+	
 }
 
 
@@ -38,8 +30,8 @@ void Bonni::Tick(float _DeltaTime)
 
 void Bonni::SetCurLocation()
 {
-
-	int MoveNum = Animatronics::MoveChance(30);
+	// 보니 위치 보내주고 
+	int MoveNum = Animatronics::MoveChance(50);
 
 	switch (CurState)
 	{
@@ -54,7 +46,7 @@ void Bonni::SetCurLocation()
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie0");
 		}
 			// 이걸 바로 하면 안됨
-		else
+		if(MoveNum != 0)
 		{
 			CurState = BonniLocation::Cam1B;
 
@@ -112,5 +104,24 @@ void Bonni::SetCurLocation()
 
 }
 
+BonniLocation Bonni::GetCurLocation()
+{
+	return CurState;
+}
+
 
 //std::string _CamName
+
+void Bonni::AutoMove(float _DeltaTime)
+{
+
+	TestTime += _DeltaTime;
+	if (TestTime > 5)
+	{
+		Ismove = ACTOpportunity(Level);
+		if (Ismove == true)
+		{
+			SetCurLocation();
+		}
+	}
+}

@@ -17,6 +17,18 @@ class Lobby;
 class StageBackGroundClass;
 class Fan;
 class Bonni;
+class ShowRoom;
+class PirateRoom;
+class BackStage;
+class SupplyCloset;
+class WestHall;
+class WestHallCorner;
+class EastHall;
+class EastHallCorner;
+class KittenRoom;
+class HallDining;
+class RestRoom;
+
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -39,7 +51,7 @@ public:
 	std::shared_ptr<Door> GetStageDoor();
 	std::map<std::string, UImage*>* GetCCTVMap(); // ¾È¾¸
 	std::shared_ptr<Bonni> GetStageBonni();
-
+	std::vector<std::string> GetCamName();
 	
 	std::string FindAnimatronicsLocation();
 protected:
@@ -91,6 +103,7 @@ private:
 	
 	//Cam
 	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
+	std::vector<AActor*> CamLocal;
 	std::map<std::string,UImage*> CCTVCamUI;
 	UImage* PreCCTVCamUI = nullptr;
 	UImage* CurCCTVCamUI = nullptr;
@@ -116,6 +129,24 @@ private:
 
 	//Monster
 	std::shared_ptr<Bonni> BonniActor = nullptr;
+	std::string LocationName = "";
+	std::string MonsterName = "";
+	//
+
+
+	std::shared_ptr<ShowRoom> BShowRoom = nullptr;
+	std::shared_ptr<HallDining> BHallDining = nullptr;
+	std::shared_ptr<PirateRoom> BPirateRoom = nullptr;
+	std::shared_ptr<BackStage> BBackStage = nullptr;
+	std::shared_ptr<SupplyCloset> BSupplyCloset = nullptr;
+	std::shared_ptr<WestHall> BWestHall = nullptr;
+	std::shared_ptr<WestHallCorner> BWestHallCorner = nullptr;
+	std::shared_ptr<EastHall> BEastHall = nullptr;
+	std::shared_ptr<EastHallCorner> BEastHallCorner = nullptr;
+	std::shared_ptr<KittenRoom> BKittenRoom = nullptr;
+	std::shared_ptr<RestRoom> BRestRoom = nullptr;
+	
+	
 
 
 	float TestTimer = 0;

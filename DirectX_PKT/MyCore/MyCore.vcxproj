@@ -27,6 +27,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BackStage.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Bonni.h">
       <SubType>
       </SubType>
@@ -37,8 +41,24 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EastHall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EastHallCorner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fan.h" />
     <ClInclude Include="FishEyes.h" />
+    <ClInclude Include="HallDining.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KittenRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MainTitleLevel.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MyCore.h">
@@ -46,17 +66,45 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Noise.h" />
+    <ClInclude Include="PirateRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayGameMode.h" />
     <ClInclude Include="PreCompile.h" />
     <ClInclude Include="CCTVUI.h" />
+    <ClInclude Include="RestRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="RoomManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShowRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageBackGroundClass.h" />
     <ClInclude Include="StageCamera.h" />
+    <ClInclude Include="SupplyCloset.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleBackGround.h" />
     <ClInclude Include="TitleGameMode.h" />
     <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="Lobby.h" />
+    <ClInclude Include="WestHall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="WestHallCorner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animatronics.cpp">
@@ -64,6 +112,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BackStage.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -77,8 +129,24 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EastHall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EastHallCorner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FishEyes.cpp" />
+    <ClCompile Include="HallDining.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KittenRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MainTitleLevel.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="MyCore.cpp">
@@ -86,6 +154,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Noise.cpp" />
+    <ClCompile Include="PirateRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayGameMode.cpp" />
     <ClCompile Include="PreCompile.cpp">
@@ -95,13 +167,37 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CCTVUI.cpp" />
+    <ClCompile Include="RestRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="RoomManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShowRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageBackGroundClass.cpp" />
     <ClCompile Include="StageCamera.cpp" />
+    <ClCompile Include="SupplyCloset.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleBackGround.cpp" />
     <ClCompile Include="TitleGameMode.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="Lobby.cpp" />
+    <ClCompile Include="WestHall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="WestHallCorner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

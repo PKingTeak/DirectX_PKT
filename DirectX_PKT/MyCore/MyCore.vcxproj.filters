@@ -41,6 +41,42 @@
     <Filter Include="Animatronics">
       <UniqueIdentifier>{76957f98-8026-4ae4-bb13-137ebf4b04f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CamActors">
+      <UniqueIdentifier>{772b94d4-2758-415a-842d-92e5619b49cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\1A">
+      <UniqueIdentifier>{472cfb8f-dd34-4ce5-b105-e46285ffb35e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\1B">
+      <UniqueIdentifier>{6c2ab98f-c845-4ad3-a260-782b6358171b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\1C">
+      <UniqueIdentifier>{82163fd1-f20f-48f5-a94c-d52364047686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\5">
+      <UniqueIdentifier>{00599e1d-34ca-49f0-8d75-501af285c7fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\3">
+      <UniqueIdentifier>{4c5ab318-0f1a-44c0-8ff3-3c3b948f4a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\2A">
+      <UniqueIdentifier>{7c3f0b8f-420b-4770-bca2-fa0566076fac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\2B">
+      <UniqueIdentifier>{135edbb8-22d1-4e2e-9810-e4dd493f10a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\4A">
+      <UniqueIdentifier>{b61eb513-5f9d-4f6c-8a62-fe73abd75742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\4B">
+      <UniqueIdentifier>{b1819d97-21f7-4bf4-8d0e-7ef916482e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\6">
+      <UniqueIdentifier>{38e64a39-9cf1-471d-9778-dd2cee7c73e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CamActors\7">
+      <UniqueIdentifier>{4dbcaa79-a557-44b2-9717-a65b60c33f0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -112,6 +148,42 @@
     <ClCompile Include="Animatronics.cpp">
       <Filter>Animatronics</Filter>
     </ClCompile>
+    <ClCompile Include="ShowRoom.cpp">
+      <Filter>CamActors\1A</Filter>
+    </ClCompile>
+    <ClCompile Include="HallDining.cpp">
+      <Filter>CamActors\1B</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateRoom.cpp">
+      <Filter>CamActors\1C</Filter>
+    </ClCompile>
+    <ClCompile Include="BackStage.cpp">
+      <Filter>CamActors\5</Filter>
+    </ClCompile>
+    <ClCompile Include="SupplyCloset.cpp">
+      <Filter>CamActors\3</Filter>
+    </ClCompile>
+    <ClCompile Include="WestHall.cpp">
+      <Filter>CamActors\2A</Filter>
+    </ClCompile>
+    <ClCompile Include="WestHallCorner.cpp">
+      <Filter>CamActors\2B</Filter>
+    </ClCompile>
+    <ClCompile Include="EastHall.cpp">
+      <Filter>CamActors\4A</Filter>
+    </ClCompile>
+    <ClCompile Include="EastHallCorner.cpp">
+      <Filter>CamActors\4B</Filter>
+    </ClCompile>
+    <ClCompile Include="KittenRoom.cpp">
+      <Filter>CamActors\6</Filter>
+    </ClCompile>
+    <ClCompile Include="RestRoom.cpp">
+      <Filter>CamActors\7</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomManager.cpp">
+      <Filter>CamActors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -182,6 +254,42 @@
     </ClInclude>
     <ClInclude Include="Animatronics.h">
       <Filter>Animatronics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShowRoom.h">
+      <Filter>CamActors\1A</Filter>
+    </ClInclude>
+    <ClInclude Include="HallDining.h">
+      <Filter>CamActors\1B</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateRoom.h">
+      <Filter>CamActors\1C</Filter>
+    </ClInclude>
+    <ClInclude Include="BackStage.h">
+      <Filter>CamActors\5</Filter>
+    </ClInclude>
+    <ClInclude Include="SupplyCloset.h">
+      <Filter>CamActors\3</Filter>
+    </ClInclude>
+    <ClInclude Include="WestHall.h">
+      <Filter>CamActors\2A</Filter>
+    </ClInclude>
+    <ClInclude Include="WestHallCorner.h">
+      <Filter>CamActors\2B</Filter>
+    </ClInclude>
+    <ClInclude Include="EastHall.h">
+      <Filter>CamActors\4A</Filter>
+    </ClInclude>
+    <ClInclude Include="EastHallCorner.h">
+      <Filter>CamActors\4B</Filter>
+    </ClInclude>
+    <ClInclude Include="KittenRoom.h">
+      <Filter>CamActors\6</Filter>
+    </ClInclude>
+    <ClInclude Include="RestRoom.h">
+      <Filter>CamActors\7</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomManager.h">
+      <Filter>CamActors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

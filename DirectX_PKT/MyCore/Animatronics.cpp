@@ -3,6 +3,8 @@
 
 Animatronics::Animatronics()
 {
+
+	
 }
 
 Animatronics::~Animatronics()

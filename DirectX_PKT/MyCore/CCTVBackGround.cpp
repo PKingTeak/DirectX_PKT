@@ -18,8 +18,16 @@ CCTVBackGround::CCTVBackGround()
 	CCTVBackGroundRender->SetupAttachment(Default);
 	CCTVBackGroundRender->SetSprite("TestCamBackGround.png");
 	CCTVBackGroundRender->SetAutoSize(1.0f, true);
-	CCTVBackGroundRender->SetOrder(100);
+	CCTVBackGroundRender->SetOrder(50);
 	CCTVBackGroundRender->SetActive(false);
+
+
+	ChangeSpriteRender = CreateDefaultSubObject<USpriteRenderer>("ChangeCCTVCam");
+	ChangeSpriteRender->SetupAttachment(Default);
+	ChangeSpriteRender->SetSprite("Void.png");
+	ChangeSpriteRender->SetAutoSize(1.0f, true);
+	ChangeSpriteRender->SetOrder(55);
+	ChangeSpriteRender->SetActive(false);
 
 
 	CCTVEffect = CreateDefaultSubObject<USpriteRenderer>("CCTVEffect");
@@ -57,21 +65,19 @@ void CCTVBackGround::BeginPlay()
 
 	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	BonniCam = StageLevel->GetStageBonni();
-
 	NoiseEffect = StageLevel->GetNoise();
 
+	
+//	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<int>(BonniLocation::Lobby); i++)
+//	{
+//
+//		//CCTVBonniLocal[i] = BonniLocalName[i];
+//
+//
+//	}
 
-	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<int>(BonniLocation::Lobby); i++)
-	{
 
-		CCTVBonniLocal[i] = BonniLocalName[i];
-
-
-	}
-
-
-	MonsterChecker();
-
+	
 }
 CCTVBackGround* CCTVBackGround::GetCCTVBackGround()
 {
@@ -141,22 +147,12 @@ void CCTVBackGround::ScanLineEffect()
 	);
 }
 
-std::string CCTVBackGround::MonsterChecker()
+
+void CCTVBackGround::ChangeSprite(std::string _ChangeCam)
 {
-	//BonniCam = StageLevel->GetStageBonni();
-	//int CurBonniLocal = BonniCam->GetCurLocation();
+	std::string ChangeLocalName= _ChangeCam.append(".png");
+	
+	ChangeSpriteRender->SetSprite(ChangeLocalName);
+	ChangeSpriteRender->SetActive(true);
 
-
-
-//switch (CurBonniLocal)
-//{
-//case 0: 
-//return CCTVBonniLocal[0];
-//
-//
-//default:
-//	break;
-//}
-
-	return "false";
 }
