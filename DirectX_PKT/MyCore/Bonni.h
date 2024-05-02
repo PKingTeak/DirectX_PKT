@@ -24,6 +24,11 @@ public:
 	Bonni& operator=(const Bonni& _Other) = delete;
 	Bonni& operator=(Bonni&& _Other) = delete;
 	void SetCurLocation();
+
+	inline int AllBonniLocal()
+	{
+		
+	}
 	inline int GetCurLocation()
 	{
 	
@@ -52,5 +57,6 @@ private:
 	float TestTime = 0.0f;
 	
 	BonniLocation CurState  = BonniLocation::Cam1A;
+
 };
 

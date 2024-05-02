@@ -14,6 +14,7 @@ void Bonni::BeginPlay()
 	Super::BeginPlay();
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get()); // 스테이지 가져오고
 	SetLevel(10);
+	
 
 }
 

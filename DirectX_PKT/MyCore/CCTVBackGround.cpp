@@ -5,10 +5,12 @@
 #include<EngineCore/DefaultSceneComponent.h>
 #include"Noise.h"
 #include"Stage.h"
+#include"Bonni.h"
+
 
 CCTVBackGround::CCTVBackGround()
 {
-	
+
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
 
 
@@ -21,12 +23,12 @@ CCTVBackGround::CCTVBackGround()
 
 
 	CCTVEffect = CreateDefaultSubObject<USpriteRenderer>("CCTVEffect");
-	
-	
+
+
 	CCTVEffect->SetupAttachment(Default);
 	CCTVEffect->SetMaterial("Noise");
 	CCTVEffect->SetOrder(101);
-	CCTVEffect->SetScale({1600,720});
+	CCTVEffect->SetScale({ 1600,720 });
 	CCTVEffect->CreateAnimation("NoizeAnimation", "Noise.png", 0.1f, true);
 	CCTVEffect->ChangeAnimation("NoizeAnimation");
 	CCTVEffect->SetActive(false);
@@ -52,15 +54,23 @@ CCTVBackGround::~CCTVBackGround()
 void CCTVBackGround::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 
+	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
+	BonniCam = StageLevel->GetStageBonni();
 
 	NoiseEffect = StageLevel->GetNoise();
 
 
-	
-	
+	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<int>(BonniLocation::Lobby); i++)
+	{
+
+		CCTVBonniLocal[i] = BonniLocalName[i];
+
+
+	}
+
+
+	MonsterChecker();
 
 }
 CCTVBackGround* CCTVBackGround::GetCCTVBackGround()
@@ -95,23 +105,23 @@ void CCTVBackGround::CCTVOFF()
 
 
 void CCTVBackGround::ChangeCam(std::string _UICamName)
-{	
+{
 	std::string SpriteName = _UICamName.append(".png");
-	
+
 	CCTVBackGroundRender->SetSprite(SpriteName);
 }
 
 void CCTVBackGround::ScanLineON()
 {
-	if (CamMode == true  )
+	if (CamMode == true)
 	{
-	ChangeEffect->SetActive(true);
-	ChangeEffect->ChangeAnimation("ScanLineAni");
-	ScanLineEffect();
+		ChangeEffect->SetActive(true);
+		ChangeEffect->ChangeAnimation("ScanLineAni");
+		ScanLineEffect();
 
-	ChangeEffect->GetCurInfo();
+		ChangeEffect->GetCurInfo();
 	}
-	
+
 
 }
 
@@ -119,14 +129,34 @@ void CCTVBackGround::ScanLineON()
 void CCTVBackGround::ScanLineEffect()
 {
 
-ChangeEffect->SetLastFrameCallback("ScanLineAni",[=]
-	{
-		ChangeEffect->SetActive(false);
-		
-		ChangeEffect->GetCurInfo();
-		ChangeEffect->AnimationReset();
-		ChangeEffect->ChangeAnimation("ScanLineAni");
-		
-	}
-);
+	ChangeEffect->SetLastFrameCallback("ScanLineAni", [=]
+		{
+			ChangeEffect->SetActive(false);
+
+			ChangeEffect->GetCurInfo();
+			ChangeEffect->AnimationReset();
+			ChangeEffect->ChangeAnimation("ScanLineAni");
+
+		}
+	);
+}
+
+std::string CCTVBackGround::MonsterChecker()
+{
+	//BonniCam = StageLevel->GetStageBonni();
+	//int CurBonniLocal = BonniCam->GetCurLocation();
+
+
+
+//switch (CurBonniLocal)
+//{
+//case 0: 
+//return CCTVBonniLocal[0];
+//
+//
+//default:
+//	break;
+//}
+
+	return "false";
 }

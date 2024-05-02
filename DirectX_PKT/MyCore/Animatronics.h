@@ -2,7 +2,7 @@
 #include<EngineBase/EngineRandom.h>
 #include<string>
 
-enum class BonniLocation
+enum  class BonniLocation
 {
 	Cam1A,
 	Cam1B,
@@ -14,10 +14,12 @@ enum class BonniLocation
 
 
 };
+
+class CCTVBackGround;
 class Animatronics
 {
 public:
-	
+	friend CCTVBackGround;
 
 	// constructor destructor
 	Animatronics();

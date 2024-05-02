@@ -5,7 +5,7 @@
 #include"Noise.h"
 
 class Stage;
-// 설명 :
+class Bonni;
 class CCTVBackGround : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -60,9 +60,16 @@ private:
 	std::shared_ptr<Noise> NoiseEffect = nullptr;
 
 	void ScanLineEffect();
+
+
+	//Animatronics
+	std::shared_ptr<Bonni> BonniCam = nullptr;
+	//다른 것들도 추가 
 	
-
-
+	std::string MonsterChecker();
+	
+	std::map<int, std::string> CCTVBonniLocal;
+	std::vector<std::string> BonniLocalName = { "Cam1A","Cam1B","Cam5",	"Cam2A","Cam3",	"Cam2B","Lobby" };
 
 };
 

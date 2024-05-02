@@ -37,7 +37,8 @@ public:
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
 	std::shared_ptr<Noise> GetNoise();
 	std::shared_ptr<Door> GetStageDoor();
-	std::map<std::string, UImage*>* GetCCTVMap();
+	std::map<std::string, UImage*>* GetCCTVMap(); // ¾È¾¸
+	std::shared_ptr<Bonni> GetStageBonni();
 
 	
 	std::string FindAnimatronicsLocation();
@@ -91,9 +92,13 @@ private:
 	//Cam
 	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
 	std::map<std::string,UImage*> CCTVCamUI;
-	
+	UImage* PreCCTVCamUI = nullptr;
+	UImage* CurCCTVCamUI = nullptr;
+	std::string PreCamName = "Cam1A";
+
 	std::string MouseCamInfo = " ";
 	std::string PrevMouseCamInfo = "Cam1A";
+	
 	//void FindCCTVCam();
 
 	void ClickCamUI(std::string _CamName);
