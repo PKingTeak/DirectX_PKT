@@ -18,8 +18,13 @@ void RoomManager::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 }
 
-void RoomManager::InitCCTVBackGround()
+
+bool RoomManager::CheckRoom(Animatronics* _Monster)
 {
-
+	Monster = _Monster;
+	if (Monster != nullptr)
+	{
+		return true;
+	}
+	return false;
 }
-

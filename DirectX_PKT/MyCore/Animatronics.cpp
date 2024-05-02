@@ -42,9 +42,9 @@ int Animatronics::MoveChance(int _Num)
 	int RandomNum = UEngineRandom::MainRandom.RandomInt(0, 100);
 	if (_Num < RandomNum)
 	{
-		return 0;
+		return 0; //Èñ¼Ò¼º
 	}
-	return 1;
+	return 1; //È®·ü ³ôÀº°Å
 }
 
 void Animatronics::StringChangeTest()
@@ -52,3 +52,4 @@ void Animatronics::StringChangeTest()
 	//BonniLocation::Cam1A;
 	
 }
+

@@ -28,6 +28,7 @@ public:
 
 	BonniLocation GetCurLocation();
 	void AutoMove(float _DeltaTime);
+	static bool isLobby;
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -49,6 +50,7 @@ private:
 	bool Ismove = false;
 	float TestTime = 0.0f;
 	BonniLocation CurState = BonniLocation::Cam1A;
+
 
 };
 

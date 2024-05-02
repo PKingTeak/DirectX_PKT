@@ -21,7 +21,7 @@ public:
 	ShowRoom& operator=(const ShowRoom& _Other) = delete;
 	ShowRoom& operator=(ShowRoom&& _Other) noexcept = delete;
 
-	bool CheckRoom();
+	
 	
 protected:
 	void BeginPlay() override;
@@ -34,8 +34,10 @@ private:
 
 	void SetMonster(Animatronics* _Monster);
 	USpriteRenderer* RoomRender = nullptr;
-	std::vector<std::string> Statename;
-	Animatronics* Monster = nullptr;
+	std::vector<std::string> Statename = { "ShowRoom","ShowRoomWatchCam","ShowStageBonni","ShowStageChica","ShowStageAlone","ShowStageAllGone"};
+	
+	
+	
 
 	bool MonsterChecker = false;
 

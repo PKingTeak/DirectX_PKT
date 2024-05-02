@@ -1,7 +1,7 @@
 #pragma once
 #include<EngineCore/Actor.h>
+#include"Animatronics.h"
 
-class Animatronics;
 
 class RoomManager : public AActor
 {
@@ -17,12 +17,12 @@ public:
 	RoomManager& operator=(const RoomManager& _Other) = delete;
 	RoomManager& operator=(RoomManager&& _Other) = delete;
 
-
+	bool CheckRoom(Animatronics* _Monster);
+	
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-	virtual void InitCCTVBackGround();
+	
 	void RendererOff();
 	void RendererOn();
 

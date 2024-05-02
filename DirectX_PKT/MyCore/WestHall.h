@@ -1,5 +1,10 @@
 #pragma once
-class WestHall
+#include <Enginecore/Actor.h>
+#include <EngineCore/SpriteRenderer.h>
+#include<EngineCore/DefaultSceneComponent.h>
+#include<iostream>
+#include "RoomManager.h"
+class WestHall :public RoomManager
 {
 public:
 	// constructor destructor

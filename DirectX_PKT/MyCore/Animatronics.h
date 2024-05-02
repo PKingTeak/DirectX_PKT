@@ -38,7 +38,7 @@ protected :
 	//virtual std::string  MoveAnimtronics();
 	virtual void SetLevel(int _Level);
 	int Level = 0;
-
+	
 	void StringChangeTest();
 	
 	

@@ -28,7 +28,7 @@ public:
 	
 	void LightOn(std::string _Dir);
 	void ChangeBackGround(std::string _RoomState);
-	
+	void PlayJumpScare(std::string _Name);
 	
 protected:
 	void BeginPlay() override;
@@ -38,7 +38,7 @@ protected:
 	void RendererOn();
 private:
 	std::vector<AActor> UIInfo;
-	USpriteRenderer* Renderer = nullptr;
+	USpriteRenderer* JumpScare = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	
 	bool ColDir = false;

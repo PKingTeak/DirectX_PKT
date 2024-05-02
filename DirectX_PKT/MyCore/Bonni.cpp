@@ -1,6 +1,8 @@
 #include"PreCompile.h"
 #include "Bonni.h"
 #include"Stage.h"
+
+bool Bonni::isLobby = false;
 Bonni::Bonni()
 {
 }
@@ -12,7 +14,6 @@ Bonni::~Bonni()
 void Bonni::BeginPlay()
 {
 	Super::BeginPlay();
-	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get()); // 스테이지 가져오고
 	SetLevel(10);
 	
 
@@ -31,7 +32,7 @@ void Bonni::Tick(float _DeltaTime)
 void Bonni::SetCurLocation()
 {
 	// 보니 위치 보내주고 
-	int MoveNum = Animatronics::MoveChance(50);
+	int MoveNum = Animatronics::MoveChance(40);
 
 	switch (CurState)
 	{
@@ -48,26 +49,12 @@ void Bonni::SetCurLocation()
 			// 이걸 바로 하면 안됨
 		if(MoveNum != 0)
 		{
-			CurState = BonniLocation::Cam1B;
+		//	CurState = BonniLocation::Cam1B;
 
 		}
 
 		break;
 	case BonniLocation::Cam1B:
-		if (MoveNum == 0)
-		{
-			CurState = BonniLocation::Cam1A;
-			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
-		}
-		// 이걸 바로 하면 안됨
-		else
-		{
-			CurState = BonniLocation::Cam1B;
-
-		}
-
-		break;
-	case BonniLocation::Cam5:
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Cam5;
@@ -79,14 +66,69 @@ void Bonni::SetCurLocation()
 			CurState = BonniLocation::Cam2A;
 
 		}
+
+		break;
+	case BonniLocation::Cam5:
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Cam1B;
+			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Cam2A;
+
+		}
 		break;
 	case BonniLocation::Cam2A:
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Cam2B;
+			
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Lobby;
+
+
+		}
 		break;
 	case BonniLocation::Cam3:
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Lobby;
+
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Cam2A;
+
+
+		}
 		break;
 	case BonniLocation::Cam2B:
+
+		if (MoveNum == 0)
+		{
+			CurState = BonniLocation::Lobby;
+
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = BonniLocation::Cam3;
+
+
+		}
+
+
 		break;
 	case BonniLocation::Lobby:
+
+		isLobby = true;
 		break;
 	default:
 		break;
@@ -122,6 +164,7 @@ void Bonni::AutoMove(float _DeltaTime)
 		if (Ismove == true)
 		{
 			SetCurLocation();
+			TestTime = 0;
 		}
 	}
 }

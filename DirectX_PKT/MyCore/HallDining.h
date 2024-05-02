@@ -3,11 +3,11 @@
 #include <EngineCore/SpriteRenderer.h>
 #include<EngineCore/DefaultSceneComponent.h>
 #include<iostream>
-
+#include "RoomManager.h"
 class Animatronics;
 
 // Ό³Έν :
-class HallDining : public AActor
+class HallDining : public RoomManager
 {
 	GENERATED_BODY(AActor)
 
@@ -23,8 +23,7 @@ public:
 	HallDining& operator=(HallDining&& _Other) noexcept = delete;
 
 
-	bool CheckRoom();
-
+	
 	void SetMonster(Animatronics* _Monster);
 protected:
 	void BeginPlay() override;
@@ -34,7 +33,6 @@ protected:
 	void RendererOn();
 
 private:
-	
 	
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;

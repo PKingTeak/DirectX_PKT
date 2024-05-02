@@ -26,6 +26,7 @@
 
 
 
+
 bool Stage::IsCamOn = false;
 
 
@@ -306,6 +307,7 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	BonniActor->AutoMove(_DeltaTime);
 
 
 
@@ -440,7 +442,8 @@ void Stage::ResetCamPos()
 
 void Stage::ClickCamUI(std::string _CamName)
 {
-	//마우스로 눌렀을때 UI 카메라 이름  확인
+	//마우스로 눌렀을때 UI 카메라 이름  확인 
+	//깜빡 거리는 함수
 	MouseCamInfo = _CamName;
 
 
@@ -564,33 +567,39 @@ void Stage::NoiseCheck()
 std::string Stage::FindAnimatronicsLocation()
 {
 	int CurLocation = static_cast<int>(BonniActor->GetCurLocation());
+	bool IsBoni = Bonni::isLobby;
 	//이걸 인자로 받아서 사용할거다
 	switch (CurLocation)
 	{
 
 	case 0:
 		// ShowRoom
-		if (BShowRoom->CheckRoom() == true)
+		if (BShowRoom->CheckRoom(BonniActor.get()) == true)
 		{
-			//LocationName = "ShowRoom.png";
-			//CCTVPtr->ChangeCam(LocationName);
-			//break;
+			LocationName = "ShowRoom.png";
+			return LocationName;
 		}
-		return LocationName;
+		break;
+
 	case 1:
-		//LocationName = CCTVCamUI["Cam1B"]->GetName();
-		LocationName = "DiningArea_Bonnie0";
-		if (BHallDining->CheckRoom() == true)
+		
+		if (BHallDining->CheckRoom(BonniActor.get()) == true)
 		{	
+			LocationName = "DiningArea_Bonnie0";
 			//BHallDining->SetMonster(BonniActor);
 			CCTVPtr->ChangeCam(LocationName);
+			return LocationName;
 				
 		}
-		return LocationName;
 		
 	case 2:
-		//LocationName = CCTVCamUI["Cam5"]->GetName();
-	//	BonniChecker = true;
+		if (BHallDining->CheckRoom(BonniActor.get()) == true)
+		{
+			LocationName = "DiningArea_Bonnie0";
+			//BHallDining->SetMonster(BonniActor);
+			CCTVPtr->ChangeCam(LocationName);
+			return LocationName;
+		}
 		return LocationName;
 	default:
 		break;

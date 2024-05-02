@@ -1,5 +1,10 @@
 #pragma once
-class PirateRoom
+#include <Enginecore/Actor.h>
+#include <EngineCore/SpriteRenderer.h>
+#include<EngineCore/DefaultSceneComponent.h>
+#include<iostream>
+#include "RoomManager.h"
+class PirateRoom :public RoomManager
 {
 public:
 	// constructor destructor

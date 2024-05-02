@@ -15,8 +15,10 @@ StageBackGroundClass::StageBackGroundClass()
 	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Defualt");
 	Default->SetPosition(FVector{ 0,0 });
 
-	Renderer = CreateDefaultSubObject<USpriteRenderer>("Render");
-	Renderer->SetupAttachment(Default);
+	JumpScare = CreateDefaultSubObject<USpriteRenderer>("Render");
+	JumpScare->SetAutoSize(1.0f, true);
+	JumpScare->CreateAnimation("BonniAnimation", "Bonni", 0.1f, false, 0, 10);
+	JumpScare->SetupAttachment(Default);
 
 
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
@@ -90,6 +92,14 @@ void StageBackGroundClass::LightOn(std::string _Dir)
 
 
 
+}
+
+
+void StageBackGroundClass::PlayJumpScare(std::string _Name)
+
+{
+	//원하는 몬스터 가 나오도록 
+	JumpScare->ChangeAnimation(_Name.append(".Ani"));
 }
 
 

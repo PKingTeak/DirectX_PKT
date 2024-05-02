@@ -54,11 +54,10 @@ void HallDining::SetMonster(Animatronics* _Monster)
 }
 
 
-bool HallDining::CheckRoom()
-{
-	if (Monster != nullptr)
-	{
-		return true;
-	}
-	return true;
-}
+
+
+
+
+
+
+
