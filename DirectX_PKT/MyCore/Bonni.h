@@ -27,6 +27,7 @@ public:
 
 
 	BonniLocation GetCurLocation();
+	std::string GetCurLocationString();
 	void AutoMove(float _DeltaTime);
 	static bool isLobby;
 protected:
@@ -43,14 +44,14 @@ private:
 	std::shared_ptr<BackGroundClass> LobbyRoom = nullptr;
 	std::shared_ptr<CCTVBackGround> CCTVMap = nullptr;
 	//std::map<std::string, UImage*>* Map;
-	std::string CurLocation = "";
+	
 
 
-
+	
 	bool Ismove = false;
 	float TestTime = 0.0f;
-	BonniLocation CurState = BonniLocation::Cam1A;
-
+	BonniLocation CurState = BonniLocation::ShowRoom;
+	
 
 };
 

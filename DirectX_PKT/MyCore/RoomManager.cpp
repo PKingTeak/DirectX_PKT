@@ -1,6 +1,6 @@
 #include"PreCompile.h"
 #include "RoomManager.h"
-
+#include"Animatronics.h"
 RoomManager::RoomManager()
 {
 }
@@ -19,12 +19,41 @@ void RoomManager::Tick(float _DeltaTime)
 }
 
 
-bool RoomManager::CheckRoom(Animatronics* _Monster)
+bool RoomManager::CheckRoom()
 {
-	Monster = _Monster;
 	if (Monster != nullptr)
 	{
 		return true;
 	}
 	return false;
 }
+
+
+void RoomManager::SetMonter(Animatronics* _Monster)
+{
+	//만약 이동하면 이전에 있던곳은 nullptr로 바꿔줘야 함
+	Monster = _Monster;
+
+}
+
+bool RoomManager::GetMonster()
+{
+	return Monster;
+}
+
+void RoomManager::ChangeRoomCamera(Animatronics* _Monster) //해당 랜더러를 바꿔주면 될듯
+{
+	if (CheckRoom() == true)
+	{
+		int a = 0;
+	}
+
+}
+
+
+UImage* RoomManager::GetUI()
+{
+	return Camera;
+}
+
+

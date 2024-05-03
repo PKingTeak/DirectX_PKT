@@ -36,14 +36,13 @@ void Bonni::SetCurLocation()
 
 	switch (CurState)
 	{
-	case BonniLocation::Cam1A:
+	case BonniLocation::ShowRoom:
 
 
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::Cam5;
-
-
+			CurState = BonniLocation::BackStage;
+			
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie0");
 		}
 			// 이걸 바로 하면 안됨
@@ -54,73 +53,75 @@ void Bonni::SetCurLocation()
 		}
 
 		break;
-	case BonniLocation::Cam1B:
+	case BonniLocation::HallDining:
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::Cam5;
+			CurState = BonniLocation::BackStage;
+			CurLocation = "BackStage";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::Cam2A;
-
+			CurState = BonniLocation::WestHall;
+			CurLocation = "WestHall";
 		}
 
 		break;
-	case BonniLocation::Cam5:
+	case BonniLocation::BackStage:
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::Cam1B;
+			CurState = BonniLocation::HallDining;
+			CurLocation = "HallDining";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::Cam2A;
-
+			CurState = BonniLocation::WestHall;
+			CurLocation = "WestHall";
 		}
 		break;
-	case BonniLocation::Cam2A:
+	case BonniLocation::WestHall:
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::Cam2B;
-			
+			CurState = BonniLocation::WestHallCorner;
+			CurLocation = "WestHallCorner";
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
 			CurState = BonniLocation::Lobby;
-
+			CurLocation = "Lobby";
 
 		}
 		break;
-	case BonniLocation::Cam3:
+	case BonniLocation::WestHallCorner:
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Lobby;
-
+			CurLocation = "Lobby";
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::Cam2A;
-
+			CurState = BonniLocation::WestHall;
+			CurLocation = "WestHall";
 
 		}
 		break;
-	case BonniLocation::Cam2B:
+	case BonniLocation::SupplyCloset:
 
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Lobby;
-
+			CurLocation = "Lobby";
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::Cam3;
-
+			CurState = BonniLocation::SupplyCloset;
+			CurLocation = "SupplyCloset";
 
 		}
 
@@ -136,8 +137,7 @@ void Bonni::SetCurLocation()
 
 
 
-		//Map = MainStage->GetCCTVMap();
-
+	
 
 
 
@@ -167,4 +167,10 @@ void Bonni::AutoMove(float _DeltaTime)
 			TestTime = 0;
 		}
 	}
+
+}
+
+std::string Bonni::GetCurLocationString()
+{
+	return CurLocation;
 }

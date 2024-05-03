@@ -2,17 +2,19 @@
 #include <Enginecore/Actor.h>
 #include <EngineCore/SpriteRenderer.h>
 #include<EngineCore/DefaultSceneComponent.h>
+#include<EngineCore/Image.h>
 #include<iostream>
 #include "RoomManager.h"
+
+
 class Animatronics;
 
-// Ό³Έν :
 class HallDining : public RoomManager
 {
 	GENERATED_BODY(AActor)
 
 public:
-	// constrcuter destructer
+
 	HallDining();
 	~HallDining();
 
@@ -23,19 +25,24 @@ public:
 	HallDining& operator=(HallDining&& _Other) noexcept = delete;
 
 
-	
-	void SetMonster(Animatronics* _Monster);
+
+	void ChangeRoomCamera(Animatronics* _Monster) override;
+	void MapChangeSprite(Animatronics* _Monster);
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
 	void RendererOff();
 	void RendererOn();
-
-private:
 	
+private:
+	std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
+	std::vector<std::string> HallStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningChica","HallDiningChica2" };
+
+
+
 
 };
 

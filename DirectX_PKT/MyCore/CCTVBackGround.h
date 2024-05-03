@@ -6,6 +6,7 @@
 
 class Stage;
 class Bonni;
+class RoomManager;
 class CCTVBackGround : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -40,7 +41,7 @@ public:
 	void ChangeSprite(std::string _ChangeCam);
 	void ScanLineON();
 	
-
+	void GetCamera(RoomManager* _ChangeRoom);
 
 
 protected:

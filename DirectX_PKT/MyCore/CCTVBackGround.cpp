@@ -6,6 +6,7 @@
 #include"Noise.h"
 #include"Stage.h"
 #include"Bonni.h"
+#include"RoomManager.h"
 
 
 CCTVBackGround::CCTVBackGround()
@@ -150,9 +151,16 @@ void CCTVBackGround::ScanLineEffect()
 
 void CCTVBackGround::ChangeSprite(std::string _ChangeCam)
 {
-	std::string ChangeLocalName= _ChangeCam.append(".png");
+	_ChangeCam.append(".png");
+	std::string ChangeLocalName = _ChangeCam.substr(2);
 	
 	ChangeSpriteRender->SetSprite(ChangeLocalName);
 	ChangeSpriteRender->SetActive(true);
 
+}
+
+
+void CCTVBackGround::GetCamera(RoomManager* _ChangeRoom)
+{
+	_ChangeRoom->SetActive(true);
 }

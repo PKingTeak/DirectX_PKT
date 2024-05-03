@@ -4,12 +4,12 @@
 
 enum  class BonniLocation
 {
-	Cam1A,
-	Cam1B,
-	Cam5,
-	Cam2A,
-	Cam3,
-	Cam2B,
+	ShowRoom,
+	HallDining,
+	BackStage,
+	WestHall,
+	SupplyCloset,
+	WestHallCorner,
 	Lobby
 
 
@@ -31,13 +31,17 @@ public:
 	Animatronics& operator=(const Animatronics& _Other) = delete;
 	Animatronics& operator=(Animatronics&& _Other) = delete;
 
-
+	std::string GetName();
+	std::string GetCurLocationString();
 protected :
 	bool ACTOpportunity(int _CurLevel);
 	int MoveChance(int _Num);
 	//virtual std::string  MoveAnimtronics();
 	virtual void SetLevel(int _Level);
 	int Level = 0;
+	
+	std::string CurLocation = "";
+	std::string CurLocalName = "";
 	
 	void StringChangeTest();
 	

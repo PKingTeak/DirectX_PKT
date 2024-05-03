@@ -1,5 +1,11 @@
 #pragma once
-class BackStage
+#include <Enginecore/Actor.h>
+#include <EngineCore/SpriteRenderer.h>
+#include<EngineCore/DefaultSceneComponent.h>
+#include<iostream>
+#include "RoomManager.h"
+
+class BackStage :public RoomManager
 {
 public:
 	// constructor destructor

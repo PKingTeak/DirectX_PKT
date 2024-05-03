@@ -28,6 +28,8 @@ class EastHallCorner;
 class KittenRoom;
 class HallDining;
 class RestRoom;
+class RoomManager;
+class Animatronics;
 
 class Stage : public AGameMode
 {
@@ -49,11 +51,12 @@ public:
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
 	std::shared_ptr<Noise> GetNoise();
 	std::shared_ptr<Door> GetStageDoor();
-	std::map<std::string, UImage*>* GetCCTVMap(); // ¾È¾¸
+	
 	std::shared_ptr<Bonni> GetStageBonni();
 	std::vector<std::string> GetCamName();
 	
 	std::string FindAnimatronicsLocation();
+	std::shared_ptr<RoomManager> FindActorIndex(Animatronics* _Monster);
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -95,6 +98,8 @@ private:
 	UImage* RightBox = nullptr;
 	UImage* CCTVMap = nullptr;
 	UImage* CCTVCams[11] = { nullptr, };
+
+	
 	UImage* PrevCam = nullptr;
 
 	//Button
@@ -104,13 +109,34 @@ private:
 	//Cam
 	std::vector<std::string> Name = { "Cam1A","Cam1B" ,"Cam1C","Cam5","Cam7","Cam3","Cam6","Cam2A","Cam2B","Cam4A","Cam4B" };
 	std::vector<AActor*> CamLocal;
-	std::map<std::string,UImage*> CCTVCamUI;
+
+	std::vector<std::shared_ptr<RoomManager>> RoomActor;
+	std::vector<UImage*> RoomCameraUI;
+
+
+	//Ä·¼³Á¤
+	int FindIndex(std::string _Name);
+	
+
 	UImage* PreCCTVCamUI = nullptr;
 	UImage* CurCCTVCamUI = nullptr;
-	std::string PreCamName = "Cam1A";
 
-	std::string MouseCamInfo = " ";
-	std::string PrevMouseCamInfo = "Cam1A";
+	RoomManager* CurCCTVCamActor = nullptr;
+	RoomManager* PreCCTVCamUIActor = nullptr;
+
+
+
+
+	std::string PreCamName = "ShowRoom";
+
+	std::string CurCamInfo = " ";
+	std::string PrevCamInfo = " ";
+	std::string LocationName = "";
+
+
+	
+
+	std::string PrevMouseCamInfo = "ShowRoom";
 	
 	//void FindCCTVCam();
 
@@ -118,6 +144,7 @@ private:
 	void CamInteract();
 	void CCTVUpdate();
 	void CCTVUIGreenCheck(std::string _CamName);
+	
 
 	// Noise
 	std::shared_ptr<Noise> NoiseEffect = nullptr;
@@ -129,7 +156,7 @@ private:
 
 	//Monster
 	std::shared_ptr<Bonni> BonniActor = nullptr;
-	std::string LocationName = "";
+	
 	std::string MonsterName = "";
 	//
 

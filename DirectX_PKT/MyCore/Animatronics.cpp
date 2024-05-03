@@ -47,9 +47,11 @@ int Animatronics::MoveChance(int _Num)
 	return 1; //È®·ü ³ôÀº°Å
 }
 
-void Animatronics::StringChangeTest()
+
+
+std::string Animatronics::GetName()
 {
-	//BonniLocation::Cam1A;
+	return this->GetName();
 	
 }
 
