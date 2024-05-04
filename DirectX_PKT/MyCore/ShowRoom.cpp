@@ -8,21 +8,21 @@
 ShowRoom::ShowRoom()
 {
 
-	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
-	
-	
-	RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	RoomRender->SetSprite("ShowStageBonni.png");
-	RoomRender->SetAutoSize(1.0f, true);
-	RoomRender->SetupAttachment(Default);
-	RoomRender->SetOrder(100);
-	RoomRender->SetActive(true);
-	
-
-	
-	
-	SetRoot(Default);
-
+	//UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
+	//
+	//
+	//RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	//RoomRender->SetSprite("ShowStageBonni.png");
+	//RoomRender->SetAutoSize(1.0f, true);
+	//RoomRender->SetupAttachment(Default);
+	//RoomRender->SetOrder(100);
+	//RoomRender->SetActive(false);
+	//
+	//
+	//
+	//
+	//SetRoot(Default);
+	//
 	//InitCCTVBackGround();
 
 	

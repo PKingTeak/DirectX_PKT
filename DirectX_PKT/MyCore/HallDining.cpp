@@ -8,19 +8,19 @@
 HallDining::HallDining()
 {
 
-	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
-
-
-	RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	RoomRender->SetSprite("HallDining.png");
-	RoomRender->SetAutoSize(1.0f, true);
-	RoomRender->SetupAttachment(Default);
-	RoomRender->SetOrder(100);
-	RoomRender->SetActive(false);
-
-
-
-	SetRoot(Default);
+	//UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
+	//
+	//
+	//RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	//RoomRender->SetSprite("HallDining.png");
+	//RoomRender->SetAutoSize(1.0f, true);
+	//RoomRender->SetupAttachment(Default);
+	//RoomRender->SetOrder(100);
+	//RoomRender->SetActive(false);
+	//
+	//
+	//
+	//SetRoot(Default);
 
 
 }
@@ -32,6 +32,7 @@ HallDining::~HallDining()
 
 void HallDining::BeginPlay()
 {
+	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "HallDining");
 	Camera->SetSprite("Cam1B.png", 0);
 	Camera->CreateAnimation("HallDiningAni", "Cam1B.png", 0.5f, true, 0, 0);

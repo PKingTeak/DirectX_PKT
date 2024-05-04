@@ -57,6 +57,8 @@ public:
 	
 	std::string FindAnimatronicsLocation();
 	std::shared_ptr<RoomManager> FindActorIndex(Animatronics* _Monster);
+	std::vector<std::shared_ptr<RoomManager>> GetCamActor();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;

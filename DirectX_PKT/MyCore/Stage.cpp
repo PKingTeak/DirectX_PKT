@@ -85,10 +85,12 @@ void Stage::BeginPlay()
 
 
 	BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
+	BShowRoom->SetActive(false);
 	RoomActor.push_back(BShowRoom);
 	RoomCameraUI.push_back(BShowRoom->GetUI());
 
-	BHallDining = GetWorld()->SpawnActor<HallDining>("CBHallDining");
+	BHallDining = GetWorld()->SpawnActor<HallDining>("CBHallDining"); 
+	BHallDining->SetActive(false);
 	RoomActor.push_back(BHallDining);
 	RoomCameraUI.push_back(BHallDining->GetUI());
 
@@ -253,12 +255,21 @@ void Stage::BeginPlay()
 					if (CCTVonoff == false)
 					{
 						StageCam->CamCCTVOn(); //여기서 조건문을 걸어서 on과off를 구별해야될듯 하다 .
-
+						
+						//for (int i = 0; i < RoomActor.size(); i++)
+						//{
+						//	RoomActor[i]->SetActive(true);
+						//}
 					}
 
 					else if (CCTVonoff == true)
 					{
 						StageCam->CamCCTVOff();
+						CurCCTVCamActor->SetActive(false);
+						//for (int i = 0; i < RoomActor.size(); i++)
+						//{
+						//	RoomActor[i]->SetActive(false);
+						//}
 						return;
 					}
 
@@ -475,6 +486,7 @@ void Stage::ChageCam()
 
 	std::string CamName = PrevCam->GetName();
 	int num = FindIndex(CamName);
+	CCTVPtr->SetCamBackInfo(RoomActor[num].get());
 	//	if (LocationName == CamName)
 	//	{
 	//		RoomActor[num]->SetMonter();
@@ -583,7 +595,7 @@ void Stage::CamInteract()
 
 						PrevCam = RoomCameraUI[i]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
 						ClickCamUI(RoomCameraUI[i]->GetName());
-
+						ChageCam();
 						PreCCTVCamUIActor->SetActive(false);
 						CurCCTVCamActor->SetActive(true);
 					std::string ImageName =	CurCCTVCamActor->GetName();
@@ -617,8 +629,7 @@ void Stage::CamInteract()
 
 void Stage::CCTVUIGreenCheck(std::string _CamName)
 {
-	int num = 0;
-	num = FindIndex(_CamName);
+	int num = FindIndex(_CamName);
 
 
 	if (CurCCTVCamUI == nullptr)
@@ -626,7 +637,10 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 		CurCCTVCamUI = RoomActor[num]->GetUI();
 		PreCCTVCamUI = RoomActor[0]->GetUI();
 	}
-
+	if (CurCCTVCamUI == PreCCTVCamUI)
+	{
+		return;
+	}
 	if (_CamName != PreCamName)
 	{
 		PreCCTVCamUI->ChangeAnimation(PreCCTVCamUI->GetName() + "Ani");
@@ -636,33 +650,10 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 		PreCCTVCamUI = CurCCTVCamUI;
 
 	}
-}
 
-//void Stage::CCTVUIGreenCheck(std::string _CamName)
-//{
-//	//깜빡임
-//
-//	if (CurCCTVCamUI == nullptr)
-//	{
-//		CurCCTVCamUI = CCTVCamUI[_CamName];
-//		PreCCTVCamUI = CCTVCamUI["Cam1A"];
-//
-//	}
-//
-//	if (_CamName != PreCamName)
-//	{
-//		//	CurCCTVCamUI = CCTVCamUI[_CamName];
-//		CurCCTVCamUI = CCTVCamUI[_CamName];
-//		PreCCTVCamUI->ChangeAnimation(PreCamName + "Ani");
-//		CurCCTVCamUI->ChangeAnimation("C" + _CamName + "Ani");
-//		PreCCTVCamUI = CurCCTVCamUI;
-//		PreCamName = _CamName;
-//		//CCTVCamUI.find(_CamName)->second->SetSprite(RestCamName, 0);
-//		//CCTVCamUI.find(_CamName)->second->SetOrder(5);
-//	}
-//
-//
-//}
+	
+
+}
 
 
 
@@ -695,8 +686,8 @@ std::string Stage::FindAnimatronicsLocation()
 		if (BShowRoom->CheckRoom() == false) //안에 없다
 		{
 			LocationName = "ShowRoom";
-			BShowRoom->SetMonter(BonniActor.get());
-			BonniActor->GetCurLocationString();
+			BShowRoom->SetMonter(BonniActor.get()); //몬스터 넣어주고 그러면 방의 포인터는 몬스터를 가르키고 있다
+			BonniActor->GetCurLocationString(); // 보니는 그러면 자신의 위치를 알려준다. 
 			return LocationName;
 		}
 		break;
@@ -795,4 +786,10 @@ std::shared_ptr<RoomManager> Stage::FindActorIndex(Animatronics* _Monster)	//벡�
 		}
 	}
 	return RoomActor[0];
+}
+std::vector<std::shared_ptr<RoomManager>> Stage::GetCamActor()
+{
+
+	return RoomActor;
+
 }

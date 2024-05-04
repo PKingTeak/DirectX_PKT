@@ -67,9 +67,9 @@ void CCTVBackGround::BeginPlay()
 	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	BonniCam = StageLevel->GetStageBonni();
 	NoiseEffect = StageLevel->GetNoise();
-
+	CCTVActors = StageLevel->GetCamActor();
 	
-//	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<int>(BonniLocation::Lobby); i++)
+//	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<in  t>(BonniLocation::Lobby); i++)
 //	{
 //
 //		//CCTVBonniLocal[i] = BonniLocalName[i];
@@ -100,6 +100,8 @@ void CCTVBackGround::CCTVON()
 	CCTVEffect->SetActive(true);
 	ChangeEffect->ChangeAnimation("ScanLineAni");
 	CamMode = true;
+	
+	
 }
 void CCTVBackGround::CCTVOFF()
 {
@@ -108,12 +110,25 @@ void CCTVBackGround::CCTVOFF()
 	//CCTVEffect->SetActive(false);
 	//ChangeEffect->SetActive(false);
 	CamMode = false;
+	if (CCTVInfo == nullptr)
+	{
+		return;
+	}
+	CCTVInfo->SetActive(false); //다음화면 켜주기 
 }
 
 
 void CCTVBackGround::ChangeCam(std::string _UICamName)
 {
-	std::string SpriteName = _UICamName.append(".png");
+	std::string SpriteName = _UICamName.append(".png");  // 이름이 들어오면 바꿔줌
+	CCTVInfo->SetActive(true); //다음화면 켜주기 
+	if (PreCCTVInfo == nullptr)
+	{
+		return;
+	}
+	PreCCTVInfo->SetActive(false);	//이전 화면 꺼주기
+
+	//여기서 해당하는 화면을 켜주는것이 좋을듯 하다. 
 
 	CCTVBackGroundRender->SetSprite(SpriteName);
 }
@@ -163,4 +178,13 @@ void CCTVBackGround::ChangeSprite(std::string _ChangeCam)
 void CCTVBackGround::GetCamera(RoomManager* _ChangeRoom)
 {
 	_ChangeRoom->SetActive(true);
+}
+
+void CCTVBackGround::SetCamBackInfo(RoomManager* _CamInfo , bool _CurCheck)
+{
+	if (_CurCheck == false)
+	{
+		PreCCTVInfo = _CamInfo;
+	}
+	CCTVInfo = _CamInfo;
 }

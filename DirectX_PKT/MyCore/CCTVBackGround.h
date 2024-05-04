@@ -40,6 +40,7 @@ public:
 	void ChangeCam(std::string _UICamName);
 	void ChangeSprite(std::string _ChangeCam);
 	void ScanLineON();
+	void SetCamBackInfo(RoomManager* _CamInfo, bool _CurCheck = true);
 	
 	void GetCamera(RoomManager* _ChangeRoom);
 
@@ -70,11 +71,13 @@ private:
 	
 	
 	
-	std::map<int,AActor*> CCTVBackGroundMaps;
+	//std::map<int,AActor*> CCTVBackGroundMaps;
 	
 	USpriteRenderer* ChangeSpriteRender = nullptr;
 	
-	
+	std::vector<std::shared_ptr<RoomManager>> CCTVActors;
+	RoomManager* CCTVInfo = nullptr;
+	RoomManager* PreCCTVInfo = nullptr;
 	
 };
 
