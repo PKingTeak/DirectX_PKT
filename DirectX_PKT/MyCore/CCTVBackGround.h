@@ -37,13 +37,15 @@ public:
 	{
 		return CamMode;
 	}
-	void ChangeCam(std::string _UICamName);
+	//void ChangeCam(std::string _UICamName);
+	void ChangeCam(RoomManager* _UICamName);
 	void ChangeSprite(std::string _ChangeCam);
 	void ScanLineON();
 	void SetCamBackInfo(RoomManager* _CamInfo, bool _CurCheck = true);
 	
 	void GetCamera(RoomManager* _ChangeRoom);
 
+	void AllCamActorOff();
 
 protected:
 	void BeginPlay() override;

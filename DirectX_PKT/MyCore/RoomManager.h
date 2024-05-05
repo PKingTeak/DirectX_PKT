@@ -22,18 +22,22 @@ public:
 	bool CheckRoom();
 	void SetMonter(Animatronics* _Monster);
 
+
+	void SetMonster(Animatronics* _Monster);
+	Animatronics* GetMonster();
 	virtual UImage* GetUI(); 
 	
+	std::string GetCurRoomSpriteName();
 	
 protected:
 	virtual void ChangeRoomCamera(Animatronics* _Monster);
 	void BeginPlay() override;
-	virtual bool GetMonster();
+//	virtual Animatronics* GetMonster();
 	void Tick(float _DeltaTime) override;
 	void RendererOff();
 	void RendererOn();
 	UImage* Camera = nullptr;
-
+	std::string CurRoomSpriteName = "";
 	Animatronics* Monster = nullptr;
 	
 };

@@ -36,7 +36,7 @@ void RoomManager::SetMonter(Animatronics* _Monster)
 
 }
 
-bool RoomManager::GetMonster()
+Animatronics* RoomManager::GetMonster()
 {
 	return Monster;
 }
@@ -56,4 +56,13 @@ UImage* RoomManager::GetUI()
 	return Camera;
 }
 
+void RoomManager::SetMonster(Animatronics* _Monster)
+{
+	Monster = _Monster;
+}
 
+
+std::string RoomManager::GetCurRoomSpriteName()
+{
+	return CurRoomSpriteName;
+}

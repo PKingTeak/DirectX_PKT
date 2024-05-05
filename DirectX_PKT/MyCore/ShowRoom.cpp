@@ -42,7 +42,7 @@ void ShowRoom::BeginPlay()
 	Camera->ChangeAnimation("CShowRoomAni");
 	Camera->SetPosition(FVector{ 370,0 });
 	Camera->SetAutoSize(1.0f, true);
-	Camera->AddToViewPort(2);
+	Camera->AddToViewPort(3);
 
 	Super::BeginPlay();
 

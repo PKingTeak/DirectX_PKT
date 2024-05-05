@@ -67,7 +67,7 @@ void CCTVBackGround::BeginPlay()
 	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	BonniCam = StageLevel->GetStageBonni();
 	NoiseEffect = StageLevel->GetNoise();
-	CCTVActors = StageLevel->GetCamActor();
+	
 	
 //	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<in  t>(BonniLocation::Lobby); i++)
 //	{
@@ -105,6 +105,7 @@ void CCTVBackGround::CCTVON()
 }
 void CCTVBackGround::CCTVOFF()
 {
+	AllCamActorOff();
 	CCTVBackGroundRender->SetActive(false);
 	CCTVEffect->SetActive(false);
 	//CCTVEffect->SetActive(false);
@@ -117,24 +118,39 @@ void CCTVBackGround::CCTVOFF()
 	CCTVInfo->SetActive(false); //다음화면 켜주기 
 }
 
+void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
+{
+	std::string ChangeCamName = _UICamName->GetCurRoomSpriteName();
+	ChangeCamName.append(".png");
 
+	CCTVBackGroundRender->SetSprite(ChangeCamName);
+}
+
+/*
 void CCTVBackGround::ChangeCam(std::string _UICamName)
 {
 	std::string SpriteName = _UICamName.append(".png");  // 이름이 들어오면 바꿔줌
-	CCTVInfo->SetActive(true); //다음화면 켜주기 
-	if (PreCCTVInfo == nullptr)
-	{
-		return;
-	}
-	PreCCTVInfo->SetActive(false);	//이전 화면 꺼주기
+
+	
+	//화면 이름을 가져와야함 현재 카메라 이름 
+
+
+	//CCTVInfo->SetActive(true); //다음화면 켜주기 
+	//if (PreCCTVInfo == nullptr)
+	//{
+	//	return;
+	//}
+	//PreCCTVInfo->SetActive(false);	//이전 화면 꺼주기
 
 	//여기서 해당하는 화면을 켜주는것이 좋을듯 하다. 
 
 	CCTVBackGroundRender->SetSprite(SpriteName);
 }
 
+*/
 void CCTVBackGround::ScanLineON()
-{
+{ 
+	//화면 지지직 
 	if (CamMode == true)
 	{
 		ChangeEffect->SetActive(true);
@@ -164,6 +180,7 @@ void CCTVBackGround::ScanLineEffect()
 }
 
 
+
 void CCTVBackGround::ChangeSprite(std::string _ChangeCam)
 {
 	_ChangeCam.append(".png");
@@ -181,10 +198,19 @@ void CCTVBackGround::GetCamera(RoomManager* _ChangeRoom)
 }
 
 void CCTVBackGround::SetCamBackInfo(RoomManager* _CamInfo , bool _CurCheck)
-{
+{//카메라 배경 
 	if (_CurCheck == false)
 	{
 		PreCCTVInfo = _CamInfo;
 	}
 	CCTVInfo = _CamInfo;
+}
+void CCTVBackGround::AllCamActorOff()
+{
+	CCTVActors = StageLevel->GetCamActor();
+	for (int i = 0; i < CCTVActors.size(); i++)
+	{
+		CCTVActors[i].get()->SetActive(false);
+	}
+
 }

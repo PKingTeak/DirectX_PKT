@@ -85,12 +85,12 @@ void Stage::BeginPlay()
 
 
 	BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
-	BShowRoom->SetActive(false);
+	
 	RoomActor.push_back(BShowRoom);
 	RoomCameraUI.push_back(BShowRoom->GetUI());
 
 	BHallDining = GetWorld()->SpawnActor<HallDining>("CBHallDining"); 
-	BHallDining->SetActive(false);
+	
 	RoomActor.push_back(BHallDining);
 	RoomCameraUI.push_back(BHallDining->GetUI());
 
@@ -98,6 +98,7 @@ void Stage::BeginPlay()
 	RoomActor.push_back(BPirateRoom);
 	RoomCameraUI.push_back(BPirateRoom->GetUI());
 
+	RoomActor[1]->SetActive(false);
 	//BBackStage = GetWorld()->SpawnActor<BackStage>("CBackStage");
 	//RoomActor.push_back(BBackStage);
 	//RoomCameraUI.push_back(BBackStage->GetUI());
@@ -265,7 +266,8 @@ void Stage::BeginPlay()
 					else if (CCTVonoff == true)
 					{
 						StageCam->CamCCTVOff();
-						CurCCTVCamActor->SetActive(false);
+					
+					
 						//for (int i = 0; i < RoomActor.size(); i++)
 						//{
 						//	RoomActor[i]->SetActive(false);
@@ -486,14 +488,15 @@ void Stage::ChageCam()
 
 	std::string CamName = PrevCam->GetName();
 	int num = FindIndex(CamName);
-	CCTVPtr->SetCamBackInfo(RoomActor[num].get());
+	//CCTVPtr->SetCamBackInfo(RoomActor[num].get());
 	//	if (LocationName == CamName)
 	//	{
 	//		RoomActor[num]->SetMonter();
 	//		ChageCam(); //카메라 변경
 		//}
 		//몬스터 채크
-	CCTVPtr->ChangeCam(CamName);
+	//CCTVPtr->ChangeCam(CamName);
+	CCTVPtr->ChangeCam(RoomActor[num].get());
 
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
@@ -584,8 +587,9 @@ void Stage::CamInteract()
 			{// 눌렀을때 화면 보여주기 
 
 
-				CurCCTVCamUI = RoomCameraUI[i]; // 현재 카메라 저장
-				CurCCTVCamActor = RoomActor[i].get();
+				CurCCTVCamUI = RoomCameraUI[i]; // 현재 카메라 저장 UI
+				CurCCTVCamActor = RoomActor[i].get(); // 현재 카메라 정보 저장 
+				CCTVPtr->SetCamBackInfo(CurCCTVCamActor, true); //배경에 카메라 정보가 들어감
 				if (IsCamOn == false)
 				{
 
@@ -603,9 +607,10 @@ void Stage::CamInteract()
 						IsCamOn = true;
 					}
 					CCTVPtr->ScanLineON(); // 화면 전환할때 지지직 거리는 효과 
-					if (LocationName == CurCamInfo)
+					if (LocationName == CurCCTVCamUI->GetName())
 					{
 
+						CCTVPtr->SetCamBackInfo(CurCCTVCamActor, true);
 						// 내부에서 자동으로 처리할꺼기 때문에 그냥 화면 전환만 하는걸로 바꿔주기
 
 

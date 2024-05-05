@@ -55,9 +55,10 @@ void HallDining::Tick(float _DeltaTime)
 
 
 void HallDining::ChangeRoomCamera(Animatronics* _Monster)
-{
+{//해당 몬스터의 정보를 갸져와서 방 이름을 바꿔주는 역할을 하고 
+	// 해당 방 이미지가 저장되어 있는 벡터의 이미지를 변경해 준다. 
 	std::string MonsterName = _Monster->GetName();
-	if (GetMonster() == false)
+	if (GetMonster() != nullptr)
 	{
 		if (MonsterName == "Bonni")
 		{
@@ -66,7 +67,7 @@ void HallDining::ChangeRoomCamera(Animatronics* _Monster)
 
 		if (MonsterName == "Chica")
 		{
-
+			RoomRender->SetSprite(HallStatename[4] + ".png");
 		}
 	}
 	
