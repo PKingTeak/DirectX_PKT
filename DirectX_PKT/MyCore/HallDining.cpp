@@ -39,8 +39,9 @@ void HallDining::BeginPlay()
 	Camera->CreateAnimation("CHallDiningAni", "Cam1B.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 370,-50 });
 	Camera->SetAutoSize(1.0f, true);
-	Camera->AddToViewPort(2);
+	Camera->AddToViewPort(3);
 
+	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 
 }
 
@@ -48,7 +49,7 @@ void HallDining::BeginPlay()
 void HallDining::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
+	MapUpdate();
 }
 
 
@@ -62,12 +63,12 @@ void HallDining::ChangeRoomCamera(Animatronics* _Monster)
 	{
 		if (MonsterName == "Bonni")
 		{
-			RoomRender->SetSprite(HallStatename[2]+".png");
+			RoomRender->SetSprite(RoomStatename[2]+".png");
 		}
 
 		if (MonsterName == "Chica")
 		{
-			RoomRender->SetSprite(HallStatename[4] + ".png");
+			RoomRender->SetSprite(RoomStatename[4] + ".png");
 		}
 	}
 	
@@ -81,13 +82,33 @@ void HallDining::MapChangeSprite(Animatronics* _Monster)
 	RoomRender->SetSprite(setSprite);
 }
 
-//std::string HallDining::FindImageName(std::vector<std::string> _Statename , std::string _MonsterLocal)
-//{
-//
-//
-//}
+void HallDining::SettingSpriteName(int _Index = 0)
+{
+
+	CurRoomSpriteName = RoomStatename[_Index];
+}
+
+void HallDining::MapUpdate()
+{	
+	Monster = GetMonster();
+	
+	if (Monster != nullptr)
+	{
+		std::string CheckName = Monster->GetName();
+		if (CheckName == "Bonni")
+		{
+			SettingSpriteName(2);
+			return;
+		}
+
+	}
+
+	SettingSpriteName(0);
+
+	
 
 
+}
 
 
 

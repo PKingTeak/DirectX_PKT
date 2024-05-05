@@ -45,7 +45,7 @@ void ShowRoom::BeginPlay()
 	Camera->AddToViewPort(3);
 
 	Super::BeginPlay();
-
+	SettingSpriteName(0);
 	
 }
 
@@ -59,11 +59,15 @@ void ShowRoom::Tick(float _DeltaTime)
 }
 
 
-void ShowRoom::ChangeRoomCamera(Animatronics* _Monster)
+void ShowRoom::SettingSpriteName(int _index = 0)
 {
+	CurRoomSpriteName = RoomStatename[_index];
+}
 
-
-	int a = 0;
-
-
+void ShowRoom::MapUpdate()
+{
+	if (Monster == nullptr)
+	{
+		//여기만  표현을 못하겟음
+	}
 }

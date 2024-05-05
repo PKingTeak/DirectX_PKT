@@ -26,10 +26,12 @@ public:
 	void SetMonster(Animatronics* _Monster);
 	Animatronics* GetMonster();
 	virtual UImage* GetUI(); 
-	
+	virtual void SettingSpriteName(int _index);
 	std::string GetCurRoomSpriteName();
 	
 protected:
+	virtual void MapUpdate();
+
 	virtual void ChangeRoomCamera(Animatronics* _Monster);
 	void BeginPlay() override;
 //	virtual Animatronics* GetMonster();
@@ -40,5 +42,7 @@ protected:
 	std::string CurRoomSpriteName = "";
 	Animatronics* Monster = nullptr;
 	
+	
+	std::vector<std::string> RoomStatename;
 };
 

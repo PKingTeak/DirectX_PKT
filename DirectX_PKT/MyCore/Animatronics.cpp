@@ -4,13 +4,23 @@
 Animatronics::Animatronics()
 {
 
-	
 }
 
 Animatronics::~Animatronics()
 {
 }
 
+
+void Animatronics::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+void Animatronics::Tick(float _DeltaTime)
+{
+	Super::Tick(_DeltaTime);
+}
 
 bool Animatronics::ACTOpportunity(int _CurLevel)
 {
@@ -45,13 +55,5 @@ int Animatronics::MoveChance(int _Num)
 		return 0; //Èñ¼Ò¼º
 	}
 	return 1; //È®·ü ³ôÀº°Å
-}
-
-
-
-std::string Animatronics::GetName()
-{
-	return this->GetName();
-	
 }
 

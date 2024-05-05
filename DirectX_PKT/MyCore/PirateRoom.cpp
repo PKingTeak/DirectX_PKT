@@ -37,7 +37,7 @@ void PirateRoom::BeginPlay()
 	Camera->CreateAnimation("CPirateRoomAni", "Cam1C.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 280,-100 });
 	Camera->SetAutoSize(1.0f, true);
-	Camera->AddToViewPort(2);
+	Camera->AddToViewPort(3);
 
 }
 

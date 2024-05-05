@@ -4,11 +4,12 @@
 #include"Animatronics.h"
 #include"map"
 #include<EngineCore/imgui.h>
+#include"Stage.h"
 class BackGroundClass;
 class Stage;
 class Button;
 class CCTVBackGround;
-class Bonni : public AActor, public Animatronics
+class Bonni : public Animatronics
 {
 
 	GENERATED_BODY(AActor)
@@ -43,6 +44,7 @@ private:
 	Stage* MainStage = nullptr;
 	std::shared_ptr<BackGroundClass> LobbyRoom = nullptr;
 	std::shared_ptr<CCTVBackGround> CCTVMap = nullptr;
+
 	//std::map<std::string, UImage*>* Map;
 	
 

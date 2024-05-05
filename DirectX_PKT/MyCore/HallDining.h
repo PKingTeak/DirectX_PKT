@@ -34,14 +34,14 @@ protected:
 	void Tick(float _DeltaTime) override;
 	void RendererOff();
 	void RendererOn();
-	
+	void MapUpdate()override;
 private:
 	std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
-	std::vector<std::string> HallStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningChica","HallDiningChica2" };
+	std::vector<std::string> RoomStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningChica","HallDiningChica2" };
 
-
+	void SettingSpriteName(int _Index) override;
 
 
 };

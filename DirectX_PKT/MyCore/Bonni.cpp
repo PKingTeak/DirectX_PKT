@@ -1,7 +1,7 @@
 #include"PreCompile.h"
 #include "Bonni.h"
 #include"Stage.h"
-
+#include"RoomManager.h"
 bool Bonni::isLobby = false;
 Bonni::Bonni()
 {
@@ -14,9 +14,10 @@ Bonni::~Bonni()
 void Bonni::BeginPlay()
 {
 	Super::BeginPlay();
+	//StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	SetLevel(10);
 	
-
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 }
 
 
@@ -31,32 +32,41 @@ void Bonni::Tick(float _DeltaTime)
 
 void Bonni::SetCurLocation()
 {
+	
+	CurRoomInfo = MainStage->GetCamActor();
 	// 보니 위치 보내주고 
-	int MoveNum = Animatronics::MoveChance(40);
+	int MoveNum = Animatronics::MoveChance(90);
 
 	switch (CurState)
 	{
 	case BonniLocation::ShowRoom:
 
-
+		CurRoomInfo[0]->SetMonster(nullptr);
+		CurRoomInfo[0]->GetMonster();
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
+			CurRoomInfo[8]->SetMonster(this);
+			//  여기에서 그냥 직접 setMonster해서 Room에 직접 셋팅해주는것이 좋을듯 하다. 
 			
-			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie0");
+			
 		}
 			// 이걸 바로 하면 안됨
 		if(MoveNum != 0)
 		{
-		//	CurState = BonniLocation::Cam1B;
-
+		
+			CurState = BonniLocation::HallDining;
+			CurRoomInfo[1]->SetMonster(this);
+			CurRoomInfo[1]->GetMonster();
 		}
 
 		break;
 	case BonniLocation::HallDining:
+		CurRoomInfo[1]->SetMonster(nullptr);
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
+			//CurRoomInfo[8]->SetMonster(this);
 			CurLocation = "BackStage";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
@@ -64,14 +74,17 @@ void Bonni::SetCurLocation()
 		else
 		{
 			CurState = BonniLocation::WestHall;
+			//CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "WestHall";
 		}
 
 		break;
 	case BonniLocation::BackStage:
+		CurRoomInfo[8]->SetMonster(nullptr);
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::HallDining;
+			//CurRoomInfo[1]->SetMonster(this);
 			CurLocation = "HallDining";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}

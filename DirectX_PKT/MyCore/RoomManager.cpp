@@ -66,3 +66,13 @@ std::string RoomManager::GetCurRoomSpriteName()
 {
 	return CurRoomSpriteName;
 }
+
+void RoomManager::SettingSpriteName(int _Index)
+{
+	CurRoomSpriteName[_Index];
+}
+
+void RoomManager::MapUpdate()
+{
+	CurRoomSpriteName;
+}

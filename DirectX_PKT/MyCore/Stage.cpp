@@ -601,9 +601,9 @@ void Stage::CamInteract()
 						ClickCamUI(RoomCameraUI[i]->GetName());
 						ChageCam();
 						PreCCTVCamUIActor->SetActive(false);
-						CurCCTVCamActor->SetActive(true);
+					//	CurCCTVCamActor->SetActive(true);
 					std::string ImageName =	CurCCTVCamActor->GetName();
-						CCTVPtr->ChangeSprite(ImageName);
+						//CCTVPtr->ChangeSprite(ImageName);
 						IsCamOn = true;
 					}
 					CCTVPtr->ScanLineON(); // 화면 전환할때 지지직 거리는 효과 
@@ -794,7 +794,7 @@ std::shared_ptr<RoomManager> Stage::FindActorIndex(Animatronics* _Monster)	//벡�
 }
 std::vector<std::shared_ptr<RoomManager>> Stage::GetCamActor()
 {
-
+	//CPP 위에서 부터 아래 순으로 넣음
 	return RoomActor;
 
 }

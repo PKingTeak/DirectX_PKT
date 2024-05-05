@@ -105,11 +105,11 @@ void CCTVBackGround::CCTVON()
 }
 void CCTVBackGround::CCTVOFF()
 {
-	AllCamActorOff();
 	CCTVBackGroundRender->SetActive(false);
 	CCTVEffect->SetActive(false);
-	//CCTVEffect->SetActive(false);
-	//ChangeEffect->SetActive(false);
+	AllCamActorOff();
+
+
 	CamMode = false;
 	if (CCTVInfo == nullptr)
 	{
@@ -120,6 +120,10 @@ void CCTVBackGround::CCTVOFF()
 
 void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
 {
+	if (_UICamName == nullptr)
+	{
+		return;
+	}
 	std::string ChangeCamName = _UICamName->GetCurRoomSpriteName();
 	ChangeCamName.append(".png");
 
@@ -207,6 +211,7 @@ void CCTVBackGround::SetCamBackInfo(RoomManager* _CamInfo , bool _CurCheck)
 }
 void CCTVBackGround::AllCamActorOff()
 {
+	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	CCTVActors = StageLevel->GetCamActor();
 	for (int i = 0; i < CCTVActors.size(); i++)
 	{
