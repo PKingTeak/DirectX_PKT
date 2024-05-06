@@ -170,18 +170,26 @@ BonniLocation Bonni::GetCurLocation()
 
 void Bonni::AutoMove(float _DeltaTime)
 {
-
+	
 	TestTime += _DeltaTime;
-	if (TestTime > 5)
+	float upcount = TestTime - PrevTime;
+	if (upcount >= 1.0f)
+	{
+
+	TimeCount +=1 ;
+	}
+	if (TimeCount > 5)
 	{
 		Ismove = ACTOpportunity(Level);
 		if (Ismove == true)
 		{
 			SetCurLocation();
-			TestTime = 0;
+			
+			
 		}
+	TimeCount = 0;
 	}
-
+	PrevTime = TestTime;
 }
 
 std::string Bonni::GetCurLocationString()

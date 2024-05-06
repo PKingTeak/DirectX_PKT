@@ -26,6 +26,8 @@
 #include"Animatronics.h"
 #include"RoomManager.h"
 #include"WestHall.h"
+#include"WestHallCorner.h"
+
 
 
 

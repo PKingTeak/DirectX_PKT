@@ -52,6 +52,8 @@ private:
 	
 	bool Ismove = false;
 	float TestTime = 0.0f;
+	float PrevTime = 0.0f;
+	int TimeCount = 0;
 	BonniLocation CurState = BonniLocation::ShowRoom;
 	
 
