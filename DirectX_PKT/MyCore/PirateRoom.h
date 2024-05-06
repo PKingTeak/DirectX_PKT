@@ -41,6 +41,6 @@ private:
 	Animatronics* PrevMonster = nullptr;
 	bool isMonster = false;
 
-	std::vector<std::string> RoomStatename = { "PirateRoom" , "PirateRoom2","PirateRoom3","PirateRoom4","PirateRoom5" }
+	std::vector<std::string> RoomStatename = { "PirateRoom" , "PirateRoom2","PirateRoom3","PirateRoom4","PirateRoom5" };
 };
 

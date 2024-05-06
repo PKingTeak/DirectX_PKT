@@ -25,6 +25,7 @@
 #include"BackStage.h"
 #include"Animatronics.h"
 #include"RoomManager.h"
+#include"WestHall.h"
 
 
 
@@ -97,6 +98,11 @@ void Stage::BeginPlay()
 	BPirateRoom = GetWorld()->SpawnActor<PirateRoom>("CBPirateRoom");
 	RoomActor.push_back(BPirateRoom);
 	RoomCameraUI.push_back(BPirateRoom->GetUI());
+
+	BWestHall = GetWorld()->SpawnActor<WestHall>("CBWestHall");
+	RoomActor.push_back(BWestHall);
+	RoomCameraUI.push_back(BWestHall->GetUI());
+
 
 	RoomActor[1]->SetActive(false);
 	//BBackStage = GetWorld()->SpawnActor<BackStage>("CBackStage");
@@ -200,13 +206,13 @@ void Stage::BeginPlay()
 		//CCTVCamUI["Cam6"]->SetAutoSize(1.0f, true);
 		//CCTVCamUI["Cam6"]->AddToViewPort(2);
 		//
-		//	CCTVCamUI["Cam2A"] = CreateWidget<UImage>(GetWorld(), "WestHall");
-		//CCTVCamUI["Cam2A"]->SetSprite("Cam2A.png", 0);
-		//CCTVCamUI["Cam2A"]->CreateAnimation("Cam2AAni", "Cam2A.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam2A"]->CreateAnimation("CCam2AAni", "Cam2A.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam2A"]->SetPosition(FVector{ 320,-240 });
-		//CCTVCamUI["Cam2A"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam2A"]->AddToViewPort(2);
+		//
+		//
+		//
+		//
+		//
+		//
+		//
 		//
 		//	CCTVCamUI["Cam2B"] = CreateWidget<UImage>(GetWorld(), "W.HallConer");
 		//CCTVCamUI["Cam2B"]->SetSprite("Cam2B.png", 0);

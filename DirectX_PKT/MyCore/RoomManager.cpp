@@ -76,3 +76,9 @@ void RoomManager::MapUpdate()
 {
 	CurRoomSpriteName;
 }
+
+void RoomManager::RestMapSprite()
+{
+
+	CurRoomSpriteName = RoomStatename[0];
+}

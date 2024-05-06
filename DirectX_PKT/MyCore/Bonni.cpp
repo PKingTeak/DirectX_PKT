@@ -63,6 +63,7 @@ void Bonni::SetCurLocation()
 		break;
 	case BonniLocation::HallDining:
 		CurRoomInfo[1]->SetMonster(nullptr);
+		CurRoomInfo[1]->SettingSpriteName(0);
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;

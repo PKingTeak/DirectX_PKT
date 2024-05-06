@@ -27,6 +27,7 @@ public:
 	Animatronics* GetMonster();
 	virtual UImage* GetUI(); 
 	virtual void SettingSpriteName(int _index);
+	virtual void RestMapSprite();
 	std::string GetCurRoomSpriteName();
 	
 protected:
