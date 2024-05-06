@@ -74,7 +74,7 @@ void Bonni::SetCurLocation()
 		else
 		{
 			CurState = BonniLocation::WestHall;
-			//CurRoomInfo[3]->SetMonster(this);
+			CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "WestHall";
 		}
 

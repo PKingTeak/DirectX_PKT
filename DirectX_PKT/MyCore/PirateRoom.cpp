@@ -17,7 +17,7 @@ PirateRoom::PirateRoom()
 	RoomRender->SetOrder(105);
 	RoomRender->SetActive(true);
 	
-	
+	//MapUpdate();
 
 	SetRoot(Default);
 
@@ -61,7 +61,23 @@ void PirateRoom::SetMonster(Animatronics* _Monster)
 }
 
 
+void PirateRoom::MapUpdate()
+{
 
+	Monster = GetMonster();
+
+	if (Monster != nullptr)
+	{
+		std::string CheckName = Monster->GetName();
+		if (CheckName == "Foxy")
+		{
+			SettingSpriteName(2);
+			PrevMonster = Monster;
+			return;
+		}
+
+	}
+}
 
 
 

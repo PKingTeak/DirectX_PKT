@@ -124,6 +124,12 @@ void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
 	{
 		return;
 	}
+	if (_UICamName->GetMonster() != nullptr)
+	{
+		_UICamName->GetCurRoomSpriteName();
+
+
+	}
 	std::string ChangeCamName = _UICamName->GetCurRoomSpriteName();
 	ChangeCamName.append(".png");
 

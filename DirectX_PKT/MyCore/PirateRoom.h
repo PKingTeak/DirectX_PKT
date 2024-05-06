@@ -25,12 +25,12 @@ public:
 
 
 	void SetMonster(Animatronics* _Monster);
-	
+
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
+	void MapUpdate() override;
 	void RendererOff();
 	void RendererOn();
 
@@ -38,8 +38,9 @@ private:
 
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
+	Animatronics* PrevMonster = nullptr;
 	bool isMonster = false;
 
-
+	std::vector<std::string> RoomStatename = { "PirateRoom" , "PirateRoom2","PirateRoom3","PirateRoom4","PirateRoom5" }
 };
 

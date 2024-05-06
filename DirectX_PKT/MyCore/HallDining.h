@@ -29,6 +29,7 @@ public:
 	void ChangeRoomCamera(Animatronics* _Monster) override;
 	void MapChangeSprite(Animatronics* _Monster);
 
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -39,10 +40,10 @@ private:
 	std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
+	Animatronics* PrevMonster = nullptr;
 	std::vector<std::string> RoomStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningChica","HallDiningChica2" };
 
 	void SettingSpriteName(int _Index) override;
-
 
 };
 

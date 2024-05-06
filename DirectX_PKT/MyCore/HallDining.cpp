@@ -49,7 +49,9 @@ void HallDining::BeginPlay()
 void HallDining::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+	
 	MapUpdate();
+	
 }
 
 
@@ -98,12 +100,13 @@ void HallDining::MapUpdate()
 		if (CheckName == "Bonni")
 		{
 			SettingSpriteName(2);
+			PrevMonster = Monster;
 			return;
 		}
 
 	}
-
-	SettingSpriteName(0);
+	
+	//SettingSpriteName(0);
 
 	
 
