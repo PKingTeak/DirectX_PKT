@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include<string_view>
+#include<EngineCore/DefaultSceneComponent.h>
 
 // Ό³Έν :
 class EndingBackGround : public AActor
@@ -31,9 +32,9 @@ protected:
 private:
 	void ChangeBackGround(float _DeltaTime);
 	USpriteRenderer* Renderer = nullptr;
-	int RandomNum = 0;
-	float  AniTime = 2;
-	float Time = 0;
+	USpriteRenderer* GameOverRenderer = nullptr;
+	USpriteRenderer* GameOvertext = nullptr;
+	bool isAnimationEnd = false;
 
 };
 

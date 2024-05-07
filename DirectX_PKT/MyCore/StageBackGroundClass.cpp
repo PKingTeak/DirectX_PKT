@@ -4,6 +4,7 @@
 #include"MyCore.h"
 #include<iostream>
 #include"Animatronics.h"
+#include"Door.h"
 
 StageBackGroundClass* StageBackGroundClass::MainStageBackGround = nullptr;
 
@@ -53,6 +54,7 @@ StageBackGroundClass::~StageBackGroundClass()
 void StageBackGroundClass::BeginPlay()
 {
 	MainStageBackGround = this;
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	Super::BeginPlay();
 
 
@@ -126,6 +128,10 @@ void StageBackGroundClass:: SetLobbyMonster(Animatronics* _Monster)
 
 void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 {
+
+	LobbyDoor = MainStage->GetStageDoor();
+
+
 	if (Monster != nullptr)
 	{
 		Time += _DeltaTime;
@@ -133,6 +139,11 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 
 		if (Time > 7 )
 		{
+			if(Monster->GetName() == "Bonni" && LobbyDoor->GetLeftDoorState() == false)
+			{
+				Monster = nullptr;
+				return;
+			}
 
 			PlayJumpScare(Monster->GetName());
 		}

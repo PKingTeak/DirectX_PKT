@@ -4,6 +4,7 @@
 #include<iostream>
 
 class Noise;
+class EndingBackGround;
 class EndingLevel : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -27,12 +28,7 @@ protected:
 	void RendererOn();
 
 private:
-	
-	void EndingNoiseChecker();
-	USpriteRenderer* Renderer = nullptr;
-	int RandomNum = 0;
-	float  AniTime = 2;
-	float Time = 0;
+	std::shared_ptr<EndingBackGround> EndingBack = nullptr;
 
 };
 

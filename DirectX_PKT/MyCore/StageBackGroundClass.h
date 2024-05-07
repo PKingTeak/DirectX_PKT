@@ -8,6 +8,7 @@
 
 class Animatronics;
 class ScanLine;
+class Door;
 class StageBackGroundClass : public AActor
 {
 	
@@ -44,12 +45,13 @@ private:
 	USpriteRenderer* StageBackRender = nullptr;
 	
 
-
 	Animatronics* Monster = nullptr;
-//	Door* LeftDoor = nullptr;
-//	Door* RightDoor = nullptr;
+	
+	std::shared_ptr<Door> LobbyDoor = nullptr;
+	
+	
 
-
+	Stage* MainStage = nullptr;
 	bool ColDir = false;
 	float Time = 0.0f;
 	bool LeftLight = false;

@@ -99,13 +99,18 @@ void Bonni::SetCurLocation()
 		else
 		{
 			CurState = BonniLocation::WestHall;
+			CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "WestHall";
 		}
 		break;
 	case BonniLocation::WestHall:
+		CurRoomInfo[3]->SetMonster(nullptr);
+		CurRoomInfo[3]->SettingSpriteName(0);
+
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::WestHallCorner;
+			CurRoomInfo[4]->SetMonster(this);
 			CurLocation = "WestHallCorner";
 		}
 		// 이걸 바로 하면 안됨
@@ -117,6 +122,9 @@ void Bonni::SetCurLocation()
 		}
 		break;
 	case BonniLocation::WestHallCorner:
+		CurRoomInfo[4]->SetMonster(nullptr);
+		CurRoomInfo[4]->SettingSpriteName(0);
+
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Lobby;
@@ -126,6 +134,7 @@ void Bonni::SetCurLocation()
 		else
 		{
 			CurState = BonniLocation::WestHall;
+			CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "WestHall";
 
 		}
@@ -151,7 +160,7 @@ void Bonni::SetCurLocation()
 		if (LobbyDoor->GetLeftDoorState() == true)
 		{
 			//여기서 라이트 바꿔줘야 함 
-			LobbyBackGround->SetLobbyMonster(this);
+ 			LobbyBackGround->SetLobbyMonster(this);
 		//	LobbyBackGround->CountMonsterTime(this);
 				
 		}

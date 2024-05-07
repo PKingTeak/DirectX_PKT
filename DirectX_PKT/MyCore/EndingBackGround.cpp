@@ -1,11 +1,32 @@
 #include "PreCompile.h"
 #include "EndingBackGround.h"
 #include <EngineBase/EngineRandom.h>
-
+#include"MyCore.h"
 EndingBackGround::EndingBackGround()
 {
+	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("EndDefault");
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Default);
+	Renderer->SetAutoSize(1.0f, true);
+	Renderer->SetOrder(OrderType::BackGround);
+	Renderer->CreateAnimation("EndingNoiseAni", "EndingNoise", 0.1f, false,0,7);
+
+	GameOverRenderer = CreateDefaultSubObject<USpriteRenderer>("GameOverRenderer");
+	GameOverRenderer->SetupAttachment(Default);
+	GameOverRenderer->SetSprite("GameOverBackground.png");
+	GameOverRenderer->SetAutoSize(1.0f, true);
+	GameOverRenderer->SetOrder(OrderType::BackGround);
+
+	GameOvertext = CreateDefaultSubObject<USpriteRenderer>("GameOvertext");
+	GameOvertext->SetupAttachment(Default);
+	GameOvertext->SetSprite("GameOverText.png");
+	GameOvertext->SetAutoSize(1.0f, true);
+	GameOvertext->AddPosition(FVector{ 0,100 });
+	GameOvertext->SetOrder(OrderType::Object);
+	GameOvertext->SetActive(false);
+
+	SetRoot(Default);
 }
 
 EndingBackGround::~EndingBackGround()
@@ -20,34 +41,23 @@ void EndingBackGround::BeginPlay()
 	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
 
 
+	Renderer->ChangeAnimation("EndingNoiseAni");
+	
 
+	Renderer->SetLastFrameCallback("EndingNoiseAni", [=]
+
+		{
+			Renderer->SetActive(false);
+			GameOverRenderer->SetActive(true);
+			GameOvertext->SetActive(true);
+		}
+	);
+	
 }
 
 void EndingBackGround::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	AniTime -= _DeltaTime;
-	if (AniTime >= 0)
-	{
-		Renderer->SetSprite("Title.png", 0);
-		RandomNum = UEngineRandom::MainRandom.RandomInt(1, 3);
-	}
-	if (AniTime < 0)
-	{
-		ChangeBackGround(_DeltaTime);
-	}
-	int a = 0;
 }
 
-void EndingBackGround::ChangeBackGround(float _DeltaTime)
-{//랜덤으로 배경 화면 바꾸기 
-	//DelayCallBack()
-	Time += _DeltaTime;
-	Renderer->SetSprite("Title.png", RandomNum);
-	if (Time > 1)
-	{
-		AniTime = RandomNum * 2;
-		Time = 0;
-	}
-}
 
