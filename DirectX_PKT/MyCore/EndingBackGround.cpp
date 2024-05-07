@@ -37,9 +37,8 @@ EndingBackGround::~EndingBackGround()
 void EndingBackGround::BeginPlay()
 {
 	Super::BeginPlay();
-
-	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
-
+	SetActorLocation(FVector{ 0,0 });
+	
 
 	Renderer->ChangeAnimation("EndingNoiseAni");
 	

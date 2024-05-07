@@ -141,7 +141,7 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 		{
 			if(Monster->GetName() == "Bonni" && LobbyDoor->GetLeftDoorState() == false)
 			{
-				Monster = nullptr;
+				SetLobbyMonster(nullptr);
 				return;
 			}
 
