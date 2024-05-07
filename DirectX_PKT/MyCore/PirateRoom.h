@@ -2,17 +2,19 @@
 #include <Enginecore/Actor.h>
 #include <EngineCore/SpriteRenderer.h>
 #include<EngineCore/DefaultSceneComponent.h>
+#include<EngineCore/Image.h>
 #include<iostream>
 #include "RoomManager.h"
+
+
 class Animatronics;
 
-// Ό³Έν :
 class PirateRoom : public RoomManager
 {
 	GENERATED_BODY(AActor)
 
 public:
-	// constrcuter destructer
+
 	PirateRoom();
 	~PirateRoom();
 
@@ -24,23 +26,24 @@ public:
 
 
 
-	void SetMonster(Animatronics* _Monster);
+	void ChangeRoomCamera(Animatronics* _Monster) override;
+	void MapChangeSprite(Animatronics* _Monster);
 
 
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-	void MapUpdate() override;
 	void RendererOff();
 	void RendererOn();
-
+	void MapUpdate()override;
 private:
-
+	//std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
 	Animatronics* PrevMonster = nullptr;
-	bool isMonster = false;
+	std::vector<std::string> RoomStatename = { "PirateRoom","PirateRoom2","PirateRoomBonni","PirateRoomBonnie2","PirateRoomChica","PirateRoomChica2" };
 
-	std::vector<std::string> RoomStatename = { "PirateRoom" , "PirateRoom2","PirateRoom3","PirateRoom4","PirateRoom5" };
+	void SettingSpriteName(int _Index) override;
+
 };
 

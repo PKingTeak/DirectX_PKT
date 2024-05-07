@@ -167,12 +167,12 @@ private:
 	std::shared_ptr<ShowRoom> BShowRoom = nullptr;
 	std::shared_ptr<HallDining> BHallDining = nullptr;
 	std::shared_ptr<PirateRoom> BPirateRoom = nullptr;
-	std::shared_ptr<BackStage> BBackStage = nullptr;
-	std::shared_ptr<SupplyCloset> BSupplyCloset = nullptr;
 	std::shared_ptr<WestHall> BWestHall = nullptr;
 	std::shared_ptr<WestHallCorner> BWestHallCorner = nullptr;
+	std::shared_ptr<SupplyCloset> BSupplyCloset = nullptr;
 	std::shared_ptr<EastHall> BEastHall = nullptr;
 	std::shared_ptr<EastHallCorner> BEastHallCorner = nullptr;
+	std::shared_ptr<BackStage> BBackStage = nullptr;
 	std::shared_ptr<KittenRoom> BKittenRoom = nullptr;
 	std::shared_ptr<RestRoom> BRestRoom = nullptr;
 	

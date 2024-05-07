@@ -1,5 +1,8 @@
 #include "PreCompile.h"
 #include "Stage.h"
+#include <EngineCore/Image.h>
+#include <EngineCore/Camera.h>
+#include <EngineBase/EngineSerializer.h>
 #include<EngineCore/Camera.h>
 #include<EngineCore/EngineDebugMsgWindow.h>
 #include"StageBackGroundClass.h"
@@ -8,9 +11,6 @@
 #include"Mouse.h"
 #include"StageCamera.h"
 #include"CCTVBackGround.h"
-#include <EngineCore/Image.h>
-#include <EngineCore/Camera.h>
-#include <EngineBase/EngineSerializer.h>
 #include "FishEyes.h"
 #include"Button.h"
 #include"CCTVUI.h"
@@ -22,11 +22,17 @@
 #include"ShowRoom.h"
 #include"HallDining.h"
 #include"PirateRoom.h"
-#include"BackStage.h"
 #include"Animatronics.h"
 #include"RoomManager.h"
 #include"WestHall.h"
 #include"WestHallCorner.h"
+#include"SupplyCloset.h"
+#include"BackStage.h"
+#include"EastHall.h"
+#include"EastHallCorner.h"
+#include"KittenRoom.h"
+#include"RestRoom.h"
+
 
 
 
@@ -87,13 +93,13 @@ void Stage::BeginPlay()
 	}//벡터[i]  =GetWorld()->SpawnActor<>();
 
 
+	//벡터에 넣는 순선느 프로젝트 솔루션탐색기 기준으로 넣었음. 
 	BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
-	
 	RoomActor.push_back(BShowRoom);
 	RoomCameraUI.push_back(BShowRoom->GetUI());
 
+
 	BHallDining = GetWorld()->SpawnActor<HallDining>("CBHallDining"); 
-	
 	RoomActor.push_back(BHallDining);
 	RoomCameraUI.push_back(BHallDining->GetUI());
 
@@ -104,13 +110,37 @@ void Stage::BeginPlay()
 	BWestHall = GetWorld()->SpawnActor<WestHall>("CBWestHall");
 	RoomActor.push_back(BWestHall);
 	RoomCameraUI.push_back(BWestHall->GetUI());
+	
+	
+	BWestHallCorner = GetWorld()->SpawnActor<WestHallCorner>("CBWestHallCorner");
+	RoomActor.push_back(BWestHallCorner);
+	RoomCameraUI.push_back(BWestHallCorner->GetUI());
+
+	BEastHall = GetWorld()->SpawnActor<EastHall>("CBEastHall");
+	RoomActor.push_back(BEastHall);
+	RoomCameraUI.push_back(BEastHall->GetUI());
+
+	BSupplyCloset = GetWorld()->SpawnActor<SupplyCloset>("CBSupplyCloset");
+	RoomActor.push_back(BSupplyCloset);
+	RoomCameraUI.push_back(BSupplyCloset->GetUI());
 
 
-	RoomActor[1]->SetActive(false);
-	//BBackStage = GetWorld()->SpawnActor<BackStage>("CBackStage");
-	//RoomActor.push_back(BBackStage);
-	//RoomCameraUI.push_back(BBackStage->GetUI());
+	BEastHallCorner = GetWorld()->SpawnActor<EastHallCorner>("CBEastHallCorner");
+	RoomActor.push_back(BEastHallCorner);
+	RoomCameraUI.push_back(BEastHallCorner->GetUI());
 
+	BBackStage = GetWorld()->SpawnActor<BackStage>("CBBackStage");
+	RoomActor.push_back(BBackStage);
+	RoomCameraUI.push_back(BBackStage->GetUI());
+
+
+	BSupplyCloset = GetWorld()->SpawnActor<SupplyCloset>("CBSupplyCloset");
+	RoomActor.push_back(BSupplyCloset);
+	RoomCameraUI.push_back(BSupplyCloset->GetUI());
+
+
+
+	
 
 
 	{
@@ -175,30 +205,17 @@ void Stage::BeginPlay()
 
 
 
-		//CCTVCamUI["Cam5"] = CreateWidget<UImage>(GetWorld(), "BackStage");
-		//CCTVCamUI["Cam5"]->SetSprite("Cam5.png", 0);
-		//CCTVCamUI["Cam5"]->CreateAnimation("Cam5Ani", "Cam5.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam5"]->CreateAnimation("CCam5Ani", "Cam5.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam5"]->SetPosition(FVector{ 300,-50 });
-		//CCTVCamUI["Cam5"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam5"]->AddToViewPort(2);
+		
 		//
-		//	CCTVCamUI["Cam7"] = CreateWidget<UImage>(GetWorld(), "RestRoom");
-		//CCTVCamUI["Cam7"]->SetSprite("Cam7.png", 0);
-		//CCTVCamUI["Cam7"]->CreateAnimation("Cam7Ani", "Cam7.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam7"]->CreateAnimation("CCam7Ani", "Cam7.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam7"]->SetPosition(FVector{ 250,-50 });
-		//CCTVCamUI["Cam7"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam7"]->AddToViewPort(2);
+		
+		
+		
+		
+		
+		
+		
 		//
-		//	CCTVCamUI["Cam3"] = CreateWidget<UImage>(GetWorld(), "SupplyCloset");
-		//CCTVCamUI["Cam3"]->SetSprite("Cam3.png", 0);
-		//CCTVCamUI["Cam3"]->CreateAnimation("Cam3Ani", "Cam3.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam3"]->CreateAnimation("CCam3Ani", "Cam3.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam3"]->SetPosition(FVector{ 250,-250 });
-		//CCTVCamUI["Cam3"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam3"]->AddToViewPort(2);
-
+		
 				//Cam6 은 거의 검은 화면만 보이게 구현할 예정 
 		//CCTVCamUI["Cam6"] = CreateWidget<UImage>(GetWorld(), "KittenRoom");
 		//CCTVCamUI["Cam6"]->SetSprite("Cam6.png", 0);
@@ -224,21 +241,15 @@ void Stage::BeginPlay()
 		//CCTVCamUI["Cam2B"]->SetAutoSize(1.0f, true);
 		//CCTVCamUI["Cam2B"]->AddToViewPort(2);
 		//
-		//	CCTVCamUI["Cam4A"] = CreateWidget<UImage>(GetWorld(), "EestHall");
-		//CCTVCamUI["Cam4A"]->SetSprite("Cam4A.png", 0);
-		//CCTVCamUI["Cam4A"]->CreateAnimation("Cam4AAni", "Cam4A.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam4A"]->CreateAnimation("CCam4AAni", "Cam4A.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam4A"]->SetPosition(FVector{ 400,-100 });
-		//CCTVCamUI["Cam4A"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam4A"]->AddToViewPort(2);
 		//
-		//	CCTVCamUI["Cam4B"] = CreateWidget<UImage>(GetWorld(), "E.HallConer");
-		//CCTVCamUI["Cam4B"]->SetSprite("Cam4B.png", 0);
-		//CCTVCamUI["Cam4B"]->CreateAnimation("Cam4BAni", "Cam4B.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam4B"]->CreateAnimation("CCam4BAni", "Cam4B.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam4B"]->SetPosition(FVector{ 400,-150 });
-		//CCTVCamUI["Cam4B"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam4B"]->AddToViewPort(2);
+		//
+		//
+		//
+		//
+		//
+		//
+		//
+		
 		//
 		//	//Map에 insert 해서 값 보관
 		//CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
@@ -342,7 +353,6 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	BonniActor->AutoMove(_DeltaTime);
 
 	FindActorIndex(BonniActor.get());
 
@@ -509,59 +519,6 @@ void Stage::ChageCam()
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
 
 }
-
-//void Stage::CamInteract()
-//{
-//
-//	for (std::string NameFirst : Name)
-//	{
-//		UImage* NewImage = CCTVCamUI[NameFirst]; // 여기서 for문으로 돌면서 찾아주는것
-//		std::string CurCamName = NewImage->GetName();
-//		std::string PreCamName = PrevCam->GetName();
-//		std::string MonsterLocal = LocationName;
-//
-//		//if(NewImage->);
-//		NewImage->SetDown([=]()
-//			{
-//				if (IsCamOn == false)
-//				{
-//					this;
-//					if (PreCamName != CurCamName)
-//					{
-//
-//						PrevCam = CCTVCamUI[NameFirst]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
-//						ClickCamUI(NameFirst);
-//						CCTVRectUI->SetActive(true);
-//						IsCamOn = true;
-//					}
-//					CCTVPtr->ScanLineON();
-//					if (MonsterLocal == CurCamName)
-//					{
-//
-//						MonsterName = LocationName.append("Booni.png");
-//						CCTVPtr->ChangeCam(MonsterName);
-//
-//
-//					}
-//					else if (MonsterLocal != CurCamName)
-//					{
-//						ChageCam(); //카메라 변경
-//					}
-//
-//
-//					//캠화면 전환
-//
-//				}
-//
-//			}
-//		);
-//	}
-//
-//
-//
-//
-//}
-//
 
 void Stage::CamInteract()
 {

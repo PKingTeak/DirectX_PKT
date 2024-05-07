@@ -106,7 +106,12 @@ void HallDining::MapUpdate()
 
 	}
 	
-	//SettingSpriteName(0);
+	if (PrevMonster != Monster)
+	{
+		SettingSpriteName(0);
+		//몬스터가 없어졌을때 다시 원래 사진으로 복귀
+		//틱에서 돌려서 카메라 바라볼때 즉각 사라지게 구현 
+	}
 
 	
 

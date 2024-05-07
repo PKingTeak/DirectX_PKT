@@ -37,7 +37,7 @@ protected:
 	void RendererOn();
 	void MapUpdate()override;
 private:
-	std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
+	//std::string FindImageName(std::vector<std::string> _Statename, std::string _MonsterLocal);
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
 	Animatronics* PrevMonster = nullptr;

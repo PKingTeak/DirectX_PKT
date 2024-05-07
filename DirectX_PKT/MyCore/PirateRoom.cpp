@@ -1,25 +1,26 @@
 #include "PreCompile.h"
 #include "PirateRoom.h"
+#include"Animatronics.h"
 #include <EngineBase/EngineRandom.h>
 #include"MyCore.h"
-#include"Animatronics.h"
+
 
 PirateRoom::PirateRoom()
 {
 
-	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
-
-
-	RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	RoomRender->SetSprite("PirateRoom.png");
-	RoomRender->SetAutoSize(1.0f, true);
-	RoomRender->SetupAttachment(Default);
-	RoomRender->SetOrder(105);
-	RoomRender->SetActive(true);
-	
-	//MapUpdate();
-
-	SetRoot(Default);
+	//UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
+	//
+	//
+	//RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
+	//RoomRender->SetSprite("PirateRoom.png");
+	//RoomRender->SetAutoSize(1.0f, true);
+	//RoomRender->SetupAttachment(Default);
+	//RoomRender->SetOrder(100);
+	//RoomRender->SetActive(false);
+	//
+	//
+	//
+	//SetRoot(Default);
 
 
 }
@@ -31,6 +32,7 @@ PirateRoom::~PirateRoom()
 
 void PirateRoom::BeginPlay()
 {
+	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "PirateRoom");
 	Camera->SetSprite("Cam1C.png", 0);
 	Camera->CreateAnimation("PirateRoomAni", "Cam1C.png", 0.5f, true, 0, 0);
@@ -39,6 +41,8 @@ void PirateRoom::BeginPlay()
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 
+	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
+
 }
 
 
@@ -46,30 +50,54 @@ void PirateRoom::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	MapUpdate();
+
 }
 
 
-void PirateRoom::SetMonster(Animatronics* _Monster)
-{
-	if (Monster != nullptr)
+
+
+void PirateRoom::ChangeRoomCamera(Animatronics* _Monster)
+{//해당 몬스터의 정보를 갸져와서 방 이름을 바꿔주는 역할을 하고 
+	// 해당 방 이미지가 저장되어 있는 벡터의 이미지를 변경해 준다. 
+	std::string MonsterName = _Monster->GetName();
+	if (GetMonster() != nullptr)
 	{
-		isMonster = false;
-		return;
+		if (MonsterName == "Bonni")
+		{
+			RoomRender->SetSprite(RoomStatename[2] + ".png");
+		}
+
+		if (MonsterName == "Chica")
+		{
+			RoomRender->SetSprite(RoomStatename[4] + ".png");
+		}
 	}
-	isMonster = true;
-	Monster = _Monster;
+
+
 }
 
+void PirateRoom::MapChangeSprite(Animatronics* _Monster)
+{
+	std::string setSprite = this->GetName().append(_Monster->GetName());
+
+	RoomRender->SetSprite(setSprite);
+}
+
+void PirateRoom::SettingSpriteName(int _Index = 0)
+{
+
+	CurRoomSpriteName = RoomStatename[_Index];
+}
 
 void PirateRoom::MapUpdate()
 {
-
 	Monster = GetMonster();
 
 	if (Monster != nullptr)
 	{
 		std::string CheckName = Monster->GetName();
-		if (CheckName == "Foxy")
+		if (CheckName == "Bonni")
 		{
 			SettingSpriteName(2);
 			PrevMonster = Monster;
@@ -77,8 +105,18 @@ void PirateRoom::MapUpdate()
 		}
 
 	}
-}
 
+	if (PrevMonster != Monster)
+	{
+		SettingSpriteName(0);
+		//몬스터가 없어졌을때 다시 원래 사진으로 복귀
+		//틱에서 돌려서 카메라 바라볼때 즉각 사라지게 구현 
+	}
+
+
+
+
+}
 
 
 

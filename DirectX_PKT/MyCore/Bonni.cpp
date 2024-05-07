@@ -15,7 +15,7 @@ void Bonni::BeginPlay()
 {
 	Super::BeginPlay();
 	//StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
-	SetLevel(10);
+	SetLevel(10); //50ÆÛ 
 	
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 }
@@ -80,6 +80,7 @@ void Bonni::SetCurLocation()
 		}
 
 		break;
+
 	case BonniLocation::BackStage:
 		CurRoomInfo[8]->SetMonster(nullptr);
 		if (MoveNum == 0)
@@ -172,13 +173,8 @@ void Bonni::AutoMove(float _DeltaTime)
 {
 	
 	TestTime += _DeltaTime;
-	float upcount = TestTime - PrevTime;
-	if (upcount >= 1.0f)
-	{
-
-	TimeCount +=1 ;
-	}
-	if (TimeCount > 5)
+	
+	if (TestTime >= 5)
 	{
 		Ismove = ACTOpportunity(Level);
 		if (Ismove == true)
@@ -188,8 +184,12 @@ void Bonni::AutoMove(float _DeltaTime)
 			
 		}
 	TimeCount = 0;
-	}
 	PrevTime = TestTime;
+	TestTime = TestTime - PrevTime;
+	}
+	
+
+	
 }
 
 std::string Bonni::GetCurLocationString()

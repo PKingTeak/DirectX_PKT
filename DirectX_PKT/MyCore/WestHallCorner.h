@@ -1,19 +1,4 @@
 #pragma once
-class WestHallCornerCorner
-{
-public:
-	// constructor destructor
-	WestHallCornerCorner();
-	~WestHallCornerCorner();
-
-	// delete Function
-	WestHallCornerCorner(const WestHallCornerCorner& _Other) = delete;
-	WestHallCornerCorner(WestHallCornerCorner&& _Other) noexcept = delete;
-	WestHallCornerCorner& operator=(const WestHallCornerCorner& _Other) = delete;
-	WestHallCornerCorner& operator=(WestHallCornerCorner&& _Other) = delete;
-};
-
-#pragma once
 #include <Enginecore/Actor.h>
 #include <EngineCore/SpriteRenderer.h>
 #include<EngineCore/DefaultSceneComponent.h>
@@ -43,7 +28,7 @@ private:
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
 	Animatronics* PrevMonster = nullptr;
-	std::vector<std::string> RoomStatename = { "WestHallCorner","WestHallCornerBonnie" };
+	std::vector<std::string> RoomStatename = { "WestCorner","WestCornerBonni","WestCornerBonni2","WestCornerBonni3" };
 
 	void SettingSpriteName(int _Index) override;
 
