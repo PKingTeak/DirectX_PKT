@@ -6,6 +6,7 @@
 #include<iostream>
 #include"Arrow.h"
 
+class Animatronics;
 class ScanLine;
 class StageBackGroundClass : public AActor
 {
@@ -29,7 +30,8 @@ public:
 	void LightOn(std::string _Dir);
 	void ChangeBackGround(std::string _RoomState);
 	void PlayJumpScare(std::string _Name);
-	
+	void SetLobbyMonster(Animatronics* _Monster);
+	void CountMonsterTime(float _DeltaTime);
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -41,10 +43,18 @@ private:
 	USpriteRenderer* JumpScare = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
 	
+
+
+	Animatronics* Monster = nullptr;
+//	Door* LeftDoor = nullptr;
+//	Door* RightDoor = nullptr;
+
+
 	bool ColDir = false;
-	float Time = 0.0;
+	float Time = 0.0f;
 	bool LeftLight = false;
 	bool RightLight = false;
+	
 	
 
 };

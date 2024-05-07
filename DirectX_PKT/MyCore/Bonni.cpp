@@ -2,6 +2,8 @@
 #include "Bonni.h"
 #include"Stage.h"
 #include"RoomManager.h"
+#include"Door.h"
+#include"StageBackGroundClass.h"
 bool Bonni::isLobby = false;
 Bonni::Bonni()
 {
@@ -34,6 +36,8 @@ void Bonni::SetCurLocation()
 {
 	
 	CurRoomInfo = MainStage->GetCamActor();
+	LobbyDoor = MainStage->GetStageDoor();
+	LobbyBackGround = MainStage->GetLobbyBackGround();
 	// 보니 위치 보내주고 
 	int MoveNum = Animatronics::MoveChance(90);
 
@@ -67,7 +71,7 @@ void Bonni::SetCurLocation()
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
-			//CurRoomInfo[8]->SetMonster(this);
+			CurRoomInfo[8]->SetMonster(this);
 			CurLocation = "BackStage";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
@@ -83,10 +87,11 @@ void Bonni::SetCurLocation()
 
 	case BonniLocation::BackStage:
 		CurRoomInfo[8]->SetMonster(nullptr);
+		CurRoomInfo[8]->SettingSpriteName(0);
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::HallDining;
-			//CurRoomInfo[1]->SetMonster(this);
+			CurRoomInfo[1]->SetMonster(this);
 			CurLocation = "HallDining";
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
@@ -143,7 +148,13 @@ void Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::Lobby:
-
+		if (LobbyDoor->GetLeftDoorState() == true)
+		{
+			//여기서 라이트 바꿔줘야 함 
+			LobbyBackGround->SetLobbyMonster(this);
+		//	LobbyBackGround->CountMonsterTime(this);
+				
+		}
 		isLobby = true;
 		break;
 	default:

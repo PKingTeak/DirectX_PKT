@@ -18,10 +18,11 @@ public:
 	Door(Door&& _Other) noexcept = delete;
 	Door& operator=(const Door& _Other) = delete;
 	Door& operator=(Door&& _Other) = delete;
-
+	bool GetLeftDoorState();
+	bool GetRightDoorState();
 	void DoorOpen(std::string_view _ButtonName);
 	void DoorClose(std::string_view _ButtonName);
-
+	
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -31,6 +32,8 @@ protected:
 	void RendererOn();
 
 private:
+	bool isLDoorOpen = true; //열려있으면 true
+	bool isRDoorOpen = true; // 열려있으면 true;
 	USpriteRenderer* LDoorRender = nullptr;
 	USpriteRenderer* RDoorRender = nullptr;
 	

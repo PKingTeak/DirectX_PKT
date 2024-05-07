@@ -77,6 +77,9 @@
     <Filter Include="CamActors\7">
       <UniqueIdentifier>{4dbcaa79-a557-44b2-9717-a65b60c33f0b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Level\Ending">
+      <UniqueIdentifier>{75b34657-f1a8-4d14-9904-4cc5fa7d13e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -184,6 +187,12 @@
     <ClCompile Include="RoomManager.cpp">
       <Filter>CamActors</Filter>
     </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>Level\Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingBackGround.cpp">
+      <Filter>Level\Ending</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -290,6 +299,12 @@
     </ClInclude>
     <ClInclude Include="RoomManager.h">
       <Filter>CamActors</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <Filter>Level\Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingBackGround.h">
+      <Filter>Level\Ending</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

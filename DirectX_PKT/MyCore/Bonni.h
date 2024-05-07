@@ -44,9 +44,8 @@ private:
 	Stage* MainStage = nullptr;
 	std::shared_ptr<BackGroundClass> LobbyRoom = nullptr;
 	std::shared_ptr<CCTVBackGround> CCTVMap = nullptr;
-
-	//std::map<std::string, UImage*>* Map;
-	
+	std::shared_ptr<Door> LobbyDoor = nullptr;
+	std::shared_ptr<StageBackGroundClass> LobbyBackGround = nullptr;
 
 
 	

@@ -23,8 +23,8 @@ void EastHall::BeginPlay()
 	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "EestHall");
 	Camera->SetSprite("Cam4A.png", 0);
-	Camera->CreateAnimation("Cam4AAni", "Cam4A.png", 0.5f, true, 0, 0);
-	Camera->CreateAnimation("CCam4AAni", "Cam4A.png", 0.5f, true, 0, 1);
+	Camera->CreateAnimation("EestHallAni", "Cam4A.png", 0.5f, true, 0, 0);
+	Camera->CreateAnimation("CEestHallAni", "Cam4A.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 440,-240 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);

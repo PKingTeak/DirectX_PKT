@@ -10,6 +10,7 @@
 #include<EngineCore/EngineDebugMsgWindow.h>
 #include"CCTVBackGround.h"
 #include<EngineCore/EnginePixelShader.h>
+#include"EndingLevel.h"
 
 
 UMyCore::UMyCore()
@@ -133,6 +134,7 @@ void UMyCore::Initialize()
 	
 	GEngine->CreateLevel<MainTitleLevel>("Maintitle");
 	GEngine->CreateLevel<Stage>("StageLevel");
+	GEngine->CreateLevel<EndingLevel>("EndingLevel");
 	GEngine->ChangeLevel("Maintitle");
 
 

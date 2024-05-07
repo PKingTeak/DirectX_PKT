@@ -3,6 +3,7 @@
 #include<EngineCore/DefaultSceneComponent.h>
 #include"MyCore.h"
 #include<iostream>
+#include"Animatronics.h"
 
 StageBackGroundClass* StageBackGroundClass::MainStageBackGround = nullptr;
 
@@ -17,8 +18,9 @@ StageBackGroundClass::StageBackGroundClass()
 
 	JumpScare = CreateDefaultSubObject<USpriteRenderer>("Render");
 	JumpScare->SetAutoSize(1.0f, true);
-	JumpScare->CreateAnimation("BonniAnimation", "Bonni", 0.1f, false, 0, 10);
+	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.05f, false, 0, 10);
 	JumpScare->SetupAttachment(Default);
+	JumpScare->SetOrder(200);
 
 
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
@@ -59,7 +61,7 @@ void StageBackGroundClass::BeginPlay()
 void StageBackGroundClass::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
+	CountMonsterTime(_DeltaTime);
 
 }
 
@@ -79,10 +81,17 @@ void StageBackGroundClass::LightOn(std::string _Dir)
 	std::string Dir = _Dir;
 	if (LeftLight == false)
 	{
+		if (Monster != nullptr)
+		{
+			StageBackRender->SetSprite("Office.png", 4);
+			LeftLight = true;
+			return;
+		}
 		//조명 켜기
 		StageBackRender->SetSprite("Office.png", 2);
 		LeftLight = true;
 	}
+
 	else if (LeftLight == true)
 	{
 		// 조명 끄기
@@ -99,7 +108,34 @@ void StageBackGroundClass::PlayJumpScare(std::string _Name)
 
 {
 	//원하는 몬스터 가 나오도록 
-	JumpScare->ChangeAnimation(_Name.append(".Ani"));
+	JumpScare->ChangeAnimation(_Name.append("Ani"));
+	JumpScare->SetLastFrameCallback("BonniAni",[=]
+		{
+			GEngine->ChangeLevel("EndingLevel");
+		 //엔딩 GameOver올려줘야될듯
+		}
+	
+	
+	);
 }
 
+void StageBackGroundClass:: SetLobbyMonster(Animatronics* _Monster)
+{
+	Monster = _Monster;
+}
 
+void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
+{
+	if (Monster != nullptr)
+	{
+		Time += _DeltaTime;
+		
+
+		if (Time > 7 )
+		{
+
+			PlayJumpScare(Monster->GetName());
+		}
+
+	}
+}

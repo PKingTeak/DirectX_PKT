@@ -17,7 +17,7 @@ Noise::~Noise()
 }
 
 
-void Noise::BeginPlay()
+void Noise::BeginPlay() 
 {
 	Noise::MainNoise = this;
 	Super::BeginPlay();

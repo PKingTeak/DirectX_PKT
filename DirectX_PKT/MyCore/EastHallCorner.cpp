@@ -21,8 +21,8 @@ void EastHallCorner::BeginPlay()
 	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "EastHallConer");
 	Camera->SetSprite("Cam4B.png", 0);
-	Camera->CreateAnimation("Cam4BAni", "Cam4B.png", 0.5f, true, 0, 0);
-	Camera->CreateAnimation("CCam4BAni", "Cam4B.png", 0.5f, true, 0, 1);
+	Camera->CreateAnimation("EastHallConerAni", "Cam4B.png", 0.5f, true, 0, 0);
+	Camera->CreateAnimation("CEastHallConerAni", "Cam4B.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 440,-280 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
