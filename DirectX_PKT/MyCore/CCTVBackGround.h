@@ -7,6 +7,7 @@
 class Stage;
 class Bonni;
 class RoomManager;
+class StageNoise;
 class CCTVBackGround : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -62,7 +63,7 @@ private:
 	bool ScanAniEnd = false;
 
 	Stage* StageLevel = nullptr;
-	std::shared_ptr<Noise> NoiseEffect = nullptr;
+	std::shared_ptr<StageNoise> NoiseEffect = nullptr;
 
 	void ScanLineEffect();
 

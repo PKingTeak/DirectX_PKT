@@ -19,7 +19,7 @@ public:
 	RoomManager& operator=(const RoomManager& _Other) = delete;
 	RoomManager& operator=(RoomManager&& _Other) = delete;
 
-	bool CheckRoom();
+	bool CheckRoom() ;
 	void SetMonter(Animatronics* _Monster);
 
 

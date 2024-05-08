@@ -193,6 +193,9 @@
     <ClCompile Include="EndingBackGround.cpp">
       <Filter>Level\Ending</Filter>
     </ClCompile>
+    <ClCompile Include="Chica.cpp">
+      <Filter>Animatronics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PreCompile.h">
@@ -305,6 +308,9 @@
     </ClInclude>
     <ClInclude Include="EndingBackGround.h">
       <Filter>Level\Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Chica.h">
+      <Filter>Animatronics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

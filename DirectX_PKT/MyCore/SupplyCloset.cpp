@@ -21,8 +21,8 @@ void SupplyCloset::BeginPlay()
 	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "SupplyCloset");
 	Camera->SetSprite("Cam3.png", 0);
-	Camera->CreateAnimation("SupplyClosetAni", "Cam1B.png", 0.5f, true, 0, 0);
-	Camera->CreateAnimation("CSupplyClosetAni", "Cam1B.png", 0.5f, true, 0, 1);
+	Camera->CreateAnimation("SupplyClosetAni", "Cam3.png", 0.5f, true, 0, 0);
+	Camera->CreateAnimation("CSupplyClosetAni", "Cam3.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 250,-250 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);

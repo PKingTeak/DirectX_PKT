@@ -18,7 +18,7 @@ void Bonni::BeginPlay()
 	Super::BeginPlay();
 	//StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	SetLevel(10); //50퍼 
-	
+
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 }
 
@@ -26,7 +26,7 @@ void Bonni::BeginPlay()
 void Bonni::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	
+
 }
 
 
@@ -34,7 +34,7 @@ void Bonni::Tick(float _DeltaTime)
 
 void Bonni::SetCurLocation()
 {
-	
+
 	CurRoomInfo = MainStage->GetCamActor();
 	LobbyDoor = MainStage->GetStageDoor();
 	LobbyBackGround = MainStage->GetLobbyBackGround();
@@ -52,13 +52,13 @@ void Bonni::SetCurLocation()
 			CurState = BonniLocation::BackStage;
 			CurRoomInfo[8]->SetMonster(this);
 			//  여기에서 그냥 직접 setMonster해서 Room에 직접 셋팅해주는것이 좋을듯 하다. 
-			
-			
+
+
 		}
-			// 이걸 바로 하면 안됨
-		if(MoveNum != 0)
+		// 이걸 바로 하면 안됨
+		if (MoveNum != 0)
 		{
-		
+
 			CurState = BonniLocation::HallDining;
 			CurRoomInfo[1]->SetMonster(this);
 			CurRoomInfo[1]->GetMonster();
@@ -158,15 +158,15 @@ void Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::Lobby:
- 		LobbyBackGround->SetLobbyMonster(this);
+		LobbyBackGround->SetLobbyMonster(this);
 
 
 		if (LobbyBackGround->BlockChecker() == true)
 		{
 			if (MoveNum == 2)
 			{
-			CurRoomInfo[3]->SetMonster(this);
-			return;
+				CurRoomInfo[3]->SetMonster(this);
+				return;
 			}
 			else if (MoveNum == 1)
 			{
@@ -174,11 +174,11 @@ void Bonni::SetCurLocation()
 				return;
 			}
 			CurRoomInfo[6]->SetMonster(this);
-			
-			
+
+
 
 		}
-	
+
 		break;
 	default:
 		break;
@@ -186,7 +186,7 @@ void Bonni::SetCurLocation()
 
 
 
-	
+
 
 
 
@@ -205,25 +205,25 @@ BonniLocation Bonni::GetCurLocation()
 
 void Bonni::AutoMove(float _DeltaTime)
 {
-	
+
 	TestTime += _DeltaTime;
-	
+
 	if (TestTime >= 5)
 	{
 		Ismove = ACTOpportunity(Level);
 		if (Ismove == true)
 		{
 			SetCurLocation();
-			
-			
-		}
-	TimeCount = 0;
-	PrevTime = TestTime;
-	TestTime = TestTime - PrevTime;
-	}
-	
 
-	
+
+		}
+		TimeCount = 0;
+		PrevTime = TestTime;
+		TestTime = TestTime - PrevTime;
+	}
+
+
+
 }
 
 std::string Bonni::GetCurLocationString()

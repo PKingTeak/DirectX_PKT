@@ -39,7 +39,6 @@
 
 
 
-
 bool Stage::IsCamOn = false;
 
 
@@ -70,9 +69,7 @@ void Stage::BeginPlay()
 
 
 
-	NoiseEffect = GetWorld()->SpawnActor<Noise>("NoiseEffect");
-	NoiseEffect->SetActive(false);
-	//NoiseEffect->SetOrder(100);
+	
 
 	StageCam = GetWorld()->SpawnActor<StageCamera>("StageCam");
 	CCTVRectUI = GetWorld()->SpawnActor<CCTVUI>("CCTVRectUI");
@@ -186,35 +183,6 @@ void Stage::BeginPlay()
 		NewCam = BHallDining->GetUI();
 		std::string RoomNameTest = NewCam->GetName();
 
-		//CCTVCamUI["Cam1A"] = CreateWidget<UImage>(GetWorld(), "ShowRoom");
-		//CCTVCamUI["Cam1A"]->CreateAnimation("Cam1AAni", "Cam1A.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam1A"]->CreateAnimation("CCam1AAni", "Cam1A.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam1A"]->ChangeAnimation("CCam1AAni");
-		//CCTVCamUI["Cam1A"]->SetPosition(FVector{ 370,0 });
-		//CCTVCamUI["Cam1A"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam1A"]->AddToViewPort(2);
-		//PrevCam = CCTVCamUI["Cam1A"];
-
-
-
-
-
-
-
-
-
-
-
-		
-		//
-		
-		
-		
-		
-		
-		
-		
-		//
 		
 				//Cam6 은 거의 검은 화면만 보이게 구현할 예정 
 		//CCTVCamUI["Cam6"] = CreateWidget<UImage>(GetWorld(), "KittenRoom");
@@ -295,7 +263,7 @@ void Stage::BeginPlay()
 					}
 
 					//카메라가 on 일때 CamMode가 true일 때는 내려가야한다. 
-					NoiseCheck();
+				
 
 				});
 
@@ -385,7 +353,7 @@ void Stage::Tick(float _DeltaTime)
 	TestTimer += _DeltaTime;
 
 	BonniActor->AutoMove(_DeltaTime);
-	//FindAnimatronicsLocation();
+	
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
 
@@ -506,14 +474,7 @@ void Stage::ChageCam()
 
 	std::string CamName = PrevCam->GetName();
 	int num = FindIndex(CamName);
-	//CCTVPtr->SetCamBackInfo(RoomActor[num].get());
-	//	if (LocationName == CamName)
-	//	{
-	//		RoomActor[num]->SetMonter();
-	//		ChageCam(); //카메라 변경
-		//}
-		//몬스터 채크
-	//CCTVPtr->ChangeCam(CamName);
+	
 	CCTVPtr->ChangeCam(RoomActor[num].get());
 
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
@@ -524,30 +485,30 @@ void Stage::CamInteract()
 {
 
 	for (int i = 0; i < RoomCameraUI.size(); i++)
-
+		//tick에서 안돌아서 
 	{
 
 
 		std::string CurCamName = RoomCameraUI[i]->GetName();
 		UImage* NewImage = RoomCameraUI[i];
-
-		if (PrevCam == nullptr)
+		
+		if (PrevCam == nullptr) // 이전 카메라가 nullptr일경우
 		{
-			PrevCam = NewImage;
+			PrevCam = NewImage; //
 			PrevCamInfo = PrevCam->GetName();
-
+		
 		}
-
+		
 		if (PreCCTVCamUI == nullptr)
 		{
 			PreCCTVCamUI = RoomCameraUI[0];
 		}
-
+		
 		if (PreCCTVCamUIActor == nullptr)
 		{
 			PreCCTVCamUIActor = RoomActor[0].get();
 		}
-		//if(NewImage->);
+		
 		NewImage->SetDown([=]()
 			{// 눌렀을때 화면 보여주기 
 
@@ -558,8 +519,8 @@ void Stage::CamInteract()
 				if (IsCamOn == false)
 				{
 
-					if (PreCamName != CurCamName)
-					{
+					//if (PreCamName != CurCamName)
+					//{
 
 
 						PrevCam = RoomCameraUI[i]; //이전껄 가지고 있을때 캠을 바꿔주는 것이 좋을듯 하다. 
@@ -570,7 +531,7 @@ void Stage::CamInteract()
 					std::string ImageName =	CurCCTVCamActor->GetName();
 						//CCTVPtr->ChangeSprite(ImageName);
 						IsCamOn = true;
-					}
+				//	}
 					CCTVPtr->ScanLineON(); // 화면 전환할때 지지직 거리는 효과 
 					if (LocationName == CurCCTVCamUI->GetName())
 					{
@@ -581,15 +542,15 @@ void Stage::CamInteract()
 
 					}
 
+					IsCamOn = false;
+					PreCCTVCamUIActor = CurCCTVCamActor;
+					PreCCTVCamUI = CurCCTVCamUI; // 이전 카메라에 현재 카메라 저장하고 함수 종료 
 
 
 					//캠화면 전환
 
 				}
-				IsCamOn = false;
-				PreCCTVCamUIActor = CurCCTVCamActor;
-				PreCCTVCamUI = CurCCTVCamUI; // 이전 카메라에 현재 카메라 저장하고 함수 종료 
-
+				
 			}
 		);
 	}
@@ -627,75 +588,16 @@ void Stage::CCTVUIGreenCheck(std::string _CamName)
 
 
 
-void Stage::NoiseCheck()
-{
-	CCTVChecker = StageCam->GetIsCameraOn();
-	if (CCTVChecker == true)
-	{
-		NoiseEffect->SetActive(true);
-	}
-
-	if (CCTVChecker == false)
-	{
-		NoiseEffect->SetActive(false);
-	}
-
-}
 
 
-std::string Stage::FindAnimatronicsLocation()
-{
-	int CurLocation = static_cast<int>(BonniActor->GetCurLocation());
-	bool IsBoni = Bonni::isLobby;
-	//이걸 인자로 받아서 사용할거다
-	switch (CurLocation)
-	{
 
-	case 0:
-		// ShowRoom
-		if (BShowRoom->CheckRoom() == false) //안에 없다
-		{
-			LocationName = "ShowRoom";
-			BShowRoom->SetMonter(BonniActor.get()); //몬스터 넣어주고 그러면 방의 포인터는 몬스터를 가르키고 있다
-			BonniActor->GetCurLocationString(); // 보니는 그러면 자신의 위치를 알려준다. 
-			return LocationName;
-		}
-		break;
-
-	case 1:
-
-		if (BHallDining->CheckRoom() == false)
-		{
-			BHallDining->SetMonter(BonniActor.get());
-			BHallDining->ChangeRoomCamera(BonniActor.get());
-			BHallDining->MapChangeSprite(BonniActor.get());
-			LocationName = "HallDining";
-			//BHallDining->SetActive(true);
-			//BHallDining 화면 바꾸는것;
-			return LocationName;
-
-		}
-
-	case 2:
-		if (BBackStage->CheckRoom() == true)
-		{
-			LocationName = "DiningArea";
-
-			return LocationName;
-		}
-		return LocationName;
-	default:
-		break;
-	}
-	return "0";
-}
 
 std::shared_ptr<CCTVBackGround> Stage::GetCCTVBack()
 {
 	return CCTVPtr;
 }
 
-std::shared_ptr<Noise> Stage::GetNoise()
+std::shared_ptr<StageNoise> Stage::GetNoise()
 {
 	return NoiseEffect;
 }

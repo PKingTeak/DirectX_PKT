@@ -15,6 +15,16 @@ enum  class BonniLocation
 
 
 };
+enum class ChicaLocation
+{
+	ShowRoom,
+	HallDining,
+	RestRoom,
+	EastHall,
+	EastHallCorner,
+
+};
+
 
 class CCTVBackGround;
 class RoomManger;

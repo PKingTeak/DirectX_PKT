@@ -53,7 +53,16 @@ void UMyCore::Initialize()
 
 	}
 
+	{
+		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("StageNoise");
+		Mat->SetVertexShader("ImageShader.fx");
+		Mat->SetPixelShader("ImageShader.fx");
+		Mat->SetRasterizer("EngineBase");
+		Mat->SetBlend("Overlay");
+	
 
+	
+	}
 
 	
 	{

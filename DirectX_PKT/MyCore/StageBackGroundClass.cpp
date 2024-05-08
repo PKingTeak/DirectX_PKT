@@ -5,6 +5,7 @@
 #include<iostream>
 #include"Animatronics.h"
 #include"Door.h"
+#include<EngineBase/EngineRandom.h>
 
 StageBackGroundClass* StageBackGroundClass::MainStageBackGround = nullptr;
 
@@ -27,10 +28,8 @@ StageBackGroundClass::StageBackGroundClass()
 	StageBackRender = CreateDefaultSubObject<USpriteRenderer>("StageBackRender");
 	StageBackRender->SetScale({ 1600,720 });
 	StageBackRender->SetSprite("OneOffice.png");
-	//StageBackRender->SetPosition({ 0,0 });
 	StageBackRender->SetOrder(OrderType::BackGround);
 	StageBackRender->CreateAnimation("LeftLightAnimation", "Office.png", 0.1f, true, 1, 2);
-	//StageBackRender->CreateAnimation("")
 	StageBackRender->CreateAnimation("NoElecAnimation", "NoElec", 0.1f, true, 0, 1);
 
 
@@ -139,14 +138,32 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 
 		if (Time > 7 )
 		{
-			if(Monster->GetName() == "Bonni" && LobbyDoor->GetLeftDoorState() == false)
+			if(Monster->GetName() == "Bonni" )
 			{
-				SetLobbyMonster(nullptr);
+				if (LobbyDoor->GetLeftDoorState() == false)
+				{
+					//문이 닫혀있다. 
+				BlockCheck = true;
+				SetLobbyMonster(nullptr); // 몬스터 빼준다. 
 				return;
-			}
+				//여기서 돌아가는 기능이 작동을 안한다. 
 
-			PlayJumpScare(Monster->GetName());
+				}
+				else
+				{
+
+					PlayJumpScare(Monster->GetName());
+				}
+
+			}
+			
+
 		}
 
 	}
+}
+
+bool StageBackGroundClass::BlockChecker()
+{
+	return BlockCheck;
 }

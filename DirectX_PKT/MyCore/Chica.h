@@ -9,28 +9,28 @@ class BackGroundClass;
 class Stage;
 class Button;
 class CCTVBackGround;
-class Bonni : public Animatronics
+class Chica : public Animatronics
 {
 
 	GENERATED_BODY(AActor)
 
 public:
 	// constructor destructor
-	Bonni();
-	~Bonni();
+	Chica();
+	~Chica();
 
 	// delete Function
-	Bonni(const Bonni& _Other) = delete;
-	Bonni(Bonni&& _Other) noexcept = delete;
-	Bonni& operator=(const Bonni& _Other) = delete;
-	Bonni& operator=(Bonni&& _Other) = delete;
+	Chica(const Chica& _Other) = delete;
+	Chica(Chica&& _Other) noexcept = delete;
+	Chica& operator=(const Chica& _Other) = delete;
+	Chica& operator=(Chica&& _Other) = delete;
 	void SetCurLocation();
 
 
-	BonniLocation GetCurLocation();
+	ChicaLocation GetCurLocation();
 	std::string GetCurLocationString();
 	void AutoMove(float _DeltaTime);
-	
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -48,13 +48,13 @@ private:
 	std::shared_ptr<StageBackGroundClass> LobbyBackGround = nullptr;
 
 
-	
+
 	bool Ismove = false;
 	float TestTime = 0.0f;
 	float PrevTime = 0.0f;
 	int TimeCount = 0;
-	BonniLocation CurState = BonniLocation::ShowRoom;
-	
+	ChicaLocation CurState = ChicaLocation::ShowRoom;
+
 
 };
 

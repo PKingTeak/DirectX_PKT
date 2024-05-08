@@ -20,9 +20,9 @@ void KittenRoom::BeginPlay()
 {
 	Super::BeginPlay();
 	Camera = CreateWidget<UImage>(GetWorld(), "KittenRoom");
-	Camera->SetSprite("Cam3.png", 0);
-	Camera->CreateAnimation("KittenRoomAni", "Cam1B.png", 0.5f, true, 0, 0);
-	Camera->CreateAnimation("CKittenRoomAni", "Cam1B.png", 0.5f, true, 0, 1);
+	Camera->SetSprite("Cam6.png", 0);
+	Camera->CreateAnimation("KittenRoomAni", "Cam6.png", 0.5f, true, 0, 0);
+	Camera->CreateAnimation("CKittenRoomAni", "Cam6.png", 0.5f, true, 0, 1);
 	Camera->SetPosition(FVector{ 250,-250 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
@@ -43,23 +43,6 @@ void KittenRoom::Tick(float _DeltaTime)
 
 
 
-
-void KittenRoom::ChangeRoomCamera(Animatronics* _Monster)
-{//해당 몬스터의 정보를 갸져와서 방 이름을 바꿔주는 역할을 하고 
-	// 해당 방 이미지가 저장되어 있는 벡터의 이미지를 변경해 준다. 
-	std::string MonsterName = _Monster->GetName();
-	if (GetMonster() != nullptr)
-	{
-		if (MonsterName == "Bonni")
-		{
-			RoomRender->SetSprite(RoomStatename[2] + ".png");
-		}
-
-	}
-
-
-}
-
 void KittenRoom::MapChangeSprite(Animatronics* _Monster)
 {
 	std::string setSprite = this->GetName().append(_Monster->GetName());
@@ -73,31 +56,7 @@ void KittenRoom::SettingSpriteName(int _Index = 0)
 	CurRoomSpriteName = RoomStatename[_Index];
 }
 
-void KittenRoom::MapUpdate()
-{
-	Monster = GetMonster();
 
-	if (Monster != nullptr)
-	{
-		std::string CheckName = Monster->GetName();
-		if (CheckName == "Bonni")
-		{
-			SettingSpriteName(2);
-			PrevMonster = Monster;
-
-			// 만약에 몬스터가 떠나면 다시 원래 상태로 이미지 돌리는건 
-			// 보니 클래스 내부에서 진행
-			return;
-		}
-
-	}
-
-	//SettingSpriteName(0);
-
-
-
-
-}
 
 
 

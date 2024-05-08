@@ -31,6 +31,7 @@ class RestRoom;
 class RoomManager;
 class Animatronics;
 
+
 class Stage : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -50,13 +51,13 @@ public:
 
 	std::shared_ptr<StageBackGroundClass> GetLobbyBackGround();
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
-	std::shared_ptr<Noise> GetNoise();
+	std::shared_ptr<StageNoise> GetNoise();
 	std::shared_ptr<Door> GetStageDoor();
 	
 	std::shared_ptr<Bonni> GetStageBonni();
 	std::vector<std::string> GetCamName();
 	
-	std::string FindAnimatronicsLocation();
+	
 	std::shared_ptr<RoomManager> FindActorIndex(Animatronics* _Monster);
 	std::vector<std::shared_ptr<RoomManager>> GetCamActor();
 	
@@ -150,8 +151,8 @@ private:
 	
 
 	// Noise
-	std::shared_ptr<Noise> NoiseEffect = nullptr;
-	void NoiseCheck();
+	std::shared_ptr<StageNoise> NoiseEffect = nullptr;
+
 
 	//Lobby UI
 	std::shared_ptr<Lobby> LobbyUI = nullptr;

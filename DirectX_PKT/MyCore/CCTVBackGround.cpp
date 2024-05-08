@@ -8,7 +8,6 @@
 #include"Bonni.h"
 #include"RoomManager.h"
 
-
 CCTVBackGround::CCTVBackGround()
 {
 
@@ -35,11 +34,12 @@ CCTVBackGround::CCTVBackGround()
 
 
 	CCTVEffect->SetupAttachment(Default);
-	CCTVEffect->SetMaterial("Noise");
+	CCTVEffect->SetMaterial("2DImage");
 	CCTVEffect->SetOrder(101);
 	CCTVEffect->SetScale({ 1600,720 });
 	CCTVEffect->CreateAnimation("NoizeAnimation", "Noise.png", 0.1f, true);
 	CCTVEffect->ChangeAnimation("NoizeAnimation");
+	CCTVEffect->SetMulColor(FVector{ 0.7f, 0.7f, 0.7f,0.1f });
 	CCTVEffect->SetActive(false);
 
 	ChangeEffect = CreateDefaultSubObject<USpriteRenderer>("ChangeEffect");
@@ -68,14 +68,6 @@ void CCTVBackGround::BeginPlay()
 	BonniCam = StageLevel->GetStageBonni();
 	NoiseEffect = StageLevel->GetNoise();
 	
-	
-//	for (int i = static_cast<int>(BonniLocation::Cam1A); i <= static_cast<in  t>(BonniLocation::Lobby); i++)
-//	{
-//
-//		//CCTVBonniLocal[i] = BonniLocalName[i];
-//
-//
-//	}
 
 
 	

@@ -33,6 +33,8 @@ public:
 	void PlayJumpScare(std::string _Name);
 	void SetLobbyMonster(Animatronics* _Monster);
 	void CountMonsterTime(float _DeltaTime);
+	bool BlockChecker();
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -57,6 +59,7 @@ private:
 	bool LeftLight = false;
 	bool RightLight = false;
 	
+	bool BlockCheck = false;
 	
 
 };
