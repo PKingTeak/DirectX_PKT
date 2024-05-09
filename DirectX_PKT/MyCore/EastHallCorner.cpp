@@ -26,7 +26,7 @@ void EastHallCorner::BeginPlay()
 	Camera->SetPosition(FVector{ 440,-280 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
-
+	RoomStatename = { "EastHallCorner","EastHallCornerBonni" };
 
 	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 

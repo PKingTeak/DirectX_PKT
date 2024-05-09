@@ -41,6 +41,8 @@ void HallDining::BeginPlay()
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 
+	RoomStatename = { "HallDining", "HallDining2", "HallDiningBonni", "HallDiningBonnie2", "HallDiningChica", "HallDiningChica2" };
+
 	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 
 }

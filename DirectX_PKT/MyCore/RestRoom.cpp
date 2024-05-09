@@ -80,9 +80,9 @@ void RestRoom::MapUpdate()
 	if (Monster != nullptr)
 	{
 		std::string CheckName = Monster->GetName();
-		if (CheckName == "Bonni")
+		if (CheckName == "Chica")
 		{
-			SettingSpriteName(2);
+			SettingSpriteName(1);
 			PrevMonster = Monster;
 
 			// 만약에 몬스터가 떠나면 다시 원래 상태로 이미지 돌리는건 

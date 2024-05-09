@@ -42,25 +42,25 @@ void Chica::SetCurLocation()
 	LobbyBackGround = MainStage->GetLobbyBackGround();
 	// 보니 위치 보내주고 
 	int MoveNum = Animatronics::MoveChance(90);
-
+	ChicaLocation PrevState = CurState;
 	switch (CurState)
 	{
 	case ChicaLocation::ShowRoom:
 
 		if (CurRoomInfo[1]->GetMonster() == nullptr)
 		{
-		CurState = ChicaLocation::HallDining;
-		CurRoomInfo[1]->SetMonster(this);
-			
+			CurState = ChicaLocation::HallDining;
+			CurRoomInfo[1]->SetMonster(this);
+
 		}
 		break;
 	case ChicaLocation::HallDining:
-		
-		
+
+
 		CurState = ChicaLocation::RestRoom;
-		CurRoomInfo[11]->SetMonster(this);
+		CurRoomInfo[10]->SetMonster(this);
 		//RestRoom
-		
+
 
 	case ChicaLocation::RestRoom:
 
@@ -92,7 +92,7 @@ void Chica::SetCurLocation()
 		{
 			CurState = ChicaLocation::EastHallCorner;
 			CurRoomInfo[6]->SetMonster(this);
-			
+
 		}
 		break;
 	case ChicaLocation::EastHallCorner:
@@ -123,7 +123,7 @@ void Chica::SetCurLocation()
 		{
 			CurState = ChicaLocation::EastHall;
 			CurRoomInfo[5]->SetMonster(this);
-			
+
 		}
 
 
@@ -156,7 +156,9 @@ void Chica::SetCurLocation()
 
 
 
+		if (PrevState != CurState) {
 
+		}
 
 
 		//Map->find()
