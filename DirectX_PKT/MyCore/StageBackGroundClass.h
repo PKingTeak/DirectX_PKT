@@ -34,6 +34,7 @@ public:
 	void SetLobbyMonster(Animatronics* _Monster);
 	void CountMonsterTime(float _DeltaTime);
 	bool BlockChecker();
+	bool RightBlockChecker();
 
 protected:
 	void BeginPlay() override;
@@ -60,7 +61,7 @@ private:
 	bool RightLight = false;
 	
 	bool BlockCheck = false;
-	
+	bool RBlockCheck = false;
 
 };
 

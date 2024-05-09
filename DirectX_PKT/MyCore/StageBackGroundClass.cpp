@@ -20,7 +20,8 @@ StageBackGroundClass::StageBackGroundClass()
 
 	JumpScare = CreateDefaultSubObject<USpriteRenderer>("Render");
 	JumpScare->SetAutoSize(1.0f, true);
-	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.05f, false, 0, 10);
+	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.01f, false, 0, 10);
+	JumpScare->CreateAnimation("ChicaAni", "Chica", 0.01f, false, 0, 15);
 	JumpScare->SetupAttachment(Default);
 	JumpScare->SetOrder(200);
 
@@ -80,11 +81,12 @@ void StageBackGroundClass::LightOn(std::string _Dir)
 {
 
 	std::string Dir = _Dir;
-	if (LeftLight == false)
+
+	if (LeftLight == false && Dir == "Left")
 	{
 		if (Monster != nullptr)
 		{
-			StageBackRender->SetSprite("Office.png", 4);
+			StageBackRender->SetSprite("Office.png", 4); //보니가 나온 라이트 
 			LeftLight = true;
 			return;
 		}
@@ -100,6 +102,24 @@ void StageBackGroundClass::LightOn(std::string _Dir)
 		LeftLight = false;
 	}
 
+
+	else if (RightLight == false && Dir == "Right")
+	{
+		if (Monster != nullptr)
+		{
+			StageBackRender->SetSprite("Office.png", 5);
+			RightLight = true;
+			return;
+		}
+		StageBackRender->SetSprite("Office.png", 3);
+		RightLight = true;
+	}
+
+	else if (RightLight == true)
+	{
+		StageBackRender->SetSprite("Office.png", 0);
+		RightLight = false;
+	}
 
 
 }
@@ -122,6 +142,7 @@ void StageBackGroundClass::PlayJumpScare(std::string _Name)
 
 void StageBackGroundClass:: SetLobbyMonster(Animatronics* _Monster)
 {
+	
 	Monster = _Monster;
 }
 
@@ -133,32 +154,58 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 
 	if (Monster != nullptr)
 	{
-		Time += _DeltaTime;
 		
 
-		if (Time > 7 )
+		if (Monster->GetName() == "Bonni")
 		{
-			if(Monster->GetName() == "Bonni" )
+			Time += _DeltaTime;
+			if (Time > 7)
 			{
-				if (LobbyDoor->GetLeftDoorState() == false)
-				{
-					//문이 닫혀있다. 
+
+
+			if (LobbyDoor->GetLeftDoorState() == true)
+			{
+				//문이 닫혀있다. 
 				BlockCheck = true;
 				SetLobbyMonster(nullptr); // 몬스터 빼준다. 
+				Time = 0;
 				return;
 				//여기서 돌아가는 기능이 작동을 안한다. 
 
-				}
-				else
-				{
-
-					PlayJumpScare(Monster->GetName());
-				}
-
 			}
-			
+			else
+			{
+				PlayJumpScare(Monster->GetName());
+				BlockCheck = false;
+			}
+			}
 
 		}
+		if (Monster->GetName() == "Chica")
+		{
+			Time += _DeltaTime;
+			if (Time > 5)
+			{
+				if (LobbyDoor->GetRightDoorState() == true)
+				{
+					RBlockCheck = true;
+					SetLobbyMonster(nullptr); // 몬스터 빼준다. 
+					Time = 0;
+					return;
+				}
+
+				else
+				{
+					PlayJumpScare(Monster->GetName());
+					
+				}
+
+
+			}
+
+		}
+
+		
 
 	}
 }
@@ -166,4 +213,9 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 bool StageBackGroundClass::BlockChecker()
 {
 	return BlockCheck;
+}
+
+bool StageBackGroundClass::RightBlockChecker()
+{
+	return RBlockCheck;
 }

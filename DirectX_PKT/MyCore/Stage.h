@@ -53,6 +53,7 @@ public:
 	std::shared_ptr<CCTVBackGround> GetCCTVBack();
 	std::shared_ptr<StageNoise> GetNoise();
 	std::shared_ptr<Door> GetStageDoor();
+	std::shared_ptr<Lobby> GetStageLobbyUI();
 	
 	std::shared_ptr<Bonni> GetStageBonni();
 	std::vector<std::string> GetCamName();

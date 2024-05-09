@@ -95,7 +95,7 @@ void Mouse::Tick(float _DeltaTime)
 					//Door 하나 엑터로 만들어서 사용해야될듯 하다. 
 					ButtonClass->GetMainButton()->ButtonDoor(objectType);
 
-					if (ButtonClass->GetMainButton()->LDoorButtonCheck() == true)
+					if (ButtonClass->GetMainButton()->RDoorButtonCheck() == true)
 					{
 
 						DoorActor->DoorOpen(objectType);
@@ -109,37 +109,32 @@ void Mouse::Tick(float _DeltaTime)
 			}
 			if (objectType._Equal("RightLightButton"))
 			{
-				DoorActor = MainStage->GetStageDoor();
+				StageBackGround = MainStage->GetLobbyBackGround();
 				if (UEngineInput::IsDown(VK_LBUTTON))
 				{
-					//Door 하나 엑터로 만들어서 사용해야될듯 하다. 
-					ButtonClass->GetMainButton()->ButtonDoor(objectType);
 
-					if (ButtonClass->GetMainButton()->LDoorButtonCheck() == true)
-					{
-
-						DoorActor->DoorOpen(objectType);
-						return;
-					}
-
-					DoorActor->DoorClose(objectType);
+					StageBackGround->LightOn("Right");
+					ButtonClass->GetMainButton()->ButtonLight(objectType);
 				}
 
-				int a = 0;
 
 			}
 
-
-		}
+	}
 	);
 
 
 
 
 
-
-
 }
+
+
+
+
+
+
+
 
 void Mouse::SetMousePos()
 {

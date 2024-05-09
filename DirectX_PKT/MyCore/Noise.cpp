@@ -27,8 +27,7 @@ void Noise::BeginPlay()
 	Renderer->ChangeAnimation("NoizeAnimation");
 	
 
-	//Renderer->SetMaterial("Noise");
-//	Renderer->GetMaterial()->SetBlend("Overlay");
+
 	Renderer->SetOrder(100);
 	
 	

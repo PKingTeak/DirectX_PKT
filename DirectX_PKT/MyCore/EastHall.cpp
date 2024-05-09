@@ -57,10 +57,6 @@ void EastHall::ChangeRoomCamera(Animatronics* _Monster)
 			RoomRender->SetSprite(RoomStatename[2] + ".png");
 		}
 
-		if (MonsterName == "Chica")
-		{
-			RoomRender->SetSprite(RoomStatename[4] + ".png");
-		}
 	}
 
 

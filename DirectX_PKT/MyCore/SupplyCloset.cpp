@@ -52,7 +52,7 @@ void SupplyCloset::ChangeRoomCamera(Animatronics* _Monster)
 	{
 		if (MonsterName == "Bonni")
 		{
-			RoomRender->SetSprite(RoomStatename[2] + ".png");
+			RoomRender->SetSprite(RoomStatename[1] + ".png");
 		}
 
 	}
@@ -82,7 +82,7 @@ void SupplyCloset::MapUpdate()
 		std::string CheckName = Monster->GetName();
 		if (CheckName == "Bonni")
 		{
-			SettingSpriteName(2);
+			SettingSpriteName(1);
 			PrevMonster = Monster;
 
 			// 만약에 몬스터가 떠나면 다시 원래 상태로 이미지 돌리는건 

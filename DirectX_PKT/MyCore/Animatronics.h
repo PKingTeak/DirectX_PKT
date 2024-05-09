@@ -20,8 +20,11 @@ enum class ChicaLocation
 	ShowRoom,
 	HallDining,
 	RestRoom,
+	Kitten,
 	EastHall,
 	EastHallCorner,
+	Lobby
+
 
 };
 
@@ -54,13 +57,16 @@ protected :
 	int MoveChance(int _Num);
 	//virtual std::string  MoveAnimtronics();
 	virtual void SetLevel(int _Level);
+
+	virtual void FindMonsterIndex();
 	int Level = 0;
 	std::string MonsterName = "";
 	std::string CurLocation = "";
 	std::string CurLocalName = "";
 	std::vector<std::shared_ptr<RoomManager>> CurRoomInfo;
-	void StringChangeTest();
-	
+
+	void LobbyCallBackCheck();
+
 	
 };
 

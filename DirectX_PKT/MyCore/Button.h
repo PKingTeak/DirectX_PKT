@@ -32,7 +32,7 @@ public:
 	{
 		return LeftDoor;
 	}
-	inline bool RDoorBUttonCheck()
+	inline bool RDoorButtonCheck()
 	{
 		return RightDoor;
 	}

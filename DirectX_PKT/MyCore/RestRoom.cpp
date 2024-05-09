@@ -22,8 +22,8 @@ void RestRoom::BeginPlay()
 	Camera = CreateWidget<UImage>(GetWorld(), "RestRoom");
 	Camera->SetSprite("Cam7.png", 0);
 	Camera->CreateAnimation("RestRoomAni", "Cam7.png", 0.5f, true, 0, 0);
-	Camera->CreateAnimation("CRestRoom", "Cam7.png", 0.5f, true, 0, 1);
-	Camera->SetPosition(FVector{ 250,-50 });
+	Camera->CreateAnimation("CRestRoomAni", "Cam7.png", 0.5f, true, 0, 1);
+	Camera->SetPosition(FVector{ 500,-50 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 

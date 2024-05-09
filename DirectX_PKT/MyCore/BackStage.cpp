@@ -23,7 +23,7 @@ void BackStage::BeginPlay()
 	Camera->SetSprite("Cam5.png", 0);
 	Camera->CreateAnimation("BackStageAni", "Cam5.png", 0.5f, true, 0, 0);
 	Camera->CreateAnimation("CBackStageAni", "Cam5.png", 0.5f, true, 0, 1);
-	Camera->SetPosition(FVector{ 300,-50 });
+	Camera->SetPosition(FVector{ 250,-50 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 

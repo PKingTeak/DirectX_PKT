@@ -5,6 +5,7 @@
 #include<EngineCore/DefaultSceneComponent.h>
 #include"CCTVBackGround.h"
 #include "Stage.h"
+#include"Lobby.h"
 
 StageCamera::StageCamera()
 {
@@ -34,7 +35,8 @@ void StageCamera::BeginPlay()
 	//stageLevel에서 내가 선언한 엑터를 가져와서 사용하는 방법 
 	StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	CCTVBackGrounds = StageLevel->GetCCTVBack();
-
+	
+	
 	
 	Super::BeginPlay();
 
@@ -47,6 +49,8 @@ void StageCamera::Tick(float _DeltaTime)
 }
 void StageCamera::CamCCTVOn()
 {
+	LobbyUI = StageLevel->GetStageLobbyUI();
+
 	StageCameraRender->SetActive(true);
 	StageCameraRender->AnimationReset();
 	StageCameraRender->ChangeAnimation("CameraAnimtaion");
@@ -57,7 +61,7 @@ void StageCamera::CamCCTVOn()
 			isCamOn = true;
 
 			StageCameraRender->SetActive(false);
-
+			LobbyUI->BatteryUserUP();
 			CCTVBackGrounds->CCTVON();
 			// 여기에 CCTV 배경을 넣을것이다. 
 		}
@@ -79,6 +83,7 @@ void StageCamera::CamCCTVOff()
 			if (isCamOn == true)
 			{
 			isCamOn = false;
+			LobbyUI->BatteryUserDown(); // 베터리 사용량 내리기
 			StageCameraRender->SetActive(false);
 			}
 

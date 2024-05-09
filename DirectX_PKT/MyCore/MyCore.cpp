@@ -93,7 +93,7 @@ void UMyCore::Initialize()
 		
 
 		
-		UEngineSprite::CreateCutting("Chica.png", 1, 16);
+		
 		UEngineSprite::CreateCutting("Noise.png", 1, 8);
 		UEngineSprite::CreateCutting("Fan.png", 3, 1);
 		UEngineSprite::CreateCutting("StageCam.png", 4, 3);
@@ -114,6 +114,7 @@ void UMyCore::Initialize()
 		UEngineSprite::CreateCutting("Cam7.png", 2,1);
 
 		UEngineSprite::CreateCutting("LdoorAnimation.png", 15, 1);
+		UEngineSprite::CreateCutting("RdoorAnimation.png", 15, 1);
 
 		//UEngineSprite::CreateCutting("LightMap.png", 1, 4);
 

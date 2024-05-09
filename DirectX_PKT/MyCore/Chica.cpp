@@ -1,29 +1,28 @@
 #include"PreCompile.h"
-#include "Bonni.h"
+#include "Chica.h"
 #include"Stage.h"
 #include"RoomManager.h"
 #include"Door.h"
 #include"StageBackGroundClass.h"
 
-Bonni::Bonni()
+Chica::Chica()
 {
 }
 
-Bonni::~Bonni()
+Chica::~Chica()
 {
 }
 
-void Bonni::BeginPlay()
+void Chica::BeginPlay()
 {
 	Super::BeginPlay();
-	//StageLevel = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	SetLevel(10); //50퍼 
 
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 }
 
 
-void Bonni::Tick(float _DeltaTime)
+void Chica::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
@@ -32,10 +31,13 @@ void Bonni::Tick(float _DeltaTime)
 
 
 
-void Bonni::SetCurLocation()
+void Chica::SetCurLocation()
 {
-
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	CurRoomInfo = MainStage->GetCamActor();
+
+	FindMonsterIndex();
+
 	LobbyDoor = MainStage->GetStageDoor();
 	LobbyBackGround = MainStage->GetLobbyBackGround();
 	// 보니 위치 보내주고 
@@ -43,142 +45,109 @@ void Bonni::SetCurLocation()
 
 	switch (CurState)
 	{
-	case BonniLocation::ShowRoom:
+	case ChicaLocation::ShowRoom:
 
-		CurRoomInfo[0]->SetMonster(nullptr);
-		CurRoomInfo[0]->GetMonster();
+		if (CurRoomInfo[1]->GetMonster() == nullptr)
+		{
+		CurState = ChicaLocation::HallDining;
+		CurRoomInfo[1]->SetMonster(this);
+			
+		}
+		break;
+	case ChicaLocation::HallDining:
+		
+		
+		CurState = ChicaLocation::RestRoom;
+		CurRoomInfo[11]->SetMonster(this);
+		//RestRoom
+		
+
+	case ChicaLocation::RestRoom:
+
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::BackStage;
-			CurRoomInfo[8]->SetMonster(this);
-			//  여기에서 그냥 직접 setMonster해서 Room에 직접 셋팅해주는것이 좋을듯 하다. 
-
-
-		}
-		// 이걸 바로 하면 안됨
-		if (MoveNum != 0)
-		{
-
-			CurState = BonniLocation::HallDining;
+			CurState = ChicaLocation::HallDining;
 			CurRoomInfo[1]->SetMonster(this);
-			CurRoomInfo[1]->GetMonster();
-		}
+			//다시 돌아가는 방법
 
-		break;
-	case BonniLocation::HallDining:
-		CurRoomInfo[1]->SetMonster(nullptr);
-		CurRoomInfo[1]->SettingSpriteName(0);
-		if (MoveNum == 0)
-		{
-			CurState = BonniLocation::BackStage;
-			CurRoomInfo[8]->SetMonster(this);
-			CurLocation = "BackStage";
-			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::WestHall;
-			CurRoomInfo[3]->SetMonster(this);
-			CurLocation = "WestHall";
+			CurState = ChicaLocation::Kitten;
+			CurRoomInfo[9]->SetMonster(this);
+			CurLocation = "EastHall";
 		}
-
 		break;
+	case ChicaLocation::EastHall:
 
-	case BonniLocation::BackStage:
-		CurRoomInfo[8]->SetMonster(nullptr);
-		CurRoomInfo[8]->SettingSpriteName(0);
+		// 애니메이션 재생후 끝날때 쯤에 
 		if (MoveNum == 0)
 		{
-			CurState = BonniLocation::HallDining;
-			CurRoomInfo[1]->SetMonster(this);
-			CurLocation = "HallDining";
-			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
+			CurState = ChicaLocation::RestRoom;
+			CurRoomInfo[10]->SetMonster(this);
 		}
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::WestHall;
-			CurRoomInfo[3]->SetMonster(this);
-			CurLocation = "WestHall";
-		}
-		break;
-	case BonniLocation::WestHall:
-		CurRoomInfo[3]->SetMonster(nullptr);
-		CurRoomInfo[3]->SettingSpriteName(0);
-
-		if (MoveNum == 0)
-		{
-			CurState = BonniLocation::WestHallCorner;
-			CurRoomInfo[4]->SetMonster(this);
-			CurLocation = "WestHallCorner";
-		}
-		// 이걸 바로 하면 안됨
-		else
-		{
-			CurState = BonniLocation::Lobby;
-			CurLocation = "Lobby";
-
-		}
-		break;
-	case BonniLocation::WestHallCorner:
-		CurRoomInfo[4]->SetMonster(nullptr);
-		CurRoomInfo[4]->SettingSpriteName(0);
-
-		if (MoveNum == 0)
-		{
-			CurState = BonniLocation::Lobby;
-			CurLocation = "Lobby";
-		}
-		// 이걸 바로 하면 안됨
-		else
-		{
-			CurState = BonniLocation::WestHall;
-			CurRoomInfo[3]->SetMonster(this);
-			CurLocation = "WestHall";
-
-		}
-		break;
-	case BonniLocation::SupplyCloset:
-
-		if (MoveNum == 0)
-		{
-			CurState = BonniLocation::Lobby;
-			CurLocation = "Lobby";
-		}
-		// 이걸 바로 하면 안됨
-		else
-		{
-			CurState = BonniLocation::SupplyCloset;
+			CurState = ChicaLocation::EastHallCorner;
 			CurRoomInfo[6]->SetMonster(this);
-			CurLocation = "SupplyCloset";
+			
+		}
+		break;
+	case ChicaLocation::EastHallCorner:
 
+
+		if (MoveNum == 0)
+		{
+			CurState = ChicaLocation::Lobby;
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = ChicaLocation::Kitten;
+			CurRoomInfo[9]->SetMonster(this);
+			CurLocation = "Kitten";
+
+		}
+		break;
+	case ChicaLocation::Kitten:
+
+		if (MoveNum == 0)
+		{
+			CurState = ChicaLocation::RestRoom;
+			CurRoomInfo[10]->SetMonster(this);
+		}
+		// 이걸 바로 하면 안됨
+		else
+		{
+			CurState = ChicaLocation::EastHall;
+			CurRoomInfo[5]->SetMonster(this);
+			
 		}
 
 
 		break;
-	case BonniLocation::Lobby:
-		LobbyBackGround->SetLobbyMonster(this);
-
-
+	case ChicaLocation::Lobby:
+		//오른쪽으로 이동하는 느낌 
 		if (LobbyBackGround->BlockChecker() == true)
 		{
+			//문이 닫혀있다면 
 			if (MoveNum == 2)
 			{
-				CurRoomInfo[3]->SetMonster(this);
+				CurRoomInfo[9]->SetMonster(this);
 				return;
 			}
-			else if (MoveNum == 1)
+			else
 			{
-				CurRoomInfo[3]->SetMonster(this);
+				CurRoomInfo[1]->SetMonster(this);
 				return;
 			}
-			CurRoomInfo[6]->SetMonster(this);
-
 
 
 		}
-
+		LobbyBackGround->SetLobbyMonster(this);
+		// 만약에 안걸렸다면 넣어주고 걸렸으면 다른곳으로 보내주기	
 		break;
 	default:
 		break;
@@ -195,7 +164,7 @@ void Bonni::SetCurLocation()
 
 }
 
-BonniLocation Bonni::GetCurLocation()
+ChicaLocation Chica::GetCurLocation()
 {
 	return CurState;
 }
@@ -203,7 +172,7 @@ BonniLocation Bonni::GetCurLocation()
 
 //std::string _CamName
 
-void Bonni::AutoMove(float _DeltaTime)
+void Chica::AutoMove(float _DeltaTime)
 {
 
 	TestTime += _DeltaTime;
@@ -226,7 +195,25 @@ void Bonni::AutoMove(float _DeltaTime)
 
 }
 
-std::string Bonni::GetCurLocationString()
+std::string Chica::GetCurLocationString()
 {
 	return CurLocation;
+}
+
+
+
+void Chica::FindMonsterIndex()
+{
+	//초기화ㅣ 해주는 것 
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
+	CurRoomInfo = MainStage->GetCamActor();
+
+	for (int i = 0; i < CurRoomInfo.size(); i++)
+	{
+		if (CurRoomInfo[i]->GetMonster() != nullptr)
+		{
+			CurRoomInfo[i]->SetMonster(nullptr);
+		}
+	}
+
 }

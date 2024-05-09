@@ -68,6 +68,7 @@ void Door::DoorOpen(std::string_view _ButtonName)
 	else if (_ButtonName == "RightDoorButton")
 	{
 		RDoorRender->ChangeAnimation("RightDoorAni");
+		isRDoorOpen = true;
 	}
 
 
@@ -85,7 +86,9 @@ void Door::DoorClose(std::string_view _ButtonName)
 
 	else if (_ButtonName == "RightDoorButton")
 	{
-		//RDoorRender->ChangeAnimation("RightDoorAni");
+		RDoorRender->ChangeAnimation("CRightDoorAni");
+		isRDoorOpen = false; // 문 열여있으면 true
+		return;
 	}
 
 

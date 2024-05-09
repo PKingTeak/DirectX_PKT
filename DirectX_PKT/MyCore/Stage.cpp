@@ -90,7 +90,7 @@ void Stage::BeginPlay()
 	}//벡터[i]  =GetWorld()->SpawnActor<>();
 
 
-	//벡터에 넣는 순선느 프로젝트 솔루션탐색기 기준으로 넣었음. 
+	//벡터에 넣는 순서는 프로젝트 솔루션탐색기 기준으로 넣었음. 
 	BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
 	RoomActor.push_back(BShowRoom);
 	RoomCameraUI.push_back(BShowRoom->GetUI());
@@ -117,23 +117,28 @@ void Stage::BeginPlay()
 	RoomActor.push_back(BEastHall);
 	RoomCameraUI.push_back(BEastHall->GetUI());
 
+	BEastHallCorner = GetWorld()->SpawnActor<EastHallCorner>("CBEastHallCorner");
+	RoomActor.push_back(BEastHallCorner);
+	RoomCameraUI.push_back(BEastHallCorner->GetUI());
+
 	BSupplyCloset = GetWorld()->SpawnActor<SupplyCloset>("CBSupplyCloset");
 	RoomActor.push_back(BSupplyCloset);
 	RoomCameraUI.push_back(BSupplyCloset->GetUI());
 
-
-	BEastHallCorner = GetWorld()->SpawnActor<EastHallCorner>("CBEastHallCorner");
-	RoomActor.push_back(BEastHallCorner);
-	RoomCameraUI.push_back(BEastHallCorner->GetUI());
 
 	BBackStage = GetWorld()->SpawnActor<BackStage>("CBBackStage");
 	RoomActor.push_back(BBackStage);
 	RoomCameraUI.push_back(BBackStage->GetUI());
 
 
-	BSupplyCloset = GetWorld()->SpawnActor<SupplyCloset>("CBSupplyCloset");
-	RoomActor.push_back(BSupplyCloset);
-	RoomCameraUI.push_back(BSupplyCloset->GetUI());
+	BKittenRoom = GetWorld()->SpawnActor<KittenRoom>("CBKitten");
+	RoomActor.push_back(BKittenRoom);
+	RoomCameraUI.push_back(BKittenRoom->GetUI());
+
+	BRestRoom = GetWorld()->SpawnActor<RestRoom>("CBRestRoom");
+	RoomActor.push_back(BRestRoom);
+	RoomCameraUI.push_back(BRestRoom->GetUI());
+	RoomCameraUI.push_back(BRestRoom->GetUI());
 
 
 
@@ -196,7 +201,7 @@ void Stage::BeginPlay()
 		//
 		//
 		//
-		//
+		// 
 		//
 		//
 		//
@@ -242,23 +247,15 @@ void Stage::BeginPlay()
 
 					if (CCTVonoff == false)
 					{
-						StageCam->CamCCTVOn(); //여기서 조건문을 걸어서 on과off를 구별해야될듯 하다 .
+						StageCam->CamCCTVOn(); 
 						
-						//for (int i = 0; i < RoomActor.size(); i++)
-						//{
-						//	RoomActor[i]->SetActive(true);
-						//}
+
 					}
 
 					else if (CCTVonoff == true)
 					{
 						StageCam->CamCCTVOff();
-					
-					
-						//for (int i = 0; i < RoomActor.size(); i++)
-						//{
-						//	RoomActor[i]->SetActive(false);
-						//}
+						
 						return;
 					}
 
@@ -351,7 +348,10 @@ void Stage::Tick(float _DeltaTime)
 	}
 
 	TestTimer += _DeltaTime;
-
+	for (int i = 0; i < RoomActor.size(); i++)
+	{
+		RoomActor[i]->MapUpdate();
+	}
 	BonniActor->AutoMove(_DeltaTime);
 	
 	//
@@ -664,4 +664,9 @@ std::vector<std::shared_ptr<RoomManager>> Stage::GetCamActor()
 	//CPP 위에서 부터 아래 순으로 넣음
 	return RoomActor;
 
+}
+
+std::shared_ptr<Lobby> Stage::GetStageLobbyUI()
+{
+	return LobbyUI;
 }

@@ -38,10 +38,7 @@ void MainTitleLevel::Tick(float _DeltaTime)
 	{
 		GEngine->ChangeLevel("StageLevel");
 	}
-//if (true == UEngineInput::IsDown('P'))
-//{
-//	GEngine->ChangeLevel("PlayLevel");
-//}
+
 }
 
 void MainTitleLevel::LevelEnd(ULevel* _NextLevel)

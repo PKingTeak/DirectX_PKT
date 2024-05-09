@@ -193,6 +193,9 @@
     <ClCompile Include="EndingBackGround.cpp">
       <Filter>Level\Ending</Filter>
     </ClCompile>
+    <ClCompile Include="Bonni.cpp">
+      <Filter>Animatronics</Filter>
+    </ClCompile>
     <ClCompile Include="Chica.cpp">
       <Filter>Animatronics</Filter>
     </ClCompile>
@@ -308,6 +311,9 @@
     </ClInclude>
     <ClInclude Include="EndingBackGround.h">
       <Filter>Level\Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonni.h">
+      <Filter>Animatronics</Filter>
     </ClInclude>
     <ClInclude Include="Chica.h">
       <Filter>Animatronics</Filter>

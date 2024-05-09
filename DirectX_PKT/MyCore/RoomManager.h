@@ -4,7 +4,7 @@
 #include<EngineCore/Image.h>
 #include"MyCore.h"
 
-
+class CCTVBackGround;
 class RoomManager : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -30,8 +30,8 @@ public:
 	virtual void RestMapSprite();
 	std::string GetCurRoomSpriteName();
 	
-protected:
 	virtual void MapUpdate();
+protected:
 
 	virtual void ChangeRoomCamera(Animatronics* _Monster);
 	void BeginPlay() override;

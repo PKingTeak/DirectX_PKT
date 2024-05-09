@@ -44,7 +44,7 @@ protected:
 private:
 	USpriteRenderer* RoomRender = nullptr;
 	
-	std::vector<std::string> RoomStatename = { "ShowRoom","ShowRoomWatchCam","ShowStageBonni","ShowStageChica","ShowStageAlone","ShowStageAllGone"};
+	std::vector<std::string> RoomStatename = { "ShowRoom","ShowRoomWatchCam","ShowStageBonni","ShowStageBonni","ShowStageAlone","ShowStageAllGone"};
 	//0 일반 1 카메라 바라보기 2 보니만 없어짐 3. 치카만 없어짐 4.곰 혼자 5. 아무도 없음
 	
 	

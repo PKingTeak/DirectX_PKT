@@ -34,8 +34,11 @@ void Bonni::Tick(float _DeltaTime)
 
 void Bonni::SetCurLocation()
 {
-	
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	CurRoomInfo = MainStage->GetCamActor();
+	
+	FindMonsterIndex();
+
 	LobbyDoor = MainStage->GetStageDoor();
 	LobbyBackGround = MainStage->GetLobbyBackGround();
 	// 보니 위치 보내주고 
@@ -45,8 +48,8 @@ void Bonni::SetCurLocation()
 	{
 	case BonniLocation::ShowRoom:
 
-		CurRoomInfo[0]->SetMonster(nullptr);
-		CurRoomInfo[0]->GetMonster();
+		//CurRoomInfo[0]->SetMonster(nullptr);
+		//CurRoomInfo[0]->GetMonster();
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
@@ -58,6 +61,10 @@ void Bonni::SetCurLocation()
 			// 이걸 바로 하면 안됨
 		if(MoveNum != 0)
 		{
+			if (CurRoomInfo[1]->GetMonster() != nullptr)
+			{
+				return;
+			}
 		
 			CurState = BonniLocation::HallDining;
 			CurRoomInfo[1]->SetMonster(this);
@@ -66,8 +73,7 @@ void Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::HallDining:
-		CurRoomInfo[1]->SetMonster(nullptr);
-		CurRoomInfo[1]->SettingSpriteName(0);
+
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
@@ -86,14 +92,18 @@ void Bonni::SetCurLocation()
 		break;
 
 	case BonniLocation::BackStage:
-		CurRoomInfo[8]->SetMonster(nullptr);
-		CurRoomInfo[8]->SettingSpriteName(0);
+		
 		if (MoveNum == 0)
 		{
+			if (CurRoomInfo[1]->GetMonster() != nullptr)
+			{
+				return;
+			}
 			CurState = BonniLocation::HallDining;
+
 			CurRoomInfo[1]->SetMonster(this);
 			CurLocation = "HallDining";
-			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
+			
 		}
 		// 이걸 바로 하면 안됨
 		else
@@ -104,8 +114,7 @@ void Bonni::SetCurLocation()
 		}
 		break;
 	case BonniLocation::WestHall:
-		CurRoomInfo[3]->SetMonster(nullptr);
-		CurRoomInfo[3]->SettingSpriteName(0);
+		
 
 		if (MoveNum == 0)
 		{
@@ -122,12 +131,12 @@ void Bonni::SetCurLocation()
 		}
 		break;
 	case BonniLocation::WestHallCorner:
-		CurRoomInfo[4]->SetMonster(nullptr);
-		CurRoomInfo[4]->SettingSpriteName(0);
+		
 
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::Lobby;
+			//지워지고 로비에 들어오면 
 			CurLocation = "Lobby";
 		}
 		// 이걸 바로 하면 안됨
@@ -149,8 +158,8 @@ void Bonni::SetCurLocation()
 		// 이걸 바로 하면 안됨
 		else
 		{
-			CurState = BonniLocation::SupplyCloset;
-			CurRoomInfo[6]->SetMonster(this);
+			CurState = BonniLocation::WestHallCorner;
+			CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "SupplyCloset";
 
 		}
@@ -158,27 +167,28 @@ void Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::Lobby:
- 		LobbyBackGround->SetLobbyMonster(this);
-
-
+ 		
 		if (LobbyBackGround->BlockChecker() == true)
 		{
+			//문이 닫혀있다면 
 			if (MoveNum == 2)
-			{
-			CurRoomInfo[3]->SetMonster(this);
-			return;
-			}
-			else if (MoveNum == 1)
 			{
 				CurRoomInfo[3]->SetMonster(this);
 				return;
 			}
-			CurRoomInfo[6]->SetMonster(this);
-			
-			
+			else if (MoveNum == 1)
+			{
+				CurRoomInfo[4]->SetMonster(this);
+				return;
+			}
+			CurRoomInfo[7]->SetMonster(this);
+
+
 
 		}
-	
+		
+		LobbyBackGround->SetLobbyMonster(this);
+		// 만약에 안걸렸다면 넣어주고 걸렸으면 다른곳으로 보내주기	
 		break;
 	default:
 		break;
@@ -229,4 +239,22 @@ void Bonni::AutoMove(float _DeltaTime)
 std::string Bonni::GetCurLocationString()
 {
 	return CurLocation;
+}
+
+
+
+void Bonni::FindMonsterIndex()
+{
+	//초기화ㅣ 해주는 것 
+	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
+	CurRoomInfo = MainStage->GetCamActor();
+
+	for (int i = 0; i < CurRoomInfo.size(); i++)
+	{
+		if (CurRoomInfo[i]->GetMonster() != nullptr)
+		{
+			CurRoomInfo[i]->SetMonster(nullptr);
+		}
+	}
+
 }

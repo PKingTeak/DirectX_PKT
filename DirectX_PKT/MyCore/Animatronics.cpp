@@ -1,6 +1,6 @@
 #include "PreCompile.h"
 #include "Animatronics.h"
-
+#include "CCTVBackGround.h"
 Animatronics::Animatronics()
 {
 
@@ -63,3 +63,12 @@ int Animatronics::MoveChance(int _Num)
 	return 2;//아무것도 해당안되면 2
 }// w
 
+void Animatronics::LobbyCallBackCheck()
+{
+	//콜백할 행동 넣어주기 
+}
+
+void Animatronics::FindMonsterIndex()
+{
+	// 
+}

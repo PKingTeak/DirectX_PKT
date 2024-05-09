@@ -41,7 +41,7 @@ private:
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
 	Animatronics* PrevMonster = nullptr;
-	std::vector<std::string> RoomStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningChica","HallDiningChica2" };
+	std::vector<std::string> RoomStatename = { "HallDining","HallDining2","HallDiningBonni","HallDiningBonnie2","HallDiningBonni","HallDiningBonni2" };
 
 	void SettingSpriteName(int _Index) override;
 

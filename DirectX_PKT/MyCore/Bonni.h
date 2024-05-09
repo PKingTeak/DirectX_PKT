@@ -36,7 +36,7 @@ protected:
 	void Tick(float _DeltaTime) override;
 	//bool ACTOpportunity(int _CurLevel) override;
 	int MoveChance(int _Num);
-
+	void FindMonsterIndex() override;
 
 	void RendererOff();
 	void RendererOn();

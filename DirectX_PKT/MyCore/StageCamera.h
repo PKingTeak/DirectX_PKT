@@ -6,6 +6,7 @@
 #include"CCTVBackGround.h"
 // Ό³Έν :
 class CCTVBackGround;
+class Lobby;
 class Stage;
 class StageCamera : public AActor
 {
@@ -41,6 +42,7 @@ protected:
 private:
 	Stage* StageLevel = nullptr;
 	std::shared_ptr<CCTVBackGround> CCTVBackGrounds = nullptr;
+	std::shared_ptr<Lobby> LobbyUI = nullptr;
 	USpriteRenderer* StageCameraRender = nullptr;
 	USpriteRenderer* CCTVCam = nullptr;
 	bool isCamOn = false;

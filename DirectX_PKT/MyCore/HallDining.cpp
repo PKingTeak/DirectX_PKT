@@ -68,7 +68,7 @@ void HallDining::ChangeRoomCamera(Animatronics* _Monster)
 			RoomRender->SetSprite(RoomStatename[2]+".png");
 		}
 
-		if (MonsterName == "Chica")
+		if (MonsterName == "chica")
 		{
 			RoomRender->SetSprite(RoomStatename[4] + ".png");
 		}

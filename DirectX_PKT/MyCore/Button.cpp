@@ -105,41 +105,35 @@ void Button::Tick(float _DeltaTime)
 
 void Button::ButtonLight(std::string _ButtonName)
 {
-	if (_ButtonName._Equal("LeftLightButton"))
+	
+	
+	if(_ButtonName._Equal("RightLightButton"))
 	{
-		if (LeftLight == true && LeftDoor == false)
+		if (RightLight == true && LeftDoor == false)
 		{
-			LeftButtonRender->SetSprite("Button.png", 0);
-			LeftLight = false;
+			RightButtonRender->SetSprite("Button.png",5);
+			RightLight = false;
 			//라이트가 켜져있고 문이 열려 있을때
 		}
-		else if (LeftLight == true && LeftDoor == true)
+		else if (RightLight == true && LeftDoor == true)
 		{
-			LeftButtonRender->SetSprite("Button.png", 2);
-			LeftLight = false;
+			RightButtonRender->SetSprite("Button.png", 6);
+			RightLight = false;
 			//라이트가 켜져있고 문도 닫혀있을때 
 
 		}
 
 
 
-		if (LeftDoor == true)
+		if (RightDoor == true)
 		{
-			LeftButtonRender->SetSprite("Button.png", 3);
-			LeftLight = true; 
+			RightButtonRender->SetSprite("Button.png", 7);
+			RightLight = true;
 			return;
 			//문만 닫혀있을때
 		}
-		
-		LeftButtonRender->SetSprite("Button.png",1);
-		LeftLight = true;
-		//아무것도 아닌상태일때
 
-	}
-	else if(_ButtonName._Equal("RightLightButton"))
-	{
-
-		RightButtonRender->SetSprite("Button.png", 7);
+		RightButtonRender->SetSprite("Button.png", 4);
 		RightLight = true;
 		
 	}
@@ -182,6 +176,42 @@ void Button::ButtonDoor(std::string _ButtonName )
 
 
 		
+
+
+	}
+
+	if(_ButtonName._Equal("RightDoorButton"))
+	{
+
+		if (RightLight == true)
+		{
+			if (RightDoor == true)
+			{
+				RightButtonRender->SetSprite("Button.png", 5);
+				RightDoor = false;
+				return;
+			}
+			RightButtonRender->SetSprite("Button.png", 7);
+			//라이트가 켜져있을때 문을 누르면 
+			RightDoor = true;
+
+		}
+
+		if (RightLight == false)
+		{
+			if (RightDoor == true)
+			{
+				RightButtonRender->SetSprite("Button.png", 4);
+				RightDoor = false;
+				return;
+			}
+			RightButtonRender->SetSprite("Button.png", 6);
+			RightDoor = true;
+			//라이트까 꺼진 상태로 눌렸을때 
+		}
+
+
+
 
 
 	}
