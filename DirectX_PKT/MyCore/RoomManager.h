@@ -43,7 +43,6 @@ protected:
 	std::string CurRoomSpriteName = "";
 	Animatronics* Monster = nullptr;
 	
-	
 	std::vector<std::string> RoomStatename;
 };
 

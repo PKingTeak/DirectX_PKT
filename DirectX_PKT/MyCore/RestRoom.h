@@ -11,7 +11,7 @@ class Animatronics;
 
 class RestRoom : public RoomManager
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(RoomManager)
 
 public:
 
@@ -41,7 +41,7 @@ private:
 	USpriteRenderer* RoomRender = nullptr;
 	Animatronics* Monster = nullptr;
 	Animatronics* PrevMonster = nullptr;
-	std::vector<std::string> RoomStatename = { "RestRoom","RestRoomChica" };
+	std::vector<std::string> RoomStatename;
 
 	void SettingSpriteName(int _Index) override;
 

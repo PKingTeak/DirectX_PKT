@@ -52,7 +52,6 @@ void HallDining::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	
-	MapUpdate();
 	
 }
 

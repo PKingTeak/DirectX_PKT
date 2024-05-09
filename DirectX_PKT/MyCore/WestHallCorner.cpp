@@ -64,6 +64,7 @@ void WestHallCorner::MapUpdate()
 
 	}
 
+	SettingSpriteName(0);
 	//SettingSpriteName(0);
 
 

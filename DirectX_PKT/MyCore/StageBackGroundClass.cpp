@@ -20,8 +20,8 @@ StageBackGroundClass::StageBackGroundClass()
 
 	JumpScare = CreateDefaultSubObject<USpriteRenderer>("Render");
 	JumpScare->SetAutoSize(1.0f, true);
-	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.01f, false, 0, 10);
-	JumpScare->CreateAnimation("ChicaAni", "Chica", 0.01f, false, 0, 15);
+	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.05f, false, 0, 10);
+	JumpScare->CreateAnimation("ChicaAni", "Chica", 0.05f, false, 0, 15);
 	JumpScare->SetupAttachment(Default);
 	JumpScare->SetOrder(200);
 
@@ -163,7 +163,7 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 			{
 
 
-			if (LobbyDoor->GetLeftDoorState() == true)
+			if (LobbyDoor->GetLeftDoorState() == false)
 			{
 				//문이 닫혀있다. 
 				BlockCheck = true;
@@ -186,7 +186,7 @@ void StageBackGroundClass::CountMonsterTime(float _DeltaTime)
 			Time += _DeltaTime;
 			if (Time > 5)
 			{
-				if (LobbyDoor->GetRightDoorState() == true)
+				if (LobbyDoor->GetRightDoorState() == false)
 				{
 					RBlockCheck = true;
 					SetLobbyMonster(nullptr); // 몬스터 빼준다. 

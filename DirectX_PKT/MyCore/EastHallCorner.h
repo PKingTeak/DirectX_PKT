@@ -11,7 +11,7 @@ class Animatronics;
 
 class EastHallCorner : public RoomManager
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(RoomManager)
 
 public:
 

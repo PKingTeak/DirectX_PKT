@@ -16,6 +16,15 @@ void RoomManager::BeginPlay()
 void RoomManager::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	if (Monster == nullptr)
+	{
+		SettingSpriteName(0);
+	}
+	else
+	{
+		MapUpdate();
+	}
 }
 
 

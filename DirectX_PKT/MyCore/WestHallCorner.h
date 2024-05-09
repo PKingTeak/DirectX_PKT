@@ -6,7 +6,7 @@
 #include "RoomManager.h"
 class WestHallCorner :public RoomManager
 {
-	GENERATED_BODY(AActor)
+	GENERATED_BODY(RoomManager)
 public:
 	// constructor destructor
 	WestHallCorner();

@@ -60,6 +60,9 @@ void EastHall::ChangeRoomCamera(Animatronics* _Monster)
 	}
 
 
+	SettingSpriteName(0);
+
+
 }
 
 void EastHall::MapChangeSprite(Animatronics* _Monster)

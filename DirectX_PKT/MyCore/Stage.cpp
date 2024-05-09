@@ -138,7 +138,7 @@ void Stage::BeginPlay()
 	BRestRoom = GetWorld()->SpawnActor<RestRoom>("CBRestRoom");
 	RoomActor.push_back(BRestRoom);
 	RoomCameraUI.push_back(BRestRoom->GetUI());
-	RoomCameraUI.push_back(BRestRoom->GetUI());
+	
 
 
 

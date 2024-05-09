@@ -254,7 +254,8 @@ void Bonni::FindMonsterIndex()
 		if (CurRoomInfo[i]->GetMonster() != nullptr)
 		{
 			CurRoomInfo[i]->SetMonster(nullptr);
+			//이미지 초기화
 		}
 	}
-
+	
 }

@@ -49,10 +49,16 @@ void PirateRoom::BeginPlay()
 void PirateRoom::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
+	if (Monster == nullptr)
+	{
+		SettingSpriteName(0);
+	}
+	else
+	{
 	MapUpdate();
-
+	}
 }
+
 
 
 
@@ -68,11 +74,12 @@ void PirateRoom::ChangeRoomCamera(Animatronics* _Monster)
 			RoomRender->SetSprite(RoomStatename[2] + ".png");
 		}
 
-		if (MonsterName == "Bonni")
+		if (MonsterName == "Chica")
 		{
 			RoomRender->SetSprite(RoomStatename[4] + ".png");
 		}
 	}
+
 
 
 }
