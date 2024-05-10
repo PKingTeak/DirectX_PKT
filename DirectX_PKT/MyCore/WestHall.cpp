@@ -19,6 +19,7 @@ void WestHall::BeginPlay()
 	Camera->SetPosition(FVector{ 320,-240 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
+	RoomStatename = { "WestHall","WestHallBonnie" };
 
 	SettingSpriteName(0);
 }
@@ -26,7 +27,7 @@ void WestHall::BeginPlay()
 void WestHall::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	MapUpdate();
+
 }
 void WestHall::SettingSpriteName(int _Index = 0)
 {

@@ -30,7 +30,7 @@ class HallDining;
 class RestRoom;
 class RoomManager;
 class Animatronics;
-
+class Chica;
 
 class Stage : public AGameMode
 {
@@ -61,6 +61,8 @@ public:
 	
 	std::shared_ptr<RoomManager> FindActorIndex(Animatronics* _Monster);
 	std::vector<std::shared_ptr<RoomManager>> GetCamActor();
+
+	static std::shared_ptr<CCTVBackGround> CCTVPtr; //화면 전환해주는 포인터 CCTV화면
 	
 protected:
 	void BeginPlay() override;
@@ -84,10 +86,10 @@ private:
 	bool CCTVChecker = false;
 	std::shared_ptr<CCTVUI> CCTVRectUI = nullptr;
 
-	//
+	
 	USpriteRenderer* StageRender = nullptr;
 	void DebugGUI();
-	std::shared_ptr<CCTVBackGround> CCTVPtr = nullptr; //화면 전환해주는 포인터 CCTV화면
+	
 	std::shared_ptr<UCamera> Camera; // 레벨 메인 카메라
 	bool MoveEnd = false;
 	//
@@ -161,7 +163,7 @@ private:
 
 	//Monster
 	std::shared_ptr<Bonni> BonniActor = nullptr;
-	
+	std::shared_ptr<Chica> ChicaActor = nullptr;
 	std::string MonsterName = "";
 	//
 
@@ -179,6 +181,7 @@ private:
 	std::shared_ptr<RestRoom> BRestRoom = nullptr;
 	
 	
+	void AllCamUIControl(bool _Input);
 
 
 	float TestTimer = 0;

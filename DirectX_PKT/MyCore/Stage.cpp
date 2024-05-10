@@ -32,6 +32,7 @@
 #include"EastHallCorner.h"
 #include"KittenRoom.h"
 #include"RestRoom.h"
+#include"Chica.h"
 
 
 
@@ -40,7 +41,7 @@
 
 
 bool Stage::IsCamOn = false;
-
+std::shared_ptr<CCTVBackGround> Stage::CCTVPtr;
 
 Stage::Stage()
 {
@@ -83,12 +84,8 @@ void Stage::BeginPlay()
 
 	//Monster
 	BonniActor = GetWorld()->SpawnActor<Bonni>("Bonni");
-
-	{//BackGround
-
-
-	}//벡터[i]  =GetWorld()->SpawnActor<>();
-
+	ChicaActor = GetWorld()->SpawnActor<Chica>("Chica");
+	
 
 	//벡터에 넣는 순서는 프로젝트 솔루션탐색기 기준으로 넣었음. 
 	BShowRoom = GetWorld()->SpawnActor<ShowRoom>("CBShowRoom");
@@ -169,11 +166,7 @@ void Stage::BeginPlay()
 
 
 		// CCTV관련 UI
-		CCTVMap = CreateWidget<UImage>(GetWorld(), "CCTVMap");
-		CCTVMap->SetSprite("CCTVMap.png");
-		CCTVMap->AddToViewPort(2);
-		CCTVMap->SetAutoSize(1.0f, true);
-		CCTVMap->SetPosition(FVector{ 400,-150 });
+		
 
 		CCTVMap = CreateWidget<UImage>(GetWorld(), "CCTVMap");
 		CCTVMap->SetSprite("CCTVMap.png");
@@ -319,7 +312,18 @@ void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
+	if (UEngineInput::IsDown(VK_LBUTTON))
+	{
+
+		CamInteract();
+	}
+
 	FindActorIndex(BonniActor.get());
+	FindActorIndex(ChicaActor.get());
+
+	BonniActor->AutoMove(_DeltaTime);
+	//ChicaActor->AutoMove(_DeltaTime);
+
 
 	if (true == CCTVPtr->GetCamMode())
 	{
@@ -328,6 +332,7 @@ void Stage::Tick(float _DeltaTime)
 		LeftBox->SetActive(false);
 		RightBox->SetActive(false);
 		CCTVMap->SetActive(true);
+		//
 	}
 
 	if (false == StageCam->GetIsCameraOn())
@@ -341,18 +346,12 @@ void Stage::Tick(float _DeltaTime)
 	MainStageMove(_DeltaTime);
 
 
-	if (UEngineInput::IsDown(VK_LBUTTON))
-	{
-		
-		CamInteract();
-	}
-
+	
 	TestTimer += _DeltaTime;
 	for (int i = 0; i < RoomActor.size(); i++)
 	{
 		RoomActor[i]->MapUpdate();
 	}
-	BonniActor->AutoMove(_DeltaTime);
 	
 	//
 	//마우스 위치에 따라서 카메라 움직이는거 구현 할듯
@@ -474,7 +473,7 @@ void Stage::ChageCam()
 
 	std::string CamName = PrevCam->GetName();
 	int num = FindIndex(CamName);
-	
+	//
 	CCTVPtr->ChangeCam(RoomActor[num].get());
 
 	IsCamOn = false; //다른 카메라가 입력받을수 있게 초기화 해줌
@@ -669,4 +668,14 @@ std::vector<std::shared_ptr<RoomManager>> Stage::GetCamActor()
 std::shared_ptr<Lobby> Stage::GetStageLobbyUI()
 {
 	return LobbyUI;
+}
+
+void  Stage::AllCamUIControl(bool _Input)
+{
+	for (int i = 0; i < RoomCameraUI.size(); i++)
+	{
+		RoomCameraUI[i]->SetActive(_Input);
+
+	}
+
 }

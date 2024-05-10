@@ -69,6 +69,7 @@ void Bonni::SetCurLocation()
 			CurState = BonniLocation::HallDining;
 			CurRoomInfo[1]->SetMonster(this);
 			CurRoomInfo[1]->GetMonster();
+			
 		}
 
 		break;
@@ -202,6 +203,8 @@ void Bonni::SetCurLocation()
 
 		//Map->find()
 	}
+
+	RoomUpdate();
 
 }
 

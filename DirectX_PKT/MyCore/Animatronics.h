@@ -50,6 +50,7 @@ public:
 
 	//std::string GetName();
 	std::string GetCurLocationString();
+	static std::vector<std::shared_ptr<RoomManager>> CurRoomInfo;
 protected :
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -63,10 +64,11 @@ protected :
 	std::string MonsterName = "";
 	std::string CurLocation = "";
 	std::string CurLocalName = "";
-	std::vector<std::shared_ptr<RoomManager>> CurRoomInfo;
 
 	void LobbyCallBackCheck();
+	void RoomUpdate();
 
+private:
 	
 };
 

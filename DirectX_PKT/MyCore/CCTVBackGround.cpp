@@ -18,7 +18,7 @@ CCTVBackGround::CCTVBackGround()
 	CCTVBackGroundRender->SetupAttachment(Default);
 	CCTVBackGroundRender->SetSprite("TestCamBackGround.png");
 	CCTVBackGroundRender->SetAutoSize(1.0f, true);
-	CCTVBackGroundRender->SetOrder(50);
+	CCTVBackGroundRender->SetOrder(56);
 	CCTVBackGroundRender->SetActive(false);
 
 
@@ -81,6 +81,7 @@ void CCTVBackGround::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 
 
+
 }
 
 
@@ -110,11 +111,11 @@ void CCTVBackGround::CCTVOFF()
 	CCTVInfo->SetActive(false); //다음화면 켜주기 
 }
 
-void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
-{
+std::string CCTVBackGround::ChangeCam(RoomManager* _UICamName)
+{//카메라 UI누르면 sprite바꿔주는 역할이
 	if (_UICamName == nullptr)
 	{
-		return;
+		return _UICamName->GetName();
 	}
 	if (_UICamName->GetMonster() != nullptr)
 	{
@@ -122,11 +123,24 @@ void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
 
 
 	}
-	std::string ChangeCamName = _UICamName->GetCurRoomSpriteName();
+	ChangeCamName = _UICamName->GetCurRoomSpriteName();
 	ChangeCamName.append(".png");
 
+	ChangeSprite();
+}
+
+
+void CCTVBackGround::ChangeSprite()
+
+{
 	CCTVBackGroundRender->SetSprite(ChangeCamName);
 }
+
+void CCTVBackGround::MonsterSpriteChange(std::string _ChangeName)
+{
+	CCTVBackGroundRender->SetSprite(_ChangeName);
+}
+
 
 /*
 void CCTVBackGround::ChangeCam(std::string _UICamName)
@@ -189,7 +203,7 @@ void CCTVBackGround::ChangeSprite(std::string _ChangeCam)
 	std::string ChangeLocalName = _ChangeCam.substr(2);
 	
 	ChangeSpriteRender->SetSprite(ChangeLocalName);
-	ChangeSpriteRender->SetActive(true);
+	//ChangeSpriteRender->SetActive(true);
 
 }
 

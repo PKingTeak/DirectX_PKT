@@ -37,7 +37,7 @@ void EastHallCorner::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	MapUpdate();
+	
 
 }
 
@@ -54,8 +54,13 @@ void EastHallCorner::ChangeRoomCamera(Animatronics* _Monster)
 		{
 			RoomRender->SetSprite(RoomStatename[2] + ".png");
 		}
+		else
+		{
 
+			return;
+		}
 	}
+	
 
 
 }

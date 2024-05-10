@@ -1,6 +1,11 @@
 #include "PreCompile.h"
 #include "Animatronics.h"
 #include "CCTVBackGround.h"
+#include "RoomManager.h"
+#include "Stage.h"
+
+std::vector<std::shared_ptr<RoomManager>> Animatronics::CurRoomInfo;
+
 Animatronics::Animatronics()
 {
 
@@ -20,6 +25,8 @@ void Animatronics::BeginPlay()
 void Animatronics::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
+
+	RoomUpdate();
 }
 
 bool Animatronics::ACTOpportunity(int _CurLevel)
@@ -66,6 +73,30 @@ int Animatronics::MoveChance(int _Num)
 void Animatronics::LobbyCallBackCheck()
 {
 	//콜백할 행동 넣어주기 
+}
+
+void Animatronics::RoomUpdate()
+{
+	// 방 전체를 순회하면서 돌고 
+	for (std::shared_ptr<RoomManager> Room : CurRoomInfo)
+	{
+	///	std::string RoomName = Room->GetName();
+		std::string RoomName = Room->GetCurRoomSpriteName();
+		//RoomName = RoomName.substr(2);
+		if (Room->GetMonster() != nullptr)
+		{
+			//std::string ResultName = RoomName + ".png";
+			//Stage::CCTVPtr->GetRenderer()->SetSprite(ResultName);
+			////결과 값을 CCTVBackGround에 넣어준다. 
+			//continue;
+
+			std::string MonsterName = Room->GetMonster()->GetName();
+			std::string ResultName = RoomName + ".png";
+			//Stage::CCTVPtr->MonsterSpriteChange(ResultName);
+		}
+
+	
+	}
 }
 
 void Animatronics::FindMonsterIndex()

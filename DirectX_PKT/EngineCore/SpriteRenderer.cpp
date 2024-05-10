@@ -242,6 +242,7 @@ void USpriteRenderer::SetSprite(std::string_view _Name, UINT _Index/* = 0*/)
 
 	if (nullptr == Sprite)
 	{
+		int a = 0;
 		MsgBoxAssert("존재하지 않는 스프라이트를 세팅해주려고 했습니다.");
 		return;
 	}

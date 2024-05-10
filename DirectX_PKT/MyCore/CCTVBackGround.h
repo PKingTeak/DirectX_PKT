@@ -39,15 +39,21 @@ public:
 		return CamMode;
 	}
 	//void ChangeCam(std::string _UICamName);
-	void ChangeCam(RoomManager* _UICamName);
 	void ChangeSprite(std::string _ChangeCam);
 	void ScanLineON();
 	void SetCamBackInfo(RoomManager* _CamInfo, bool _CurCheck = true);
-	
+	//void ChangeCam(RoomManager* _UICamName);
+	std::string ChangeCam(RoomManager* _UICamName);	
 	void GetCamera(RoomManager* _ChangeRoom);
 
 	void AllCamActorOff();
+	void MonsterSpriteChange(std::string _ChangeName);
 
+	USpriteRenderer* GetRenderer()
+	{
+		return CCTVBackGroundRender;
+	}
+	void ChangeSprite();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -82,5 +88,8 @@ private:
 	RoomManager* CCTVInfo = nullptr;
 	RoomManager* PreCCTVInfo = nullptr;
 	
+
+
+	std::string ChangeCamName;
 };
 

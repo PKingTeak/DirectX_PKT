@@ -8,19 +8,7 @@
 HallDining::HallDining()
 {
 
-	//UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
-	//
-	//
-	//RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	//RoomRender->SetSprite("HallDining.png");
-	//RoomRender->SetAutoSize(1.0f, true);
-	//RoomRender->SetupAttachment(Default);
-	//RoomRender->SetOrder(100);
-	//RoomRender->SetActive(false);
-	//
-	//
-	//
-	//SetRoot(Default);
+	
 
 
 }

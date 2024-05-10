@@ -37,7 +37,7 @@ void SupplyCloset::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	MapUpdate();
+	
 
 }
 

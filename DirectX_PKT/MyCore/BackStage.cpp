@@ -27,7 +27,7 @@ void BackStage::BeginPlay()
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 
-
+	RoomStatename = { "BackStage","BackStageBonni","BackStageBonni1" };
 	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 
 }
@@ -37,7 +37,7 @@ void BackStage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 
-	MapUpdate();
+	
 
 }
 

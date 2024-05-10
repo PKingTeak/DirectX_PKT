@@ -8,20 +8,7 @@
 PirateRoom::PirateRoom()
 {
 
-	//UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
-	//
-	//
-	//RoomRender = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	//RoomRender->SetSprite("PirateRoom.png");
-	//RoomRender->SetAutoSize(1.0f, true);
-	//RoomRender->SetupAttachment(Default);
-	//RoomRender->SetOrder(100);
-	//RoomRender->SetActive(false);
-	//
-	//
-	//
-	//SetRoot(Default);
-
+	
 
 }
 
@@ -40,6 +27,8 @@ void PirateRoom::BeginPlay()
 	Camera->SetPosition(FVector{ 280,-100 });
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
+	RoomStatename = { "PirateRoom","PirateRoom2","PirateRoomBonni","PirateRoomBonnie2","PirateRoomBonni","PirateRoomBonni2" };
+
 
 	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 
@@ -49,14 +38,7 @@ void PirateRoom::BeginPlay()
 void PirateRoom::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	if (Monster == nullptr)
-	{
-		SettingSpriteName(0);
-	}
-	else
-	{
-	MapUpdate();
-	}
+	
 }
 
 
