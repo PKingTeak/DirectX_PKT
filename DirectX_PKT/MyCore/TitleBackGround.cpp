@@ -1,24 +1,42 @@
 #include "PreCompile.h"
 #include "TitleBackGround.h"
 #include <EngineBase/EngineRandom.h>
-
+#include <EngineCore/DefaultSceneComponent.h>
+#include<EngineCore/Image.h>
 TitleBackGround::TitleBackGround()
 {
+
+	UDefaultSceneComponent* Default = CreateDefaultSubObject<UDefaultSceneComponent>("Default");
+	Default->SetPosition(FVector{ 0,0 });
+
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
-	SetRoot(Renderer);
+	Renderer->SetupAttachment(Default);
+	Renderer->SetOrder(1);
+	
+	TitleText = CreateDefaultSubObject<USpriteRenderer>("GameTitle");
+	TitleText->SetupAttachment(Default);
+	
+	
+
+
+	SetRoot(Default);
 }
 
 TitleBackGround::~TitleBackGround()
 {
+	
 }
 
 
 void TitleBackGround::BeginPlay()
 {
 	Super::BeginPlay();
-
 	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
 	
+	TitleText->SetSprite("TitleName.png");
+	TitleText->SetAutoSize(1.0f, true);
+	TitleText->SetOrder(5);
+	TitleText->SetPosition(FVector{ 0.0f,0.0f,10.0f });
 	
 	
 }

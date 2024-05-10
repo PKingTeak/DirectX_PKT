@@ -27,7 +27,7 @@ void RestRoom::BeginPlay()
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 
-	RoomStatename = { "RestRoom1","RestRoomChica" };
+	RoomStatename = { "RestRoom","RestRoomChica" };
 
 
 	//SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 

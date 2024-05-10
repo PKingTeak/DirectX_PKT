@@ -4,7 +4,8 @@
 #include<iostream>
 #include<string>
 #include<string_view>
-
+#include<EngineCore/Image.h>
+#include<EngineCore/DefaultSceneComponent.h>
 // Ό³Έν :
 class TitleBackGround : public AActor
 {
@@ -29,8 +30,10 @@ protected:
 	void RendererOn();
 
 private:
+	
 	void ChangeBackGround(float _DeltaTime);
 	USpriteRenderer* Renderer = nullptr;
+	USpriteRenderer* TitleText = nullptr;
 	int RandomNum = 0;
 	float  AniTime = 2;
 	float Time = 0;
