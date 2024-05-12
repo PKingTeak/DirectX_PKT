@@ -50,7 +50,7 @@ void EastHallCorner::ChangeRoomCamera(Animatronics* _Monster)
 	std::string MonsterName = _Monster->GetName();
 	if (GetMonster() != nullptr)
 	{
-		if (MonsterName == "Bonni")
+		if (MonsterName == "Chica")
 		{
 			RoomRender->SetSprite(RoomStatename[2] + ".png");
 		}

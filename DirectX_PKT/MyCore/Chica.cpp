@@ -42,26 +42,44 @@ void Chica::SetCurLocation()
 	LobbyBackGround = MainStage->GetLobbyBackGround();
 	// 보니 위치 보내주고 
 	int MoveNum = Animatronics::MoveChance(90);
-	ChicaLocation PrevState = CurState;
+
+
 	switch (CurState)
 	{
 	case ChicaLocation::ShowRoom:
+	
+	{
+		MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
+		CurRoomInfo = MainStage->GetCamActor();
 
-		if (CurRoomInfo[1]->GetMonster() == nullptr)
-		{
-			CurState = ChicaLocation::HallDining;
-			CurRoomInfo[1]->SetMonster(this);
+		Animatronics* CurMonster = CurRoomInfo[1]->GetMonster();
+	
 
-		}
+	if (CurRoomInfo[1]->GetMonster() != nullptr)
+	{
 		break;
+	}
+
+
+	if (CurRoomInfo[1]->GetMonster() == nullptr)
+	{
+		CurState = ChicaLocation::HallDining;
+		CurRoomInfo[1]->SetMonster(this);
+		break;
+
+	}
+	}
+	break;
+
+
 	case ChicaLocation::HallDining:
-
-
+	{
 		CurState = ChicaLocation::RestRoom;
 		CurRoomInfo[10]->SetMonster(this);
 		//RestRoom
 
-
+		break;
+	}
 	case ChicaLocation::RestRoom:
 
 		if (MoveNum == 0)
@@ -76,8 +94,8 @@ void Chica::SetCurLocation()
 		{
 			CurState = ChicaLocation::Kitten;
 			CurRoomInfo[9]->SetMonster(this);
-			CurLocation = "EastHall";
 		}
+
 		break;
 	case ChicaLocation::EastHall:
 
@@ -151,17 +169,6 @@ void Chica::SetCurLocation()
 		break;
 	default:
 		break;
-
-
-
-
-
-		if (PrevState != CurState) {
-
-		}
-
-
-		//Map->find()
 	}
 
 }

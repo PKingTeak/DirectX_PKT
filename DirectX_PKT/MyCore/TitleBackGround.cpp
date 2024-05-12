@@ -11,10 +11,16 @@ TitleBackGround::TitleBackGround()
 
 	Renderer = CreateDefaultSubObject<USpriteRenderer>("Renderer");
 	Renderer->SetupAttachment(Default);
+	Renderer->SetAutoSize(1.1f, true);
+	Renderer->SetPosition(FVector{ 0.0f,0.0f });
 	Renderer->SetOrder(1);
 	
 	TitleText = CreateDefaultSubObject<USpriteRenderer>("GameTitle");
 	TitleText->SetupAttachment(Default);
+	TitleText->SetSprite("TitleName.png");
+	TitleText->SetAutoSize(1.0f, true);
+	TitleText->SetPosition(FVector{ -350.0f,150.0f });
+	TitleText->SetOrder(2);
 	
 	
 
@@ -31,12 +37,9 @@ TitleBackGround::~TitleBackGround()
 void TitleBackGround::BeginPlay()
 {
 	Super::BeginPlay();
-	SetActorScale3D(FVector(1280.0f, 720.0f, 100.0f));
+	this->SetActorLocation(FVector{ 0.0f,0.0f,100.0f });
 	
-	TitleText->SetSprite("TitleName.png");
-	TitleText->SetAutoSize(1.0f, true);
-	TitleText->SetOrder(5);
-	TitleText->SetPosition(FVector{ 0.0f,0.0f,10.0f });
+	
 	
 	
 }

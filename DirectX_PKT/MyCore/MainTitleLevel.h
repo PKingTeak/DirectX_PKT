@@ -1,8 +1,9 @@
 #pragma once
 #include <EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
-
+#include<EngineCore/Image.h>
 // Ό³Έν :
+class TitleBackGround;
 class MainTitleLevel : public AGameMode
 {
 	GENERATED_BODY(AGameMode)
@@ -26,7 +27,10 @@ protected:
 	void LevelStart(ULevel* _PrevLevel);
 
 private:
-	USpriteRenderer* Renderer = nullptr;
+	std::shared_ptr<TitleBackGround> TitleBack = nullptr;
+	UImage* StartButton = nullptr;
+	UImage* ExitButton = nullptr;
+//	USpriteRenderer* Renderer = nullptr;
 	
 };
 

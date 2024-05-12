@@ -68,6 +68,8 @@ protected :
 	void LobbyCallBackCheck();
 	void RoomUpdate();
 
+	static bool HallRoom;
+
 private:
 	
 };

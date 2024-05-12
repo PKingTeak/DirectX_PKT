@@ -68,6 +68,7 @@ void KittenRoom::ChangeRoomCamera(Animatronics* _Monster)
 		{
 			RoomRender->SetSprite(RoomStatename[0] + ".png");
 			//荤款靛 犁积 持扁 
+			//见家府
 		}
 
 	}

@@ -322,7 +322,7 @@ void Stage::Tick(float _DeltaTime)
 	FindActorIndex(ChicaActor.get());
 
 	BonniActor->AutoMove(_DeltaTime);
-	//ChicaActor->AutoMove(_DeltaTime);
+	ChicaActor->AutoMove(_DeltaTime);
 
 
 	if (true == CCTVPtr->GetCamMode())

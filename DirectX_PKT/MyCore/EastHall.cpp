@@ -29,7 +29,7 @@ void EastHall::BeginPlay()
 	Camera->SetAutoSize(1.0f, true);
 	Camera->AddToViewPort(3);
 
-	RoomStatename = { "EastHall","EastHallBonni" };
+	RoomStatename = { "EastHall","EastHallChica" };
 	SettingSpriteName(0); // 이걸로 벡터 안에 있는 인덱스 이름에 접근이 가능함 
 
 }
@@ -51,7 +51,7 @@ void EastHall::ChangeRoomCamera(Animatronics* _Monster)
 	std::string MonsterName = _Monster->GetName();
 	if (GetMonster() != nullptr)
 	{
-		if (MonsterName == "Bonni")
+		if (MonsterName == "Chica")
 		{
 			RoomRender->SetSprite(RoomStatename[2] + ".png");
 		}

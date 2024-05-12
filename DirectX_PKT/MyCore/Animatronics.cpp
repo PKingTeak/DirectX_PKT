@@ -5,7 +5,7 @@
 #include "Stage.h"
 
 std::vector<std::shared_ptr<RoomManager>> Animatronics::CurRoomInfo;
-
+bool Animatronics::HallRoom = false;
 Animatronics::Animatronics()
 {
 
@@ -19,7 +19,7 @@ Animatronics::~Animatronics()
 void Animatronics::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void Animatronics::Tick(float _DeltaTime)

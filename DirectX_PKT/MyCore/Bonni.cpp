@@ -54,6 +54,7 @@ void Bonni::SetCurLocation()
 		{
 			CurState = BonniLocation::BackStage;
 			CurRoomInfo[8]->SetMonster(this);
+			
 			//  여기에서 그냥 직접 setMonster해서 Room에 직접 셋팅해주는것이 좋을듯 하다. 
 			
 			
@@ -65,7 +66,7 @@ void Bonni::SetCurLocation()
 			{
 				return;
 			}
-		
+			
 			CurState = BonniLocation::HallDining;
 			CurRoomInfo[1]->SetMonster(this);
 			CurRoomInfo[1]->GetMonster();
@@ -74,12 +75,13 @@ void Bonni::SetCurLocation()
 
 		break;
 	case BonniLocation::HallDining:
-
+		HallRoom = true;
 		if (MoveNum == 0)
 		{
 			CurState = BonniLocation::BackStage;
 			CurRoomInfo[8]->SetMonster(this);
 			CurLocation = "BackStage";
+			HallRoom = false;
 			//MainStage->GetCCTVBack()->ChangeCam("DiningArea_Bonnie1");
 		}
 		// 이걸 바로 하면 안됨
@@ -88,6 +90,7 @@ void Bonni::SetCurLocation()
 			CurState = BonniLocation::WestHall;
 			CurRoomInfo[3]->SetMonster(this);
 			CurLocation = "WestHall";
+			HallRoom = false;
 		}
 
 		break;
