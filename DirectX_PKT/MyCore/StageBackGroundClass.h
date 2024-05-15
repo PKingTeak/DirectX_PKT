@@ -35,6 +35,8 @@ public:
 	void CountMonsterTime(float _DeltaTime);
 	bool BlockChecker();
 	bool RightBlockChecker();
+	bool LeftLightChecker();
+	bool RightLightChecker();
 
 protected:
 	void BeginPlay() override;

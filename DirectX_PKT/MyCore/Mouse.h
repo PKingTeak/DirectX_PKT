@@ -8,6 +8,7 @@
 class StageBackGroundClass;
 class Button;
 class Door;
+class Lobby;
 class Mouse : public AActor
 {
 	GENERATED_BODY(AActor)
@@ -38,6 +39,7 @@ private:
 	FVector MousePos = {};
 	UCollision* MouseCollision = nullptr;
 	USpriteRenderer* MSprite = nullptr;
+	std::shared_ptr<Lobby> BatteryUI = nullptr;
 
 	
 	

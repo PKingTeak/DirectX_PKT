@@ -9,6 +9,7 @@
 #include"Button.h"
 #include"Door.h"
 #include"Stage.h"
+#include"Lobby.h"
 
 Mouse::Mouse()
 {
@@ -39,7 +40,7 @@ void Mouse::BeginPlay()
 
 	Super::BeginPlay();
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
-
+	
 
 	//StageBackGround->GetMainStageBackGround();
 
@@ -49,9 +50,10 @@ void Mouse::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	SetMousePos();
+	
 	MouseCollision->CollisionStay(OrderType::Object, [=](std::shared_ptr<UCollision>_Collision)
 		{
-
+			BatteryUI = MainStage->GetStageLobbyUI();
 			std::string objectType = _Collision->GetName(); // 이걸로 해야 collsion을 읽어올수 있다. 
 			if (objectType._Equal("LeftDoorButton"))
 			{
@@ -63,15 +65,18 @@ void Mouse::Tick(float _DeltaTime)
 
 					if (ButtonClass->GetMainButton()->LDoorButtonCheck() == true)
 					{
-
+						
 						DoorActor->DoorOpen(objectType);
+						BatteryUI->BatteryUserUP();
+						//여기에 베터리 조절하기 
 						return;
 					}
 
 					DoorActor->DoorClose(objectType);
+					BatteryUI->BatteryUserDown();
 				}
 
-				int a = 0;
+				
 
 			}
 			if (objectType._Equal("LeftLightButton"))
@@ -80,10 +85,13 @@ void Mouse::Tick(float _DeltaTime)
 				if (UEngineInput::IsDown(VK_LBUTTON))
 				{
 
+					
 					StageBackGround->LightOn("Left");
 					ButtonClass->GetMainButton()->ButtonLight(objectType);
+					
+				
 				}
-
+				
 
 			}
 
@@ -99,10 +107,12 @@ void Mouse::Tick(float _DeltaTime)
 					{
 
 						DoorActor->DoorOpen(objectType);
+						BatteryUI->BatteryUserUP();
 						return;
 					}
 
 					DoorActor->DoorClose(objectType);
+					BatteryUI->BatteryUserDown();
 				}
 
 
@@ -113,8 +123,12 @@ void Mouse::Tick(float _DeltaTime)
 				if (UEngineInput::IsDown(VK_LBUTTON))
 				{
 
+				
+
 					StageBackGround->LightOn("Right");
 					ButtonClass->GetMainButton()->ButtonLight(objectType);
+
+
 				}
 
 

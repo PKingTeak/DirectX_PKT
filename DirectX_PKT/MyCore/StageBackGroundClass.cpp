@@ -138,6 +138,15 @@ void StageBackGroundClass::PlayJumpScare(std::string _Name)
 	
 	
 	);
+
+	JumpScare->SetLastFrameCallback("ChicaAni", [=]
+		{
+			GEngine->ChangeLevel("EndingLevel");
+			//엔딩 GameOver올려줘야될듯
+		}
+
+
+	);
 }
 
 void StageBackGroundClass:: SetLobbyMonster(Animatronics* _Monster)
@@ -218,4 +227,13 @@ bool StageBackGroundClass::BlockChecker()
 bool StageBackGroundClass::RightBlockChecker()
 {
 	return RBlockCheck;
+}
+bool StageBackGroundClass::LeftLightChecker()
+{
+	return LeftLight;
+}
+
+bool StageBackGroundClass::RightLightChecker()
+{
+	return RightLight;
 }
