@@ -21,7 +21,7 @@ StageBackGroundClass::StageBackGroundClass()
 	JumpScare = CreateDefaultSubObject<USpriteRenderer>("Render");
 	JumpScare->SetAutoSize(1.0f, true);
 	JumpScare->CreateAnimation("BonniAni", "Bonni", 0.05f, false, 0, 10);
-	JumpScare->CreateAnimation("ChicaAni", "Chica", 0.05f, false, 0, 15);
+	JumpScare->CreateAnimation("ChicaAni", "ChicaImage", 0.05f, false, 0, 15);
 	JumpScare->SetupAttachment(Default);
 	JumpScare->SetOrder(200);
 
@@ -34,7 +34,7 @@ StageBackGroundClass::StageBackGroundClass()
 	StageBackRender->CreateAnimation("NoElecAnimation", "NoElec", 0.1f, true, 0, 1);
 
 
-
+	
 	//SetAutoSize(1.0f, true);
 	//
 
@@ -42,7 +42,10 @@ StageBackGroundClass::StageBackGroundClass()
 
 
 
-
+	LobbySound = UEngineSound::SoundPlay("Office.wav");
+	LobbySound.SetVolume(0.1f);
+	LobbySound.Loop();
+	LobbySound.Off();
 
 	SetRoot(Default);
 }
@@ -56,15 +59,15 @@ void StageBackGroundClass::BeginPlay()
 	MainStageBackGround = this;
 	MainStage = dynamic_cast<Stage*>(GetWorld()->GetGameMode().get());
 	Super::BeginPlay();
-
-
+	
+	
 }
 
 void StageBackGroundClass::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 	CountMonsterTime(_DeltaTime);
-
+	SetLobbySound();
 }
 
 StageBackGroundClass* StageBackGroundClass::GetMainStageBackGround()
@@ -236,4 +239,18 @@ bool StageBackGroundClass::LeftLightChecker()
 bool StageBackGroundClass::RightLightChecker()
 {
 	return RightLight;
+}
+
+void StageBackGroundClass::SetLobbySound()
+{
+	if (true == this->IsActive())
+	{
+
+		LobbySound.On();
+	
+	}
+	else
+	{
+		LobbySound.Off();
+	}
 }

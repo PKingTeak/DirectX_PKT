@@ -88,7 +88,7 @@ void UMyCore::Initialize()
 			std::string Name = Directorys[i].GetFolderName();
 			UEngineSprite::LoadFolder(Directorys[i].GetFullPath());
 		}
-
+		
 
 		
 
@@ -125,20 +125,20 @@ void UMyCore::Initialize()
 	{
 		//사운드
 		// 
-	//	UEngineDirectory Dir;
-	//	Dir.MoveToSearchChild("ContentsResources");
-	//	Dir.Move("Sound");
-	//	std::vector<UEngineFile> Files = Dir.GetAllFile({ ".wav" });
-	//	for (UEngineFile& File : Files)
-	//	{
-	//		//File.Open(EIOOpenMode::Read, EIODataType::Binary);
-	//
-	//		//char Arr[100];
-	//		//File.Read(Arr, 100);
-	//
-	//		UEngineSound::Load(File.GetFullPath());
-	//	}
-	//	// UEngineSound::SoundPlay("anipang_ingame_wav.wav");
+		UEngineDirectory Dir;
+		Dir.MoveToSearchChild("SoundResource");
+		
+		std::vector<UEngineFile> Files = Dir.GetAllFile({ ".wav" });
+		for (UEngineFile& File : Files)
+		{
+			//File.Open(EIOOpenMode::Read, EIODataType::Binary);
+	
+			//char Arr[100];
+			//File.Read(Arr, 100);
+	
+			UEngineSound::Load(File.GetFullPath());
+		}
+		// 사용법 -> UEngineSound::SoundPlay("anipang_ingame_wav.wav");
 	}
 
 	

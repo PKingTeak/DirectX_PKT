@@ -38,6 +38,8 @@ public:
 	bool LeftLightChecker();
 	bool RightLightChecker();
 
+
+	void SetLobbySound();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -64,6 +66,8 @@ private:
 	
 	bool BlockCheck = false;
 	bool RBlockCheck = false;
+	UEngineSoundPlayer LobbySound;
+	
 
 };
 
