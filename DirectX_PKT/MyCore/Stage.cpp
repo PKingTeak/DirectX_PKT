@@ -137,7 +137,7 @@ void Stage::BeginPlay()
 	RoomCameraUI.push_back(BRestRoom->GetUI());
 	
 
-
+	AllCamUIControl(false);
 
 	
 
@@ -173,6 +173,7 @@ void Stage::BeginPlay()
 		CCTVMap->AddToViewPort(2);
 		CCTVMap->SetAutoSize(1.0f, true);
 		CCTVMap->SetPosition(FVector{ 400,-150 });
+	
 
 
 		UImage* NewCam = BShowRoom->GetUI();
@@ -182,54 +183,6 @@ void Stage::BeginPlay()
 		std::string RoomNameTest = NewCam->GetName();
 
 		
-				//Cam6 은 거의 검은 화면만 보이게 구현할 예정 
-		//CCTVCamUI["Cam6"] = CreateWidget<UImage>(GetWorld(), "KittenRoom");
-		//CCTVCamUI["Cam6"]->SetSprite("Cam6.png", 0);
-		//CCTVCamUI["Cam6"]->CreateAnimation("Cam6Ani", "Cam6.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam6"]->CreateAnimation("CCam6Ani", "Cam6.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam6"]->SetPosition(FVector{ 250,-50 });
-		//CCTVCamUI["Cam6"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam6"]->AddToViewPort(2);
-		//
-		//
-		//
-		//
-		// 
-		//
-		//
-		//
-		//
-		//	CCTVCamUI["Cam2B"] = CreateWidget<UImage>(GetWorld(), "W.HallConer");
-		//CCTVCamUI["Cam2B"]->SetSprite("Cam2B.png", 0);
-		//CCTVCamUI["Cam2B"]->CreateAnimation("Cam2BAni", "Cam2B.png", 0.5f, true, 0, 0);
-		//CCTVCamUI["Cam2B"]->CreateAnimation("CCam2BAni", "Cam2B.png", 0.5f, true, 0, 1);
-		//CCTVCamUI["Cam2B"]->SetPosition(FVector{ 320,-280 });
-		//CCTVCamUI["Cam2B"]->SetAutoSize(1.0f, true);
-		//CCTVCamUI["Cam2B"]->AddToViewPort(2);
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		
-		//
-		//	//Map에 insert 해서 값 보관
-		//CCTVCamUI.insert({ "Cam1A",CCTVCams[0] });
-		//CCTVCamUI.insert({ "Cam2A",CCTVCams[1] });
-		//CCTVCamUI.insert({ "Cam3",CCTVCams[2] }); // supply
-		//CCTVCamUI.insert({ "Cam1C",CCTVCams[3] });
-		//CCTVCamUI.insert({ "Cam5",CCTVCams[4] });
-		//CCTVCamUI.insert({ "Cam6",CCTVCams[5] });
-		//CCTVCamUI.insert({ "Cam7",CCTVCams[6] });
-		//CCTVCamUI.insert({ "Cam2A",CCTVCams[7] });
-		//CCTVCamUI.insert({ "Cam2B",CCTVCams[8] });
-		//CCTVCamUI.insert({ "Cam4A",CCTVCams[9] });
-		//CCTVCamUI.insert({ "Cam4B",CCTVCams[10] });
-		//
 		{
 
 			ArrowUi->SetHover([=]()
@@ -311,7 +264,7 @@ void Stage::BeginPlay()
 void Stage::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-
+	
 	if (UEngineInput::IsDown(VK_LBUTTON))
 	{
 
@@ -332,6 +285,7 @@ void Stage::Tick(float _DeltaTime)
 		LeftBox->SetActive(false);
 		RightBox->SetActive(false);
 		CCTVMap->SetActive(true);
+		AllCamUIControl(true);
 		//
 	}
 
@@ -341,6 +295,7 @@ void Stage::Tick(float _DeltaTime)
 		LeftBox->SetActive(true);
 		RightBox->SetActive(true);
 		CCTVMap->SetActive(false);
+		AllCamUIControl(false);
 	}
 	DebugGUI();
 	MainStageMove(_DeltaTime);
@@ -668,6 +623,12 @@ std::vector<std::shared_ptr<RoomManager>> Stage::GetCamActor()
 std::shared_ptr<Lobby> Stage::GetStageLobbyUI()
 {
 	return LobbyUI;
+}
+
+int Stage::GetBatteryPower()
+{
+	BatteryPower = LobbyUI->GetBatteryPower();
+	return BatteryPower;
 }
 
 void  Stage::AllCamUIControl(bool _Input)

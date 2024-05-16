@@ -64,6 +64,7 @@ public:
 
 	static std::shared_ptr<CCTVBackGround> CCTVPtr; //화면 전환해주는 포인터 CCTV화면
 	
+	int GetBatteryPower();
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -183,7 +184,7 @@ private:
 	
 	void AllCamUIControl(bool _Input);
 
-
+	int BatteryPower = 0;
 	float TestTimer = 0;
 	bool BonniChecker = false;
 };

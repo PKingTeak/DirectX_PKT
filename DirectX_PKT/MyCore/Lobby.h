@@ -33,6 +33,11 @@ public:
 		--BatteryUser;
 	
 	}
+
+	inline int GetBatteryPower()
+	{
+		return BatteryPower;
+	}
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
@@ -40,6 +45,7 @@ protected:
 private:
 
 	float Time = 0;
+	
 	int BatteryPower = 99;
 
 	int BatteryUser = 1;

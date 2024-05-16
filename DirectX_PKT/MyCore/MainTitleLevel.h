@@ -2,6 +2,7 @@
 #include <EngineCore/GameMode.h>
 #include<EngineCore/SpriteRenderer.h>
 #include<EngineCore/Image.h>
+
 // Ό³Έν :
 class TitleBackGround;
 class MainTitleLevel : public AGameMode
@@ -27,9 +28,12 @@ protected:
 	void LevelStart(ULevel* _PrevLevel);
 
 private:
+	void SetTitleSound();
 	std::shared_ptr<TitleBackGround> TitleBack = nullptr;
 	UImage* StartButton = nullptr;
 	UImage* ExitButton = nullptr;
+
+	UEngineSoundPlayer TitleSound;
 //	USpriteRenderer* Renderer = nullptr;
 	
 };

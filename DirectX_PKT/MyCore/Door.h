@@ -36,6 +36,9 @@ private:
 	bool isRDoorOpen = true; // 열려있으면 true;
 	USpriteRenderer* LDoorRender = nullptr;
 	USpriteRenderer* RDoorRender = nullptr;
+
+	UEngineSoundPlayer DoorSound;
+	
 	
 };
 

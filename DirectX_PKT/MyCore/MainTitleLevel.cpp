@@ -7,6 +7,8 @@
 #include"Mouse.h"
 #include"Noise.h"
 #include"TitleBackGround.h"
+#include<EnginePlatform/EngineSound.h>
+#include"MyCore.h"
 
 
 
@@ -36,10 +38,18 @@ void MainTitleLevel::BeginPlay()
 	StartButton->SetSprite("TitleNewGame.png");
 	StartButton->SetAutoSize(1.0f, true);
 	StartButton->AddToViewPort(2);
-	StartButton->SetPosition(FVector{ -350.0f,0.0f });
+	StartButton->SetPosition(FVector{ -350.0f,-50.0f });
+
+
+
+	TitleSound = UEngineSound::SoundPlay("TitleMusic.wav");
+	TitleSound.SetVolume(0.4f);
+	TitleSound.Loop();
+	
 
 	StartButton->SetDown([=]
 		{
+			TitleSound.Off();
 			GEngine->ChangeLevel("StageLevel");
 		});
 }
@@ -63,4 +73,19 @@ void MainTitleLevel::LevelStart(ULevel* _PrevLevel)
 {
 	Super::LevelStart(_PrevLevel);
 
+}
+
+
+void MainTitleLevel::SetTitleSound()
+{
+	if (true == this->IsActive())
+	{
+
+		TitleSound.On();
+
+	}
+	else
+	{
+		TitleSound.Off();
+	}
 }

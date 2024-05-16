@@ -70,7 +70,7 @@ void Lobby::Tick(float _DeltaTime)
 	Super::Tick(_DeltaTime);
 	if (UEngineInput::IsDown('M'))
 	{
-		BatteryPower -= 1;
+		BatteryPower -= 50;
 	}
 
 	if (UEngineInput::IsDown('N'))
@@ -101,7 +101,7 @@ void Lobby::BatteryPowerCheck(float _DeltaTime, int _limitTime)//베터리 채크하기
 		BatteryPower -= 1;
 	}
 
-	//BatteryPower -= (1 - _DeltaTime);
+	
 	
 }
 void Lobby::Batterypercent() //베터리 수치 표시 
@@ -110,6 +110,13 @@ void Lobby::Batterypercent() //베터리 수치 표시
 	
 	BatteryText = std::to_string(BatteryPower);
 	std::string str; // 문자 하나씩 뽑아주기 위한 지역변수
+	if (BatteryPower <= 0)
+	{
+		GageText[0]->SetActive(false);
+		GageText[1]->SetSprite("0.png");
+		return;
+		
+	}
 	for (int i = 0; i < BatteryText.length(); ++i)
 	{
 

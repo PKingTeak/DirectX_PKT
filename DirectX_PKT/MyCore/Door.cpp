@@ -27,6 +27,11 @@ Door::Door()
 	RDoorRender->CreateAnimation("CRightDoorAni", "RdoorAnimation.png", 0.1f, false, 14, 0);
 	RDoorRender->SetPosition(FVector{ 600,-20,-10 });
 
+
+	DoorSound = UEngineSound::SoundPlay("Door.wav");
+	DoorSound.SetVolume(0.5f);
+	DoorSound.Off();
+
 	SetRoot(Default);
 	
 
@@ -50,12 +55,16 @@ void Door::BeginPlay()
 void Door::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 }
 
 
 
 void Door::DoorOpen(std::string_view _ButtonName)
 {
+	DoorSound.On();
+	DoorSound.Replay();
+	//DoorSound.On();
 	
 	//RDoorRender->AnimationReset();
 	if (_ButtonName == "LeftDoorButton")
@@ -71,12 +80,14 @@ void Door::DoorOpen(std::string_view _ButtonName)
 		isRDoorOpen = false;
 	}
 
-
+	
 	
 }
 
 void Door::DoorClose(std::string_view _ButtonName)
 {
+	DoorSound.On();
+	DoorSound.Replay();
 	if (_ButtonName == "LeftDoorButton")
 	{
 		LDoorRender->ChangeAnimation("CLeftDoorAni");

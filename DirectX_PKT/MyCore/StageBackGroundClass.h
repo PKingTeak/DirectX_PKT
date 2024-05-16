@@ -9,6 +9,8 @@
 class Animatronics;
 class ScanLine;
 class Door;
+class Stage;
+class Lobby;
 class StageBackGroundClass : public AActor
 {
 	
@@ -24,7 +26,7 @@ public:
 	StageBackGroundClass(StageBackGroundClass&& _Other) noexcept = delete;
 	StageBackGroundClass& operator=(const StageBackGroundClass& _Other) = delete;
 	StageBackGroundClass& operator=(StageBackGroundClass&& _Other) noexcept = delete;
-
+	
 	StageBackGroundClass* GetMainStageBackGround();
 
 	
@@ -46,18 +48,19 @@ protected:
 
 	void RendererOff();
 	void RendererOn();
+	
 private:
 	std::vector<AActor> UIInfo;
 	USpriteRenderer* JumpScare = nullptr;
 	USpriteRenderer* StageBackRender = nullptr;
-	
+	USpriteRenderer* TurnoffLobby = nullptr;
 
 	Animatronics* Monster = nullptr;
 	
 	std::shared_ptr<Door> LobbyDoor = nullptr;
+	std::shared_ptr<Lobby> BatteryUI = nullptr;
 	
-	
-
+	float TickTimeChecker = 0.0f;
 	Stage* MainStage = nullptr;
 	bool ColDir = false;
 	float Time = 0.0f;
@@ -67,7 +70,13 @@ private:
 	bool BlockCheck = false;
 	bool RBlockCheck = false;
 	UEngineSoundPlayer LobbySound;
-	
-
+	UEngineSoundPlayer JumpScareSound;
+	UEngineSoundPlayer LightSound;
+	UEngineSoundPlayer MonsterLightSound;
+	UEngineSoundPlayer TurnOffSound;
+	UEngineSoundPlayer ToyMusicSound;
+	void BatteryOff();
+	bool StageLightCheck = false;
+	int AniCount = 0;
 };
 
