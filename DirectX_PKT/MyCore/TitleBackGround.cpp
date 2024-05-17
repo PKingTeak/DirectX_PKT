@@ -65,9 +65,12 @@ void TitleBackGround::ChangeBackGround(float _DeltaTime)
 	//DelayCallBack()
 	Time += _DeltaTime;
 	Renderer->SetSprite("Title.png", RandomNum);
-	if (Time > 1)
+	
+	if (Time >= 1)
 	{
-	AniTime = RandomNum * 2;
+	
+	AniTime = static_cast<float>( RandomNum * 2);
+	
 	Time = 0;
 	}
 }

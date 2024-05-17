@@ -20,7 +20,7 @@ void Fan::BeginPlay()
 
 	ObjectRender->SetAutoSize(1.0f, true);
 	SetActorLocation(FVector(47.61f, -41.0f));
-	ObjectRender->CreateAnimation("FanAnimation", "Fan.png", 0, 2, 0.001f, true);
+	ObjectRender->CreateAnimation("FanAnimation", "Fan.png", 0.001f, true ,0,2);
 	ObjectRender->ChangeAnimation("FanAnimation");
 	ObjectRender->SetOrder(10);
 

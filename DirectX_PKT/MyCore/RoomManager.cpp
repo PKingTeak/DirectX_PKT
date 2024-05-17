@@ -78,7 +78,8 @@ std::string RoomManager::GetCurRoomSpriteName()
 
 void RoomManager::SettingSpriteName(int _Index)
 {
-	CurRoomSpriteName[_Index];
+	
+	//CurRoomSpriteName[_Index];
 }
 
 void RoomManager::MapUpdate()
