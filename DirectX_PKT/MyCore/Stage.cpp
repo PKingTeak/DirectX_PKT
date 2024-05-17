@@ -84,7 +84,7 @@ void Stage::BeginPlay()
 
 	//Monster
 	BonniActor = GetWorld()->SpawnActor<Bonni>("Bonni");
-	ChicaActor = GetWorld()->SpawnActor<Chica>("Chica");
+	//ChicaActor = GetWorld()->SpawnActor<Chica>("Chica");
 	
 
 	//벡터에 넣는 순서는 프로젝트 솔루션탐색기 기준으로 넣었음. 
@@ -275,7 +275,7 @@ void Stage::Tick(float _DeltaTime)
 	FindActorIndex(ChicaActor.get());
 
 	BonniActor->AutoMove(_DeltaTime);
-	ChicaActor->AutoMove(_DeltaTime);
+	//ChicaActor->AutoMove(_DeltaTime);
 
 
 	if (true == CCTVPtr->GetCamMode())

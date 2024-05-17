@@ -111,11 +111,12 @@ void CCTVBackGround::CCTVOFF()
 	CCTVInfo->SetActive(false); //다음화면 켜주기 
 }
 
-std::string CCTVBackGround::ChangeCam(RoomManager* _UICamName)
+void CCTVBackGround::ChangeCam(RoomManager* _UICamName)
 {//카메라 UI누르면 sprite바꿔주는 역할이
 	if (_UICamName == nullptr)
 	{
-		return _UICamName->GetName();
+		//return _UICamName->GetName();
+		return;
 	}
 	if (_UICamName->GetMonster() != nullptr)
 	{
@@ -127,6 +128,7 @@ std::string CCTVBackGround::ChangeCam(RoomManager* _UICamName)
 	ChangeCamName.append(".png");
 
 	ChangeSprite();
+
 }
 
 

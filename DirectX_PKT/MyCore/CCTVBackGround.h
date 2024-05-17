@@ -43,7 +43,7 @@ public:
 	void ScanLineON();
 	void SetCamBackInfo(RoomManager* _CamInfo, bool _CurCheck = true);
 	//void ChangeCam(RoomManager* _UICamName);
-	std::string ChangeCam(RoomManager* _UICamName);	
+	void ChangeCam(RoomManager* _UICamName);
 	void GetCamera(RoomManager* _ChangeRoom);
 
 	void AllCamActorOff();
