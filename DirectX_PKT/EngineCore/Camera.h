@@ -46,6 +46,11 @@ public:
 	{
 		return Projection;
 	}
+
+	inline FMatrix GetViewPort()
+	{
+		return ViewPortMat;
+	}
 	
 	void ViewPortSetting();
 	float4 ScreenPosToWorldPos(float4 _ScreenPos);
@@ -56,6 +61,8 @@ public:
 	{
 		return CameraTarget;
 	}
+
+	void DepthOn();
 
 protected:
 	void BeginPlay() override;
@@ -80,6 +87,8 @@ private:
 	FTransform PrevTransform;
 
 	float FreeCameraMoveSpeed = 500.0f;
+
+	bool IsDepth = false;
 
 	ECameraType PrevProjectionType = ECameraType::Orthographic;
 

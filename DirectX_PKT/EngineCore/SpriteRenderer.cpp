@@ -188,6 +188,15 @@ void USpriteRenderer::SetSpriteInfo(const FSpriteInfo& _Info)
 		CuttingDataValue.PivotMat.Position(Scale);
 		break;
 	}
+	case EPivot::RIGHTTOP:
+	{
+		float4 Scale = Transform.WorldScale;
+		Scale.X = -abs(Scale.X) * 0.5f;
+		Scale.Y = -abs(Scale.Y) * 0.5f;
+		Scale.Z = 0.0f;
+		CuttingDataValue.PivotMat.Position(Scale);
+		break;
+	}
 	case EPivot::MAX:
 	default:
 	{
@@ -218,6 +227,22 @@ void USpriteRenderer::SetSpriteInfo(const FSpriteInfo& _Info)
 			}
 			break;
 		}
+		case EEngineDir::Up:
+		{
+			if (0 > Scale.Y)
+			{
+				Scale.Y = -Scale.Y;
+			}
+			break;
+		}
+		case EEngineDir::Down:
+		{
+			if (0 < Scale.Y)
+			{
+				Scale.Y = -Scale.Y;
+			}
+			break;
+		}
 		case EEngineDir::MAX:
 		default:
 			break;
@@ -242,7 +267,6 @@ void USpriteRenderer::SetSprite(std::string_view _Name, UINT _Index/* = 0*/)
 
 	if (nullptr == Sprite)
 	{
-		int a = 0;
 		MsgBoxAssert("존재하지 않는 스프라이트를 세팅해주려고 했습니다.");
 		return;
 	}
@@ -271,6 +295,16 @@ void USpriteRenderer::SetSamplering(ETextureSampling _Value)
 	case ETextureSampling::POINT:
 	{
 		Resources->SettingTexture("Image", CurTexture, "POINT");
+		break;
+	}
+	case ETextureSampling::LINEARCLAMP:
+	{
+		Resources->SettingTexture("Image", CurTexture, "LINEARCLAMP");
+		break;
+	}
+	case ETextureSampling::POINTCLAMP:
+	{
+		Resources->SettingTexture("Image", CurTexture, "POINTCLAMP");
 		break;
 	}
 	default:
@@ -336,7 +370,15 @@ void USpriteRenderer::CreateAnimation(
 
 void USpriteRenderer::ChangeAnimation(std::string_view _AnimationName, int StartFrame)
 {
-	if (nullptr != CurAnimation && _AnimationName == CurAnimation->GetName())
+	std::string ChangeAnimaionName = UEngineString::ToUpper(_AnimationName);
+	std::string CurAnimaionName;
+
+	if (nullptr != CurAnimation) {
+		CurAnimaionName = CurAnimation->GetName();
+		CurAnimaionName = UEngineString::ToUpper(CurAnimaionName);
+	}
+
+	if (CurAnimaionName == ChangeAnimaionName)
 	{
 		return;
 	}

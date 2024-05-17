@@ -94,6 +94,9 @@
     <Filter Include="Object\Rendering\Contents">
       <UniqueIdentifier>{806da778-4f1d-4941-b589-73240a53aaf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="New">
+      <UniqueIdentifier>{35363bb2-1eff-4e46-a5af-ef645ce174a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineCore.cpp">
@@ -266,6 +269,9 @@
     </ClCompile>
     <ClCompile Include="InstancingRender.cpp">
       <Filter>Object\Component\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDepthStencil.cpp">
+      <Filter>New</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -448,6 +454,9 @@
     </ClInclude>
     <ClInclude Include="InstancingRender.h">
       <Filter>Object\Component\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDepthStencil.h">
+      <Filter>New</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

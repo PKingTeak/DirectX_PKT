@@ -205,6 +205,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EngineDepthStencil.h" />
     <ClInclude Include="EngineEditorGUI.h">
       <SubType>
       </SubType>
@@ -389,6 +390,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EngineDepthStencil.cpp" />
     <ClCompile Include="EngineEditorGUI.cpp">
       <SubType>
       </SubType>

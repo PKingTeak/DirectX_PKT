@@ -77,6 +77,18 @@ public:
 		ColorData.MulColor = _Color;
 	}
 
+	void SetDir(EEngineDir _Dir);
+
+	inline EEngineDir GetDir() const
+	{
+		return Dir;
+	}
+
+	void SetVertexUVPlus(float4 _UVPlus)
+	{
+		VertexUVValue.PlusUV = _UVPlus;
+	}
+
 protected:
 	void MaterialSettingEnd() override;
 	void Tick(float _DetaTime) override;

@@ -61,14 +61,14 @@ public:
 
 	static std::shared_ptr<UEngineTexture> ThreadSafeCreate(ID3D11Texture2D* _Texture)
 	{
-		std::shared_ptr<UEngineTexture> NewRes = CreateResUnName();
+		std::shared_ptr<UEngineTexture> NewRes = ThreadSafeCreateResUnName();
 		NewRes->ResCreate(_Texture);
 		return NewRes;
 	}
 
 	static std::shared_ptr<UEngineTexture> ThreadSafeCreate(const D3D11_TEXTURE2D_DESC& _Desc)
 	{
-		std::shared_ptr<UEngineTexture> NewRes = CreateResUnName();
+		std::shared_ptr<UEngineTexture> NewRes = ThreadSafeCreateResUnName();
 		NewRes->ResCreate(_Desc);
 		return NewRes;
 	}
@@ -77,12 +77,12 @@ public:
 	{
 		UEnginePath NewPath = UEnginePath(std::filesystem::path(_Path));
 		std::string FileName = NewPath.GetFileName();
-		return Load(_Path, FileName);
+		return ThreadSafeLoad(_Path, FileName);
 	}
 
 	static std::shared_ptr<UEngineTexture> ThreadSafeLoad(std::string_view _Path, std::string_view _Name)
 	{
-		std::shared_ptr<UEngineTexture> NewRes = CreateResName(_Path, _Name);
+		std::shared_ptr<UEngineTexture> NewRes = ThreadSafeCreateResName(_Path, _Name);
 		NewRes->ResLoad();
 		return NewRes;
 	}
@@ -96,6 +96,11 @@ public:
 	ID3D11ShaderResourceView* GetSRV()
 	{
 		return SRV;
+	}
+
+	ID3D11DepthStencilView* GetDSV()
+	{
+		return DSV;
 	}
 
 	float4 GetScale()
@@ -131,6 +136,7 @@ private:
 	ID3D11RenderTargetView* RTV = nullptr;
 	// directx에서 이미지를 쉐이더에 세팅할수 있는 권한.
 	ID3D11ShaderResourceView* SRV = nullptr;
+	ID3D11DepthStencilView* DSV = nullptr;
 
 	D3D11_TEXTURE2D_DESC Desc;
 
@@ -147,6 +153,7 @@ private:
 
 	void CreateRenderTargetView();
 	void CreateShaderResourceView();
+	void CreateDepthStencilView();
 
 	void Setting(EShaderType _Type, UINT _Slot);
 	void Reset(EShaderType _Type, UINT _Slot);

@@ -46,6 +46,36 @@
     <ClCompile Include="EngineThread.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPSession.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineClient.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDispatcher.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineNet.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineProtocol.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineServer.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="NetObject.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="NetStartUpHelper.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EngineDebug.h">
@@ -92,6 +122,39 @@
     </ClInclude>
     <ClInclude Include="EngineThread.h">
       <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="NetStartUpHelper.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPSession.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineClient.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDispatcher.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineNet.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineNetHeader.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineProtocol.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineServer.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="NetObject.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
